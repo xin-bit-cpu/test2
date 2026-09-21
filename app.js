@@ -444,10 +444,587 @@ function parseCwaApiResponse(json) {
 }
 
 // ==========================================
-// 6. 初始化執行
+// 6. 即時雷達回波 & 衛星雲圖 - 動態連續播放引擎 (Dynamic Weather Imagery System)
+// ==========================================
+let radarPlayer = null;
+let satellitePlayer = null;
+let activeLightboxPlayer = null;
+
+class WeatherImageryPlayer {
+  constructor(config) {
+    this.id = config.id;
+    this.type = config.type; // 'radar' | 'satellite'
+    this.imgFront = document.getElementById(config.imgFront);
+    this.imgBack = document.getElementById(config.imgBack);
+    this.screen = document.getElementById(config.screen);
+    this.hudTime = document.getElementById(config.hudTime);
+    this.hudFrame = document.getElementById(config.hudFrame);
+    this.timeline = document.getElementById(config.timeline);
+    this.playBtn = document.getElementById(config.playBtn);
+    this.prevBtn = document.getElementById(config.prevBtn);
+    this.nextBtn = document.getElementById(config.nextBtn);
+    this.statusText = document.getElementById(config.statusText);
+    this.liveBadge = document.getElementById(config.liveBadge);
+    this.loader = document.getElementById(config.loader);
+    this.timeStart = document.getElementById(config.timeStart);
+    this.timeMid = document.getElementById(config.timeMid);
+    this.timeEnd = document.getElementById(config.timeEnd);
+    this.refreshBtn = document.getElementById(config.refreshBtn);
+    this.fullscreenBtn = document.getElementById(config.fullscreenBtn);
+    this.tabs = document.querySelectorAll(`#${config.tabsId} .img-tab`);
+    this.speedBtns = document.querySelectorAll(`#${config.speedSelectorId} .speed-btn`);
+    
+    // 雷達特有之特效層開關
+    this.sweepToggle = config.sweepToggle ? document.getElementById(config.sweepToggle) : null;
+    this.fxLayer = config.fxLayer ? document.getElementById(config.fxLayer) : null;
+
+    this.currentProduct = config.defaultProduct;
+    this.currentS3Fallback = config.defaultS3;
+    this.currentLabel = config.defaultLabel;
+    this.frames = [];
+    this.currentIndex = 0;
+    this.isPlaying = true;
+    this.speed = 700; // 預設每幀 700ms (持續動態播放)
+    this.timer = null;
+    this.activeFront = true;
+
+    this.init();
+  }
+
+  init() {
+    this.generateFrames();
+    this.bindEvents();
+    // 預設切換至最新一幀，並立即開啟動態循環
+    this.showFrame(this.frames.length - 1);
+    this.startPlay();
+
+    // 背景每 60 秒自動檢查是否有氣象署釋出之更新影像
+    setInterval(() => {
+      this.checkAutoSync();
+    }, 60000);
+  }
+
+  generateFrames() {
+    const now = new Date();
+    // 以 10 分鐘為一個觀測步進點 (CWA 觀測常規)
+    let m = Math.floor(now.getMinutes() / 10) * 10;
+    let baseDate = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), m, 0);
+
+    // 氣象署產圖通常有數分鐘延遲，若當前剛過整點不到 3 分鐘，微調往前 10 分鐘以保證穩定出圖
+    if (now.getMinutes() % 10 < 3) {
+      baseDate = new Date(baseDate.getTime() - 10 * 60 * 1000);
+    }
+
+    const totalFrames = 10; // 取過去 90 分鐘共 10 幀時間序列
+    const newFrames = [];
+    const pad = n => String(n).padStart(2, '0');
+
+    for (let i = totalFrames - 1; i >= 0; i--) {
+      const dt = new Date(baseDate.getTime() - i * 10 * 60 * 1000);
+      const y = dt.getFullYear();
+      const mo = pad(dt.getMonth() + 1);
+      const d = pad(dt.getDate());
+      const h = pad(dt.getHours());
+      const min = pad(dt.getMinutes());
+
+      const timeLabel = `${h}:${min}`;
+      const fullTime = `${y}-${mo}-${d} ${timeLabel}`;
+      let url = "";
+
+      if (this.type === 'radar') {
+        // CWA 即時雷達回波格式: CV1_3600_YYYYMMDDHHMM.png
+        const ts = `${y}${mo}${d}${h}${min}`;
+        url = `https://www.cwa.gov.tw/Data/radar/${this.currentProduct}_${ts}.png`;
+      } else {
+        // CWA 衛星雲圖格式: LCC_TRGB_1000-YYYY-MM-DD-HH-MM.jpg
+        const ts = `${y}-${mo}-${d}-${h}-${min}`;
+        url = `https://www.cwa.gov.tw/Data/satellite/${this.currentProduct}/${this.currentProduct}-${ts}.jpg`;
+      }
+
+      newFrames.push({
+        timeLabel,
+        fullTime,
+        url,
+        fallbackUrl: this.currentS3Fallback || url
+      });
+    }
+
+    this.frames = newFrames;
+    if (this.timeline) {
+      this.timeline.min = 0;
+      this.timeline.max = this.frames.length - 1;
+    }
+    if (this.timeStart) this.timeStart.textContent = this.frames[0].timeLabel;
+    if (this.timeMid) this.timeMid.textContent = this.frames[Math.floor(this.frames.length / 2)].timeLabel;
+    if (this.timeEnd) this.timeEnd.textContent = `${this.frames[this.frames.length - 1].timeLabel} (LIVE)`;
+
+    this.preloadAllFrames();
+  }
+
+  preloadAllFrames() {
+    this.frames.forEach(f => {
+      const img = new Image();
+      img.src = f.url;
+    });
+  }
+
+  showFrame(index) {
+    if (!this.frames || this.frames.length === 0) return;
+    if (index < 0) index = this.frames.length - 1;
+    if (index >= this.frames.length) index = 0;
+
+    this.currentIndex = index;
+    if (this.timeline) this.timeline.value = index;
+
+    const frame = this.frames[index];
+    if (!frame) return;
+
+    if (this.hudTime) this.hudTime.textContent = frame.timeLabel;
+    if (this.hudFrame) this.hudFrame.textContent = `幀 ${index + 1}/${this.frames.length}`;
+
+    // 雙緩衝無縫交叉淡入淡出 (Crossfade)，杜絕閃爍
+    const targetImg = this.activeFront ? this.imgBack : this.imgFront;
+    const currentImg = this.activeFront ? this.imgFront : this.imgBack;
+
+    let hasSwitched = false;
+    const doSwitch = () => {
+      if (hasSwitched) return;
+      hasSwitched = true;
+      targetImg.style.opacity = '1';
+      currentImg.style.opacity = '0';
+      this.activeFront = !this.activeFront;
+      if (this.loader) this.loader.classList.remove('show');
+    };
+
+    targetImg.onload = doSwitch;
+    targetImg.onerror = () => {
+      // 容錯備援機制：若特定歷史時間點尚未產出，自動平滑退回 S3 最新即時圖
+      if (targetImg.src !== frame.fallbackUrl) {
+        targetImg.src = frame.fallbackUrl;
+      } else {
+        doSwitch();
+      }
+    };
+
+    targetImg.src = frame.url;
+
+    if (targetImg.complete && targetImg.naturalWidth > 0) {
+      doSwitch();
+    }
+
+    // 若燈箱正檢視本播放器，同步更新燈箱
+    if (activeLightboxPlayer === this) {
+      syncLightboxFrame();
+    }
+  }
+
+  nextFrame() {
+    let nextIdx = this.currentIndex + 1;
+    if (nextIdx >= this.frames.length) {
+      nextIdx = 0; // 循環回第一幀
+    }
+    this.showFrame(nextIdx);
+  }
+
+  prevFrame() {
+    let prevIdx = this.currentIndex - 1;
+    if (prevIdx < 0) {
+      prevIdx = this.frames.length - 1;
+    }
+    this.showFrame(prevIdx);
+  }
+
+  startPlay() {
+    if (this.timer) clearInterval(this.timer);
+    this.isPlaying = true;
+    this.timer = setInterval(() => {
+      this.nextFrame();
+    }, this.speed);
+
+    if (this.playBtn) {
+      this.playBtn.innerHTML = '<span class="play-icon">⏸ 暫停</span>';
+      this.playBtn.classList.add('active');
+    }
+    if (this.statusText) this.statusText.textContent = '連續動態循環中';
+    if (this.liveBadge) {
+      this.liveBadge.innerHTML = '● LIVE 動態連續中';
+      this.liveBadge.style.opacity = '1';
+    }
+    if (activeLightboxPlayer === this) {
+      syncLightboxControls();
+    }
+  }
+
+  pausePlay() {
+    if (this.timer) {
+      clearInterval(this.timer);
+      this.timer = null;
+    }
+    this.isPlaying = false;
+    if (this.playBtn) {
+      this.playBtn.innerHTML = '<span class="play-icon">▶ 播放</span>';
+      this.playBtn.classList.remove('active');
+    }
+    if (this.statusText) this.statusText.textContent = '已暫停 (單幀檢視)';
+    if (this.liveBadge) {
+      this.liveBadge.innerHTML = '⏸ 已暫停';
+      this.liveBadge.style.opacity = '0.75';
+    }
+    if (activeLightboxPlayer === this) {
+      syncLightboxControls();
+    }
+  }
+
+  togglePlay() {
+    if (this.isPlaying) {
+      this.pausePlay();
+    } else {
+      this.startPlay();
+    }
+  }
+
+  setSpeed(newSpeed) {
+    this.speed = newSpeed;
+    if (this.speedBtns) {
+      this.speedBtns.forEach(btn => {
+        if (parseInt(btn.dataset.speed, 10) === newSpeed) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+    }
+    if (this.isPlaying) {
+      this.startPlay();
+    }
+    if (activeLightboxPlayer === this) {
+      syncLightboxControls();
+    }
+  }
+
+  checkAutoSync() {
+    const lastLatestTime = this.frames.length > 0 ? this.frames[this.frames.length - 1].timeLabel : "";
+    this.generateFrames();
+    const newLatestTime = this.frames.length > 0 ? this.frames[this.frames.length - 1].timeLabel : "";
+    if (newLatestTime !== lastLatestTime) {
+      console.log(`[${this.type}] 新影像就緒，已自動同步最新時間幀：${newLatestTime}`);
+    }
+  }
+
+  bindEvents() {
+    // 播放 / 暫停
+    if (this.playBtn) {
+      this.playBtn.addEventListener('click', () => this.togglePlay());
+    }
+
+    // 上一幀 / 下一幀 單步切換
+    if (this.prevBtn) {
+      this.prevBtn.addEventListener('click', () => {
+        this.prevFrame();
+      });
+    }
+    if (this.nextBtn) {
+      this.nextBtn.addEventListener('click', () => {
+        this.nextFrame();
+      });
+    }
+
+    // 時間軸拉桿即時拖曳定位
+    if (this.timeline) {
+      this.timeline.addEventListener('input', (e) => {
+        this.showFrame(parseInt(e.target.value, 10));
+      });
+    }
+
+    // 播放速度切換 (0.5x, 1.0x, 2.0x)
+    if (this.speedBtns) {
+      this.speedBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          this.setSpeed(parseInt(btn.dataset.speed, 10));
+        });
+      });
+    }
+
+    // 標籤頁籤切換 (各觀測產品)
+    if (this.tabs) {
+      this.tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          this.tabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          this.currentProduct = tab.dataset.type;
+          this.currentS3Fallback = tab.dataset.s3 || "";
+          this.currentLabel = tab.dataset.label;
+          if (this.loader) this.loader.classList.add('show');
+          this.generateFrames();
+          this.showFrame(this.currentIndex);
+        });
+      });
+    }
+
+    // 雷達旋轉掃描光束特效開關
+    if (this.sweepToggle && this.fxLayer) {
+      this.sweepToggle.addEventListener('click', () => {
+        this.fxLayer.classList.toggle('active');
+        this.sweepToggle.classList.toggle('active');
+      });
+    }
+
+    // 即時重新整理按鈕
+    if (this.refreshBtn) {
+      this.refreshBtn.addEventListener('click', () => {
+        this.refreshBtn.style.transform = 'rotate(360deg)';
+        this.refreshBtn.style.transition = 'transform 0.5s ease';
+        setTimeout(() => {
+          this.refreshBtn.style.transform = 'none';
+          this.refreshBtn.style.transition = 'none';
+        }, 500);
+
+        if (this.loader) this.loader.classList.add('show');
+        this.generateFrames();
+        this.showFrame(this.frames.length - 1);
+      });
+    }
+
+    // 全螢幕 / 點擊放大
+    const openLightboxForMe = () => {
+      openImageryLightbox(this);
+    };
+
+    if (this.fullscreenBtn) {
+      this.fullscreenBtn.addEventListener('click', openLightboxForMe);
+    }
+    if (this.screen) {
+      this.screen.addEventListener('click', (e) => {
+        if (e.target.closest('.imagery-hud') || e.target.closest('button')) return;
+        openLightboxForMe();
+      });
+    }
+  }
+}
+
+// ==========================================
+// 7. 高解析放大燈箱控制器 (Lightbox Controller)
+// ==========================================
+function openImageryLightbox(player) {
+  activeLightboxPlayer = player;
+  const modal = document.getElementById("imageryLightbox");
+  const title = document.getElementById("lightboxTitle");
+
+  title.textContent = player.type === "radar" 
+    ? `即時彩色雷達回波圖 - ${player.currentLabel}`
+    : `彩色衛星雲圖 - ${player.currentLabel}`;
+
+  syncLightboxFrame();
+  syncLightboxControls();
+
+  modal.classList.add("open");
+}
+
+function syncLightboxFrame() {
+  if (!activeLightboxPlayer) return;
+  const frame = activeLightboxPlayer.frames[activeLightboxPlayer.currentIndex];
+  if (!frame) return;
+
+  const lbImg = document.getElementById("lightboxImg");
+  const lbHudTime = document.getElementById("lightboxHudTime");
+  const lbHudFrame = document.getElementById("lightboxHudFrame");
+  const lbTimeline = document.getElementById("lightboxTimeline");
+  const lbStart = document.getElementById("lightboxTimeStart");
+  const lbMid = document.getElementById("lightboxTimeMid");
+  const lbEnd = document.getElementById("lightboxTimeEnd");
+
+  lbImg.src = frame.url;
+  lbImg.onerror = () => {
+    if (lbImg.src !== frame.fallbackUrl) {
+      lbImg.src = frame.fallbackUrl;
+    }
+  };
+
+  if (lbHudTime) lbHudTime.textContent = frame.timeLabel;
+  if (lbHudFrame) lbHudFrame.textContent = `幀 ${activeLightboxPlayer.currentIndex + 1}/${activeLightboxPlayer.frames.length}`;
+  if (lbTimeline) {
+    lbTimeline.min = 0;
+    lbTimeline.max = activeLightboxPlayer.frames.length - 1;
+    lbTimeline.value = activeLightboxPlayer.currentIndex;
+  }
+  if (lbStart && activeLightboxPlayer.frames.length > 0) {
+    lbStart.textContent = activeLightboxPlayer.frames[0].timeLabel;
+  }
+  if (lbMid && activeLightboxPlayer.frames.length > 0) {
+    lbMid.textContent = activeLightboxPlayer.frames[Math.floor(activeLightboxPlayer.frames.length / 2)].timeLabel;
+  }
+  if (lbEnd && activeLightboxPlayer.frames.length > 0) {
+    lbEnd.textContent = `${activeLightboxPlayer.frames[activeLightboxPlayer.frames.length - 1].timeLabel} (LIVE)`;
+  }
+}
+
+function syncLightboxControls() {
+  if (!activeLightboxPlayer) return;
+  const lbPlayBtn = document.getElementById("lightboxPlayBtn");
+  const lbBadge = document.getElementById("lightboxBadge");
+  const lbSpeedBtns = document.querySelectorAll("#lightboxSpeedSelector .speed-btn");
+
+  if (lbPlayBtn) {
+    if (activeLightboxPlayer.isPlaying) {
+      lbPlayBtn.innerHTML = '<span class="play-icon">⏸ 暫停</span>';
+      lbPlayBtn.classList.add('active');
+      if (lbBadge) lbBadge.innerHTML = '● LIVE 循環播放中';
+    } else {
+      lbPlayBtn.innerHTML = '<span class="play-icon">▶ 播放</span>';
+      lbPlayBtn.classList.remove('active');
+      if (lbBadge) lbBadge.innerHTML = '⏸ 已暫停';
+    }
+  }
+
+  if (lbSpeedBtns) {
+    lbSpeedBtns.forEach(btn => {
+      if (parseInt(btn.dataset.speed, 10) === activeLightboxPlayer.speed) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+  }
+}
+
+function setupLightboxEvents() {
+  const modal = document.getElementById("imageryLightbox");
+  const closeBtn = document.getElementById("btnCloseLightbox");
+  const lbPlayBtn = document.getElementById("lightboxPlayBtn");
+  const lbPrevBtn = document.getElementById("lightboxPrevBtn");
+  const lbNextBtn = document.getElementById("lightboxNextBtn");
+  const lbTimeline = document.getElementById("lightboxTimeline");
+  const lbSpeedBtns = document.querySelectorAll("#lightboxSpeedSelector .speed-btn");
+
+  if (closeBtn) {
+    closeBtn.addEventListener("click", () => {
+      modal.classList.remove("open");
+      activeLightboxPlayer = null;
+    });
+  }
+
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.classList.remove("open");
+      activeLightboxPlayer = null;
+    }
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal.classList.contains("open")) {
+      modal.classList.remove("open");
+      activeLightboxPlayer = null;
+    }
+  });
+
+  if (lbPlayBtn) {
+    lbPlayBtn.addEventListener("click", () => {
+      if (activeLightboxPlayer) {
+        activeLightboxPlayer.togglePlay();
+      }
+    });
+  }
+
+  if (lbPrevBtn) {
+    lbPrevBtn.addEventListener("click", () => {
+      if (activeLightboxPlayer) {
+        activeLightboxPlayer.prevFrame();
+      }
+    });
+  }
+
+  if (lbNextBtn) {
+    lbNextBtn.addEventListener("click", () => {
+      if (activeLightboxPlayer) {
+        activeLightboxPlayer.nextFrame();
+      }
+    });
+  }
+
+  if (lbTimeline) {
+    lbTimeline.addEventListener("input", (e) => {
+      if (activeLightboxPlayer) {
+        activeLightboxPlayer.showFrame(parseInt(e.target.value, 10));
+      }
+    });
+  }
+
+  if (lbSpeedBtns) {
+    lbSpeedBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        if (activeLightboxPlayer) {
+          activeLightboxPlayer.setSpeed(parseInt(btn.dataset.speed, 10));
+        }
+      });
+    });
+  }
+}
+
+// ==========================================
+// 8. 初始化執行
 // ==========================================
 document.addEventListener("DOMContentLoaded", () => {
   startClock();
   setupEventListeners();
   renderWeatherCards();
+  setupLightboxEvents();
+
+  // 初始化雷達回波動態連續播放系統
+  radarPlayer = new WeatherImageryPlayer({
+    id: "radar",
+    type: "radar",
+    screen: "radarScreen",
+    imgFront: "radarImgFront",
+    imgBack: "radarImgBack",
+    hudTime: "radarHudTime",
+    hudFrame: "radarHudFrame",
+    timeline: "radarTimeline",
+    playBtn: "radarPlayBtn",
+    prevBtn: "radarPrevBtn",
+    nextBtn: "radarNextBtn",
+    statusText: "radarStatusText",
+    liveBadge: "radarLiveBadge",
+    loader: "radarLoader",
+    timeStart: "radarTimeStart",
+    timeMid: "radarTimeMid",
+    timeEnd: "radarTimeEnd",
+    refreshBtn: "radarRefreshBtn",
+    fullscreenBtn: "radarFullscreenBtn",
+    tabsId: "radarTabs",
+    speedSelectorId: "radarSpeedSelector",
+    sweepToggle: "radarSweepToggle",
+    fxLayer: "radarFxLayer",
+    defaultProduct: "CV1_3600",
+    defaultLabel: "有地形 (大範圍)",
+    defaultS3: "https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-A0058-002.png"
+  });
+
+  // 初始化彩色衛星雲圖動態連續播放系統
+  satellitePlayer = new WeatherImageryPlayer({
+    id: "satellite",
+    type: "satellite",
+    screen: "satScreen",
+    imgFront: "satImgFront",
+    imgBack: "satImgBack",
+    hudTime: "satHudTime",
+    hudFrame: "satHudFrame",
+    timeline: "satTimeline",
+    playBtn: "satPlayBtn",
+    prevBtn: "satPrevBtn",
+    nextBtn: "satNextBtn",
+    statusText: "satStatusText",
+    liveBadge: "satLiveBadge",
+    loader: "satLoader",
+    timeStart: "satTimeStart",
+    timeMid: "satTimeMid",
+    timeEnd: "satTimeEnd",
+    refreshBtn: "satRefreshBtn",
+    fullscreenBtn: "satFullscreenBtn",
+    tabsId: "satelliteTabs",
+    speedSelectorId: "satSpeedSelector",
+    defaultProduct: "LCC_IR1_CR_2750",
+    defaultLabel: "紅外線彩色 (台灣)",
+    defaultS3: "https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-B0028-003.jpg"
+  });
 });
+

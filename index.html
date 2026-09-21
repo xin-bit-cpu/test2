@@ -104,56 +104,247 @@
 
     <!-- 即時雷達回波圖 & 動態衛星雲圖 -->
     <section class="imagery-section">
-      <div class="imagery-panel">
+      <!-- 面板 1：即時彩色雷達回波圖 -->
+      <div class="imagery-panel" id="radarPanel">
         <div class="imagery-header">
-          <div class="imagery-title-group">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-              <circle cx="12" cy="12" r="3"></circle>
-              <line x1="12" y1="2" x2="12" y2="6"></line>
-              <line x1="12" y1="18" x2="12" y2="22"></line>
-              <line x1="2" y1="12" x2="6" y2="12"></line>
-              <line x1="18" y1="12" x2="22" y2="12"></line>
-            </svg>
-            <h2>即時彩色雷達回波圖</h2>
-            <span class="badge badge-live">LIVE</span>
+          <div class="imagery-top-row">
+            <div class="imagery-title-group">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <circle cx="12" cy="12" r="3"></circle>
+                <line x1="12" y1="2" x2="12" y2="6"></line>
+                <line x1="12" y1="18" x2="12" y2="22"></line>
+                <line x1="2" y1="12" x2="6" y2="12"></line>
+                <line x1="18" y1="12" x2="22" y2="12"></line>
+              </svg>
+              <h2>即時彩色雷達回波圖</h2>
+              <span class="badge badge-live" id="radarLiveBadge">● LIVE 動態連續中</span>
+            </div>
+            <div class="imagery-actions">
+              <button class="btn-tool active" id="radarSweepToggle" title="開啟/關閉雷達旋轉掃描光束特效">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"></path>
+                  <path d="M12 12 2 12"></path>
+                </svg>
+                <span>掃描特效</span>
+              </button>
+              <button class="btn-tool" id="radarRefreshBtn" title="強制重新整理氣象署最新影像">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="23 4 23 10 17 10"></polyline>
+                  <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+                </svg>
+                <span>重新整理</span>
+              </button>
+              <button class="btn-tool" id="radarFullscreenBtn" title="放大全螢幕檢視">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                </svg>
+                <span>放大</span>
+              </button>
+            </div>
           </div>
           <div class="imagery-tabs" id="radarTabs">
-            <button class="img-tab active" data-src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-A0058-002.png" data-label="有地形 (大範圍)">有地形 (大範圍)</button>
-            <button class="img-tab" data-src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-A0058-003.png" data-label="無地形 (鄰近區域)">無地形 (鄰近區域)</button>
-            <button class="img-tab" data-src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-A0058-001.png" data-label="全區域">全區域</button>
+            <button class="img-tab active" data-type="CV1_3600" data-label="有地形 (大範圍)" data-s3="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-A0058-002.png">有地形 (大範圍)</button>
+            <button class="img-tab" data-type="CV2_3600" data-label="無地形 (鄰近區域)" data-s3="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-A0058-003.png">無地形 (鄰近區域)</button>
+            <button class="img-tab" data-type="CV1_1000" data-label="全區域 (1000km)" data-s3="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-A0058-001.png">全區域</button>
+            <button class="img-tab" data-type="CV1_TW_3600" data-label="臺灣本島 (鄰近有地形)" data-s3="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-A0058-004.png">臺灣本島</button>
           </div>
         </div>
         <div class="imagery-wrapper">
-          <img id="radarImage" src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-A0058-002.png" alt="中央氣象署即時雷達合成回波圖 (有地形)" crossorigin="anonymous">
+          <div class="imagery-screen" id="radarScreen">
+            <img id="radarImgBack" class="imagery-img img-back" alt="雷達緩衝底層">
+            <img id="radarImgFront" class="imagery-img img-front" src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-A0058-002.png" alt="中央氣象署即時雷達合成回波圖 (有地形)">
+            
+            <!-- 雷達掃描特效 (Radar Sweep Beam & Rings) -->
+            <div class="radar-fx-layer active" id="radarFxLayer">
+              <div class="radar-rings"></div>
+              <div class="radar-crosshair"></div>
+              <div class="radar-sweep-beam"></div>
+            </div>
+
+            <!-- 時間戳記 HUD 浮水印 -->
+            <div class="imagery-hud" id="radarHud">
+              <span class="hud-dot"></span>
+              <span class="hud-time" id="radarHudTime">載入中...</span>
+              <span class="hud-frame" id="radarHudFrame">幀 1/10</span>
+            </div>
+
+            <!-- 載入中動畫 -->
+            <div class="imagery-loader" id="radarLoader">
+              <div class="spinner"></div>
+              <span>載入雲圖序列中...</span>
+            </div>
+          </div>
+
+          <!-- 雷達回波強度圖例 (dBZ Scale) -->
+          <div class="dbz-legend">
+            <div class="legend-header">
+              <span class="legend-title">雷達回波強度 (dBZ)</span>
+              <span class="legend-scale-desc">10(微雨) ➜ 35(陣雨) ➜ 50+(暴雨冰雹)</span>
+            </div>
+            <div class="dbz-bar"></div>
+            <div class="dbz-ticks">
+              <span>5</span>
+              <span>15</span>
+              <span>25</span>
+              <span>35</span>
+              <span>45</span>
+              <span>55</span>
+              <span>65+</span>
+            </div>
+          </div>
+
+          <!-- 動態連續播放控制列 -->
+          <div class="imagery-player">
+            <div class="player-timeline">
+              <input type="range" id="radarTimeline" min="0" max="9" value="9" step="1">
+              <div class="timeline-labels">
+                <span id="radarTimeStart">-90分</span>
+                <span id="radarTimeMid">-40分</span>
+                <span id="radarTimeEnd" class="text-live">最新 (LIVE)</span>
+              </div>
+            </div>
+            <div class="player-controls">
+              <div class="ctrl-btn-group">
+                <button id="radarPrevBtn" class="ctrl-btn" title="上一幀 (前10分鐘)">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="19 20 9 12 19 4 19 20"></polygon><line x1="5" y1="19" x2="5" y2="5"></line></svg>
+                </button>
+                <button id="radarPlayBtn" class="ctrl-btn ctrl-btn-play active" title="播放 / 暫停">
+                  <span class="play-icon">⏸ 暫停</span>
+                </button>
+                <button id="radarNextBtn" class="ctrl-btn" title="下一幀 (後10分鐘)">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 4 15 12 5 20 5 4"></polygon><line x1="19" y1="5" x2="19" y2="19"></line></svg>
+                </button>
+              </div>
+              <div class="speed-selector" id="radarSpeedSelector">
+                <span class="speed-label">速度:</span>
+                <button class="speed-btn" data-speed="1200">0.5x</button>
+                <button class="speed-btn active" data-speed="700">1.0x</button>
+                <button class="speed-btn" data-speed="350">2.0x</button>
+              </div>
+              <div class="player-status-badge">
+                <span class="loop-icon">⟳</span>
+                <span id="radarStatusText">連續動態循環中</span>
+              </div>
+            </div>
+          </div>
+
           <div class="imagery-footer">
-            <span class="img-source">資料來源：CWA QPESUMS 雷達整合回波</span>
-            <span class="img-refresh" id="radarRefreshInfo">每 10 分鐘自動更新</span>
+            <span class="img-source">資料來源：中央氣象署 QPESUMS 雷達整合回波 (即時更新)</span>
+            <span class="img-refresh" id="radarRefreshInfo">即時串流變化中</span>
           </div>
         </div>
       </div>
 
-      <div class="imagery-panel">
+      <!-- 面板 2：彩色衛星雲圖 -->
+      <div class="imagery-panel" id="satellitePanel">
         <div class="imagery-header">
-          <div class="imagery-title-group">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
-            </svg>
-            <h2>彩色衛星雲圖</h2>
-            <span class="badge badge-live">LIVE</span>
+          <div class="imagery-top-row">
+            <div class="imagery-title-group">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
+              </svg>
+              <h2>彩色衛星雲圖</h2>
+              <span class="badge badge-live" id="satLiveBadge">● LIVE 動態連續中</span>
+            </div>
+            <div class="imagery-actions">
+              <button class="btn-tool" id="satRefreshBtn" title="強制重新整理氣象署最新影像">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="23 4 23 10 17 10"></polyline>
+                  <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+                </svg>
+                <span>重新整理</span>
+              </button>
+              <button class="btn-tool" id="satFullscreenBtn" title="放大全螢幕檢視">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                </svg>
+                <span>放大</span>
+              </button>
+            </div>
           </div>
           <div class="imagery-tabs" id="satelliteTabs">
-            <button class="img-tab active" data-src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-B0028-003.jpg" data-label="紅外線彩色 (全球)">紅外線彩色</button>
-            <button class="img-tab" data-src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-B0030-001.jpg" data-label="色調強化 (台灣)">色調強化</button>
-            <button class="img-tab" data-src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-B0031-001.jpg" data-label="可見光 (台灣)">可見光</button>
-            <button class="img-tab" data-src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-B0032-001.jpg" data-label="高解析強化 (東亞)">高解析強化</button>
+            <button class="img-tab active" data-type="LCC_IR1_CR_2750" data-label="紅外線彩色 (台灣)" data-s3="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-B0028-003.jpg">紅外線彩色</button>
+            <button class="img-tab" data-type="LCC_TRGB_1000" data-label="真實彩色 (向日葵)" data-s3="https://www.cwa.gov.tw/Data/satellite/LCC_TRGB_1000/LCC_TRGB_1000.jpg">真實彩色</button>
+            <button class="img-tab" data-type="LCC_IR1_MB_2750" data-label="色調強化 (對流觀察)" data-s3="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-B0030-001.jpg">色調強化</button>
+            <button class="img-tab" data-type="FDK_IR1_CR_2750" data-label="東亞高解析強化" data-s3="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-B0032-001.jpg">東亞/全球</button>
           </div>
         </div>
         <div class="imagery-wrapper">
-          <img id="satelliteImage" src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-B0028-003.jpg" alt="中央氣象署即時彩色衛星雲圖" crossorigin="anonymous">
+          <div class="imagery-screen" id="satScreen">
+            <img id="satImgBack" class="imagery-img img-back" alt="雲圖緩衝底層">
+            <img id="satImgFront" class="imagery-img img-front" src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-B0028-003.jpg" alt="中央氣象署即時彩色衛星雲圖">
+            
+            <!-- 時間戳記 HUD 浮水印 -->
+            <div class="imagery-hud" id="satHud">
+              <span class="hud-dot"></span>
+              <span class="hud-time" id="satHudTime">載入中...</span>
+              <span class="hud-frame" id="satHudFrame">幀 1/10</span>
+            </div>
+
+            <!-- 載入中動畫 -->
+            <div class="imagery-loader" id="satLoader">
+              <div class="spinner"></div>
+              <span>載入雲圖序列中...</span>
+            </div>
+          </div>
+
+          <!-- 衛星雲圖色調溫度圖例 (Cloud Top Temp Scale) -->
+          <div class="dbz-legend sat-legend">
+            <div class="legend-header">
+              <span class="legend-title">雲頂亮溫標尺 (°C)</span>
+              <span class="legend-scale-desc">-80°C(深厚強對流/砧狀雲) ➜ 0°C(中低雲) ➜ +30°C(晴朗地表)</span>
+            </div>
+            <div class="sat-bar"></div>
+            <div class="dbz-ticks">
+              <span>-80°</span>
+              <span>-60°</span>
+              <span>-40°</span>
+              <span>-20°</span>
+              <span>0°</span>
+              <span>+20°</span>
+              <span>+30°</span>
+            </div>
+          </div>
+
+          <!-- 動態連續播放控制列 -->
+          <div class="imagery-player">
+            <div class="player-timeline">
+              <input type="range" id="satTimeline" min="0" max="9" value="9" step="1">
+              <div class="timeline-labels">
+                <span id="satTimeStart">-90分</span>
+                <span id="satTimeMid">-40分</span>
+                <span id="satTimeEnd" class="text-live">最新 (LIVE)</span>
+              </div>
+            </div>
+            <div class="player-controls">
+              <div class="ctrl-btn-group">
+                <button id="satPrevBtn" class="ctrl-btn" title="上一幀 (前10分鐘)">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="19 20 9 12 19 4 19 20"></polygon><line x1="5" y1="19" x2="5" y2="5"></line></svg>
+                </button>
+                <button id="satPlayBtn" class="ctrl-btn ctrl-btn-play active" title="播放 / 暫停">
+                  <span class="play-icon">⏸ 暫停</span>
+                </button>
+                <button id="satNextBtn" class="ctrl-btn" title="下一幀 (後10分鐘)">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 4 15 12 5 20 5 4"></polygon><line x1="19" y1="5" x2="19" y2="19"></line></svg>
+                </button>
+              </div>
+              <div class="speed-selector" id="satSpeedSelector">
+                <span class="speed-label">速度:</span>
+                <button class="speed-btn" data-speed="1200">0.5x</button>
+                <button class="speed-btn active" data-speed="700">1.0x</button>
+                <button class="speed-btn" data-speed="350">2.0x</button>
+              </div>
+              <div class="player-status-badge">
+                <span class="loop-icon">⟳</span>
+                <span id="satStatusText">連續動態循環中</span>
+              </div>
+            </div>
+          </div>
+
           <div class="imagery-footer">
-            <span class="img-source">資料來源：CWA 向日葵衛星觀測</span>
-            <span class="img-refresh" id="satRefreshInfo">每 10 分鐘自動更新</span>
+            <span class="img-source">資料來源：CWA 向日葵9號氣象衛星 (Himawari-9)</span>
+            <span class="img-refresh" id="satRefreshInfo">即時串流變化中</span>
           </div>
         </div>
       </div>
@@ -263,6 +454,58 @@
         <div class="modal-actions">
           <button id="btnUseDemoData" class="btn btn-secondary">載入示範資料</button>
           <button id="btnFetchLiveApi" class="btn btn-primary">連線獲取即時預報</button>
+        </div>
+      </div>
+    </div>
+  <!-- 彈窗 3：雷達/衛星雲圖全螢幕高解析檢視與同步播放器 -->
+  <div class="modal-overlay" id="imageryLightbox">
+    <div class="modal-card modal-xl lightbox-card">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <h3 id="lightboxTitle">即時氣象高解析影像檢視</h3>
+          <span class="badge badge-live" id="lightboxBadge">● LIVE 循環播放中</span>
+        </div>
+        <button class="modal-close" id="btnCloseLightbox">&times;</button>
+      </div>
+      <div class="modal-body lightbox-body">
+        <div class="lightbox-screen" id="lightboxScreen">
+          <img id="lightboxImg" src="" alt="高解析影像">
+          <div class="imagery-hud" id="lightboxHud">
+            <span class="hud-dot"></span>
+            <span class="hud-time" id="lightboxHudTime">載入中...</span>
+            <span class="hud-frame" id="lightboxHudFrame">幀 1/10</span>
+          </div>
+        </div>
+        <div class="lightbox-controls">
+          <div class="player-timeline">
+            <input type="range" id="lightboxTimeline" min="0" max="9" value="9" step="1">
+            <div class="timeline-labels">
+              <span id="lightboxTimeStart">-90分</span>
+              <span id="lightboxTimeMid">-40分</span>
+              <span id="lightboxTimeEnd" class="text-live">最新 (LIVE)</span>
+            </div>
+          </div>
+          <div class="player-controls">
+            <div class="ctrl-btn-group">
+              <button id="lightboxPrevBtn" class="ctrl-btn" title="上一幀">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="19 20 9 12 19 4 19 20"></polygon><line x1="5" y1="19" x2="5" y2="5"></line></svg>
+                <span>上一幀</span>
+              </button>
+              <button id="lightboxPlayBtn" class="ctrl-btn ctrl-btn-play active" title="播放 / 暫停">
+                <span class="play-icon">⏸ 暫停</span>
+              </button>
+              <button id="lightboxNextBtn" class="ctrl-btn" title="下一幀">
+                <span>下一幀</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 4 15 12 5 20 5 4"></polygon><line x1="19" y1="5" x2="19" y2="19"></line></svg>
+              </button>
+            </div>
+            <div class="speed-selector" id="lightboxSpeedSelector">
+              <span class="speed-label">速度:</span>
+              <button class="speed-btn" data-speed="1200">0.5x</button>
+              <button class="speed-btn active" data-speed="700">1.0x</button>
+              <button class="speed-btn" data-speed="350">2.0x</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
