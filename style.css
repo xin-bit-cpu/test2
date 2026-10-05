@@ -271,6 +271,97 @@ body {
   border-radius: var(--radius-sm);
 }
 
+.btn-nchu {
+  background: linear-gradient(135deg, #059669 0%, #047857 50%, #065f46 100%);
+  color: #ecfdf5;
+  border: 1px solid rgba(52, 211, 153, 0.45);
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+  text-decoration: none;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-nchu::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: 0.5s;
+}
+
+.btn-nchu:hover::before {
+  left: 100%;
+}
+
+.btn-nchu:hover {
+  background: linear-gradient(135deg, #10b981 0%, #059669 50%, #047857 100%);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
+  color: #ffffff;
+  transform: translateY(-1.5px);
+  border-color: rgba(110, 231, 183, 0.8);
+}
+
+/* ==========================================================================
+   獨立頁面導航條 (Breadcrumb / Page Banner)
+   ========================================================================== */
+.page-breadcrumb-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 14px 22px;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(52, 211, 153, 0.25);
+  border-radius: var(--radius-lg);
+  margin-bottom: 26px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+.breadcrumb-info {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+}
+
+.breadcrumb-item a {
+  color: #38bdf8;
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s;
+}
+
+.breadcrumb-item a:hover {
+  color: #7dd3fc;
+  text-decoration: underline;
+}
+
+.breadcrumb-separator {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.breadcrumb-item.current {
+  color: #34d399;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+
 /* ==========================================================================
    標籤 (Badges)
    ========================================================================== */
@@ -1602,3 +1693,1414 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+/* ==========================================================================
+   國立中興大學 ‧ 曾郁欣 專區 & 即時時鐘系統 & 主分頁切換樣式
+   ========================================================================== */
+
+/* 興大專屬主題色變數 */
+:root {
+  --nchu-green: #005a36;
+  --nchu-green-deep: #023820;
+  --nchu-green-light: #10b981;
+  --nchu-gold: #f59e0b;
+  --nchu-gold-light: #fbbf24;
+  --card-glass: rgba(18, 28, 48, 0.78);
+  --card-border-glow: rgba(56, 189, 248, 0.25);
+}
+
+/* 主頁面分頁切換導航列 (Tab Navigation Bar) */
+.app-main-tabs-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: rgba(13, 20, 36, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  padding: 8px 14px;
+  margin-bottom: 24px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+  position: relative;
+  z-index: 20;
+}
+
+.tabs-nav-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.main-page-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+}
+
+.main-page-tab:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.main-page-tab.active {
+  color: #ffffff;
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.2) 0%, rgba(99, 102, 241, 0.22) 100%);
+  border-color: rgba(56, 189, 248, 0.45);
+  box-shadow: 0 4px 20px rgba(56, 189, 248, 0.2);
+}
+
+.main-page-tab.active[data-tab="tab-student-view"] {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.22) 0%, rgba(245, 158, 11, 0.18) 100%);
+  border-color: rgba(52, 211, 153, 0.45);
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.22);
+}
+
+.tab-svg {
+  flex-shrink: 0;
+}
+
+.tab-label {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.tab-pill {
+  font-size: 0.72rem;
+  padding: 3px 9px;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.pill-blue {
+  background: rgba(56, 189, 248, 0.15);
+  color: var(--accent-cyan);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+}
+
+.pill-green {
+  background: rgba(16, 185, 129, 0.18);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.35);
+}
+
+.tab-nchu-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  color: #34d399;
+}
+
+.tabs-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tab-ext-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-decoration: none;
+  border: 1px solid var(--border-subtle);
+  background: rgba(255, 255, 255, 0.03);
+  transition: all 0.2s ease;
+}
+
+.tab-ext-link:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  background: rgba(56, 189, 248, 0.08);
+}
+
+/* 分頁內容容器動畫 */
+.main-tab-content {
+  display: none;
+}
+
+.main-tab-content.active {
+  display: block;
+  animation: tabFadeIn 0.35s ease forwards;
+}
+
+@keyframes tabFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   曾郁欣 個人形象展示 (Student Hero Profile Section)
+   ========================================================================== */
+.student-hero-section {
+  margin-bottom: 28px;
+}
+
+.student-hero-card {
+  position: relative;
+  background: linear-gradient(135deg, rgba(16, 28, 48, 0.85) 0%, rgba(9, 38, 26, 0.8) 100%);
+  border: 1px solid rgba(52, 211, 153, 0.3);
+  border-radius: var(--radius-lg);
+  padding: 32px 36px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.student-card-glow {
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.25) 0%, transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+.student-hero-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.student-tags-strip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.school-tag-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 14px;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 700;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(52, 211, 153, 0.35);
+  color: #34d399;
+}
+
+.status-tag-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 600;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  color: var(--accent-cyan);
+}
+
+.pulse-dot-green {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #34d399;
+  box-shadow: 0 0 10px #34d399;
+  animation: pulseGreen 2s infinite;
+}
+
+@keyframes pulseGreen {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.3); }
+}
+
+.student-hero-main {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin-bottom: 24px;
+}
+
+.student-avatar-box {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  flex-shrink: 0;
+}
+
+.avatar-ring-anim {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px dashed rgba(52, 211, 153, 0.5);
+  animation: rotateRing 20s linear infinite;
+}
+
+@keyframes rotateRing {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.avatar-core-circle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #059669 0%, #005a36 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #fef08a;
+  box-shadow: 0 8px 24px rgba(0, 90, 54, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.avatar-nchu-tag {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  background: var(--nchu-gold);
+  color: #0f172a;
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: var(--radius-full);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.student-name-box {
+  flex: 1;
+}
+
+.student-name-title {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+
+.student-name-title h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.student-en-sub {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  font-family: var(--font-sans);
+}
+
+.student-school-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #6ee7b7;
+  margin-bottom: 12px;
+}
+
+.student-school-row .en-school {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.student-motto-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.motto-bubble {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  color: var(--text-primary);
+}
+
+.motto-bubble strong {
+  color: var(--nchu-gold-light);
+}
+
+.student-hero-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 18px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.student-quick-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.quick-info-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.qi-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.qi-val {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.student-actions-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-student-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: var(--radius-md);
+  font-size: 0.86rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.btn-student-action.btn-copy-time {
+  background: rgba(16, 185, 129, 0.18);
+  border-color: rgba(16, 185, 129, 0.4);
+  color: #34d399;
+}
+
+.btn-student-action.btn-copy-time:hover {
+  background: rgba(16, 185, 129, 0.3);
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.25);
+}
+
+/* ==========================================================================
+   即時時鐘中心 (Real-Time Live Clock Center)
+   ========================================================================== */
+.clock-center-section {
+  margin-bottom: 32px;
+}
+
+.clock-main-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.clock-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 18px;
+}
+
+.clock-title-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.clock-flag-badge {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.clock-title-text h3 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.clock-title-text p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.clock-sync-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  font-size: 0.78rem;
+  color: #34d399;
+  font-weight: 600;
+}
+
+/* 時鐘模式切換器 (Mode Toggle Switcher) */
+.clock-mode-switcher {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 4px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.clock-mode-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.clock-mode-btn:hover {
+  color: var(--text-primary);
+}
+
+.clock-mode-btn.active {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.3) 0%, rgba(99, 102, 241, 0.3) 100%);
+  color: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+}
+
+/* 時鐘視圖容器 */
+.clock-views-wrapper {
+  position: relative;
+  min-height: 240px;
+}
+
+/* 1. 電子數位時鐘 (Digital Clock View) */
+.digital-clock-display {
+  padding: 16px 0 24px;
+  text-align: center;
+}
+
+.digital-time-cluster {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.ampm-format-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.ampm-tag {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--nchu-gold-light);
+  letter-spacing: 0.05em;
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+}
+
+.btn-toggle-1224 {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  padding: 2px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-toggle-1224:hover {
+  background: rgba(56, 189, 248, 0.25);
+}
+
+.digits-container {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-weight: 800;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 14px 28px;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5), 0 0 25px rgba(56, 189, 248, 0.15);
+}
+
+.digit-block {
+  font-size: 4rem;
+  line-height: 1;
+  color: #f8fafc;
+  min-width: 2.2ch;
+  text-shadow: 0 0 16px rgba(56, 189, 248, 0.4);
+}
+
+.digit-colon {
+  font-size: 3.5rem;
+  line-height: 1;
+  color: var(--accent-cyan);
+  animation: colonBlink 1s infinite;
+}
+
+@keyframes colonBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+.sec-digit-box {
+  display: inline-flex;
+  align-items: baseline;
+}
+
+.digit-block.sec-block {
+  color: #38bdf8;
+}
+
+.msec-digit {
+  font-size: 1.4rem;
+  color: var(--accent-amber);
+  margin-left: 4px;
+  font-weight: 600;
+}
+
+/* 分鐘流動秒數進度條 */
+.clock-progress-bar-wrap {
+  width: 100%;
+  max-width: 640px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-full);
+  margin: 0 auto 24px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.clock-progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #10b981 0%, #38bdf8 60%, #f59e0b 100%);
+  border-radius: var(--radius-full);
+  transition: width 0.08s linear;
+}
+
+/* 日曆列數據展示 */
+.clock-calendar-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.cal-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.cal-chip.chip-primary {
+  background: rgba(56, 189, 248, 0.12);
+  border-color: rgba(56, 189, 248, 0.3);
+  color: var(--accent-cyan);
+}
+
+.cal-chip.chip-weekday {
+  background: rgba(16, 185, 129, 0.14);
+  border-color: rgba(16, 185, 129, 0.35);
+  color: #34d399;
+}
+
+.cal-chip.chip-lunar {
+  background: rgba(245, 158, 11, 0.12);
+  border-color: rgba(245, 158, 11, 0.3);
+  color: var(--nchu-gold-light);
+}
+
+/* 2. 擬物指針時鐘 (Analog Dial Clock View) */
+.analog-clock-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 0;
+}
+
+.analog-dial-wrapper {
+  position: relative;
+  width: 290px;
+  height: 290px;
+  border-radius: 50%;
+  padding: 12px;
+  background: radial-gradient(circle, rgba(16, 36, 30, 0.8) 0%, rgba(5, 18, 28, 0.95) 100%);
+  border: 4px solid rgba(52, 211, 153, 0.4);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), inset 0 0 30px rgba(16, 185, 129, 0.2);
+}
+
+.analog-clock-face {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(2, 45, 25, 0.5) 0%, rgba(10, 15, 26, 0.9) 100%);
+}
+
+.analog-face-watermark {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.analog-face-watermark svg {
+  width: 140px;
+  height: 140px;
+}
+
+.clock-marker {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-secondary);
+}
+
+.mark-12 { top: 10px; left: 50%; transform: translateX(-50%); color: var(--nchu-gold-light); font-size: 1.25rem; }
+.mark-3 { right: 12px; top: 50%; transform: translateY(-50%); }
+.mark-6 { bottom: 10px; left: 50%; transform: translateX(-50%); color: var(--accent-cyan); }
+.mark-9 { left: 12px; top: 50%; transform: translateY(-50%); }
+
+.dial-center-brand {
+  position: absolute;
+  top: 26%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  pointer-events: none;
+}
+
+.dial-brand-name {
+  display: block;
+  font-size: 0.92rem;
+  font-weight: 900;
+  letter-spacing: 0.25em;
+  color: #34d399;
+}
+
+.dial-brand-sub {
+  display: block;
+  font-size: 0.58rem;
+  color: var(--nchu-gold-light);
+  letter-spacing: 0.2em;
+  font-weight: 700;
+}
+
+/* 指針樣式 */
+.hand {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform-origin: bottom center;
+  border-radius: 6px;
+  will-change: transform;
+}
+
+.hour-hand {
+  width: 6px;
+  height: 68px;
+  margin-left: -3px;
+  background: linear-gradient(to top, #ffffff, #cbd5e1);
+  z-index: 5;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+}
+
+.minute-hand {
+  width: 4px;
+  height: 98px;
+  margin-left: -2px;
+  background: linear-gradient(to top, #38bdf8, #60a5fa);
+  z-index: 6;
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
+}
+
+.second-hand {
+  width: 2px;
+  height: 114px;
+  margin-left: -1px;
+  background: #f43f5e;
+  z-index: 7;
+  box-shadow: 0 0 10px rgba(244, 63, 94, 0.8);
+}
+
+.center-nut {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  margin-top: -7px;
+  margin-left: -7px;
+  background: #f43f5e;
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  z-index: 10;
+  box-shadow: 0 0 8px rgba(244, 63, 94, 0.8);
+}
+
+.analog-caption-time {
+  margin-top: 18px;
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  background: rgba(0, 0, 0, 0.35);
+  padding: 6px 20px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* 雙模並列容器 (Dual Mode) */
+.dual-clocks-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: center;
+}
+
+/* 世界時區卡片 (World Timezones Section) */
+.world-timezones-block {
+  margin-top: 32px;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 24px;
+}
+
+.world-tz-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.world-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+}
+
+.world-tz-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  transition: all 0.2s ease;
+}
+
+.world-tz-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(56, 189, 248, 0.3);
+  transform: translateY(-2px);
+}
+
+.world-tz-card.tz-active-base {
+  background: rgba(16, 185, 129, 0.08);
+  border-color: rgba(16, 185, 129, 0.35);
+}
+
+.world-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.world-city-name {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.world-offset-tag {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-muted);
+}
+
+.tz-active-base .world-offset-tag {
+  background: rgba(16, 185, 129, 0.2);
+  color: #34d399;
+}
+
+.world-time-val {
+  font-family: var(--font-mono);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--accent-cyan);
+  margin-bottom: 4px;
+}
+
+.world-date-val {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   國立中興大學 (NCHU) 校徽與校園特徵專區
+   ========================================================================== */
+.nchu-showcase-section {
+  margin-bottom: 40px;
+}
+
+.section-hero-title {
+  margin-bottom: 24px;
+}
+
+.section-hero-title h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.section-hero-title p {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+}
+
+/* 興大校徽深度展示卡 */
+.nchu-crest-showcase-card {
+  background: linear-gradient(135deg, rgba(2, 45, 25, 0.7) 0%, rgba(15, 23, 42, 0.85) 100%);
+  border: 1px solid rgba(52, 211, 153, 0.35);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+  margin-bottom: 28px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.crest-showcase-grid {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 36px;
+  align-items: center;
+}
+
+.crest-visual-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.crest-visual-wrap .nchu-crest-svg {
+  filter: drop-shadow(0 0 24px rgba(16, 185, 129, 0.4));
+  transition: transform 0.4s ease;
+}
+
+.crest-visual-wrap:hover .nchu-crest-svg {
+  transform: scale(1.04) rotate(2deg);
+}
+
+.crest-caption-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 3px 12px;
+  border-radius: var(--radius-full);
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: var(--nchu-gold-light);
+}
+
+.crest-info-body h3 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.crest-subtitle {
+  font-size: 0.9rem;
+  color: #6ee7b7;
+  margin-bottom: 18px;
+}
+
+.crest-features-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.crest-feature-item {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+}
+
+.cf-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--nchu-gold-light);
+  margin-bottom: 6px;
+}
+
+.crest-feature-item p {
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* 興大校訓精神四大核心卡片 */
+.motto-section-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.motto-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.motto-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.motto-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(52, 211, 153, 0.4);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+}
+
+.motto-char-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(5, 150, 105, 0.3) 0%, rgba(0, 90, 54, 0.5) 100%);
+  border: 1px solid rgba(52, 211, 153, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: var(--nchu-gold-light);
+  margin-bottom: 12px;
+}
+
+.motto-name {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.motto-en {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.motto-desc {
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* 興大校園特色地標圖鑑 (Campus Landmarks Grid) */
+.landmarks-section-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.campus-landmarks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.landmark-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.landmark-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(56, 189, 248, 0.35);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+}
+
+.landmark-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.landmark-icon-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  flex-shrink: 0;
+}
+
+.landmark-title-wrap h4 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.landmark-title-wrap span {
+  font-size: 0.78rem;
+  color: var(--accent-cyan);
+  font-family: var(--font-sans);
+}
+
+.landmark-desc {
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.landmark-tags-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.landmark-pill {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-muted);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* 興大校本部 (台中南區) 即時氣象連動卡 */
+.nchu-campus-weather-box {
+  background: linear-gradient(135deg, rgba(14, 30, 52, 0.85) 0%, rgba(4, 34, 20, 0.85) 100%);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.campus-weather-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.cw-icon-box {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-md);
+  background: rgba(56, 189, 248, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+.cw-text-box h4 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cw-text-box p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.campus-weather-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.cw-temp-big {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--accent-amber);
+  font-family: var(--font-mono);
+}
+
+.cw-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 16px;
+}
+
+.cw-d-item {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+.cw-d-item strong {
+  color: var(--text-primary);
+  margin-left: 4px;
+}
+
+/* 學生專區頁尾 (Student Footer) */
+.student-section-footer {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.sf-author-tag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.sf-nchu-tag {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+/* Toast 提示條 (Copied Notification) */
+.toast-notice {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  color: #ffffff;
+  padding: 12px 20px;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.toast-notice.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* 響應式優化 (Responsive Adjustments) */
+@media (max-width: 900px) {
+  .crest-showcase-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .crest-features-list {
+    text-align: left;
+  }
+
+  .dual-clocks-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .digit-block {
+    font-size: 2.8rem;
+  }
+
+  .digit-colon {
+    font-size: 2.4rem;
+  }
+
+  .student-hero-main {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .student-hero-top {
+    justify-content: center;
+  }
+
+  .student-name-title {
+    justify-content: center;
+  }
+
+  .student-school-row {
+    justify-content: center;
+  }
+
+  .student-motto-row {
+    justify-content: center;
+  }
+
+  .student-hero-footer {
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .app-main-tabs-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .tabs-nav-container {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .main-page-tab {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .tabs-nav-actions {
+    justify-content: center;
+  }
+}
+

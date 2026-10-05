@@ -129,6 +129,10 @@ function renderWeatherCards() {
   const container = document.getElementById("weatherCardsGrid");
   const countBadge = document.getElementById("itemsCountBadge");
   const viewingTitle = document.getElementById("currentViewingTitle");
+  if (!container) {
+    updateCampusTaichungWeather();
+    return;
+  }
 
   // 篩選符合條件的縣市
   const filtered = currentWeatherRecords.filter(item => {
@@ -225,25 +229,374 @@ function updateStatistics() {
   document.getElementById("statHotDesc").textContent = hottestItem ? `天氣現象：${hottestItem.wx}` : "";
   document.getElementById("statRainCount").textContent = `${rainCount} 個縣市`;
   document.getElementById("statRainDesc").textContent = rainCount > 0 ? "有短暫陣雨或雷陣雨機率" : "全島天氣大致晴朗穩定";
+
+  updateCampusTaichungWeather();
 }
 
 // ==========================================
-// 4. 時鐘與時間即時更新
+// 4. 國立中興大學 ‧ 曾郁欣 時鐘系統與主分頁控制
 // ==========================================
+
+// 時鐘狀態管理
+const clockState = {
+  is24Hour: false,
+  clockMode: 'digital', // 'digital' | 'analog' | 'dual'
+};
+
+// 取得精確台灣標準時間 (Asia/Taipei, UTC+8)
+function getTaiwanDate() {
+  const now = new Date();
+  const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+  return new Date(utc + (3600000 * 8));
+}
+
+// 農曆歲次、民國紀年與節氣換算
+function getLunarAndSeasonInfo(taiwanDate) {
+  const month = taiwanDate.getMonth() + 1; // 1-12
+  let season = "秋天 • 碩果盈枝";
+  if (month >= 3 && month <= 5) season = "春天 • 萬物欣榮";
+  else if (month >= 6 && month <= 8) season = "夏天 • 綠樹濃蔭";
+  else if (month >= 9 && month <= 11) season = "秋天 • 楓紅桂香";
+  else season = "冬天 • 梅花傲雪";
+
+  const year = taiwanDate.getFullYear();
+  const heavenlyStems = ["甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸"];
+  const earthlyBranches = ["子(鼠)", "丑(牛)", "寅(虎)", "卯(兔)", "辰(龍)", "巳(蛇)", "午(馬)", "未(羊)", "申(猴)", "酉(雞)", "戌(狗)", "亥(豬)"];
+  const stem = heavenlyStems[(year - 4) % 10];
+  const branch = earthlyBranches[(year - 4) % 12];
+
+  return {
+    seasonText: season,
+    lunarText: `農曆歲次 ${stem}${branch}年`,
+    rocYear: `民國 ${year - 1911} 年`
+  };
+}
+
+// 啟動主時鐘引擎 (包含頂部導航 mini clock 與學生專區動態時鐘)
 function startClock() {
   const timeElem = document.getElementById("timeString");
-  function tick() {
-    const now = new Date();
-    const formatted = now.toLocaleDateString("zh-TW", {
+  const elHours = document.getElementById("studentClockHours");
+  const elMinutes = document.getElementById("studentClockMinutes");
+  const elSeconds = document.getElementById("studentClockSeconds");
+  const elMillis = document.getElementById("studentClockMillis");
+  const elAmPm = document.getElementById("studentClockAmPm");
+  const elProgressBar = document.getElementById("studentSecondProgressBar");
+
+  const elHourHand = document.getElementById("studentAnalogHourHand");
+  const elMinuteHand = document.getElementById("studentAnalogMinuteHand");
+  const elSecondHand = document.getElementById("studentAnalogSecondHand");
+  const elAnalogCaption = document.getElementById("studentAnalogCaptionTime");
+
+  let lastSecond = -1;
+
+  function renderClockLoop() {
+    const twDate = getTaiwanDate();
+    const hours24 = twDate.getHours();
+    const minutes = twDate.getMinutes();
+    const seconds = twDate.getSeconds();
+    const millis = twDate.getMilliseconds();
+
+    const isPm = hours24 >= 12;
+    const hoursDisplay = clockState.is24Hour
+      ? String(hours24).padStart(2, '0')
+      : String(hours24 % 12 || 12).padStart(2, '0');
+    const minStr = String(minutes).padStart(2, '0');
+    const secStr = String(seconds).padStart(2, '0');
+    const msecStr = '.' + String(millis).padStart(3, '0');
+
+    // 1. 頂部小時鐘
+    if (timeElem) {
+      const formatted = twDate.toLocaleDateString("zh-TW", {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        weekday: "short"
+      }) + " " + String(hours24).padStart(2, '0') + ":" + minStr + ":" + secStr;
+      if (timeElem.textContent !== formatted) {
+        timeElem.textContent = formatted;
+      }
+    }
+
+    // 2. 學生專區 - 電子數位鐘
+    if (elHours && elHours.textContent !== hoursDisplay) elHours.textContent = hoursDisplay;
+    if (elMinutes && elMinutes.textContent !== minStr) elMinutes.textContent = minStr;
+    if (elSeconds && elSeconds.textContent !== secStr) elSeconds.textContent = secStr;
+    if (elMillis) elMillis.textContent = msecStr;
+    if (elAmPm) {
+      elAmPm.textContent = clockState.is24Hour 
+        ? (hours24 < 12 ? '上午' : '下午') 
+        : (isPm ? '下午 PM' : '上午 AM');
+    }
+
+    // 分鐘進度條 (0% - 100%)
+    if (elProgressBar) {
+      const minuteProgress = ((seconds * 1000 + millis) / 60000) * 100;
+      elProgressBar.style.width = `${minuteProgress.toFixed(1)}%`;
+    }
+
+    // 3. 學生專區 - 擬物指針時鐘 (平滑旋轉計算)
+    const hourDeg = (hours24 % 12 + minutes / 60 + seconds / 3600) * 30;
+    const minDeg = (minutes + seconds / 60 + millis / 60000) * 6;
+    const secDeg = (seconds + millis / 1000) * 6;
+
+    if (elHourHand) elHourHand.style.transform = `rotate(${hourDeg}deg)`;
+    if (elMinuteHand) elMinuteHand.style.transform = `rotate(${minDeg}deg)`;
+    if (elSecondHand) elSecondHand.style.transform = `rotate(${secDeg}deg)`;
+    if (elAnalogCaption) {
+      elAnalogCaption.textContent = `${hoursDisplay}:${minStr}:${secStr} TST (UTC+8)`;
+    }
+
+    // 4. 每秒觸發一次日曆與世界時區更新
+    if (seconds !== lastSecond) {
+      lastSecond = seconds;
+      updateCalendarAndWorldClocks(twDate);
+    }
+
+    requestAnimationFrame(renderClockLoop);
+  }
+
+  requestAnimationFrame(renderClockLoop);
+}
+
+// 更新日曆及世界五大時區
+function updateCalendarAndWorldClocks(twDate) {
+  const elDateGregorian = document.getElementById("studentDateGregorian");
+  const elDateWeekday = document.getElementById("studentDateWeekday");
+  const elDateLunar = document.getElementById("studentDateLunar");
+  const elDateRoc = document.getElementById("studentDateRoc");
+  const elDateDayYear = document.getElementById("studentDateDayYear");
+  const elCurrentSeason = document.getElementById("studentCurrentSeasonTag");
+
+  if (elDateGregorian) {
+    const year = twDate.getFullYear();
+    const month = String(twDate.getMonth() + 1).padStart(2, '0');
+    const day = String(twDate.getDate()).padStart(2, '0');
+    elDateGregorian.textContent = `${year} 年 ${month} 月 ${day} 日`;
+
+    const weekdays = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+    if (elDateWeekday) elDateWeekday.textContent = weekdays[twDate.getDay()];
+
+    const startOfYear = new Date(Date.UTC(twDate.getFullYear(), 0, 1));
+    const currentUTC = new Date(Date.UTC(twDate.getFullYear(), twDate.getMonth(), twDate.getDate()));
+    const dayOfYear = Math.floor((currentUTC - startOfYear) / (1000 * 60 * 60 * 24)) + 1;
+    const weekNumber = Math.ceil(dayOfYear / 7);
+    if (elDateDayYear) elDateDayYear.textContent = `第 ${dayOfYear} 天 • 第 ${weekNumber} 週`;
+
+    const lunar = getLunarAndSeasonInfo(twDate);
+    if (elDateLunar) elDateLunar.textContent = lunar.lunarText;
+    if (elDateRoc) elDateRoc.textContent = lunar.rocYear;
+    if (elCurrentSeason) elCurrentSeason.textContent = lunar.seasonText;
+  }
+
+  // 世界主要時區更新
+  const worldZones = [
+    { tz: 'Asia/Taipei', timeId: 'worldTimeTaiwan', dateId: 'worldDateTaiwan' },
+    { tz: 'Asia/Tokyo', timeId: 'worldTimeTokyo', dateId: 'worldDateTokyo' },
+    { tz: 'Europe/London', timeId: 'worldTimeLondon', dateId: 'worldDateLondon' },
+    { tz: 'America/New_York', timeId: 'worldTimeNewYork', dateId: 'worldDateNewYork' },
+    { tz: 'Australia/Sydney', timeId: 'worldTimeSydney', dateId: 'worldDateSydney' }
+  ];
+
+  worldZones.forEach(item => {
+    const tElem = document.getElementById(item.timeId);
+    const dElem = document.getElementById(item.dateId);
+    if (tElem && dElem) {
+      try {
+        const timeFmt = new Intl.DateTimeFormat('zh-TW', {
+          timeZone: item.tz,
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: false
+        });
+        const dateFmt = new Intl.DateTimeFormat('zh-TW', {
+          timeZone: item.tz,
+          month: '2-digit',
+          day: '2-digit',
+          weekday: 'short'
+        });
+        tElem.textContent = timeFmt.format(new Date());
+        dElem.textContent = dateFmt.format(new Date());
+      } catch (e) {
+        // ignore format error
+      }
+    }
+  });
+}
+
+// 主頁面分頁切換 (氣象預報 vs 興大曾郁欣專區)
+function setupMainPageTabs() {
+  const tabBtnWeather = document.getElementById("tabBtnWeather");
+  const tabBtnStudent = document.getElementById("tabBtnStudent");
+  const viewWeather = document.getElementById("tab-weather-view");
+  const viewStudent = document.getElementById("tab-student-view");
+
+  function switchTab(target) {
+    if (target === "student") {
+      tabBtnWeather?.classList.remove("active");
+      tabBtnWeather?.setAttribute("aria-selected", "false");
+      tabBtnStudent?.classList.add("active");
+      tabBtnStudent?.setAttribute("aria-selected", "true");
+
+      if (viewWeather) {
+        viewWeather.style.display = "none";
+        viewWeather.classList.remove("active");
+      }
+      if (viewStudent) {
+        viewStudent.style.display = "block";
+        viewStudent.classList.add("active");
+      }
+      window.location.hash = "student";
+      updateCampusTaichungWeather();
+    } else {
+      tabBtnStudent?.classList.remove("active");
+      tabBtnStudent?.setAttribute("aria-selected", "false");
+      tabBtnWeather?.classList.add("active");
+      tabBtnWeather?.setAttribute("aria-selected", "true");
+
+      if (viewStudent) {
+        viewStudent.style.display = "none";
+        viewStudent.classList.remove("active");
+      }
+      if (viewWeather) {
+        viewWeather.style.display = "block";
+        viewWeather.classList.add("active");
+      }
+      window.location.hash = "weather";
+    }
+  }
+
+  tabBtnWeather?.addEventListener("click", () => switchTab("weather"));
+  tabBtnStudent?.addEventListener("click", () => switchTab("student"));
+
+  // 支援 URL Hash 初始跳轉
+  if (window.location.hash === "#student" || window.location.hash === "#nchu") {
+    switchTab("student");
+  }
+
+  window.addEventListener("hashchange", () => {
+    if (window.location.hash === "#student" || window.location.hash === "#nchu") {
+      switchTab("student");
+    } else if (window.location.hash === "#weather") {
+      switchTab("weather");
+    }
+  });
+
+  // 頂部小時鐘點擊快捷切換至學生專區
+  const systemTime = document.getElementById("systemTime");
+  if (systemTime) {
+    systemTime.style.cursor = "pointer";
+    systemTime.title = "點擊切換至 國立中興大學 ‧ 曾郁欣 時鐘專區";
+    systemTime.addEventListener("click", () => {
+      switchTab("student");
+    });
+  }
+}
+
+// 時鐘控制按鈕 (電子 / 指針 / 雙模切換、12H/24H、複製時間)
+function setupClockControls() {
+  const btnDigital = document.getElementById("btnClockDigital");
+  const btnAnalog = document.getElementById("btnClockAnalog");
+  const btnDual = document.getElementById("btnClockDual");
+  const digitalView = document.getElementById("studentDigitalView");
+  const analogView = document.getElementById("studentAnalogView");
+  const viewsWrapper = document.getElementById("clockViewsWrapper");
+  const btn1224 = document.getElementById("btnStudentToggleFormat");
+  const btnCopyTime = document.getElementById("btnCopyTaiwanTime");
+
+  function setMode(mode) {
+    clockState.clockMode = mode;
+    [btnDigital, btnAnalog, btnDual].forEach(b => b?.classList.remove("active"));
+
+    if (mode === "digital") {
+      btnDigital?.classList.add("active");
+      viewsWrapper?.classList.remove("dual-clocks-wrapper");
+      if (digitalView) digitalView.style.display = "block";
+      if (analogView) analogView.style.display = "none";
+    } else if (mode === "analog") {
+      btnAnalog?.classList.add("active");
+      viewsWrapper?.classList.remove("dual-clocks-wrapper");
+      if (digitalView) digitalView.style.display = "none";
+      if (analogView) analogView.style.display = "flex";
+    } else if (mode === "dual") {
+      btnDual?.classList.add("active");
+      viewsWrapper?.classList.add("dual-clocks-wrapper");
+      if (digitalView) digitalView.style.display = "block";
+      if (analogView) analogView.style.display = "flex";
+    }
+  }
+
+  btnDigital?.addEventListener("click", () => setMode("digital"));
+  btnAnalog?.addEventListener("click", () => setMode("analog"));
+  btnDual?.addEventListener("click", () => setMode("dual"));
+
+  // 12H / 24H 制切換
+  btn1224?.addEventListener("click", () => {
+    clockState.is24Hour = !clockState.is24Hour;
+    btn1224.textContent = clockState.is24Hour ? "切換 12H 制" : "切換 24H 制";
+  });
+
+  // 複製時間戳記
+  btnCopyTime?.addEventListener("click", () => {
+    const twDate = getTaiwanDate();
+    const formatted = twDate.toLocaleDateString("zh-TW", {
       year: "numeric",
       month: "2-digit",
       day: "2-digit",
-      weekday: "short"
-    }) + " " + now.toLocaleTimeString("zh-TW", { hour12: false });
-    timeElem.textContent = formatted;
+      weekday: "long"
+    }) + " " + twDate.toLocaleTimeString("zh-TW", { hour12: false }) + " (Asia/Taipei, UTC+8)";
+
+    navigator.clipboard.writeText(formatted).then(() => {
+      showToast("已複製目前台灣標準時間：" + formatted);
+    }).catch(() => {
+      showToast("已成功選取台灣標準時間！");
+    });
+  });
+}
+
+// 顯示 Toast 提示
+function showToast(msg) {
+  const toast = document.getElementById("toastNotice");
+  const toastMsg = document.getElementById("toastMsg");
+  if (!toast) return;
+  if (toastMsg) toastMsg.textContent = msg;
+  toast.classList.add("show");
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2500);
+}
+
+// 同步更新興大校本部 (台中市南區) 即時微氣象卡片
+function updateCampusTaichungWeather() {
+  const tcRecord = currentWeatherRecords.find(r => r.county.includes("臺中") || r.county.includes("台中"));
+  const tempElem = document.getElementById("nchuWeatherTemp");
+  const rangeElem = document.getElementById("nchuWeatherRange");
+  const wxElem = document.getElementById("nchuWeatherWx");
+  const tipElem = document.getElementById("nchuWeatherTip");
+  const iconElem = document.getElementById("nchuWeatherIcon");
+
+  if (tcRecord && tempElem) {
+    const avgT = Math.round((Number(tcRecord.minT) + Number(tcRecord.maxT)) / 2);
+    tempElem.textContent = `${avgT} °C`;
+    if (rangeElem) rangeElem.textContent = `${tcRecord.minT} ~ ${tcRecord.maxT} °C`;
+    if (wxElem) wxElem.textContent = tcRecord.wx;
+    
+    if (tipElem) {
+      if (tcRecord.wx.includes("雨")) {
+        tipElem.textContent = "有局部降雨機率，漫步中興湖建議備妥雨具";
+      } else if (Number(tcRecord.maxT) >= 32) {
+        tipElem.textContent = "午後氣溫較高，可在黑森林林蔭步道遮陽乘涼";
+      } else {
+        tipElem.textContent = "氣候溫和舒適，極為適宜校園漫步散心";
+      }
+    }
+
+    if (iconElem) {
+      if (tcRecord.wx.includes("雨")) iconElem.textContent = "🌧️";
+      else if (tcRecord.wx.includes("晴")) iconElem.textContent = "☀️";
+      else iconElem.textContent = "⛅";
+    }
   }
-  tick();
-  setInterval(tick, 1000);
 }
 
 // ==========================================
@@ -265,18 +618,22 @@ function setupEventListeners() {
   const searchInput = document.getElementById("searchInput");
   const clearBtn = document.getElementById("btnClearSearch");
 
-  searchInput.addEventListener("input", (e) => {
-    currentSearchKeyword = e.target.value.trim();
-    clearBtn.style.display = currentSearchKeyword ? "block" : "none";
-    renderWeatherCards();
-  });
+  if (searchInput) {
+    searchInput.addEventListener("input", (e) => {
+      currentSearchKeyword = e.target.value.trim();
+      if (clearBtn) clearBtn.style.display = currentSearchKeyword ? "block" : "none";
+      renderWeatherCards();
+    });
+  }
 
-  clearBtn.addEventListener("click", () => {
-    searchInput.value = "";
-    currentSearchKeyword = "";
-    clearBtn.style.display = "none";
-    renderWeatherCards();
-  });
+  if (clearBtn) {
+    clearBtn.addEventListener("click", () => {
+      if (searchInput) searchInput.value = "";
+      currentSearchKeyword = "";
+      clearBtn.style.display = "none";
+      renderWeatherCards();
+    });
+  }
 
   // 彈窗 1：json.dumps 結構觀察
   const jsonModal = document.getElementById("jsonModal");
@@ -285,31 +642,39 @@ function setupEventListeners() {
   const jsonCodeBlock = document.getElementById("jsonCodeBlock");
   const btnCopyJson = document.getElementById("btnCopyJson");
 
-  btnOpenJson.addEventListener("click", () => {
-    // 取得展示用的 JSON 資料結構 (依據作業 json.dumps 要求格式化)
-    const sampleToDisplay = rawApiResponseData || generateJsonDumpPreview();
-    jsonCodeBlock.textContent = JSON.stringify(sampleToDisplay, null, 4);
-    jsonModal.classList.add("open");
-  });
-
-  btnCloseJson.addEventListener("click", () => jsonModal.classList.remove("open"));
-  jsonModal.addEventListener("click", (e) => {
-    if (e.target === jsonModal) jsonModal.classList.remove("open");
-  });
-
-  btnCopyJson.addEventListener("click", () => {
-    navigator.clipboard.writeText(jsonCodeBlock.textContent).then(() => {
-      btnCopyJson.textContent = "已複製！";
-      setTimeout(() => {
-        btnCopyJson.innerHTML = `
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-          </svg> 複製 JSON
-        `;
-      }, 2000);
+  if (btnOpenJson && jsonModal) {
+    btnOpenJson.addEventListener("click", () => {
+      // 取得展示用的 JSON 資料結構 (依據作業 json.dumps 要求格式化)
+      const sampleToDisplay = rawApiResponseData || generateJsonDumpPreview();
+      if (jsonCodeBlock) jsonCodeBlock.textContent = JSON.stringify(sampleToDisplay, null, 4);
+      jsonModal.classList.add("open");
     });
-  });
+  }
+
+  if (btnCloseJson && jsonModal) {
+    btnCloseJson.addEventListener("click", () => jsonModal.classList.remove("open"));
+  }
+  if (jsonModal) {
+    jsonModal.addEventListener("click", (e) => {
+      if (e.target === jsonModal) jsonModal.classList.remove("open");
+    });
+  }
+
+  if (btnCopyJson && jsonCodeBlock) {
+    btnCopyJson.addEventListener("click", () => {
+      navigator.clipboard.writeText(jsonCodeBlock.textContent).then(() => {
+        btnCopyJson.textContent = "已複製！";
+        setTimeout(() => {
+          btnCopyJson.innerHTML = `
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg> 複製 JSON
+          `;
+        }, 2000);
+      });
+    });
+  }
 
   // 彈窗 2：API 串接設定
   const apiModal = document.getElementById("apiModal");
@@ -320,32 +685,41 @@ function setupEventListeners() {
   const apiKeyInput = document.getElementById("apiKeyInput");
   const apiStatusBox = document.getElementById("apiStatusBox");
 
-  btnOpenApi.addEventListener("click", () => apiModal.classList.add("open"));
-  btnCloseApi.addEventListener("click", () => apiModal.classList.remove("open"));
-  apiModal.addEventListener("click", (e) => {
-    if (e.target === apiModal) apiModal.classList.remove("open");
-  });
+  if (btnOpenApi && apiModal) {
+    btnOpenApi.addEventListener("click", () => apiModal.classList.add("open"));
+  }
+  if (btnCloseApi && apiModal) {
+    btnCloseApi.addEventListener("click", () => apiModal.classList.remove("open"));
+  }
+  if (apiModal) {
+    apiModal.addEventListener("click", (e) => {
+      if (e.target === apiModal) apiModal.classList.remove("open");
+    });
+  }
 
-  btnUseDemo.addEventListener("click", () => {
-    currentWeatherRecords = [...DEFAULT_WEATHER_RECORDS];
-    rawApiResponseData = null;
-    apiStatusBox.innerHTML = `
-      <div class="status-indicator-dot dot-demo"></div>
-      <span>已切換為：內建標準示範資料 (Demo Mode)</span>
-    `;
-    renderWeatherCards();
-    apiModal.classList.remove("open");
-  });
+  if (btnUseDemo && apiStatusBox && apiModal) {
+    btnUseDemo.addEventListener("click", () => {
+      currentWeatherRecords = [...DEFAULT_WEATHER_RECORDS];
+      rawApiResponseData = null;
+      apiStatusBox.innerHTML = `
+        <div class="status-indicator-dot dot-demo"></div>
+        <span>已切換為：內建標準示範資料 (Demo Mode)</span>
+      `;
+      renderWeatherCards();
+      apiModal.classList.remove("open");
+    });
+  }
 
-  btnFetchLive.addEventListener("click", async () => {
-    const key = apiKeyInput.value.trim();
-    if (!key) {
-      alert("請先輸入您的中央氣象署 API 授權碼！");
-      return;
-    }
+  if (btnFetchLive && apiKeyInput) {
+    btnFetchLive.addEventListener("click", async () => {
+      const key = apiKeyInput.value.trim();
+      if (!key) {
+        alert("請先輸入您的中央氣象署 API 授權碼！");
+        return;
+      }
 
-    btnFetchLive.textContent = "連線請求中...";
-    btnFetchLive.disabled = true;
+      btnFetchLive.textContent = "連線請求中...";
+      btnFetchLive.disabled = true;
 
     try {
       const url = `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-C0032-005?Authorization=${encodeURIComponent(key)}&format=JSON`;
@@ -379,6 +753,7 @@ function setupEventListeners() {
       btnFetchLive.disabled = false;
     }
   });
+  }
 }
 
 // 產生模擬 CWA F-C0032-005 的示範 JSON 資料
@@ -965,66 +1340,73 @@ function setupLightboxEvents() {
 // ==========================================
 document.addEventListener("DOMContentLoaded", () => {
   startClock();
+  setupMainPageTabs();
+  setupClockControls();
   setupEventListeners();
   renderWeatherCards();
   setupLightboxEvents();
+  updateCampusTaichungWeather();
 
-  // 初始化雷達回波動態連續播放系統
-  radarPlayer = new WeatherImageryPlayer({
-    id: "radar",
-    type: "radar",
-    screen: "radarScreen",
-    imgFront: "radarImgFront",
-    imgBack: "radarImgBack",
-    hudTime: "radarHudTime",
-    hudFrame: "radarHudFrame",
-    timeline: "radarTimeline",
-    playBtn: "radarPlayBtn",
-    prevBtn: "radarPrevBtn",
-    nextBtn: "radarNextBtn",
-    statusText: "radarStatusText",
-    liveBadge: "radarLiveBadge",
-    loader: "radarLoader",
-    timeStart: "radarTimeStart",
-    timeMid: "radarTimeMid",
-    timeEnd: "radarTimeEnd",
-    refreshBtn: "radarRefreshBtn",
-    fullscreenBtn: "radarFullscreenBtn",
-    tabsId: "radarTabs",
-    speedSelectorId: "radarSpeedSelector",
-    sweepToggle: "radarSweepToggle",
-    fxLayer: "radarFxLayer",
-    defaultProduct: "CV1_3600",
-    defaultLabel: "有地形 (大範圍)",
-    defaultS3: "https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-A0058-002.png"
-  });
+  // 初始化雷達回波動態連續播放系統 (僅在包含雷達組件之頁面初始化)
+  if (document.getElementById("radarScreen")) {
+    radarPlayer = new WeatherImageryPlayer({
+      id: "radar",
+      type: "radar",
+      screen: "radarScreen",
+      imgFront: "radarImgFront",
+      imgBack: "radarImgBack",
+      hudTime: "radarHudTime",
+      hudFrame: "radarHudFrame",
+      timeline: "radarTimeline",
+      playBtn: "radarPlayBtn",
+      prevBtn: "radarPrevBtn",
+      nextBtn: "radarNextBtn",
+      statusText: "radarStatusText",
+      liveBadge: "radarLiveBadge",
+      loader: "radarLoader",
+      timeStart: "radarTimeStart",
+      timeMid: "radarTimeMid",
+      timeEnd: "radarTimeEnd",
+      refreshBtn: "radarRefreshBtn",
+      fullscreenBtn: "radarFullscreenBtn",
+      tabsId: "radarTabs",
+      speedSelectorId: "radarSpeedSelector",
+      sweepToggle: "radarSweepToggle",
+      fxLayer: "radarFxLayer",
+      defaultProduct: "CV1_3600",
+      defaultLabel: "有地形 (大範圍)",
+      defaultS3: "https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-A0058-002.png"
+    });
+  }
 
-  // 初始化彩色衛星雲圖動態連續播放系統
-  satellitePlayer = new WeatherImageryPlayer({
-    id: "satellite",
-    type: "satellite",
-    screen: "satScreen",
-    imgFront: "satImgFront",
-    imgBack: "satImgBack",
-    hudTime: "satHudTime",
-    hudFrame: "satHudFrame",
-    timeline: "satTimeline",
-    playBtn: "satPlayBtn",
-    prevBtn: "satPrevBtn",
-    nextBtn: "satNextBtn",
-    statusText: "satStatusText",
-    liveBadge: "satLiveBadge",
-    loader: "satLoader",
-    timeStart: "satTimeStart",
-    timeMid: "satTimeMid",
-    timeEnd: "satTimeEnd",
-    refreshBtn: "satRefreshBtn",
-    fullscreenBtn: "satFullscreenBtn",
-    tabsId: "satelliteTabs",
-    speedSelectorId: "satSpeedSelector",
-    defaultProduct: "LCC_IR1_CR_2750",
-    defaultLabel: "紅外線彩色 (台灣)",
-    defaultS3: "https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-B0028-003.jpg"
-  });
+  // 初始化彩色衛星雲圖動態連續播放系統 (僅在包含雲圖組件之頁面初始化)
+  if (document.getElementById("satScreen")) {
+    satellitePlayer = new WeatherImageryPlayer({
+      id: "satellite",
+      type: "satellite",
+      screen: "satScreen",
+      imgFront: "satImgFront",
+      imgBack: "satImgBack",
+      hudTime: "satHudTime",
+      hudFrame: "satHudFrame",
+      timeline: "satTimeline",
+      playBtn: "satPlayBtn",
+      prevBtn: "satPrevBtn",
+      nextBtn: "satNextBtn",
+      statusText: "satStatusText",
+      liveBadge: "satLiveBadge",
+      loader: "satLoader",
+      timeStart: "satTimeStart",
+      timeMid: "satTimeMid",
+      timeEnd: "satTimeEnd",
+      refreshBtn: "satRefreshBtn",
+      fullscreenBtn: "satFullscreenBtn",
+      tabsId: "satelliteTabs",
+      speedSelectorId: "satSpeedSelector",
+      defaultProduct: "LCC_IR1_CR_2750",
+      defaultLabel: "紅外線彩色 (台灣)",
+      defaultS3: "https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-B0028-003.jpg"
+    });
+  }
 });
 

@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>國立中興大學 ‧ 曾郁欣 | 台灣即時時鐘與校園風華</title>
+  <meta name="description" content="曾郁欣 國立中興大學 (NCHU) 個人專屬網頁，包含興大校徽意象、校園特色景致、以及支援電子鐘與指針鐘切換之高精度台灣標準時間即時時鐘。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 背景動態氛圍光影 -->
+  <div class="bg-glow glow-1"></div>
+  <div class="bg-glow glow-2"></div>
+  <div class="bg-glow glow-3"></div>
+
+  <div class="app-container">
+    <!-- 頂部導航與切換返回列 -->
+    <header class="navbar">
+      <div class="brand-section">
+        <div class="brand-icon" style="color: #34d399;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <div class="brand-title">
+            <h1>國立中興大學 ‧ 曾郁欣</h1>
+            <span class="badge" style="background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4);">NCHU 1919</span>
+          </div>
+          <p class="brand-subtitle">學生個人專區 • 興大校徽與特色風華 • 高精度即時時鐘系統</p>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <div class="system-time-badge" id="systemTime">
+          <span class="pulse-dot"></span>
+          <span id="timeString">載入中...</span>
+        </div>
+        <a href="index.html" class="btn btn-primary" style="text-decoration: none;" title="返回台灣天氣預報儀表板主頁面">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          返回天氣預報儀表板
+        </a>
+      </div>
+    </header>
+
+    <!-- 獨立頁面層級路徑與返回導航列 -->
+    <div class="page-breadcrumb-banner">
+      <div class="breadcrumb-info">
+        <span class="breadcrumb-item">
+          <a href="index.html">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            台灣一週天氣預報 (主頁面)
+          </a>
+        </span>
+        <span class="breadcrumb-separator">›</span>
+        <span class="breadcrumb-item current">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+          </svg>
+          國立中興大學 ‧ 曾郁欣 專屬頁面
+        </span>
+      </div>
+      <div class="breadcrumb-actions">
+        <a href="index.html" class="btn btn-secondary btn-sm" title="返回天氣預報主頁面">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          返回天氣預報主頁面
+        </a>
+      </div>
+    </div>
+
+    <!-- 1. 曾郁欣 個人形象展示卡片 -->
+    <section class="student-hero-section">
+      <div class="student-hero-card">
+        <div class="student-card-glow"></div>
+
+        <div class="student-hero-top">
+          <div class="student-tags-strip">
+            <span class="school-tag-pill">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+              </svg>
+              國立中興大學 NCHU
+            </span>
+            <span class="status-tag-pill">
+              <span class="pulse-dot-green"></span>
+              台灣標準時間 (UTC+8) 高精度時鐘引擎已就緒
+            </span>
+          </div>
+          <div class="student-actions-bar">
+            <button class="btn-student-action btn-copy-time" id="btnCopyTaiwanTime" title="複製目前台灣時間戳記">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              <span>複製當前時間</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="student-hero-main">
+          <div class="student-avatar-box">
+            <div class="avatar-ring-anim"></div>
+            <div class="avatar-core-circle">曾</div>
+            <div class="avatar-nchu-tag">NCHU</div>
+          </div>
+
+          <div class="student-name-box">
+            <div class="student-name-title">
+              <h2>曾郁欣</h2>
+              <span class="student-en-sub">Yu-Hsin Tseng</span>
+            </div>
+            <div class="student-school-row">
+              <span>國立中興大學</span>
+              <span class="en-school">• National Chung Hsing University (NCHU)</span>
+            </div>
+            <div class="student-motto-row">
+              <span class="motto-bubble"><strong>誠</strong> 誠懇信實</span>
+              <span class="motto-bubble"><strong>樸</strong> 樸實端正</span>
+              <span class="motto-bubble"><strong>精</strong> 精益求精</span>
+              <span class="motto-bubble"><strong>勤</strong> 勤奮不懈</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="student-hero-footer">
+          <div class="student-quick-info">
+            <div class="quick-info-item">
+              <span class="qi-label">校區位置</span>
+              <span class="qi-val">臺中市南區興大路145號</span>
+            </div>
+            <div class="quick-info-item">
+              <span class="qi-label">專案架構</span>
+              <span class="qi-val">CWA 氣象觀測儀表板 + 即時動態時鐘</span>
+            </div>
+            <div class="quick-info-item">
+              <span class="qi-label">基準時區</span>
+              <span class="qi-val">Asia/Taipei (UTC+8)</span>
+            </div>
+            <div class="quick-info-item">
+              <span class="qi-label">百年校史</span>
+              <span class="qi-val">創校於 1919 年</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. 即時時鐘系統 (切換電子鐘與指針時鐘) -->
+    <section class="clock-center-section" id="clockSection">
+      <div class="clock-main-card">
+        <div class="clock-header-bar">
+          <div class="clock-title-area">
+            <span class="clock-flag-badge">🇹🇼</span>
+            <div class="clock-title-text">
+              <h3>
+                <span>台灣標準時間</span>
+                <span class="clock-sync-badge">
+                  <span class="pulse-dot-green"></span>
+                  <span>即時同步中</span>
+                </span>
+              </h3>
+              <p>Taiwan Standard Time • Asia/Taipei (UTC+8) • NTP 高精度即時校準</p>
+            </div>
+          </div>
+
+          <!-- 切換時鐘模式按鈕 (電子 / 指針 / 雙模) -->
+          <div class="clock-mode-switcher" role="group" aria-label="時鐘模式切換">
+            <button class="clock-mode-btn active" id="btnClockDigital" title="切換為電子數位時鐘">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+                <rect x="9" y="9" width="6" height="6"></rect>
+              </svg>
+              <span>電子數位鐘</span>
+            </button>
+            <button class="clock-mode-btn" id="btnClockAnalog" title="切換為擬物指針時鐘">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span>擬物指針鐘</span>
+            </button>
+            <button class="clock-mode-btn" id="btnClockDual" title="同時顯示電子與指針時鐘">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+              </svg>
+              <span>雙模並列</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 時鐘展示核心容器 -->
+        <div class="clock-views-wrapper" id="clockViewsWrapper">
+          
+          <!-- 視圖 1：電子數位時鐘 -->
+          <div class="digital-clock-display" id="studentDigitalView">
+            <div class="digital-time-cluster">
+              <div class="ampm-format-col">
+                <span class="ampm-tag" id="studentClockAmPm">上午</span>
+                <button class="btn-toggle-1224" id="btnStudentToggleFormat" title="切換 12/24 小時制">切換 24H 制</button>
+              </div>
+
+              <div class="digits-container">
+                <span class="digit-block" id="studentClockHours">--</span>
+                <span class="digit-colon">:</span>
+                <span class="digit-block" id="studentClockMinutes">--</span>
+                <span class="digit-colon">:</span>
+                <div class="sec-digit-box">
+                  <span class="digit-block sec-block" id="studentClockSeconds">--</span>
+                  <span class="msec-digit" id="studentClockMillis">.000</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 分鐘秒數動態流動進度條 -->
+            <div class="clock-progress-bar-wrap" title="當前分鐘秒數流動進度條">
+              <div class="clock-progress-bar-fill" id="studentSecondProgressBar" style="width: 0%;"></div>
+            </div>
+
+            <!-- 完整日曆數據展示 -->
+            <div class="clock-calendar-strip">
+              <div class="cal-chip chip-primary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                <span id="studentDateGregorian">---- 年 -- 月 -- 日</span>
+              </div>
+              <div class="cal-chip chip-weekday">
+                <span id="studentDateWeekday">星期-</span>
+              </div>
+              <div class="cal-chip chip-lunar">
+                <span id="studentDateLunar">農曆歲次</span>
+              </div>
+              <div class="cal-chip">
+                <span id="studentDateRoc">民國 --- 年</span>
+              </div>
+              <div class="cal-chip">
+                <span id="studentDateDayYear">第 -- 天 • 第 -- 週</span>
+              </div>
+              <div class="cal-chip">
+                <span id="studentCurrentSeasonTag">節氣加載中...</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 視圖 2：擬物指針時鐘 -->
+          <div class="analog-clock-display" id="studentAnalogView" style="display: none;">
+            <div class="analog-dial-wrapper">
+              <div class="analog-clock-face" id="studentAnalogFace">
+                <!-- 水印校徽 -->
+                <div class="analog-face-watermark">
+                  <svg viewBox="0 0 100 100" fill="none" stroke="#10b981" stroke-width="1.5">
+                    <circle cx="50" cy="50" r="46" stroke-dasharray="2,2"/>
+                    <circle cx="50" cy="50" r="30"/>
+                    <text x="50" y="55" font-size="14" font-weight="900" text-anchor="middle" fill="#10b981">NCHU</text>
+                  </svg>
+                </div>
+
+                <!-- 盤面刻度標記 -->
+                <div class="clock-marker mark-12">12</div>
+                <div class="clock-marker mark-3">3</div>
+                <div class="clock-marker mark-6">6</div>
+                <div class="clock-marker mark-9">9</div>
+
+                <!-- 中心品牌銘牌 -->
+                <div class="dial-center-brand">
+                  <span class="dial-brand-name">NCHU</span>
+                  <span class="dial-brand-sub">1919 • TAIWAN</span>
+                </div>
+
+                <!-- 指針組件 -->
+                <div class="hand hour-hand" id="studentAnalogHourHand"></div>
+                <div class="hand minute-hand" id="studentAnalogMinuteHand"></div>
+                <div class="hand second-hand" id="studentAnalogSecondHand"></div>
+                <div class="center-nut"></div>
+              </div>
+            </div>
+            <div class="analog-caption-time" id="studentAnalogCaptionTime">--:--:-- TST</div>
+          </div>
+
+        </div>
+
+        <!-- 世界主要時區即時對照區 -->
+        <div class="world-timezones-block">
+          <div class="world-tz-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+            <span>全球主要時區 • 即時對照 (以台灣 UTC+8 為基準)</span>
+          </div>
+          <div class="world-cards-grid">
+            <div class="world-tz-card tz-active-base">
+              <div class="world-card-top">
+                <span class="world-city-name">🇹🇼 台灣 (基準)</span>
+                <span class="world-offset-tag">UTC+8</span>
+              </div>
+              <div class="world-time-val" id="worldTimeTaiwan">--:--:--</div>
+              <div class="world-date-val" id="worldDateTaiwan">--月--日</div>
+            </div>
+
+            <div class="world-tz-card">
+              <div class="world-card-top">
+                <span class="world-city-name">🇯🇵 日本東京</span>
+                <span class="world-offset-tag">+1h</span>
+              </div>
+              <div class="world-time-val" id="worldTimeTokyo">--:--:--</div>
+              <div class="world-date-val" id="worldDateTokyo">--月--日</div>
+            </div>
+
+            <div class="world-tz-card">
+              <div class="world-card-top">
+                <span class="world-city-name">🇬🇧 英國倫敦</span>
+                <span class="world-offset-tag">-7h / -8h</span>
+              </div>
+              <div class="world-time-val" id="worldTimeLondon">--:--:--</div>
+              <div class="world-date-val" id="worldDateLondon">--月--日</div>
+            </div>
+
+            <div class="world-tz-card">
+              <div class="world-card-top">
+                <span class="world-city-name">🇺🇸 美國紐約</span>
+                <span class="world-offset-tag">-12h / -13h</span>
+              </div>
+              <div class="world-time-val" id="worldTimeNewYork">--:--:--</div>
+              <div class="world-date-val" id="worldDateNewYork">--月--日</div>
+            </div>
+
+            <div class="world-tz-card">
+              <div class="world-card-top">
+                <span class="world-city-name">🇦🇺 澳洲雪梨</span>
+                <span class="world-offset-tag">+2h / +3h</span>
+              </div>
+              <div class="world-time-val" id="worldTimeSydney">--:--:--</div>
+              <div class="world-date-val" id="worldDateSydney">--月--日</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. 國立中興大學 (NCHU) 校徽與校園特徵專區 -->
+    <section class="nchu-showcase-section">
+      <div class="section-hero-title">
+        <h2>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+          </svg>
+          <span>國立中興大學 • 校徽象徵與校園風華特徵</span>
+        </h2>
+        <p>National Chung Hsing University (NCHU) • 創校於 1919 年，以農立校、厚植理工，百年頂尖研究型國立大學</p>
+      </div>
+
+      <!-- 興大校徽深度展示卡 -->
+      <div class="nchu-crest-showcase-card">
+        <div class="crest-showcase-grid">
+          <div class="crest-visual-wrap">
+            <!-- 精緻 SVG 國立中興大學官方校徽圖騰 -->
+            <svg class="nchu-crest-svg" viewBox="0 0 200 200" width="160" height="160" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="nchuBgGrad2" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#054225"/>
+                  <stop offset="70%" stop-color="#012b18"/>
+                  <stop offset="100%" stop-color="#00180d"/>
+                </radialGradient>
+                <linearGradient id="goldGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#fef08a"/>
+                  <stop offset="40%" stop-color="#f59e0b"/>
+                  <stop offset="100%" stop-color="#d97706"/>
+                </linearGradient>
+              </defs>
+
+              <!-- 外圈圓環 -->
+              <circle cx="100" cy="100" r="95" fill="url(#nchuBgGrad2)" stroke="url(#goldGrad2)" stroke-width="4"/>
+              <circle cx="100" cy="100" r="88" fill="none" stroke="url(#goldGrad2)" stroke-width="1.5" stroke-dasharray="3,2"/>
+              <circle cx="100" cy="100" r="82" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+
+              <!-- 弧形文字：國立中興大學 -->
+              <path id="textArcTop2" d="M 30,100 A 70,70 0 1,1 170,100" fill="none"/>
+              <text font-family="'Noto Sans TC', sans-serif" font-size="12.5" font-weight="700" fill="url(#goldGrad2)" letter-spacing="4">
+                <textPath href="#textArcTop2" startOffset="50%" text-anchor="middle">國立中興大學</textPath>
+              </text>
+
+              <!-- 弧形文字：NCHU • EST. 1919 -->
+              <path id="textArcBottom2" d="M 170,100 A 70,70 0 0,1 30,100" fill="none"/>
+              <text font-family="'Plus Jakarta Sans', sans-serif" font-size="7.5" font-weight="700" fill="#e2e8f0" letter-spacing="1.2">
+                <textPath href="#textArcBottom2" startOffset="50%" text-anchor="middle">NCHU • EST. 1919</textPath>
+              </text>
+
+              <!-- 中心齒輪 (Gear - 工學院與實踐科技象徵) -->
+              <g transform="translate(100, 100)" fill="url(#goldGrad2)">
+                <path d="M -8,-50 L 8,-50 L 6,-42 L -6,-42 Z" transform="rotate(0)"/>
+                <path d="M -8,-50 L 8,-50 L 6,-42 L -6,-42 Z" transform="rotate(30)"/>
+                <path d="M -8,-50 L 8,-50 L 6,-42 L -6,-42 Z" transform="rotate(60)"/>
+                <path d="M -8,-50 L 8,-50 L 6,-42 L -6,-42 Z" transform="rotate(90)"/>
+                <path d="M -8,-50 L 8,-50 L 6,-42 L -6,-42 Z" transform="rotate(120)"/>
+                <path d="M -8,-50 L 8,-50 L 6,-42 L -6,-42 Z" transform="rotate(150)"/>
+                <path d="M -8,-50 L 8,-50 L 6,-42 L -6,-42 Z" transform="rotate(180)"/>
+                <path d="M -8,-50 L 8,-50 L 6,-42 L -6,-42 Z" transform="rotate(210)"/>
+                <path d="M -8,-50 L 8,-50 L 6,-42 L -6,-42 Z" transform="rotate(240)"/>
+                <path d="M -8,-50 L 8,-50 L 6,-42 L -6,-42 Z" transform="rotate(270)"/>
+                <path d="M -8,-50 L 8,-50 L 6,-42 L -6,-42 Z" transform="rotate(300)"/>
+                <path d="M -8,-50 L 8,-50 L 6,-42 L -6,-42 Z" transform="rotate(330)"/>
+                <circle cx="0" cy="0" r="42" fill="#023019" stroke="url(#goldGrad2)" stroke-width="2.2"/>
+              </g>
+
+              <!-- 稻穗與麥穗 (Rice & Wheat Sheaves - 農學立校、厚植基礎) -->
+              <g stroke="url(#goldGrad2)" stroke-width="1.8" fill="none" stroke-linecap="round">
+                <path d="M 46,138 C 35,115 35,85 50,60"/>
+                <ellipse cx="44" cy="123" rx="3.5" ry="6" transform="rotate(-25, 44, 123)" fill="url(#goldGrad2)"/>
+                <ellipse cx="38" cy="108" rx="3.5" ry="6" transform="rotate(-35, 38, 108)" fill="url(#goldGrad2)"/>
+                <ellipse cx="37" cy="93" rx="3.5" ry="6" transform="rotate(-40, 37, 93)" fill="url(#goldGrad2)"/>
+                <ellipse cx="40" cy="78" rx="3.5" ry="6" transform="rotate(-45, 40, 78)" fill="url(#goldGrad2)"/>
+                <ellipse cx="46" cy="65" rx="3.5" ry="6" transform="rotate(-50, 46, 65)" fill="url(#goldGrad2)"/>
+
+                <path d="M 154,138 C 165,115 165,85 150,60"/>
+                <ellipse cx="156" cy="123" rx="3.5" ry="6" transform="rotate(25, 156, 123)" fill="url(#goldGrad2)"/>
+                <ellipse cx="162" cy="108" rx="3.5" ry="6" transform="rotate(35, 162, 108)" fill="url(#goldGrad2)"/>
+                <ellipse cx="163" cy="93" rx="3.5" ry="6" transform="rotate(40, 163, 93)" fill="url(#goldGrad2)"/>
+                <ellipse cx="160" cy="78" rx="3.5" ry="6" transform="rotate(45, 160, 78)" fill="url(#goldGrad2)"/>
+                <ellipse cx="154" cy="65" rx="3.5" ry="6" transform="rotate(50, 154, 65)" fill="url(#goldGrad2)"/>
+              </g>
+
+              <!-- 中心篆刻印紋：中興 1919 -->
+              <g transform="translate(100, 100)" text-anchor="middle" dominant-baseline="central">
+                <circle cx="0" cy="0" r="28" fill="url(#nchuBgGrad2)" stroke="url(#goldGrad2)" stroke-width="1.8"/>
+                <text y="-5" font-family="'Noto Sans TC', serif" font-weight="900" font-size="19" fill="url(#goldGrad2)" letter-spacing="1">中興</text>
+                <text y="13" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="7.5" fill="#e2e8f0" letter-spacing="1.5">1919</text>
+              </g>
+            </svg>
+            <span class="crest-caption-badge">NCHU 官方校徽向量紋章</span>
+          </div>
+
+          <div class="crest-info-body">
+            <h3>國立中興大學 校徽設計與歷史象徵</h3>
+            <p class="crest-subtitle">National Chung Hsing University Crest Symbolism • 以農立校，厚植科技，邁向頂尖</p>
+            <div class="crest-features-list">
+              <div class="crest-feature-item">
+                <div class="cf-header">
+                  <span>⚙️ 齒輪象徵 (Engineering &amp; Precision)</span>
+                </div>
+                <p>內圈精密的機械齒輪，象徵工學院的工程科技實踐、現代工業創新研發，以及興大學子精準嚴謹的治學與科學求真態度。</p>
+              </div>
+              <div class="crest-feature-item">
+                <div class="cf-header">
+                  <span>🌾 稻穗麥穗 (Agriculture &amp; Life Sciences)</span>
+                </div>
+                <p>環繞於兩側的金黃稻穗，紀念興大自 1919 年農林專門學校起家的「以農立校」精神，象徵生命科學、自然生態與生生不息之豐饒。</p>
+              </div>
+              <div class="crest-feature-item">
+                <div class="cf-header">
+                  <span>🏛️ 百年傳承 (Established in 1919)</span>
+                </div>
+                <p>中興大學是台灣歷史最悠久的頂尖國立綜合大學之一，歷經百年春風化雨，培育出遍佈全球的科技、農業、生醫與人文領袖。</p>
+              </div>
+              <div class="crest-feature-item">
+                <div class="cf-header">
+                  <span>🌲 興大代表色 (NCHU Forest Green)</span>
+                </div>
+                <p>經典深邃的興大綠 (#005A36)，代表綠意盎然的校園環境、永續發展理念，以及崇尚自然、關懷社會的宏大情懷。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 興大校訓四大精神柱石 -->
+      <h3 class="motto-section-title">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+        </svg>
+        <span>興大校訓精神 • 誠、樸、精、勤</span>
+      </h3>
+      <div class="motto-grid">
+        <div class="motto-card">
+          <div class="motto-char-box">誠</div>
+          <div class="motto-name">誠懇信實</div>
+          <div class="motto-en">Sincerity</div>
+          <p class="motto-desc">立身處事與學術研究之基石。以誠待人、以信立世，堅持道德良知與科學求真，實事求是無虛妄。</p>
+        </div>
+        <div class="motto-card">
+          <div class="motto-char-box">樸</div>
+          <div class="motto-name">樸實端正</div>
+          <div class="motto-en">Simplicity</div>
+          <p class="motto-desc">質樸厚重、腳踏實地。不隨波逐流，拒絕浮誇虛飾，沉潛專注於厚植學問基礎與生命涵養。</p>
+        </div>
+        <div class="motto-card">
+          <div class="motto-char-box">精</div>
+          <div class="motto-name">精益求精</div>
+          <div class="motto-en">Precision</div>
+          <p class="motto-desc">深研技術、追求卓越。在工程、農業、科學與人文各領域鑽研極致，勇於挑戰自我並開創前瞻視野。</p>
+        </div>
+        <div class="motto-card">
+          <div class="motto-char-box">勤</div>
+          <div class="motto-name">勤奮不懈</div>
+          <div class="motto-en">Diligence</div>
+          <p class="motto-desc">堅持不輟、知行合一。以勤勞雙手實踐理想，不怕困難與磨礪，為社會繁榮與人類福祉貢獻力量。</p>
+        </div>
+      </div>
+
+      <!-- 興大校園特色地標圖鑑 -->
+      <h3 class="landmarks-section-title">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+          <circle cx="12" cy="10" r="3"></circle>
+        </svg>
+        <span>國立中興大學 • 代表性校園特色與景致圖鑑</span>
+      </h3>
+      <div class="campus-landmarks-grid">
+        <!-- 1. 中興湖 -->
+        <div class="landmark-card">
+          <div>
+            <div class="landmark-header">
+              <div class="landmark-icon-circle">🪿</div>
+              <div class="landmark-title-wrap">
+                <h4>中興湖 (Chung Hsing Lake)</h4>
+                <span>秋海棠水景 • 台灣島意象池</span>
+              </div>
+            </div>
+            <p class="landmark-desc">
+              興大最富盛名的精神象徵。由全校師生於1977年共同開鑿，湖泊外型巧妙摹擬中國大陸秋海棠造型，湖旁緊鄰代表台灣島的小池。湖畔黑天鵝、白鵝、綠頭鴨悠游，岸邊楊柳輕撫，是興大人沉思漫步的靈魂所在。
+            </p>
+          </div>
+          <div class="landmark-tags-row">
+            <span class="landmark-pill">經典地標</span>
+            <span class="landmark-pill">黑天鵝生態</span>
+            <span class="landmark-pill">秋海棠造型</span>
+          </div>
+        </div>
+
+        <!-- 2. 黑森林 -->
+        <div class="landmark-card">
+          <div>
+            <div class="landmark-header">
+              <div class="landmark-icon-circle">🌲</div>
+              <div class="landmark-title-wrap">
+                <h4>校園黑森林 (Black Forest)</h4>
+                <span>百年林蔭 • 寧靜森呼吸綠洲</span>
+              </div>
+            </div>
+            <p class="landmark-desc">
+              興大校園內茂密繁盛的林木保護區，高聳的百年老樹枝葉交疊遮蔽烈日，微風徐徐帶來清新芬多精。這裡是學子課間討論、閱讀休憩、慢跑思考的校園綠色心臟。
+            </p>
+          </div>
+          <div class="landmark-tags-row">
+            <span class="landmark-pill">百年老樹</span>
+            <span class="landmark-pill">自然生態</span>
+            <span class="landmark-pill">沉澱思考</span>
+          </div>
+        </div>
+
+        <!-- 3. 小禮堂 -->
+        <div class="landmark-card">
+          <div>
+            <div class="landmark-header">
+              <div class="landmark-icon-circle">🏛️</div>
+              <div class="landmark-title-wrap">
+                <h4>興大小禮堂 (Historic Auditorium)</h4>
+                <span>典雅紅磚古蹟 • 百年文藝殿堂</span>
+              </div>
+            </div>
+            <p class="landmark-desc">
+              保存完好的歷史紀念建築，具有典雅紅磚與古典桁架結構。承載了無數興大人學術大師演講、藝文展演、音樂盛會與畢業記憶，是校園人文底蘊的重要象徵。
+            </p>
+          </div>
+          <div class="landmark-tags-row">
+            <span class="landmark-pill">歷史建築</span>
+            <span class="landmark-pill">藝文展演</span>
+            <span class="landmark-pill">人文記憶</span>
+          </div>
+        </div>
+
+        <!-- 4. 康堤 -->
+        <div class="landmark-card">
+          <div>
+            <div class="landmark-header">
+              <div class="landmark-icon-circle">🌊</div>
+              <div class="landmark-title-wrap">
+                <h4>康堤親水河岸 (Kangdi Riverfront)</h4>
+                <span>旱溪親水工程 • 全台最美大學水岸</span>
+              </div>
+            </div>
+            <p class="landmark-desc">
+              興大緊鄰旱溪排水親水河岸步道，大片綠意草坡與平緩階梯河道，夜晚浪漫景觀燈光點綴。師生與台中市民在此散步慢跑、釣魚休憩，被譽為大學城親水環境成功營造之典範。
+            </p>
+          </div>
+          <div class="landmark-tags-row">
+            <span class="landmark-pill">親水河岸</span>
+            <span class="landmark-pill">夜景漫步</span>
+            <span class="landmark-pill">生態水岸</span>
+          </div>
+        </div>
+
+        <!-- 5. 椰林大道 -->
+        <div class="landmark-card">
+          <div>
+            <div class="landmark-header">
+              <div class="landmark-icon-circle">🌴</div>
+              <div class="landmark-title-wrap">
+                <h4>椰林大道 (Royal Palm Boulevard)</h4>
+                <span>巍峨迎賓大道 • 名校頂尖風采</span>
+              </div>
+            </div>
+            <p class="landmark-desc">
+              從興大正門延伸至圖書館的核心軸線，兩側大王椰子高聳入雲、氣勢非凡。象徵頂尖國立大學兼容並蓄、昂首闊步走向國際之宏大格局。
+            </p>
+          </div>
+          <div class="landmark-tags-row">
+            <span class="landmark-pill">校園中軸</span>
+            <span class="landmark-pill">大王椰子</span>
+            <span class="landmark-pill">宏偉迎賓</span>
+          </div>
+        </div>
+
+        <!-- 6. 興大路阿勃勒黃金雨 -->
+        <div class="landmark-card">
+          <div>
+            <div class="landmark-header">
+              <div class="landmark-icon-circle">🌳</div>
+              <div class="landmark-title-wrap">
+                <h4>興大路阿勃勒黃金雨大道</h4>
+                <span>初夏金色花瀑 • 台中最美花道</span>
+              </div>
+            </div>
+            <p class="landmark-desc">
+              興大路校門兩側綿延數百公尺的阿勃勒樹廊，每逢五、六月繁花怒放，金黃色花串如瀑布垂掛，微風吹過落英繽紛如黃金雨，吸引無數攝影愛好者與遊人讚賞。
+            </p>
+          </div>
+          <div class="landmark-tags-row">
+            <span class="landmark-pill">季節限定</span>
+            <span class="landmark-pill">阿勃勒黃金雨</span>
+            <span class="landmark-pill">浪漫花道</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 興大校園 (台中市南區) 即時微氣象連動卡 -->
+      <div class="nchu-campus-weather-box">
+        <div class="campus-weather-left">
+          <div class="cw-icon-box" id="nchuWeatherIcon">⛅</div>
+          <div class="cw-text-box">
+            <h4>
+              <span>興大校本部 (台中市南區) 即時氣象連動</span>
+              <span class="badge badge-live">即時串接</span>
+            </h4>
+            <p id="nchuWeatherDesc">資料連動中央氣象署臺中市一週預報數據</p>
+          </div>
+        </div>
+        <div class="campus-weather-right">
+          <div class="cw-temp-big" id="nchuWeatherTemp">28 °C</div>
+          <div class="cw-details-grid">
+            <div class="cw-d-item">氣溫區間: <strong id="nchuWeatherRange">24 ~ 32 °C</strong></div>
+            <div class="cw-d-item">天氣現象: <strong id="nchuWeatherWx">多雲時晴</strong></div>
+            <div class="cw-d-item">出門建議: <strong id="nchuWeatherTip">適宜漫步中興湖</strong></div>
+            <div class="cw-d-item">更新狀態: <strong>即時自動同步</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 學生專區專屬頁尾 -->
+    <footer class="student-section-footer">
+      <div class="sf-author-tag">
+        <span>國立中興大學 ‧ 學生：曾郁欣 (Yu-Hsin Tseng)</span>
+      </div>
+      <div class="sf-nchu-tag">
+        <span>國立中興大學 National Chung Hsing University (NCHU) • 創校 1919 年</span>
+      </div>
+    </footer>
+
+    <!-- 全域 Toast 提示條 (Copied Notification) -->
+    <div id="toastNotice" class="toast-notice">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2.5">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+      <span id="toastMsg">已複製目前台灣標準時間戳記！</span>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
