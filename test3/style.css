@@ -1,0 +1,160 @@
+/* Premium modern style for interactive report */
+
+:root {
+  --font-primary: 'Inter', sans-serif;
+  --color-bg-light: #f5f7fa;
+  --color-bg-dark: #1a1a1a;
+  --color-primary: hsl(210, 60%, 55%);
+  --color-primary-light: hsl(210, 60%, 65%);
+  --color-primary-dark: hsl(210, 60%, 45%);
+  --color-card-bg: rgba(255, 255, 255, 0.15);
+  --color-card-bg-dark: rgba(0, 0, 0, 0.3);
+  --blur: 12px;
+}
+
+html[data-theme='light'] {
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  color: #222;
+}
+html[data-theme='dark'] {
+  background: var(--color-bg-dark);
+  color: #eee;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-primary);
+  margin: 0;
+  line-height: 1.6;
+  transition: background 0.3s, color 0.3s;
+}
+
+header.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: var(--color-card-bg);
+  backdrop-filter: blur(var(--blur));
+}
+
+header.header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: var(--color-primary);
+}
+
+button.theme-toggle {
+  background: var(--color-primary);
+  border: none;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+button.theme-toggle:hover {
+  background: var(--color-primary-dark);
+}
+
+nav {
+  background: var(--color-card-bg);
+  backdrop-filter: blur(var(--blur));
+  padding: 0.5rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+nav ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+nav a {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+nav a:hover {
+  color: var(--color-primary);
+}
+
+section.card {
+  margin: 2rem auto;
+  max-width: 900px;
+  padding: 1.5rem 2rem;
+  background: var(--color-card-bg);
+  backdrop-filter: blur(var(--blur));
+  border-radius: 1rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+}
+
+/* Card hover effect */
+section.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+}
+section.card h2 {
+  margin-top: 0;
+  color: var(--color-primary);
+}
+
+img.responsive {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+img.responsive:hover {
+  transform: scale(1.02);
+}
+
+/* Lightbox styles */
+#lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+#lightbox-overlay img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 0.5rem;
+}
+
+/* Table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+th, td {
+  padding: 0.5rem 0.8rem;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+th {
+  background: var(--color-primary);
+  color: #fff;
+  cursor: pointer;
+}
+tr:nth-child(even) {
+  background: rgba(255,255,255,0.05);
+}
+
+footer.footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: #888;
+}
