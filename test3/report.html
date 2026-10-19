@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>50 Startups – 完整特徵選擇與模型評估報告</title>
+  <style>
+    body {font-family: 'Inter', sans-serif; background:#f5f7fa; color:#333; margin:2rem; line-height:1.6;}
+    h1 {font-size:2.2rem; color:#2c3e50; margin-bottom:1rem;}
+    h2 {font-size:1.6rem; color:#34495e; margin-top:2rem;}
+    .card {background:#fff; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,.08);
+           padding:1.5rem; margin-bottom:2rem;}
+    img {max-width:100%; border-radius:8px; margin-top:.5rem;}
+    table {width:100%; border-collapse:collapse; margin-top:1rem;}
+    th, td {padding:.8rem; text-align:center;}
+    th {background:#2c3e50; color:#fff;}
+    tr:nth-child(even){background:#f1f3f5;}
+    footer {margin-top:2rem; font-size:.9rem; color:#777;}
+    a {color:#2980b9; text-decoration:none;}
+    a:hover {text-decoration:underline;}
+  </style>
+</head>
+<body>
+  <h1>🏭 50 Startups – 完整特徵選擇與模型評估報告</h1>
+
+  <div class="card">
+    <h2>📊 資料簡介</h2>
+    <p>資料來源：<a href="https://raw.githubusercontent.com/Avik-Jain/100-Days-Of-ML-Code/master/datasets/50_Startups.csv" target="_blank">50_Startups.csv</a></p>
+    <p>共 <strong>50</strong> 筆觀測、<strong>5</strong> 個欄位（<code>R&amp;D Spend</code>, <code>Administration</code>, <code>Marketing Spend</code>, <code>State</code>, <code>Profit</code>）。其中 <code>State</code> 已透過 one‑hot 編碼轉為 3 個虛擬變數。</p>
+  </div>
+
+  <div class="card">
+    <h2>📈 相關係數熱圖</h2>
+    <p>顯示各特徵之間的線性相關程度。</p>
+    <img src="file:///C:/Users/user/Desktop/中興大學/test3/corr_heatmap.png" alt="相關係數熱圖">
+  </div>
+
+  <div class="card">
+    <h2>📉 Profit 分布盒鬚圖</h2>
+    <p>Profit（目標變數）的分布概況。</p>
+    <img src="file:///C:/Users/user/Desktop/中興大學/test3/profit_boxplot.png" alt="Profit 盒鬚圖">
+  </div>
+
+  <div class="card">
+    <h2>📊 主圖 – RMSE 與 R‑squared 隨特徵數量變化</h2>
+    <img src="file:///C:/Users/user/Desktop/中興大學/test3/50_Startups_Feature_Selection.png" alt="RMSE &amp; R‑squared 圖表">
+  </div>
+
+  <div class="card">
+    <h2>📋 特徵選擇結果表</h2>
+    <p>每個特徵數量所得到的最佳特徵組合、RMSE 與 R‑squared。</p>
+    <table>
+      <thead>
+        <tr>
+          <th>特徵數量</th>
+          <th>選取特徵</th>
+          <th>RMSE</th>
+          <th>R‑squared</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>['R&amp;D Spend']</td><td>7714.334891</td><td>0.926511</td></tr>
+        <tr><td>2</td><td>['R&amp;D Spend', 'State_New York']</td><td>7718.101892</td><td>0.926439</td></tr>
+        <tr><td>3</td><td>['R&amp;D Spend', 'State_Florida', 'State_New York']</td><td>7946.372244</td><td>0.922023</td></tr>
+        <tr><td>4</td><td>['R&amp;D Spend', 'Marketing Spend', 'State_Florida', 'State_New York']</td><td>8254.686589</td><td>0.915855</td></tr>
+        <tr><td>5</td><td>['R&amp;D Spend', 'Administration', 'Marketing Spend', 'State_Florida', 'State_New York']</td><td>9055.957323</td><td>0.898727</td></tr>
+      </tbody>
+    </table>
+    <p>完整 CSV 下載：<a href="50_Startups_Feature_Selection.csv" download>50_Startups_Feature_Selection.csv</a></p>
+  </div>
+
+  <footer>
+    <p>報告產生於 <strong>2026‑10‑19</strong>，使用 Python 3.14、pandas、scikit‑learn、matplotlib、seaborn。</p>
+    <p>如需調整樣式、加入更多分析（例如變數重要性、模型係數），隨時告訴我！</p>
+  </footer>
+</body>
+</html>
