@@ -1,0 +1,63 @@
+name: Train 50 Startups and publish Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  train:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.14'
+          cache: pip
+          cache-dependency-path: test3/requirements.txt
+      - name: Install training dependencies
+        run: python -m pip install -r test3/requirements.txt
+      - name: Train and generate report
+        run: python test3/train.py
+      - name: Validate generated results
+        run: python test3/verify_results.py
+      - name: Save prediction artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: 50-startups-results
+          path: test3/site/
+      - name: Assemble existing site and startup report
+        shell: bash
+        run: |
+          mkdir -p _site
+          for file in index.html style.css app.js profile.html profile.js demo_sample_data.json cwa_weekly_summary.csv cwa_weekly_forecast.json; do
+            if [ -f "$file" ]; then cp "$file" _site/; fi
+          done
+          cp -R test3/site _site/test3
+          touch _site/.nojekyll
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+  deploy:
+    needs: train
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Deploy report
+        id: deployment
+        uses: actions/deploy-pages@v4

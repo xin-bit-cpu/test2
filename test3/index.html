@@ -1,123 +1,25 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>50 Startups – 互動報告</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
-  <script>
-    // 暗黑/亮色主題切換
-    function toggleTheme() {
-      const html = document.documentElement;
-      const newTheme = html.dataset.theme === 'dark' ? 'light' : 'dark';
-      html.dataset.theme = newTheme;
-      localStorage.setItem('theme', newTheme);
-    }
-    document.addEventListener('DOMContentLoaded', () => {
-      const saved = localStorage.getItem('theme') || 'light';
-      document.documentElement.dataset.theme = saved;
-    });
-  </script>
-<script>
-  // Lightbox functionality
-  function openLightbox(src) {
-    const overlay = document.getElementById('lightbox-overlay');
-    const img = overlay.querySelector('img');
-    img.src = src;
-    overlay.style.display = 'flex';
-  }
-  function closeLightbox() {
-    document.getElementById('lightbox-overlay').style.display = 'none';
-  }
-  // Table sorting and image click listeners
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('img.responsive').forEach(img => {
-      img.addEventListener('click', () => openLightbox(img.src));
-    });
-    const table = document.querySelector('table');
-    if (table) {
-      const getCellValue = (tr, idx) => tr.children[idx].innerText || tr.children[idx].textContent;
-      const comparer = (idx, asc) => (a, b) => ((v1, v2) => v1 !== '' && v2 !== '' && !isNaN(v1) && !isNaN(v2) ? v1 - v2 : v1.toString().localeCompare(v2))
-        (getCellValue(asc ? a : b, idx), getCellValue(asc ? b : a, idx));
-      table.querySelectorAll('th').forEach((th, idx) => {
-        th.addEventListener('click', () => {
-          const tbody = table.querySelector('tbody');
-          const rows = Array.from(tbody.querySelectorAll('tr'));
-          const asc = !th.asc;
-          rows.sort(comparer(idx, asc));
-          th.asc = asc;
-          tbody.innerHTML = '';
-          rows.forEach(row => tbody.appendChild(row));
-        });
-      });
-    }
-  });
-</script>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="使用 scikit-learn 多元線性迴歸與交叉驗證，分析 50 Startups 利潤預測。">
+<title>50 Startups｜利潤預測實驗室</title>
+<link rel="stylesheet" href="dashboard.css">
+<script defer src="results.js"></script><script defer src="dashboard.js"></script>
 </head>
-<body>
-  <header class="header">
-    <h1>🏭 50 Startups – 完整特徵選擇與模型評估報告</h1>
-    <button class="theme-toggle" onclick="toggleTheme()">切換主題</button>
-  </header>
-<nav>
-  <ul>
-    <li><a href="#data-intro">資料簡介</a></li>
-    <li><a href="#corr-heatmap">相關係數熱圖</a></li>
-    <li><a href="#profit-boxplot">Profit 盒鬚圖</a></li>
-    <li><a href="#feature-selection">RMSE 與 R‑squared 圖表</a></li>
-    <li><a href="#feature-table">特徵選擇結果表</a></li>
-  </ul>
-</nav>
-  <section class="card" id="data-intro">
-    <h2>📊 資料簡介</h2>
-    <p>資料來源：<a href="https://raw.githubusercontent.com/Avik-Jain/100-Days-Of-ML-Code/master/datasets/50_Startups.csv" target="_blank">50_Startups.csv</a></p>
-    <p>共 <strong>50</strong> 筆觀測、<strong>5</strong> 個欄位（<code>R&amp;D Spend</code>, <code>Administration</code>, <code>Marketing Spend</code>, <code>State</code>, <code>Profit</code>）。其中 <code>State</code> 已透過 one‑hot 編碼轉為 3 個虛擬變數。</p>
-  </section>
-
-  <section class="card" id="corr-heatmap">
-    <h2>📈 相關係數熱圖</h2>
-    <p>顯示各特徵之間的線性相關程度。</p>
-    <img src="corr_heatmap.png" alt="相關係數熱圖" class="responsive" />
-  </section>
-
-  <section class="card" id="profit-boxplot">
-    <h2>📉 Profit 分布盒鬚圖</h2>
-    <p>Profit（目標變數）的分布概況。</p>
-    <img src="profit_boxplot.png" alt="Profit 盒鬚圖" class="responsive" />
-  </section>
-
-  <section class="card" id="feature-selection">
-    <h2>📊 RMSE 與 R‑squared 隨特徵數量變化</h2>
-    <img src="50_Startups_Feature_Selection.png" alt="RMSE 與 R‑squared 圖表" class="responsive" />
-  </section>
-
-  <section class="card" id="feature-table">
-    <h2>📋 特徵選擇結果表</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>特徵數量</th>
-          <th>選取特徵</th>
-          <th>RMSE</th>
-          <th>R‑squared</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>1</td><td>["R&amp;D Spend"]</td><td>7714.334891</td><td>0.926511</td></tr>
-        <tr><td>2</td><td>["R&amp;D Spend", "State_New York"]</td><td>7718.101892</td><td>0.926439</td></tr>
-        <tr><td>3</td><td>["R&amp;D Spend", "State_Florida", "State_New York"]</td><td>7946.372244</td><td>0.922023</td></tr>
-        <tr><td>4</td><td>["R&amp;D Spend", "Marketing Spend", "State_Florida", "State_New York"]</td><td>8254.686589</td><td>0.915855</td></tr>
-        <tr><td>5</td><td>["R&amp;D Spend", "Administration", "Marketing Spend", "State_Florida", "State_New York"]</td><td>9055.957323</td><td>0.898727</td></tr>
-      </tbody>
-    </table>
-  </section>
-<div id="lightbox-overlay" onclick="closeLightbox()">
-  <img src="" alt="Enlarged image"/>
-</div>
-  <footer class="footer">
-    <p>報告產生於 <strong>2026‑10‑19</strong>，使用 Python 3.14、pandas、scikit‑learn、matplotlib、seaborn。</p>
-    <p>如需調整樣式、加入更多分析（例如變數重要性、模型係數），隨時告訴我！</p>
-  </footer>
-</body>
-</html>
+<body data-output-base="site/">
+<header><a class="brand" href="#"><span class="brand-icon">50</span> STARTUP LAB <span class="subbrand">/ 機器學習實驗</span></a><nav aria-label="主要導覽"><a href="#models">模型比較</a><a href="#predict">利潤試算</a><a href="#method">研究方法</a></nav></header>
+<main>
+<section class="hero"><div class="eyebrow"><span class="dot"></span> SCIKIT-LEARN · REGRESSION ANALYSIS</div><h1>從創業支出，<br>看見<span>利潤的線索。</span></h1><p>用 50 家新創公司的資料，探索研發、行政、行銷與所在地如何影響利潤。<br>比較特徵組合，讓每一次預測都有數據依據。</p><div class="hero-meta"><span>5 Regression Models</span><span>5-fold Cross Validation</span><span>Random state = 0</span></div><div class="run-info" id="run-info">等待訓練結果</div></section>
+<div id="error" role="alert" hidden></div>
+<div class="model-toolbar"><span>切換預測方式</span><div id="model-buttons" class="model-buttons" role="group" aria-label="切換模型或五種模型整合比較"></div><p id="view-status" class="table-note">點選模型檢視個別結果，或選擇整合比較同時查看五種預測。</p></div>
+<section class="stats" aria-label="模型評估指標"><article><span id="first-stat-label">測試集 RMSE ↓</span><strong id="rmse">—</strong><small id="first-stat-note">誤差尺度，與 Profit 單位相同</small></article><article><span id="second-stat-label">測試集 R² ↑</span><strong id="r2">—</strong><small id="second-stat-note">決定係數；越接近 1 越好</small></article><article><span id="third-stat-label">測試集 MAE ↓</span><strong id="mae">—</strong><small id="third-stat-note">平均絕對誤差</small></article><article><span id="fourth-stat-label">目前選取模型</span><strong id="feature-count">—</strong><small id="split">訓練 / 測試</small></article></section>
+<section id="models" class="section"><div class="section-head"><div><div class="eyebrow">MODEL BENCHMARK / 5 METHODS</div><h2 id="view-title" aria-live="polite">五種模型整合比較</h2><p>Linear Regression、Ridge、Lasso、ElasticNet、Random Forest；全部使用同樣五個編碼後特徵。推薦依據為訓練集 CV RMSE。</p></div><a class="button secondary" href="site/model_comparison.csv" data-output="model_comparison.csv" download>下載模型比較 CSV ↗</a></div><div class="panel"><img id="benchmark-chart" src="model_comparison.png" width="2340" height="900" alt="五種模型測試 RMSE 與 R-squared 比較"></div><div class="panel table-scroll"><table><thead><tr><th>模型</th><th>CV RMSE ↓</th><th>Test RMSE ↓</th><th>Test R² ↑</th><th>Test MAE ↓</th><th>CV 選出參數</th></tr></thead><tbody id="models-body"></tbody></table><p class="table-note">模型、正則化強度與樹參數僅依訓練集五折交叉驗證決定；CV 分數用於選模，並非獨立泛化誤差。測試分數僅供評估。</p></div></section>
+<section id="results" class="section"><div class="section-head"><div><div class="eyebrow">01 / FEATURE SELECTION</div><h2>特徵越多，預測越好嗎？</h2><p>獨立的 Linear Regression 特徵選擇實驗：比較 1～5 個特徵，與上方五種模型比較分開呈現。</p></div><a class="button secondary" href="50_Startups_Feature_Selection.png" download>下載完整圖表 ↗</a></div>
+<div class="panel chart-panel"><img src="50_Startups_Feature_Selection.png" width="3240" height="1980" alt="1 至 5 個特徵的測試 RMSE、R-squared 折線圖與特徵組合比較表"></div>
+<div class="panel"><div class="panel-heading"><h3>特徵組合比較</h3><span class="badge">CV 選擇 · Test 評估</span></div><div class="table-scroll"><table><thead><tr><th>特徵數</th><th>選用特徵</th><th>CV RMSE ↓</th><th>Test RMSE ↓</th><th>Test R² ↑</th></tr></thead><tbody id="selection-body"></tbody></table></div><p class="table-note">CV RMSE 為訓練集 5 折 RMSE 的平均值。特徵與特徵數均使用此分數選擇，未使用測試集挑選。</p></div></section>
+<section id="predict" class="section"><div class="section-head"><div><div class="eyebrow">02 / TRY THE MODEL</div><h2>你的新創，可能創造多少利潤？</h2><p>選擇預測方式，輸入支出與所在地，即時使用該 sklearn 模型試算。</p></div></div><div class="predict-grid"><form class="panel" id="prediction-form"><label class="model-choice">預測方式<select id="model-select" name="model"></select></label><p id="model-description" class="table-note"></p><div class="form-grid"><label>研發支出 <small>R&amp;D Spend</small><input name="rd" type="number" min="0" step="any" value="100000" required></label><label>行政支出 <small>Administration</small><input name="admin" type="number" min="0" step="any" value="120000" required></label><label>行銷支出 <small>Marketing Spend</small><input name="marketing" type="number" min="0" step="any" value="200000" required></label><label>所在地 <small>State</small><select name="state"><option>California</option><option>Florida</option><option>New York</option></select></label></div><button class="button" type="submit">計算預測利潤 →</button><p class="table-note">五種模型均使用全部五個編碼後特徵；試算不需要連線至後端。</p></form><div class="prediction-output" aria-live="polite"><span>預測 Profit</span><strong id="profit">—</strong><div id="multi-profit" class="multi-profit" hidden></div><p id="active-features"></p><small id="range-note">這是小型資料集的模型估計，並非實際獲利保證。</small></div></div></section>
+<section class="section"><div class="section-head"><div><div class="eyebrow">03 / PREDICTION CHECK</div><h2>讓預測與真實值對話</h2><p>按鈕切換時同步更新圖表與逐筆結果；整合畫面疊加五種模型及真實利潤。殘差 = 實際利潤 − 預測利潤。</p></div><a class="button secondary" id="predictions-download" href="site/predictions_linear.csv" data-output="predictions_linear.csv" download>下載逐筆預測 ↗</a></div><div class="panel"><img id="diagnostics-chart" src="all_models_predictions.png" width="2800" height="1120" alt="五種模型的測試集實際利潤對預測利潤散佈圖與殘差圖" loading="lazy"></div><div class="panel table-scroll"><table><thead id="prediction-heading"><tr><th>原始資料列</th><th>所在地</th><th>實際 Profit</th><th>預測 Profit</th><th>殘差</th></tr></thead><tbody id="prediction-body"></tbody></table></div></section>
+<section id="method" class="section method"><div><div class="eyebrow">04 / REPRODUCIBLE BY DESIGN</div><h2>從資料到網頁，<br>每一步都能重現。</h2><p id="model-equation"></p></div><div class="panel"><ol><li><strong>資料準備</strong><p id="data-description"></p></li><li><strong>保留測試集</strong><p>固定 random_state=0，80% 訓練、20% 測試。State 以 OneHotEncoder 編碼，California 為基準類別，產生兩個虛擬變數。</p></li><li><strong>五種模型比較</strong><p>所有模型使用全部五個編碼後特徵。線性模型透過 Pipeline 在每個 CV 訓練折內做 StandardScaler，避免洩漏。GridSearchCV 選擇 Ridge、Lasso 的 alpha、ElasticNet 的 alpha 與 l1_ratio，以及 Random Forest 的 max_depth 與 min_samples_leaf；森林固定 100 棵樹與 random_state=0。</p></li><li><strong>線性迴歸特徵選擇補充</strong><p>僅使用訓練集的 5 折交叉驗證，每次加入 CV RMSE 最低的特徵，最後以 CV 選出特徵數。CV 分數用於選模，不是獨立的泛化誤差估計。</p></li><li><strong>評估與發布</strong><p>測試集計算 MAE、MSE、RMSE 與 R²。GitHub Actions 重新訓練、產生圖表及結果檔，並發布靜態網頁。資料只有 50 筆，結果對資料切分可能敏感。</p></li></ol><div class="downloads"><a href="50_Startups.csv" download>原始資料 ↗</a><a href="50_Startups_Feature_Selection.csv" download>特徵比較 CSV ↗</a><a href="site/results.json" data-output="results.json" download>完整結果 JSON ↗</a><a href="site/models.joblib" data-output="models.joblib" download>五種 sklearn 模型 ↗</a></div></div></section>
+</main><footer><span>50 STARTUP LAB · Built with Python &amp; scikit-learn</span><a href="https://gist.githubusercontent.com/GaneshSparkz/b5662effbdae8746f7f7d8ed70c42b2d/raw/faf8b1a0d58e251f48a647d3881e7a960c3f0925/50_Startups.csv">資料來源 ↗</a></footer><noscript>請啟用 JavaScript 以顯示評估數據與使用利潤試算。圖表仍可直接查看。</noscript>
+</body></html>

@@ -21,7 +21,7 @@ import joblib
 from IPython.display import display
 from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
-from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import LinearRegression, SGDRegressor
 from sklearn.metrics import (
     mean_absolute_error,
     mean_squared_error,
@@ -34,7 +34,7 @@ from sklearn.model_selection import (
     learning_curve
 )
 from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import OneHotEncoder
+from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
 RANDOM_STATE = 0
 
@@ -223,6 +223,29 @@ print(metrics(y_train, baseline_train_pred))
 
 print("\nBaseline 測試結果：")
 print(metrics(y_test, baseline_test_pred))
+
+# 梯度下降比較：標準化特徵，讓 SGD 的更新步幅較穩定
+gradient_descent_model = Pipeline([
+    ("scaler", StandardScaler()),
+    (
+        "regressor",
+        SGDRegressor(
+            loss="squared_error",
+            penalty=None,
+            max_iter=10000,
+            tol=1e-6,
+            learning_rate="adaptive",
+            eta0=0.01,
+            random_state=RANDOM_STATE
+        )
+    )
+])
+
+gradient_descent_model.fit(X_train, y_train)
+gradient_descent_pred = gradient_descent_model.predict(X_test)
+
+print("\nSGD 梯度下降模型測試結果：")
+print(metrics(y_test, gradient_descent_pred))
 
 # =====================================================
 # Forward Selection（前向特徵選擇）

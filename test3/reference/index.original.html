@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>50 Startups – 互動報告</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <script>
+    // 暗黑/亮色主題切換
+    function toggleTheme() {
+      const html = document.documentElement;
+      const newTheme = html.dataset.theme === 'dark' ? 'light' : 'dark';
+      html.dataset.theme = newTheme;
+      localStorage.setItem('theme', newTheme);
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem('theme') || 'light';
+      document.documentElement.dataset.theme = saved;
+    });
+  </script>
+<script>
+  // Lightbox functionality
+  function openLightbox(src) {
+    const overlay = document.getElementById('lightbox-overlay');
+    const img = overlay.querySelector('img');
+    img.src = src;
+    overlay.style.display = 'flex';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox-overlay').style.display = 'none';
+  }
+  // Table sorting and image click listeners
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('img.responsive').forEach(img => {
+      img.addEventListener('click', () => openLightbox(img.src));
+    });
+    const table = document.querySelector('table');
+    if (table) {
+      const getCellValue = (tr, idx) => tr.children[idx].innerText || tr.children[idx].textContent;
+      const comparer = (idx, asc) => (a, b) => ((v1, v2) => v1 !== '' && v2 !== '' && !isNaN(v1) && !isNaN(v2) ? v1 - v2 : v1.toString().localeCompare(v2))
+        (getCellValue(asc ? a : b, idx), getCellValue(asc ? b : a, idx));
+      table.querySelectorAll('th').forEach((th, idx) => {
+        th.addEventListener('click', () => {
+          const tbody = table.querySelector('tbody');
+          const rows = Array.from(tbody.querySelectorAll('tr'));
+          const asc = !th.asc;
+          rows.sort(comparer(idx, asc));
+          th.asc = asc;
+          tbody.innerHTML = '';
+          rows.forEach(row => tbody.appendChild(row));
+        });
+      });
+    }
+  });
+</script>
+</head>
+<body>
+  <header class="header">
+    <h1>🏭 50 Startups – 完整特徵選擇與模型評估報告</h1>
+    <button class="theme-toggle" onclick="toggleTheme()">切換主題</button>
+  </header>
+<nav>
+  <ul>
+    <li><a href="#data-intro">資料簡介</a></li>
+    <li><a href="#corr-heatmap">相關係數熱圖</a></li>
+    <li><a href="#profit-boxplot">Profit 盒鬚圖</a></li>
+    <li><a href="#feature-selection">RMSE 與 R‑squared 圖表</a></li>
+    <li><a href="#feature-table">特徵選擇結果表</a></li>
+  </ul>
+</nav>
+
+<section class="card" id="abstract">
+  <h2>📄 摘要</h2>
+  <p>說明研究背景、目的與主要發現。</p>
+</section>
+
+<section class="card" id="method">
+  <h2>🔧 方法</h2>
+  <p>說明資料來源、前處理、模型建置流程。</p>
+</section>
+  <section class="card" id="data-intro">
+    <h2>📊 資料簡介</h2>
+    <p>資料來源：<a href="https://raw.githubusercontent.com/Avik-Jain/100-Days-Of-ML-Code/master/datasets/50_Startups.csv" target="_blank">50_Startups.csv</a></p>
+    <p>共 <strong>50</strong> 筆觀測、<strong>5</strong> 個欄位（<code>R&amp;D Spend</code>, <code>Administration</code>, <code>Marketing Spend</code>, <code>State</code>, <code>Profit</code>）。其中 <code>State</code> 已透過 one‑hot 編碼轉為 3 個虛擬變數。</p>
+  </section>
+
+  <section class="card" id="corr-heatmap">
+    <h2>📈 相關係數熱圖</h2>
+    <p>顯示各特徵之間的線性相關程度。</p>
+    <img src="corr_heatmap.png" alt="相關係數熱圖" class="responsive" />
+  </section>
+
+  <section class="card" id="profit-boxplot">
+    <h2>📉 Profit 分布盒鬚圖</h2>
+    <p>Profit（目標變數）的分布概況。</p>
+    <img src="profit_boxplot.png" alt="Profit 盒鬚圖" class="responsive" />
+  </section>
+
+  <section class="card" id="feature-selection">
+    <h2>📊 RMSE 與 R‑squared 隨特徵數量變化</h2>
+    <img src="50_Startups_Feature_Selection.png" alt="RMSE 與 R‑squared 圖表" class="responsive" />
+  </section>
+
+  <section class="card" id="feature-table">
+    <h2>📋 特徵選擇結果表</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>特徵數量</th>
+          <th>選取特徵</th>
+          <th>RMSE</th>
+          <th>R‑squared</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>["R&amp;D Spend"]</td><td>7714.334891</td><td>0.926511</td></tr>
+        <tr><td>2</td><td>["R&amp;D Spend", "State_New York"]</td><td>7718.101892</td><td>0.926439</td></tr>
+        <tr><td>3</td><td>["R&amp;D Spend", "State_Florida", "State_New York"]</td><td>7946.372244</td><td>0.922023</td></tr>
+        <tr><td>4</td><td>["R&amp;D Spend", "Marketing Spend", "State_Florida", "State_New York"]</td><td>8254.686589</td><td>0.915855</td></tr>
+        <tr><td>5</td><td>["R&amp;D Spend", "Administration", "Marketing Spend", "State_Florida", "State_New York"]</td><td>9055.957323</td><td>0.898727</td></tr>
+      </tbody>
+    </table>
+  </section>
+<div id="lightbox-overlay" onclick="closeLightbox()">
+  <img src="" alt="Enlarged image"/>
+</div>
+  <footer class="footer">
+    <p>報告產生於 <strong>2026‑10‑19</strong>，使用 Python 3.14、pandas、scikit‑learn、matplotlib、seaborn。</p>
+    <p>如需調整樣式、加入更多分析（例如變數重要性、模型係數），隨時告訴我！</p>
+  </footer>
+</body>
+</html>
