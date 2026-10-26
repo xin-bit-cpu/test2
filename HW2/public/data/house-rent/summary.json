@@ -1,0 +1,14 @@
+{
+  "total_samples": 4746,
+  "clean_samples": 4746,
+  "analyzed_samples": 4746,
+  "sampled": false,
+  "training_samples": 3796,
+  "testing_samples": 950,
+  "original_feature_count": 10,
+  "candidate_feature_count": 14,
+  "encoded_feature_count": 1942,
+  "missing_values": 4,
+  "split": "random 80/20 + KFold(5, shuffle=True, seed=42)",
+  "seed": 42
+}

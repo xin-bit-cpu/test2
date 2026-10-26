@@ -1,0 +1,11 @@
+{
+  "id": "king-county",
+  "kaggle_ref": "harlfoxem/housesalesprediction",
+  "version": 1,
+  "last_updated": "2016-08-25T15:52:49.797Z",
+  "license": "CC0: Public Domain",
+  "metadata_checked_at": "2026-10-26T14:42:06.000999+00:00",
+  "archive_filename": "king-county.zip",
+  "archive_sha256": "1fdffaeec5e7656f6c09e29d9daa7e2157479c5f8e3a761758b4bfa43c773202",
+  "note": "版本 metadata 與下載於本次工作期間核對；實際分析內容由 audit SHA256 唯一識別。"
+}

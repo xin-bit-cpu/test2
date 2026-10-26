@@ -1,4 +1,4 @@
-name: Train 50 Startups and publish Pages
+name: Build course labs and publish Pages
 
 on:
   push:
@@ -33,6 +33,17 @@ jobs:
         with:
           name: 50-startups-results
           path: test3/site/
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: HW2/package-lock.json
+      - name: Build and verify Kaggle Regression Lab
+        working-directory: HW2
+        run: |
+          npm ci --no-audit --no-fund
+          npm test
+          npm run build
       - name: Assemble existing site and startup report
         shell: bash
         run: |
@@ -41,6 +52,7 @@ jobs:
             if [ -f "$file" ]; then cp "$file" _site/; fi
           done
           cp -R test3/site _site/test3
+          cp -R HW2/dist _site/HW2
           touch _site/.nojekyll
       - uses: actions/upload-pages-artifact@v4
         with:

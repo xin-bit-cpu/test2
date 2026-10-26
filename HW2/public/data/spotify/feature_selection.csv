@@ -1,0 +1,16 @@
+﻿count,selected_features,cv_rmse,test_rmse,test_r2,test_mae
+1,"[""track_genre""]",15.934306956366957,15.877004975571055,0.3577455376596407,11.255692426653814
+2,"[""track_genre"", ""liveness""]",15.925734386547273,15.871956859565211,0.35815388414679017,11.25155621338384
+3,"[""track_genre"", ""liveness"", ""explicit""]",15.918165556612033,15.858277915731897,0.35925973312360193,11.244063345154295
+4,"[""track_genre"", ""liveness"", ""explicit"", ""instrumentalness""]",15.912306413322915,15.85216201021998,0.3597538537722885,11.236755387539672
+5,"[""track_genre"", ""liveness"", ""explicit"", ""instrumentalness"", ""valence""]",15.905519793350473,15.844148235012295,0.3604010199823242,11.228221749477793
+6,"[""track_genre"", ""liveness"", ""explicit"", ""instrumentalness"", ""valence"", ""danceability""]",15.897189087396058,15.839727767478538,0.3607578624046818,11.219361027055523
+7,"[""track_genre"", ""liveness"", ""explicit"", ""instrumentalness"", ""valence"", ""danceability"", ""speechiness""]",15.890228246287563,15.827095932309375,0.36177701900830317,11.208837113800985
+8,"[""track_genre"", ""liveness"", ""explicit"", ""instrumentalness"", ""valence"", ""danceability"", ""speechiness"", ""acousticness""]",15.88820849878331,15.82734123173288,0.3617572356010149,11.21187945513343
+9,"[""track_genre"", ""liveness"", ""explicit"", ""instrumentalness"", ""valence"", ""danceability"", ""speechiness"", ""acousticness"", ""mode""]",15.886788128762408,15.82460105881956,0.3619782132266556,11.209688021705643
+10,"[""track_genre"", ""liveness"", ""explicit"", ""instrumentalness"", ""valence"", ""danceability"", ""speechiness"", ""acousticness"", ""mode"", ""duration_ms""]",15.8857626203195,15.821376959056371,0.36223816750076654,11.208892578038256
+11,"[""track_genre"", ""liveness"", ""explicit"", ""instrumentalness"", ""valence"", ""danceability"", ""speechiness"", ""acousticness"", ""mode"", ""duration_ms"", ""energy""]",15.88477815743271,15.815866890579283,0.3626823133489022,11.205456028227916
+12,"[""track_genre"", ""liveness"", ""explicit"", ""instrumentalness"", ""valence"", ""danceability"", ""speechiness"", ""acousticness"", ""mode"", ""duration_ms"", ""energy"", ""loudness""]",15.881709350205773,15.809847455702416,0.36316734048032373,11.197629396006123
+13,"[""track_genre"", ""liveness"", ""explicit"", ""instrumentalness"", ""valence"", ""danceability"", ""speechiness"", ""acousticness"", ""mode"", ""duration_ms"", ""energy"", ""loudness"", ""time_signature""]",15.880931999617834,15.808992565109369,0.36323620990264294,11.196195232367785
+14,"[""track_genre"", ""liveness"", ""explicit"", ""instrumentalness"", ""valence"", ""danceability"", ""speechiness"", ""acousticness"", ""mode"", ""duration_ms"", ""energy"", ""loudness"", ""time_signature"", ""tempo""]",15.881066783583885,15.808810261209949,0.363250895702784,11.195802055320204
+15,"[""track_genre"", ""liveness"", ""explicit"", ""instrumentalness"", ""valence"", ""danceability"", ""speechiness"", ""acousticness"", ""mode"", ""duration_ms"", ""energy"", ""loudness"", ""time_signature"", ""tempo"", ""key""]",15.881320668317361,15.808782471686891,0.36325313432012085,11.195601582090427

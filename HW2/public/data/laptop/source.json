@@ -1,0 +1,11 @@
+{
+  "id": "laptop",
+  "kaggle_ref": "muhammetvarl/laptop-price",
+  "version": 1,
+  "last_updated": "2020-11-05T10:56:42.253Z",
+  "license": "Other (specified in description)",
+  "metadata_checked_at": "2026-10-26T14:42:06.757836+00:00",
+  "archive_filename": "laptop.zip",
+  "archive_sha256": "242f67dad13cce1609e0b7ffa41fae25ce24e764ab1e4823084d8b67c7e956fa",
+  "note": "版本 metadata 與下載於本次工作期間核對；實際分析內容由 audit SHA256 唯一識別。"
+}

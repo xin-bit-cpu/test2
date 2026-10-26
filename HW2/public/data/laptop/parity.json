@@ -1,0 +1,338 @@
+[
+  {
+    "input": {
+      "Company": "HP",
+      "Product": "250",
+      "TypeName": "Notebook",
+      "Inches": 15.6,
+      "ScreenResolution": "Full HD 1920x1080",
+      "Cpu": "Intel Core",
+      "Ram": 4,
+      "Memory": "1TB HDD",
+      "Gpu": "Intel HD",
+      "OpSys": "Windows 10",
+      "Weight": 1.86
+    },
+    "expected": 484.25559240839505
+  },
+  {
+    "input": {
+      "Company": "Fujitsu",
+      "Product": "LifeBook",
+      "TypeName": "Notebook",
+      "Inches": 15.6,
+      "ScreenResolution": "1366x768",
+      "Cpu": "Intel Core",
+      "Ram": 8,
+      "Memory": "256GB SSD",
+      "Gpu": "Intel HD",
+      "OpSys": "Windows 10",
+      "Weight": 2.2
+    },
+    "expected": 968.8880870741607
+  },
+  {
+    "input": {
+      "Company": "Xiaomi",
+      "Product": "Mi",
+      "TypeName": "Notebook",
+      "Inches": 15.6,
+      "ScreenResolution": "IPS Panel Full HD 1920x1080",
+      "Cpu": "Intel Core",
+      "Ram": 8,
+      "Memory": "256GB SSD",
+      "Gpu": "Nvidia GeForce",
+      "OpSys": "No OS",
+      "Weight": 1.95
+    },
+    "expected": 962.0315069387158
+  },
+  {
+    "input": {
+      "Company": "Acer",
+      "Product": "Spin",
+      "TypeName": "2 in 1 Convertible",
+      "Inches": 13.3,
+      "ScreenResolution": "IPS Panel Full HD / Touchscreen 1920x1080",
+      "Cpu": "Intel Core",
+      "Ram": 8,
+      "Memory": "256GB SSD",
+      "Gpu": "Intel UHD",
+      "OpSys": "Windows 10",
+      "Weight": 1.6
+    },
+    "expected": 959.5618137212716
+  },
+  {
+    "input": {
+      "Company": "HP",
+      "Product": "ProBook",
+      "TypeName": "Notebook",
+      "Inches": 15.6,
+      "ScreenResolution": "1366x768",
+      "Cpu": "Intel Core",
+      "Ram": 4,
+      "Memory": "128GB SSD",
+      "Gpu": "Intel HD",
+      "OpSys": "Windows 10",
+      "Weight": 1.63
+    },
+    "expected": 664.2479665097287
+  },
+  {
+    "input": {
+      "Company": "Dell",
+      "Product": "Latitude",
+      "TypeName": "Notebook",
+      "Inches": 15.6,
+      "ScreenResolution": "Full HD 1920x1080",
+      "Cpu": "Intel Core",
+      "Ram": 16,
+      "Memory": "256GB SSD",
+      "Gpu": "Nvidia GeForce",
+      "OpSys": "Windows 10",
+      "Weight": 1.93
+    },
+    "expected": 1517.9563541168075
+  },
+  {
+    "input": {
+      "Company": "Asus",
+      "Product": "X541NA-PD1003Y",
+      "TypeName": "Notebook",
+      "Inches": 15.6,
+      "ScreenResolution": "1366x768",
+      "Cpu": "Intel Pentium",
+      "Ram": 4,
+      "Memory": "500GB HDD",
+      "Gpu": "Intel HD",
+      "OpSys": "Windows 10",
+      "Weight": 2.0
+    },
+    "expected": 413.24170871659817
+  },
+  {
+    "input": {
+      "Company": "Dell",
+      "Product": "Alienware",
+      "TypeName": "Gaming",
+      "Inches": 17.3,
+      "ScreenResolution": "IPS Panel 2560x1440",
+      "Cpu": "Intel Core",
+      "Ram": 16,
+      "Memory": "256GB SSD +  1TB HDD",
+      "Gpu": "Nvidia GeForce",
+      "OpSys": "Windows 10",
+      "Weight": 4.42
+    },
+    "expected": 2951.6286719522486
+  },
+  {
+    "input": {
+      "Company": "Dell",
+      "Product": "Inspiron",
+      "TypeName": "Notebook",
+      "Inches": 15.6,
+      "ScreenResolution": "Full HD 1920x1080",
+      "Cpu": "Intel Core",
+      "Ram": 8,
+      "Memory": "128GB SSD +  2TB HDD",
+      "Gpu": "AMD Radeon",
+      "OpSys": "Windows 10",
+      "Weight": 2.02
+    },
+    "expected": 754.4131621020529
+  },
+  {
+    "input": {
+      "Company": "Acer",
+      "Product": "Aspire",
+      "TypeName": "Notebook",
+      "Inches": 15.6,
+      "ScreenResolution": "IPS Panel Full HD 1920x1080",
+      "Cpu": "Intel Core",
+      "Ram": 4,
+      "Memory": "256GB SSD",
+      "Gpu": "Intel UHD",
+      "OpSys": "Windows 10",
+      "Weight": 2.2
+    },
+    "expected": 685.3757559902067
+  },
+  {
+    "input": {
+      "Company": "Google",
+      "Product": "Pixelbook",
+      "TypeName": "Ultrabook",
+      "Inches": 12.3,
+      "ScreenResolution": "Touchscreen 2400x1600",
+      "Cpu": "Intel Core",
+      "Ram": 8,
+      "Memory": "128GB SSD",
+      "Gpu": "Intel HD",
+      "OpSys": "Chrome OS",
+      "Weight": 1.1
+    },
+    "expected": 1354.464017749909
+  },
+  {
+    "input": {
+      "Company": "Lenovo",
+      "Product": "Thinkpad",
+      "TypeName": "Ultrabook",
+      "Inches": 12.5,
+      "ScreenResolution": "IPS Panel 1366x768",
+      "Cpu": "Intel Core",
+      "Ram": 8,
+      "Memory": "180GB SSD",
+      "Gpu": "Intel HD",
+      "OpSys": "Windows 10",
+      "Weight": 1.3
+    },
+    "expected": 1371.760963271572
+  },
+  {
+    "input": {
+      "Company": "Dell",
+      "Product": "Inspiron",
+      "TypeName": "Gaming",
+      "Inches": 15.6,
+      "ScreenResolution": "Full HD 1920x1080",
+      "Cpu": "Intel Core",
+      "Ram": 8,
+      "Memory": "256GB SSD",
+      "Gpu": "Nvidia GeForce",
+      "OpSys": "Windows 10",
+      "Weight": 2.56
+    },
+    "expected": 1169.5766949728986
+  },
+  {
+    "input": {
+      "Company": "Dell",
+      "Product": "Inspiron",
+      "TypeName": "Gaming",
+      "Inches": 15.6,
+      "ScreenResolution": "Full HD 1920x1080",
+      "Cpu": "Intel Core",
+      "Ram": 8,
+      "Memory": "1TB HDD",
+      "Gpu": "Nvidia GeForce",
+      "OpSys": "Linux",
+      "Weight": 2.62
+    },
+    "expected": 976.5531221560702
+  },
+  {
+    "input": {
+      "Company": "Lenovo",
+      "Product": "Yoga",
+      "TypeName": "2 in 1 Convertible",
+      "Inches": 11.3,
+      "ScreenResolution": "IPS Panel Full HD / Touchscreen 1920x1080",
+      "Cpu": "Intel Core",
+      "Ram": 8,
+      "Memory": "256GB SSD",
+      "Gpu": "Intel HD",
+      "OpSys": "Windows 10",
+      "Weight": 1.1
+    },
+    "expected": 1050.6348014635532
+  },
+  {
+    "input": {
+      "Company": "Lenovo",
+      "Product": "IdeaPad",
+      "TypeName": "Notebook",
+      "Inches": 14.0,
+      "ScreenResolution": "IPS Panel Full HD 1920x1080",
+      "Cpu": "Intel Core",
+      "Ram": 8,
+      "Memory": "256GB SSD",
+      "Gpu": "Nvidia GeForce",
+      "OpSys": "Windows 10",
+      "Weight": 1.5
+    },
+    "expected": 832.8162102688664
+  },
+  {
+    "input": {
+      "Company": "Dell",
+      "Product": "Alienware",
+      "TypeName": "Gaming",
+      "Inches": 17.3,
+      "ScreenResolution": "Full HD 1920x1080",
+      "Cpu": "Intel Core",
+      "Ram": 32,
+      "Memory": "256GB SSD +  1TB HDD",
+      "Gpu": "Nvidia GeForce",
+      "OpSys": "Windows 10",
+      "Weight": 4.42
+    },
+    "expected": 3126.795557296685
+  },
+  {
+    "input": {
+      "Company": "Lenovo",
+      "Product": "ThinkPad",
+      "TypeName": "Ultrabook",
+      "Inches": 14.0,
+      "ScreenResolution": "Full HD 1920x1080",
+      "Cpu": "Intel Core",
+      "Ram": 8,
+      "Memory": "256GB SSD",
+      "Gpu": "Intel HD",
+      "OpSys": "Windows 7",
+      "Weight": 1.7
+    },
+    "expected": 1690.617957653038
+  },
+  {
+    "input": {
+      "Company": "Lenovo",
+      "Product": "IdeaPad",
+      "TypeName": "Notebook",
+      "Inches": 15.6,
+      "ScreenResolution": "Full HD 1920x1080",
+      "Cpu": "Intel Core",
+      "Ram": 4,
+      "Memory": "128GB SSD",
+      "Gpu": "Intel HD",
+      "OpSys": "Windows 10",
+      "Weight": 2.2
+    },
+    "expected": 575.8193534600624
+  },
+  {
+    "input": {
+      "Company": "Asus",
+      "Product": "ROG",
+      "TypeName": "Gaming",
+      "Inches": 15.6,
+      "ScreenResolution": "IPS Panel Full HD 1920x1080",
+      "Cpu": "Intel Core",
+      "Ram": 8,
+      "Memory": "128GB SSD +  1TB HDD",
+      "Gpu": "Nvidia GeForce",
+      "OpSys": "Windows 10",
+      "Weight": 2.3
+    },
+    "expected": 1517.6254470071044
+  },
+  {
+    "input": {
+      "Company": "__UNSEEN_CATEGORY__",
+      "Product": "__UNSEEN_CATEGORY__",
+      "TypeName": "__UNSEEN_CATEGORY__",
+      "Inches": null,
+      "ScreenResolution": "__UNSEEN_CATEGORY__",
+      "Cpu": "__UNSEEN_CATEGORY__",
+      "Ram": null,
+      "Memory": "__UNSEEN_CATEGORY__",
+      "Gpu": "__UNSEEN_CATEGORY__",
+      "OpSys": "__UNSEEN_CATEGORY__",
+      "Weight": null
+    },
+    "expected": 1224.2442373542276
+  }
+]

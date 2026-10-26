@@ -1,0 +1,2569 @@
+{
+  "id": "laptop",
+  "display_name": "Laptop Price",
+  "slug": "muhammetvarl/laptop-price",
+  "file": "laptop_price.csv",
+  "target_column": "Price",
+  "prediction_unit": "EUR",
+  "description": "依筆電品牌、螢幕與硬體規格預測價格。",
+  "note": "來源目標為 Price_euros，統一映射為 Price；移除 laptop_ID。Product 使用產品系列首字，CPU/GPU 使用廠牌與系列，降低稀疏類別。",
+  "kaggle_url": "https://www.kaggle.com/datasets/muhammetvarl/laptop-price",
+  "data_source": "laptop_price.csv",
+  "status": "ready",
+  "generated_at": "2026-10-26T14:39:08.471596+00:00",
+  "environment": {
+    "python": "3.14.4",
+    "sklearn": "1.9.1",
+    "pandas": "3.0.6",
+    "numpy": "2.5.1"
+  },
+  "audit": {
+    "id": "laptop",
+    "sha256": "242f67dad13cce1609e0b7ffa41fae25ce24e764ab1e4823084d8b67c7e956fa",
+    "source_rows": 1303,
+    "clean_rows": 1274,
+    "source_columns": [
+      "laptop_ID",
+      "Company",
+      "Product",
+      "TypeName",
+      "Inches",
+      "ScreenResolution",
+      "Cpu",
+      "Ram",
+      "Memory",
+      "Gpu",
+      "OpSys",
+      "Weight",
+      "Price_euros"
+    ],
+    "source_input_count": 12,
+    "original_features": [
+      "Company",
+      "Product",
+      "TypeName",
+      "Inches",
+      "ScreenResolution",
+      "Cpu",
+      "Ram",
+      "Memory",
+      "Gpu",
+      "OpSys",
+      "Weight"
+    ],
+    "original_feature_count": 11,
+    "candidate_features": [
+      "Company",
+      "Product",
+      "TypeName",
+      "Inches",
+      "ScreenResolution",
+      "Cpu",
+      "Ram",
+      "Memory",
+      "Gpu",
+      "OpSys",
+      "Weight"
+    ],
+    "candidate_feature_count": 11,
+    "raw_requirement_met": true,
+    "note": "來源目標為 Price_euros，統一映射為 Price；移除 laptop_ID。Product 使用產品系列首字，CPU/GPU 使用廠牌與系列，降低稀疏類別。",
+    "source_schema": [
+      {
+        "name": "laptop_ID",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "Company",
+        "dtype": "str",
+        "missing": 0
+      },
+      {
+        "name": "Product",
+        "dtype": "str",
+        "missing": 0
+      },
+      {
+        "name": "TypeName",
+        "dtype": "str",
+        "missing": 0
+      },
+      {
+        "name": "Inches",
+        "dtype": "float64",
+        "missing": 0
+      },
+      {
+        "name": "ScreenResolution",
+        "dtype": "str",
+        "missing": 0
+      },
+      {
+        "name": "Cpu",
+        "dtype": "str",
+        "missing": 0
+      },
+      {
+        "name": "Ram",
+        "dtype": "str",
+        "missing": 0
+      },
+      {
+        "name": "Memory",
+        "dtype": "str",
+        "missing": 0
+      },
+      {
+        "name": "Gpu",
+        "dtype": "str",
+        "missing": 0
+      },
+      {
+        "name": "OpSys",
+        "dtype": "str",
+        "missing": 0
+      },
+      {
+        "name": "Weight",
+        "dtype": "str",
+        "missing": 0
+      },
+      {
+        "name": "Price_euros",
+        "dtype": "float64",
+        "missing": 0
+      }
+    ]
+  },
+  "original_features": [
+    "Company",
+    "Product",
+    "TypeName",
+    "Inches",
+    "ScreenResolution",
+    "Cpu",
+    "Ram",
+    "Memory",
+    "Gpu",
+    "OpSys",
+    "Weight"
+  ],
+  "encoded_features": [
+    "numeric__Inches",
+    "numeric__Ram",
+    "numeric__Weight",
+    "categorical__Company_Acer",
+    "categorical__Company_Apple",
+    "categorical__Company_Asus",
+    "categorical__Company_Chuwi",
+    "categorical__Company_Dell",
+    "categorical__Company_Fujitsu",
+    "categorical__Company_Google",
+    "categorical__Company_HP",
+    "categorical__Company_Huawei",
+    "categorical__Company_LG",
+    "categorical__Company_Lenovo",
+    "categorical__Company_MSI",
+    "categorical__Company_Mediacom",
+    "categorical__Company_Microsoft",
+    "categorical__Company_Razer",
+    "categorical__Company_Samsung",
+    "categorical__Company_Toshiba",
+    "categorical__Company_Vero",
+    "categorical__Company_Xiaomi",
+    "categorical__Product_110-15ACL",
+    "categorical__Product_15-AC110nv",
+    "categorical__Product_15-BS026nv",
+    "categorical__Product_15-BS078nr",
+    "categorical__Product_15-BS101nv",
+    "categorical__Product_15-BW037na",
+    "categorical__Product_15-BW094nd",
+    "categorical__Product_15-ay047nv",
+    "categorical__Product_15-ba043na",
+    "categorical__Product_15-bs005nv",
+    "categorical__Product_15-bs011nv",
+    "categorical__Product_15-bs015dx",
+    "categorical__Product_15-bs017nv",
+    "categorical__Product_15-bs018nq",
+    "categorical__Product_15-bs024nv",
+    "categorical__Product_15-bs025nv",
+    "categorical__Product_15-bs053od",
+    "categorical__Product_15-bs078cl",
+    "categorical__Product_15-bs190od",
+    "categorical__Product_15-bw002nv",
+    "categorical__Product_15-bw003nv",
+    "categorical__Product_15-bw007nv",
+    "categorical__Product_15-bw011nv",
+    "categorical__Product_15-cb003na",
+    "categorical__Product_15-cd005nv",
+    "categorical__Product_17-AK091ND",
+    "categorical__Product_17-BS037cl",
+    "categorical__Product_17-BS092ND",
+    "categorical__Product_17-Y002nv",
+    "categorical__Product_17-ak002nv",
+    "categorical__Product_17-bs001nv",
+    "categorical__Product_250",
+    "categorical__Product_255",
+    "categorical__Product_320-15ISK",
+    "categorical__Product_A541NA-GO342",
+    "categorical__Product_Alienware",
+    "categorical__Product_Aspire",
+    "categorical__Product_B51-80",
+    "categorical__Product_Blade",
+    "categorical__Product_C740-C9QX",
+    "categorical__Product_CB5-132T-C9KK",
+    "categorical__Product_Chromebook",
+    "categorical__Product_E402WA-GA007T",
+    "categorical__Product_E5",
+    "categorical__Product_ENVY",
+    "categorical__Product_ES1-523-84K7",
+    "categorical__Product_EliteBook",
+    "categorical__Product_Elitebook",
+    "categorical__Product_Envy",
+    "categorical__Product_Extensa",
+    "categorical__Product_F756UX-T4201D",
+    "categorical__Product_FX502VM-AS73",
+    "categorical__Product_FX502VM-DM105T",
+    "categorical__Product_FX502VM-DM560T",
+    "categorical__Product_FX503VD-E4022T",
+    "categorical__Product_FX503VM-E4007T",
+    "categorical__Product_FX550IK-DM018T",
+    "categorical__Product_FX553VD-DM627T",
+    "categorical__Product_FX553VD-FY647T",
+    "categorical__Product_FX753VD-GC007T",
+    "categorical__Product_FX753VD-GC071T",
+    "categorical__Product_FX753VD-GC086T",
+    "categorical__Product_FX753VD-GC461T",
+    "categorical__Product_FX753VE-GC093",
+    "categorical__Product_FX753VE-GC155T",
+    "categorical__Product_Flex",
+    "categorical__Product_FlexBook",
+    "categorical__Product_G701VO-IH74K",
+    "categorical__Product_G752VY-GC162T",
+    "categorical__Product_GE62",
+    "categorical__Product_GE63VR",
+    "categorical__Product_GE72",
+    "categorical__Product_GE72MVR",
+    "categorical__Product_GE72VR",
+    "categorical__Product_GE73VR",
+    "categorical__Product_GL553VE-FY082T",
+    "categorical__Product_GL62",
+    "categorical__Product_GL62M",
+    "categorical__Product_GL72M",
+    "categorical__Product_GP62",
+    "categorical__Product_GP62M",
+    "categorical__Product_GP62MVR",
+    "categorical__Product_GP72M",
+    "categorical__Product_GP72VR",
+    "categorical__Product_GS40",
+    "categorical__Product_GS43VR",
+    "categorical__Product_GS60",
+    "categorical__Product_GS63VR",
+    "categorical__Product_GS70",
+    "categorical__Product_GS73VR",
+    "categorical__Product_GT62VR",
+    "categorical__Product_GT72S",
+    "categorical__Product_GT72VR",
+    "categorical__Product_GT73EVR",
+    "categorical__Product_GT73VR",
+    "categorical__Product_GT80S",
+    "categorical__Product_GV62",
+    "categorical__Product_Gram",
+    "categorical__Product_IdeaPad",
+    "categorical__Product_Ideapad",
+    "categorical__Product_Inspiron",
+    "categorical__Product_Insprion",
+    "categorical__Product_K146",
+    "categorical__Product_K147",
+    "categorical__Product_K556UR-DM621T",
+    "categorical__Product_K756UX-T4340T",
+    "categorical__Product_L403NA-GA013TS",
+    "categorical__Product_LapBook",
+    "categorical__Product_Laptop",
+    "categorical__Product_Latitude",
+    "categorical__Product_Legion",
+    "categorical__Product_Lenovo",
+    "categorical__Product_Leopard",
+    "categorical__Product_LifeBook",
+    "categorical__Product_Lifebook",
+    "categorical__Product_MacBook",
+    "categorical__Product_Macbook",
+    "categorical__Product_MateBook",
+    "categorical__Product_Mi",
+    "categorical__Product_N23",
+    "categorical__Product_N42-20",
+    "categorical__Product_Nitro",
+    "categorical__Product_Notebook",
+    "categorical__Product_Omen",
+    "categorical__Product_Pavilion",
+    "categorical__Product_Pixelbook",
+    "categorical__Product_Portege",
+    "categorical__Product_Portégé",
+    "categorical__Product_Precision",
+    "categorical__Product_Predator",
+    "categorical__Product_Pro",
+    "categorical__Product_ProBook",
+    "categorical__Product_Probook",
+    "categorical__Product_Q304UA-BHI5T11",
+    "categorical__Product_R417NA-RS01",
+    "categorical__Product_ROG",
+    "categorical__Product_Rog",
+    "categorical__Product_SP315-51",
+    "categorical__Product_Satellite",
+    "categorical__Product_SmartBook",
+    "categorical__Product_Smartbook",
+    "categorical__Product_Spectre",
+    "categorical__Product_Spin",
+    "categorical__Product_Stream",
+    "categorical__Product_Surface",
+    "categorical__Product_Swift",
+    "categorical__Product_TMX349-G2-M-50FS",
+    "categorical__Product_Tecra",
+    "categorical__Product_ThinkPad",
+    "categorical__Product_Thinkpad",
+    "categorical__Product_TravelMate",
+    "categorical__Product_UX410UA-GV097T",
+    "categorical__Product_V110-15IAP",
+    "categorical__Product_V110-15IKB",
+    "categorical__Product_V110-15ISK",
+    "categorical__Product_V131",
+    "categorical__Product_V310-15IKB",
+    "categorical__Product_V310-15ISK",
+    "categorical__Product_V320-17ISK",
+    "categorical__Product_V330-15IKB",
+    "categorical__Product_V510-15IKB",
+    "categorical__Product_VivoBook",
+    "categorical__Product_Vivobook",
+    "categorical__Product_Vostro",
+    "categorical__Product_X505BP-BR019T",
+    "categorical__Product_X540SA-RBPDN09",
+    "categorical__Product_X540UA-DM186",
+    "categorical__Product_X541NA",
+    "categorical__Product_X541NA-GO020T",
+    "categorical__Product_X541NA-GO121",
+    "categorical__Product_X541NA-GO414T",
+    "categorical__Product_X541UA-DM1897",
+    "categorical__Product_X541UV-DM1439T",
+    "categorical__Product_X542UQ-GO005",
+    "categorical__Product_X550VX-XX015D",
+    "categorical__Product_X555BP-XX180T",
+    "categorical__Product_X555QG-DM242T",
+    "categorical__Product_X556UJ-XO044T",
+    "categorical__Product_X705UV-BX074T",
+    "categorical__Product_X751NV-TY001",
+    "categorical__Product_X751SV-TY001T",
+    "categorical__Product_XPS",
+    "categorical__Product_Yoga",
+    "categorical__Product_ZBook",
+    "categorical__Product_Zbook",
+    "categorical__Product_ZenBook",
+    "categorical__Product_Zenbook",
+    "categorical__TypeName_2 in 1 Convertible",
+    "categorical__TypeName_Gaming",
+    "categorical__TypeName_Netbook",
+    "categorical__TypeName_Notebook",
+    "categorical__TypeName_Ultrabook",
+    "categorical__TypeName_Workstation",
+    "categorical__ScreenResolution_1366x768",
+    "categorical__ScreenResolution_1440x900",
+    "categorical__ScreenResolution_1600x900",
+    "categorical__ScreenResolution_1920x1080",
+    "categorical__ScreenResolution_2560x1440",
+    "categorical__ScreenResolution_4K Ultra HD / Touchscreen 3840x2160",
+    "categorical__ScreenResolution_4K Ultra HD 3840x2160",
+    "categorical__ScreenResolution_Full HD / Touchscreen 1920x1080",
+    "categorical__ScreenResolution_Full HD 1920x1080",
+    "categorical__ScreenResolution_IPS Panel 1366x768",
+    "categorical__ScreenResolution_IPS Panel 2560x1440",
+    "categorical__ScreenResolution_IPS Panel 4K Ultra HD / Touchscreen 3840x2160",
+    "categorical__ScreenResolution_IPS Panel 4K Ultra HD 3840x2160",
+    "categorical__ScreenResolution_IPS Panel Full HD / Touchscreen 1920x1080",
+    "categorical__ScreenResolution_IPS Panel Full HD 1366x768",
+    "categorical__ScreenResolution_IPS Panel Full HD 1920x1080",
+    "categorical__ScreenResolution_IPS Panel Full HD 1920x1200",
+    "categorical__ScreenResolution_IPS Panel Full HD 2160x1440",
+    "categorical__ScreenResolution_IPS Panel Full HD 2560x1440",
+    "categorical__ScreenResolution_IPS Panel Quad HD+ / Touchscreen 3200x1800",
+    "categorical__ScreenResolution_IPS Panel Quad HD+ 2560x1440",
+    "categorical__ScreenResolution_IPS Panel Quad HD+ 3200x1800",
+    "categorical__ScreenResolution_IPS Panel Retina Display 2304x1440",
+    "categorical__ScreenResolution_IPS Panel Retina Display 2560x1600",
+    "categorical__ScreenResolution_IPS Panel Retina Display 2736x1824",
+    "categorical__ScreenResolution_IPS Panel Retina Display 2880x1800",
+    "categorical__ScreenResolution_IPS Panel Touchscreen / 4K Ultra HD 3840x2160",
+    "categorical__ScreenResolution_IPS Panel Touchscreen 1366x768",
+    "categorical__ScreenResolution_IPS Panel Touchscreen 1920x1200",
+    "categorical__ScreenResolution_IPS Panel Touchscreen 2560x1440",
+    "categorical__ScreenResolution_Quad HD+ / Touchscreen 3200x1800",
+    "categorical__ScreenResolution_Quad HD+ 3200x1800",
+    "categorical__ScreenResolution_Touchscreen / 4K Ultra HD 3840x2160",
+    "categorical__ScreenResolution_Touchscreen / Full HD 1920x1080",
+    "categorical__ScreenResolution_Touchscreen / Quad HD+ 3200x1800",
+    "categorical__ScreenResolution_Touchscreen 1366x768",
+    "categorical__ScreenResolution_Touchscreen 2256x1504",
+    "categorical__ScreenResolution_Touchscreen 2400x1600",
+    "categorical__ScreenResolution_Touchscreen 2560x1440",
+    "categorical__Cpu_AMD A10-Series",
+    "categorical__Cpu_AMD A12-Series",
+    "categorical__Cpu_AMD A6-Series",
+    "categorical__Cpu_AMD A8-Series",
+    "categorical__Cpu_AMD A9-Series",
+    "categorical__Cpu_AMD E-Series",
+    "categorical__Cpu_AMD FX",
+    "categorical__Cpu_AMD Ryzen",
+    "categorical__Cpu_Intel Atom",
+    "categorical__Cpu_Intel Celeron",
+    "categorical__Cpu_Intel Core",
+    "categorical__Cpu_Intel Pentium",
+    "categorical__Cpu_Intel Xeon",
+    "categorical__Memory_1.0TB HDD",
+    "categorical__Memory_1.0TB Hybrid",
+    "categorical__Memory_128GB Flash Storage",
+    "categorical__Memory_128GB SSD",
+    "categorical__Memory_128GB SSD +  1TB HDD",
+    "categorical__Memory_128GB SSD +  2TB HDD",
+    "categorical__Memory_16GB Flash Storage",
+    "categorical__Memory_16GB SSD",
+    "categorical__Memory_180GB SSD",
+    "categorical__Memory_1TB HDD",
+    "categorical__Memory_1TB HDD +  1TB HDD",
+    "categorical__Memory_1TB SSD",
+    "categorical__Memory_1TB SSD +  1TB HDD",
+    "categorical__Memory_240GB SSD",
+    "categorical__Memory_256GB Flash Storage",
+    "categorical__Memory_256GB SSD",
+    "categorical__Memory_256GB SSD +  1.0TB Hybrid",
+    "categorical__Memory_256GB SSD +  1TB HDD",
+    "categorical__Memory_256GB SSD +  256GB SSD",
+    "categorical__Memory_256GB SSD +  2TB HDD",
+    "categorical__Memory_256GB SSD +  500GB HDD",
+    "categorical__Memory_2TB HDD",
+    "categorical__Memory_32GB Flash Storage",
+    "categorical__Memory_32GB HDD",
+    "categorical__Memory_32GB SSD",
+    "categorical__Memory_500GB HDD",
+    "categorical__Memory_508GB Hybrid",
+    "categorical__Memory_512GB Flash Storage",
+    "categorical__Memory_512GB SSD",
+    "categorical__Memory_512GB SSD +  1.0TB Hybrid",
+    "categorical__Memory_512GB SSD +  1TB HDD",
+    "categorical__Memory_512GB SSD +  256GB SSD",
+    "categorical__Memory_512GB SSD +  2TB HDD",
+    "categorical__Memory_512GB SSD +  512GB SSD",
+    "categorical__Memory_64GB Flash Storage",
+    "categorical__Memory_64GB Flash Storage +  1TB HDD",
+    "categorical__Memory_64GB SSD",
+    "categorical__Memory_8GB SSD",
+    "categorical__Gpu_AMD FirePro",
+    "categorical__Gpu_AMD R17M-M1-70",
+    "categorical__Gpu_AMD R4",
+    "categorical__Gpu_AMD Radeon",
+    "categorical__Gpu_Intel Graphics",
+    "categorical__Gpu_Intel HD",
+    "categorical__Gpu_Intel Iris",
+    "categorical__Gpu_Intel UHD",
+    "categorical__Gpu_Nvidia GTX",
+    "categorical__Gpu_Nvidia GeForce",
+    "categorical__Gpu_Nvidia Quadro",
+    "categorical__OpSys_Android",
+    "categorical__OpSys_Chrome OS",
+    "categorical__OpSys_Linux",
+    "categorical__OpSys_Mac OS X",
+    "categorical__OpSys_No OS",
+    "categorical__OpSys_Windows 10",
+    "categorical__OpSys_Windows 10 S",
+    "categorical__OpSys_Windows 7",
+    "categorical__OpSys_macOS"
+  ],
+  "feature_schema": [
+    {
+      "name": "Company",
+      "type": "category",
+      "description": "筆電製造商",
+      "missing": 0,
+      "unit": "類別",
+      "values": [
+        "Acer",
+        "Apple",
+        "Asus",
+        "Chuwi",
+        "Dell",
+        "Fujitsu",
+        "Google",
+        "HP",
+        "Huawei",
+        "LG",
+        "Lenovo",
+        "MSI",
+        "Mediacom",
+        "Microsoft",
+        "Razer",
+        "Samsung",
+        "Toshiba",
+        "Vero",
+        "Xiaomi"
+      ],
+      "default": "Dell"
+    },
+    {
+      "name": "Product",
+      "type": "category",
+      "description": "產品系列（來源 Product 的首個詞）",
+      "missing": 0,
+      "unit": "類別",
+      "values": [
+        "110-15ACL",
+        "15-AC110nv",
+        "15-BS026nv",
+        "15-BS078nr",
+        "15-BS101nv",
+        "15-BW037na",
+        "15-BW094nd",
+        "15-ay047nv",
+        "15-ba043na",
+        "15-bs005nv",
+        "15-bs011nv",
+        "15-bs015dx",
+        "15-bs017nv",
+        "15-bs018nq",
+        "15-bs024nv",
+        "15-bs025nv",
+        "15-bs053od",
+        "15-bs078cl",
+        "15-bs190od",
+        "15-bw002nv",
+        "15-bw003nv",
+        "15-bw007nv",
+        "15-bw011nv",
+        "15-cb003na",
+        "15-cd005nv",
+        "17-AK091ND",
+        "17-BS037cl",
+        "17-BS092ND",
+        "17-Y002nv",
+        "17-ak002nv",
+        "17-bs001nv",
+        "250",
+        "255",
+        "320-15ISK",
+        "A541NA-GO342",
+        "Alienware",
+        "Aspire",
+        "B51-80",
+        "Blade",
+        "C740-C9QX",
+        "CB5-132T-C9KK",
+        "Chromebook",
+        "E402WA-GA007T",
+        "E5",
+        "ENVY",
+        "ES1-523-84K7",
+        "EliteBook",
+        "Elitebook",
+        "Envy",
+        "Extensa",
+        "F756UX-T4201D",
+        "FX502VM-AS73",
+        "FX502VM-DM105T",
+        "FX502VM-DM560T",
+        "FX503VD-E4022T",
+        "FX503VM-E4007T",
+        "FX550IK-DM018T",
+        "FX553VD-DM627T",
+        "FX553VD-FY647T",
+        "FX753VD-GC007T",
+        "FX753VD-GC071T",
+        "FX753VD-GC086T",
+        "FX753VD-GC461T",
+        "FX753VE-GC093",
+        "FX753VE-GC155T",
+        "Flex",
+        "FlexBook",
+        "G701VO-IH74K",
+        "G752VY-GC162T",
+        "GE62",
+        "GE63VR",
+        "GE72",
+        "GE72MVR",
+        "GE72VR",
+        "GE73VR",
+        "GL553VE-FY082T",
+        "GL62",
+        "GL62M",
+        "GL72M",
+        "GP62",
+        "GP62M",
+        "GP62MVR",
+        "GP72M",
+        "GP72VR",
+        "GS40",
+        "GS43VR",
+        "GS60",
+        "GS63VR",
+        "GS70",
+        "GS73VR",
+        "GT62VR",
+        "GT72S",
+        "GT72VR",
+        "GT73EVR",
+        "GT73VR",
+        "GT80S",
+        "GV62",
+        "Gram",
+        "IdeaPad",
+        "Ideapad",
+        "Inspiron",
+        "Insprion",
+        "K146",
+        "K147",
+        "K556UR-DM621T",
+        "K756UX-T4340T",
+        "L403NA-GA013TS",
+        "LapBook",
+        "Laptop",
+        "Latitude",
+        "Legion",
+        "Lenovo",
+        "Leopard",
+        "LifeBook",
+        "Lifebook",
+        "MacBook",
+        "Macbook",
+        "MateBook",
+        "Mi",
+        "N23",
+        "N42-20",
+        "Nitro",
+        "Notebook",
+        "Omen",
+        "Pavilion",
+        "Pixelbook",
+        "Portege",
+        "Portégé",
+        "Precision",
+        "Predator",
+        "Pro",
+        "ProBook",
+        "Probook",
+        "Q304UA-BHI5T11",
+        "R417NA-RS01",
+        "ROG",
+        "Rog",
+        "SP315-51",
+        "Satellite",
+        "SmartBook",
+        "Smartbook",
+        "Spectre",
+        "Spin",
+        "Stream",
+        "Surface",
+        "Swift",
+        "TMX349-G2-M-50FS",
+        "Tecra",
+        "ThinkPad",
+        "Thinkpad",
+        "TravelMate",
+        "UX410UA-GV097T",
+        "V110-15IAP",
+        "V110-15IKB",
+        "V110-15ISK",
+        "V131",
+        "V310-15IKB",
+        "V310-15ISK",
+        "V320-17ISK",
+        "V330-15IKB",
+        "V510-15IKB",
+        "VivoBook",
+        "Vivobook",
+        "Vostro",
+        "X505BP-BR019T",
+        "X540SA-RBPDN09",
+        "X540UA-DM186",
+        "X541NA",
+        "X541NA-GO020T",
+        "X541NA-GO121",
+        "X541NA-GO414T",
+        "X541UA-DM1897",
+        "X541UV-DM1439T",
+        "X542UQ-GO005",
+        "X550VX-XX015D",
+        "X555BP-XX180T",
+        "X555QG-DM242T",
+        "X556UJ-XO044T",
+        "X705UV-BX074T",
+        "X751NV-TY001",
+        "X751SV-TY001T",
+        "XPS",
+        "Yoga",
+        "ZBook",
+        "Zbook",
+        "ZenBook",
+        "Zenbook"
+      ],
+      "default": "Inspiron"
+    },
+    {
+      "name": "TypeName",
+      "type": "category",
+      "description": "筆電類型",
+      "missing": 0,
+      "unit": "類別",
+      "values": [
+        "2 in 1 Convertible",
+        "Gaming",
+        "Netbook",
+        "Notebook",
+        "Ultrabook",
+        "Workstation"
+      ],
+      "default": "Notebook"
+    },
+    {
+      "name": "Inches",
+      "type": "number",
+      "description": "螢幕對角線尺寸",
+      "missing": 0,
+      "unit": "英吋",
+      "default": 15.6,
+      "min": 10.1,
+      "max": 18.4,
+      "step": "any"
+    },
+    {
+      "name": "ScreenResolution",
+      "type": "category",
+      "description": "螢幕規格與解析度",
+      "missing": 0,
+      "unit": "類別",
+      "values": [
+        "1366x768",
+        "1440x900",
+        "1600x900",
+        "1920x1080",
+        "2560x1440",
+        "4K Ultra HD / Touchscreen 3840x2160",
+        "4K Ultra HD 3840x2160",
+        "Full HD / Touchscreen 1920x1080",
+        "Full HD 1920x1080",
+        "IPS Panel 1366x768",
+        "IPS Panel 2560x1440",
+        "IPS Panel 4K Ultra HD / Touchscreen 3840x2160",
+        "IPS Panel 4K Ultra HD 3840x2160",
+        "IPS Panel Full HD / Touchscreen 1920x1080",
+        "IPS Panel Full HD 1366x768",
+        "IPS Panel Full HD 1920x1080",
+        "IPS Panel Full HD 1920x1200",
+        "IPS Panel Full HD 2160x1440",
+        "IPS Panel Full HD 2560x1440",
+        "IPS Panel Quad HD+ / Touchscreen 3200x1800",
+        "IPS Panel Quad HD+ 2560x1440",
+        "IPS Panel Quad HD+ 3200x1800",
+        "IPS Panel Retina Display 2304x1440",
+        "IPS Panel Retina Display 2560x1600",
+        "IPS Panel Retina Display 2736x1824",
+        "IPS Panel Retina Display 2880x1800",
+        "IPS Panel Touchscreen / 4K Ultra HD 3840x2160",
+        "IPS Panel Touchscreen 1366x768",
+        "IPS Panel Touchscreen 1920x1200",
+        "IPS Panel Touchscreen 2560x1440",
+        "Quad HD+ / Touchscreen 3200x1800",
+        "Quad HD+ 3200x1800",
+        "Touchscreen / 4K Ultra HD 3840x2160",
+        "Touchscreen / Full HD 1920x1080",
+        "Touchscreen / Quad HD+ 3200x1800",
+        "Touchscreen 1366x768",
+        "Touchscreen 2256x1504",
+        "Touchscreen 2400x1600",
+        "Touchscreen 2560x1440"
+      ],
+      "default": "Full HD 1920x1080"
+    },
+    {
+      "name": "Cpu",
+      "type": "category",
+      "description": "CPU 廠牌與系列（前兩個詞）",
+      "missing": 0,
+      "unit": "類別",
+      "values": [
+        "AMD A10-Series",
+        "AMD A12-Series",
+        "AMD A6-Series",
+        "AMD A8-Series",
+        "AMD A9-Series",
+        "AMD E-Series",
+        "AMD FX",
+        "AMD Ryzen",
+        "Intel Atom",
+        "Intel Celeron",
+        "Intel Core",
+        "Intel Pentium",
+        "Intel Xeon"
+      ],
+      "default": "Intel Core"
+    },
+    {
+      "name": "Ram",
+      "type": "number",
+      "description": "記憶體容量",
+      "missing": 0,
+      "unit": "GB",
+      "default": 8.0,
+      "min": 2.0,
+      "max": 64.0,
+      "step": "any"
+    },
+    {
+      "name": "Memory",
+      "type": "category",
+      "description": "儲存裝置規格",
+      "missing": 0,
+      "unit": "類別",
+      "values": [
+        "1.0TB HDD",
+        "1.0TB Hybrid",
+        "128GB Flash Storage",
+        "128GB SSD",
+        "128GB SSD +  1TB HDD",
+        "128GB SSD +  2TB HDD",
+        "16GB Flash Storage",
+        "16GB SSD",
+        "180GB SSD",
+        "1TB HDD",
+        "1TB HDD +  1TB HDD",
+        "1TB SSD",
+        "1TB SSD +  1TB HDD",
+        "240GB SSD",
+        "256GB Flash Storage",
+        "256GB SSD",
+        "256GB SSD +  1.0TB Hybrid",
+        "256GB SSD +  1TB HDD",
+        "256GB SSD +  256GB SSD",
+        "256GB SSD +  2TB HDD",
+        "256GB SSD +  500GB HDD",
+        "2TB HDD",
+        "32GB Flash Storage",
+        "32GB HDD",
+        "32GB SSD",
+        "500GB HDD",
+        "508GB Hybrid",
+        "512GB Flash Storage",
+        "512GB SSD",
+        "512GB SSD +  1.0TB Hybrid",
+        "512GB SSD +  1TB HDD",
+        "512GB SSD +  256GB SSD",
+        "512GB SSD +  2TB HDD",
+        "512GB SSD +  512GB SSD",
+        "64GB Flash Storage",
+        "64GB Flash Storage +  1TB HDD",
+        "64GB SSD",
+        "8GB SSD"
+      ],
+      "default": "256GB SSD"
+    },
+    {
+      "name": "Gpu",
+      "type": "category",
+      "description": "GPU 廠牌與系列（前兩個詞）",
+      "missing": 0,
+      "unit": "類別",
+      "values": [
+        "AMD FirePro",
+        "AMD R17M-M1-70",
+        "AMD R4",
+        "AMD Radeon",
+        "Intel Graphics",
+        "Intel HD",
+        "Intel Iris",
+        "Intel UHD",
+        "Nvidia GTX",
+        "Nvidia GeForce",
+        "Nvidia Quadro"
+      ],
+      "default": "Intel HD"
+    },
+    {
+      "name": "OpSys",
+      "type": "category",
+      "description": "作業系統",
+      "missing": 0,
+      "unit": "類別",
+      "values": [
+        "Android",
+        "Chrome OS",
+        "Linux",
+        "Mac OS X",
+        "No OS",
+        "Windows 10",
+        "Windows 10 S",
+        "Windows 7",
+        "macOS"
+      ],
+      "default": "Windows 10"
+    },
+    {
+      "name": "Weight",
+      "type": "number",
+      "description": "重量",
+      "missing": 0,
+      "unit": "kg",
+      "default": 2.04,
+      "min": 0.69,
+      "max": 4.7,
+      "step": "any"
+    }
+  ],
+  "dataset_summary": {
+    "total_samples": 1303,
+    "clean_samples": 1274,
+    "analyzed_samples": 1274,
+    "sampled": false,
+    "training_samples": 1019,
+    "testing_samples": 255,
+    "original_feature_count": 11,
+    "candidate_feature_count": 11,
+    "encoded_feature_count": 325,
+    "missing_values": 0,
+    "split": "random 80/20 + KFold(5, shuffle=True, seed=42)",
+    "seed": 42
+  },
+  "model_results": [
+    {
+      "name": "Linear Regression",
+      "short": "Linear",
+      "cv_rmse": 308.3544787746531,
+      "test_rmse": 257.61789020632403,
+      "test_r2": 0.8562189966162181,
+      "test_mae": 181.7542696794919,
+      "best_parameters": {}
+    },
+    {
+      "name": "Ridge Regression",
+      "short": "Ridge",
+      "cv_rmse": 301.15164138233547,
+      "test_rmse": 252.22182467527222,
+      "test_r2": 0.8621791899780035,
+      "test_mae": 175.985621009861,
+      "best_parameters": {
+        "model__regressor__alpha": 0.1
+      }
+    },
+    {
+      "name": "Lasso Regression",
+      "short": "Lasso",
+      "cv_rmse": 300.6302668153934,
+      "test_rmse": 262.77436825293495,
+      "test_r2": 0.8504055529023012,
+      "test_mae": 184.50522905148492,
+      "best_parameters": {
+        "model__regressor__alpha": 0.001
+      }
+    },
+    {
+      "name": "ElasticNet Regression",
+      "short": "ElasticNet",
+      "cv_rmse": 292.3094830878048,
+      "test_rmse": 251.29461351213828,
+      "test_r2": 0.8631906338249363,
+      "test_mae": 173.5529959502242,
+      "best_parameters": {
+        "model__regressor__alpha": 0.001,
+        "model__regressor__l1_ratio": 0.3
+      }
+    },
+    {
+      "name": "Random Forest Regressor",
+      "short": "Forest",
+      "cv_rmse": 333.7238519192934,
+      "test_rmse": 274.42529948197057,
+      "test_r2": 0.8368459851387854,
+      "test_mae": 177.09799396265902,
+      "best_parameters": {
+        "model__regressor__max_depth": 14,
+        "model__regressor__min_samples_leaf": 2
+      }
+    }
+  ],
+  "recommended_model": "ElasticNet Regression",
+  "feature_selection_results": [
+    {
+      "count": 1,
+      "selected_features": [
+        "Ram"
+      ],
+      "cv_rmse": 483.71289943417935,
+      "test_rmse": 438.9076228055932,
+      "test_r2": 0.5826545156493705,
+      "test_mae": 340.2208051777421
+    },
+    {
+      "count": 2,
+      "selected_features": [
+        "Ram",
+        "Product"
+      ],
+      "cv_rmse": 368.61977601849003,
+      "test_rmse": 312.53483335256414,
+      "test_r2": 0.7883850586541277,
+      "test_mae": 229.76175680435685
+    },
+    {
+      "count": 3,
+      "selected_features": [
+        "Ram",
+        "Product",
+        "TypeName"
+      ],
+      "cv_rmse": 345.90738264546906,
+      "test_rmse": 297.6400706878444,
+      "test_r2": 0.8080746816510058,
+      "test_mae": 213.51028905074494
+    },
+    {
+      "count": 4,
+      "selected_features": [
+        "Ram",
+        "Product",
+        "TypeName",
+        "Cpu"
+      ],
+      "cv_rmse": 329.00249899957726,
+      "test_rmse": 293.9458323295167,
+      "test_r2": 0.8128093787638155,
+      "test_mae": 201.6835649311146
+    },
+    {
+      "count": 5,
+      "selected_features": [
+        "Ram",
+        "Product",
+        "TypeName",
+        "Cpu",
+        "ScreenResolution"
+      ],
+      "cv_rmse": 314.46482828781706,
+      "test_rmse": 268.03951684454967,
+      "test_r2": 0.8443507169843967,
+      "test_mae": 192.83275985359498
+    },
+    {
+      "count": 6,
+      "selected_features": [
+        "Ram",
+        "Product",
+        "TypeName",
+        "Cpu",
+        "ScreenResolution",
+        "Memory"
+      ],
+      "cv_rmse": 310.78352939306933,
+      "test_rmse": 254.2453776645644,
+      "test_r2": 0.8599588709555022,
+      "test_mae": 176.21438943019888
+    },
+    {
+      "count": 7,
+      "selected_features": [
+        "Ram",
+        "Product",
+        "TypeName",
+        "Cpu",
+        "ScreenResolution",
+        "Memory",
+        "OpSys"
+      ],
+      "cv_rmse": 307.0704081580814,
+      "test_rmse": 255.91342603763286,
+      "test_r2": 0.8581152845451224,
+      "test_mae": 178.21621397736084
+    },
+    {
+      "count": 8,
+      "selected_features": [
+        "Ram",
+        "Product",
+        "TypeName",
+        "Cpu",
+        "ScreenResolution",
+        "Memory",
+        "OpSys",
+        "Inches"
+      ],
+      "cv_rmse": 303.884252796901,
+      "test_rmse": 253.852496175615,
+      "test_r2": 0.8603913433752625,
+      "test_mae": 180.3003726773286
+    },
+    {
+      "count": 9,
+      "selected_features": [
+        "Ram",
+        "Product",
+        "TypeName",
+        "Cpu",
+        "ScreenResolution",
+        "Memory",
+        "OpSys",
+        "Inches",
+        "Company"
+      ],
+      "cv_rmse": 301.5206500938343,
+      "test_rmse": 258.8500162462833,
+      "test_r2": 0.8548403659103269,
+      "test_mae": 183.94239673374824
+    },
+    {
+      "count": 10,
+      "selected_features": [
+        "Ram",
+        "Product",
+        "TypeName",
+        "Cpu",
+        "ScreenResolution",
+        "Memory",
+        "OpSys",
+        "Inches",
+        "Company",
+        "Weight"
+      ],
+      "cv_rmse": 302.945473987205,
+      "test_rmse": 255.73672075417528,
+      "test_r2": 0.8583111564332295,
+      "test_mae": 184.0244757464416
+    },
+    {
+      "count": 11,
+      "selected_features": [
+        "Ram",
+        "Product",
+        "TypeName",
+        "Cpu",
+        "ScreenResolution",
+        "Memory",
+        "OpSys",
+        "Inches",
+        "Company",
+        "Weight",
+        "Gpu"
+      ],
+      "cv_rmse": 308.35444652292637,
+      "test_rmse": 257.6175175266346,
+      "test_r2": 0.8562194126138873,
+      "test_mae": 181.75468744953602
+    }
+  ],
+  "best_features": {
+    "count": 9,
+    "selected_features": [
+      "Ram",
+      "Product",
+      "TypeName",
+      "Cpu",
+      "ScreenResolution",
+      "Memory",
+      "OpSys",
+      "Inches",
+      "Company"
+    ],
+    "cv_rmse": 301.5206500938343,
+    "test_rmse": 258.8500162462833,
+    "test_r2": 0.8548403659103269,
+    "test_mae": 183.94239673374824
+  },
+  "diagnostic_results": {
+    "points": [
+      {
+        "actual": 469.0,
+        "predicted": 484.25559240839505,
+        "residual": -15.255592408395046
+      },
+      {
+        "actual": 799.0,
+        "predicted": 968.8880870741607,
+        "residual": -169.8880870741607
+      },
+      {
+        "actual": 1199.0,
+        "predicted": 962.0315069387158,
+        "residual": 236.96849306128422
+      },
+      {
+        "actual": 999.0,
+        "predicted": 959.5618137212716,
+        "residual": 39.43818627872838
+      },
+      {
+        "actual": 689.0,
+        "predicted": 664.2479665097287,
+        "residual": 24.752033490271288
+      },
+      {
+        "actual": 1537.39,
+        "predicted": 1517.9563541168075,
+        "residual": 19.43364588319264
+      },
+      {
+        "actual": 304.0,
+        "predicted": 413.24170871659817,
+        "residual": -109.24170871659817
+      },
+      {
+        "actual": 2799.0,
+        "predicted": 2951.6286719522486,
+        "residual": -152.62867195224862
+      },
+      {
+        "actual": 970.9,
+        "predicted": 754.4131621020529,
+        "residual": 216.4868378979471
+      },
+      {
+        "actual": 682.0,
+        "predicted": 685.3757559902067,
+        "residual": -3.3757559902066987
+      },
+      {
+        "actual": 1275.0,
+        "predicted": 1354.464017749909,
+        "residual": -79.46401774990909
+      },
+      {
+        "actual": 1099.0,
+        "predicted": 1371.760963271572,
+        "residual": -272.7609632715721
+      },
+      {
+        "actual": 879.0,
+        "predicted": 1169.5766949728986,
+        "residual": -290.5766949728986
+      },
+      {
+        "actual": 929.0,
+        "predicted": 976.5531221560702,
+        "residual": -47.55312215607023
+      },
+      {
+        "actual": 1299.0,
+        "predicted": 1050.6348014635532,
+        "residual": 248.36519853644677
+      },
+      {
+        "actual": 1099.0,
+        "predicted": 832.8162102688664,
+        "residual": 266.18378973113363
+      },
+      {
+        "actual": 2800.0,
+        "predicted": 3126.795557296685,
+        "residual": -326.7955572966848
+      },
+      {
+        "actual": 1499.0,
+        "predicted": 1690.617957653038,
+        "residual": -191.61795765303805
+      },
+      {
+        "actual": 499.0,
+        "predicted": 575.8193534600624,
+        "residual": -76.81935346006242
+      },
+      {
+        "actual": 1655.0,
+        "predicted": 1517.6254470071044,
+        "residual": 137.3745529928956
+      },
+      {
+        "actual": 859.0,
+        "predicted": 860.3699022169876,
+        "residual": -1.3699022169876116
+      },
+      {
+        "actual": 530.0,
+        "predicted": 511.1443559452331,
+        "residual": 18.855644054766913
+      },
+      {
+        "actual": 846.0,
+        "predicted": 1241.2583049118612,
+        "residual": -395.25830491186116
+      },
+      {
+        "actual": 973.0,
+        "predicted": 777.9645602322755,
+        "residual": 195.03543976772448
+      },
+      {
+        "actual": 739.0,
+        "predicted": 897.2597569757347,
+        "residual": -158.25975697573472
+      },
+      {
+        "actual": 1763.0,
+        "predicted": 1926.2111615467597,
+        "residual": -163.21116154675974
+      },
+      {
+        "actual": 650.0,
+        "predicted": 723.9351171115239,
+        "residual": -73.93511711152394
+      },
+      {
+        "actual": 798.01,
+        "predicted": 1070.7641301451265,
+        "residual": -272.7541301451265
+      },
+      {
+        "actual": 459.0,
+        "predicted": 551.6296451648012,
+        "residual": -92.62964516480122
+      },
+      {
+        "actual": 529.0,
+        "predicted": 556.6087212822654,
+        "residual": -27.60872128226538
+      },
+      {
+        "actual": 1349.0,
+        "predicted": 1626.4279932657957,
+        "residual": -277.42799326579575
+      },
+      {
+        "actual": 1799.0,
+        "predicted": 2075.9610925714874,
+        "residual": -276.96109257148737
+      },
+      {
+        "actual": 819.0,
+        "predicted": 873.4056121495557,
+        "residual": -54.405612149555736
+      },
+      {
+        "actual": 398.99,
+        "predicted": 512.0231932444179,
+        "residual": -113.03319324441793
+      },
+      {
+        "actual": 349.0,
+        "predicted": 462.44708923405904,
+        "residual": -113.44708923405904
+      },
+      {
+        "actual": 819.0,
+        "predicted": 1048.6185842530458,
+        "residual": -229.6185842530458
+      },
+      {
+        "actual": 836.6,
+        "predicted": 1074.096094376546,
+        "residual": -237.496094376546
+      },
+      {
+        "actual": 519.0,
+        "predicted": 640.2165987050566,
+        "residual": -121.21659870505664
+      },
+      {
+        "actual": 943.0,
+        "predicted": 1030.593201094395,
+        "residual": -87.593201094395
+      },
+      {
+        "actual": 429.0,
+        "predicted": 532.4116074228152,
+        "residual": -103.41160742281522
+      },
+      {
+        "actual": 2350.0,
+        "predicted": 1961.885233317404,
+        "residual": 388.1147666825959
+      },
+      {
+        "actual": 2625.0,
+        "predicted": 2650.004910774251,
+        "residual": -25.00491077425113
+      },
+      {
+        "actual": 789.81,
+        "predicted": 918.9998403016197,
+        "residual": -129.1898403016197
+      },
+      {
+        "actual": 1279.0,
+        "predicted": 1199.0080998586943,
+        "residual": 79.99190014130568
+      },
+      {
+        "actual": 841.0,
+        "predicted": 878.526908899915,
+        "residual": -37.52690889991504
+      },
+      {
+        "actual": 675.0,
+        "predicted": 648.2343021582049,
+        "residual": 26.765697841795145
+      },
+      {
+        "actual": 941.0,
+        "predicted": 757.3921703791281,
+        "residual": 183.60782962087194
+      },
+      {
+        "actual": 1624.0,
+        "predicted": 1607.3456915197553,
+        "residual": 16.65430848024471
+      },
+      {
+        "actual": 615.0,
+        "predicted": 457.05418866716457,
+        "residual": 157.94581133283543
+      },
+      {
+        "actual": 1119.91,
+        "predicted": 1232.344873215133,
+        "residual": -112.43487321513294
+      },
+      {
+        "actual": 1472.2,
+        "predicted": 1337.381825246913,
+        "residual": 134.81817475308708
+      },
+      {
+        "actual": 1334.0,
+        "predicted": 889.0033702930762,
+        "residual": 444.99662970692384
+      },
+      {
+        "actual": 1799.0,
+        "predicted": 1670.2913213847924,
+        "residual": 128.70867861520765
+      },
+      {
+        "actual": 569.0,
+        "predicted": 563.9302077831525,
+        "residual": 5.069792216847532
+      },
+      {
+        "actual": 659.0,
+        "predicted": 1036.3759003116702,
+        "residual": -377.3759003116702
+      },
+      {
+        "actual": 839.0,
+        "predicted": 1334.0057436407656,
+        "residual": -495.00574364076556
+      },
+      {
+        "actual": 659.01,
+        "predicted": 600.6433188748648,
+        "residual": 58.36668112513519
+      },
+      {
+        "actual": 349.0,
+        "predicted": 477.7752121734036,
+        "residual": -128.7752121734036
+      },
+      {
+        "actual": 1149.0,
+        "predicted": 1364.3055509932258,
+        "residual": -215.30555099322578
+      },
+      {
+        "actual": 297.0,
+        "predicted": 397.5773142062901,
+        "residual": -100.57731420629011
+      },
+      {
+        "actual": 1499.0,
+        "predicted": 1528.5810348033456,
+        "residual": -29.581034803345574
+      },
+      {
+        "actual": 380.0,
+        "predicted": 387.8873339315668,
+        "residual": -7.887333931566786
+      },
+      {
+        "actual": 478.0,
+        "predicted": 619.4969719161826,
+        "residual": -141.4969719161826
+      },
+      {
+        "actual": 1649.0,
+        "predicted": 1517.6254470071044,
+        "residual": 131.3745529928956
+      },
+      {
+        "actual": 1034.0,
+        "predicted": 1093.809122201763,
+        "residual": -59.8091222017631
+      },
+      {
+        "actual": 500.0,
+        "predicted": 331.75003205306064,
+        "residual": 168.24996794693936
+      },
+      {
+        "actual": 784.0,
+        "predicted": 633.2566541687457,
+        "residual": 150.74334583125426
+      },
+      {
+        "actual": 389.0,
+        "predicted": 630.9530177481633,
+        "residual": -241.95301774816335
+      },
+      {
+        "actual": 1669.0,
+        "predicted": 1526.7610549161425,
+        "residual": 142.23894508385752
+      },
+      {
+        "actual": 1205.0,
+        "predicted": 866.6169350483444,
+        "residual": 338.38306495165557
+      },
+      {
+        "actual": 1510.0,
+        "predicted": 1613.3988970532662,
+        "residual": -103.39889705326618
+      },
+      {
+        "actual": 1379.0,
+        "predicted": 1837.5338504120932,
+        "residual": -458.5338504120932
+      },
+      {
+        "actual": 999.9,
+        "predicted": 1124.441765219109,
+        "residual": -124.54176521910892
+      },
+      {
+        "actual": 1699.0,
+        "predicted": 1378.7450053053233,
+        "residual": 320.2549946946767
+      },
+      {
+        "actual": 923.0,
+        "predicted": 1135.4313842378776,
+        "residual": -212.43138423787764
+      },
+      {
+        "actual": 1855.0,
+        "predicted": 2890.286041824129,
+        "residual": -1035.286041824129
+      },
+      {
+        "actual": 702.0,
+        "predicted": 823.0998922405106,
+        "residual": -121.0998922405106
+      },
+      {
+        "actual": 899.0,
+        "predicted": 1280.9634106673884,
+        "residual": -381.9634106673884
+      },
+      {
+        "actual": 650.0,
+        "predicted": 693.7619913985897,
+        "residual": -43.76199139858966
+      },
+      {
+        "actual": 833.01,
+        "predicted": 950.5707242927582,
+        "residual": -117.56072429275821
+      },
+      {
+        "actual": 344.0,
+        "predicted": 468.9918139281357,
+        "residual": -124.99181392813568
+      },
+      {
+        "actual": 1729.0,
+        "predicted": 1537.6593209632936,
+        "residual": 191.34067903670643
+      },
+      {
+        "actual": 1285.0,
+        "predicted": 948.0827423602224,
+        "residual": 336.91725763977763
+      },
+      {
+        "actual": 2449.0,
+        "predicted": 1992.825934576303,
+        "residual": 456.1740654236969
+      },
+      {
+        "actual": 799.0,
+        "predicted": 1197.3072104754626,
+        "residual": -398.3072104754626
+      },
+      {
+        "actual": 699.0,
+        "predicted": 856.5048323320482,
+        "residual": -157.50483233204818
+      },
+      {
+        "actual": 739.0,
+        "predicted": 943.5902552251204,
+        "residual": -204.59025522512036
+      },
+      {
+        "actual": 799.0,
+        "predicted": 881.6540596768623,
+        "residual": -82.65405967686229
+      },
+      {
+        "actual": 1010.0,
+        "predicted": 1331.0904081355661,
+        "residual": -321.0904081355661
+      },
+      {
+        "actual": 466.0,
+        "predicted": 508.8594587129418,
+        "residual": -42.85945871294177
+      },
+      {
+        "actual": 389.0,
+        "predicted": 411.0165110088881,
+        "residual": -22.016511008888074
+      },
+      {
+        "actual": 985.0,
+        "predicted": 1176.8233894148602,
+        "residual": -191.82338941486023
+      },
+      {
+        "actual": 1749.0,
+        "predicted": 1707.9435704114621,
+        "residual": 41.05642958853787
+      },
+      {
+        "actual": 699.0,
+        "predicted": 1134.1399475329326,
+        "residual": -435.13994753293264
+      },
+      {
+        "actual": 499.0,
+        "predicted": 862.7148952173304,
+        "residual": -363.7148952173304
+      },
+      {
+        "actual": 1327.0,
+        "predicted": 1072.2426499108103,
+        "residual": 254.75735008918969
+      },
+      {
+        "actual": 1579.0,
+        "predicted": 1452.9554730310185,
+        "residual": 126.04452696898147
+      },
+      {
+        "actual": 2999.0,
+        "predicted": 1782.3145482604252,
+        "residual": 1216.6854517395748
+      },
+      {
+        "actual": 745.0,
+        "predicted": 737.3870438378888,
+        "residual": 7.612956162111232
+      },
+      {
+        "actual": 269.0,
+        "predicted": 603.9950488580547,
+        "residual": -334.9950488580547
+      },
+      {
+        "actual": 955.0,
+        "predicted": 1053.2965724005905,
+        "residual": -98.29657240059055
+      },
+      {
+        "actual": 1396.0,
+        "predicted": 1238.86397002285,
+        "residual": 157.13602997714997
+      },
+      {
+        "actual": 1534.0,
+        "predicted": 1637.2407302308393,
+        "residual": -103.24073023083929
+      },
+      {
+        "actual": 960.0,
+        "predicted": 959.8563367422404,
+        "residual": 0.14366325775961286
+      },
+      {
+        "actual": 997.9,
+        "predicted": 1417.1184017376163,
+        "residual": -419.2184017376163
+      },
+      {
+        "actual": 1449.0,
+        "predicted": 1452.9554730310185,
+        "residual": -3.9554730310185278
+      },
+      {
+        "actual": 412.0,
+        "predicted": 399.35099905692175,
+        "residual": 12.64900094307825
+      },
+      {
+        "actual": 389.0,
+        "predicted": 658.2457798967698,
+        "residual": -269.2457798967698
+      },
+      {
+        "actual": 1975.0,
+        "predicted": 2056.7708371699578,
+        "residual": -81.77083716995776
+      },
+      {
+        "actual": 726.0,
+        "predicted": 721.2103045026249,
+        "residual": 4.789695497375078
+      },
+      {
+        "actual": 209.0,
+        "predicted": 344.62653646364015,
+        "residual": -135.62653646364015
+      },
+      {
+        "actual": 1149.0,
+        "predicted": 961.9397252229618,
+        "residual": 187.06027477703822
+      },
+      {
+        "actual": 1799.0,
+        "predicted": 2203.754892880762,
+        "residual": -404.7548928807619
+      },
+      {
+        "actual": 1498.0,
+        "predicted": 1889.4684939128183,
+        "residual": -391.4684939128183
+      },
+      {
+        "actual": 1189.0,
+        "predicted": 1061.7681928759666,
+        "residual": 127.23180712403337
+      },
+      {
+        "actual": 2758.0,
+        "predicted": 2718.481733599099,
+        "residual": 39.51826640090121
+      },
+      {
+        "actual": 795.0,
+        "predicted": 945.6362199012872,
+        "residual": -150.63621990128718
+      },
+      {
+        "actual": 385.0,
+        "predicted": 361.26917243798914,
+        "residual": 23.73082756201086
+      },
+      {
+        "actual": 1271.0,
+        "predicted": 1634.8303080261496,
+        "residual": -363.8303080261496
+      },
+      {
+        "actual": 1499.0,
+        "predicted": 1387.8732652651863,
+        "residual": 111.12673473481368
+      },
+      {
+        "actual": 999.0,
+        "predicted": 1277.5621941016677,
+        "residual": -278.5621941016677
+      },
+      {
+        "actual": 1579.0,
+        "predicted": 1337.0334876381692,
+        "residual": 241.96651236183084
+      },
+      {
+        "actual": 2338.0,
+        "predicted": 2515.502941301391,
+        "residual": -177.50294130139082
+      },
+      {
+        "actual": 896.0,
+        "predicted": 994.2915191758512,
+        "residual": -98.29151917585125
+      },
+      {
+        "actual": 199.0,
+        "predicted": 239.32128836131074,
+        "residual": -40.321288361310735
+      },
+      {
+        "actual": 1097.0,
+        "predicted": 1419.3899140083029,
+        "residual": -322.38991400830287
+      },
+      {
+        "actual": 1219.0,
+        "predicted": 1463.1707271757828,
+        "residual": -244.17072717578276
+      },
+      {
+        "actual": 979.0,
+        "predicted": 841.49079459069,
+        "residual": 137.50920540930997
+      },
+      {
+        "actual": 1790.0,
+        "predicted": 1675.1520295146026,
+        "residual": 114.84797048539735
+      },
+      {
+        "actual": 1975.0,
+        "predicted": 1714.808404196454,
+        "residual": 260.1915958035461
+      },
+      {
+        "actual": 1089.0,
+        "predicted": 1263.2705680247204,
+        "residual": -174.27056802472043
+      },
+      {
+        "actual": 689.0,
+        "predicted": 775.89553476682,
+        "residual": -86.89553476681999
+      },
+      {
+        "actual": 6099.0,
+        "predicted": 4350.500538327404,
+        "residual": 1748.4994616725962
+      },
+      {
+        "actual": 495.0,
+        "predicted": 685.6179664124938,
+        "residual": -190.61796641249384
+      },
+      {
+        "actual": 1280.0,
+        "predicted": 1009.9926904667681,
+        "residual": 270.00730953323193
+      },
+      {
+        "actual": 945.0,
+        "predicted": 1047.4374555159832,
+        "residual": -102.43745551598317
+      },
+      {
+        "actual": 469.0,
+        "predicted": 429.63771185723726,
+        "residual": 39.362288142762736
+      },
+      {
+        "actual": 959.0,
+        "predicted": 999.12542227352,
+        "residual": -40.12542227352003
+      },
+      {
+        "actual": 459.0,
+        "predicted": 591.7956045959369,
+        "residual": -132.79560459593688
+      },
+      {
+        "actual": 539.0,
+        "predicted": 571.033611974451,
+        "residual": -32.03361197445099
+      },
+      {
+        "actual": 722.0,
+        "predicted": 680.6319759390447,
+        "residual": 41.36802406095535
+      },
+      {
+        "actual": 619.0,
+        "predicted": 795.1603321094028,
+        "residual": -176.16033210940282
+      },
+      {
+        "actual": 547.0,
+        "predicted": 598.4858693803167,
+        "residual": -51.48586938031667
+      },
+      {
+        "actual": 899.0,
+        "predicted": 839.7473480548067,
+        "residual": 59.25265194519329
+      },
+      {
+        "actual": 1186.0,
+        "predicted": 1315.9532087896168,
+        "residual": -129.95320878961684
+      },
+      {
+        "actual": 1193.0,
+        "predicted": 1091.064813479662,
+        "residual": 101.935186520338
+      },
+      {
+        "actual": 749.0,
+        "predicted": 616.3477004708352,
+        "residual": 132.6522995291648
+      },
+      {
+        "actual": 1305.0,
+        "predicted": 1886.0960963151938,
+        "residual": -581.0960963151938
+      },
+      {
+        "actual": 745.0,
+        "predicted": 761.076073243995,
+        "residual": -16.076073243994983
+      },
+      {
+        "actual": 709.0,
+        "predicted": 600.6433188748648,
+        "residual": 108.3566811251352
+      },
+      {
+        "actual": 999.0,
+        "predicted": 1075.9448024189498,
+        "residual": -76.94480241894985
+      },
+      {
+        "actual": 597.0,
+        "predicted": 820.5474635824987,
+        "residual": -223.54746358249872
+      },
+      {
+        "actual": 1409.0,
+        "predicted": 1480.4524720035902,
+        "residual": -71.45247200359017
+      },
+      {
+        "actual": 879.01,
+        "predicted": 1368.491138986813,
+        "residual": -489.481138986813
+      },
+      {
+        "actual": 248.9,
+        "predicted": 411.4524237311864,
+        "residual": -162.5524237311864
+      },
+      {
+        "actual": 1258.0,
+        "predicted": 1327.2760199716024,
+        "residual": -69.27601997160241
+      },
+      {
+        "actual": 590.0,
+        "predicted": 890.2321491870102,
+        "residual": -300.23214918701024
+      },
+      {
+        "actual": 347.0,
+        "predicted": 410.8704871289674,
+        "residual": -63.8704871289674
+      },
+      {
+        "actual": 274.0,
+        "predicted": 261.5475478984205,
+        "residual": 12.452452101579524
+      },
+      {
+        "actual": 854.0,
+        "predicted": 991.3153731679905,
+        "residual": -137.31537316799051
+      },
+      {
+        "actual": 1670.0,
+        "predicted": 1424.6735980505991,
+        "residual": 245.32640194940086
+      },
+      {
+        "actual": 1899.0,
+        "predicted": 1571.760393710504,
+        "residual": 327.2396062894959
+      },
+      {
+        "actual": 1017.0,
+        "predicted": 801.0837236712114,
+        "residual": 215.91627632878863
+      },
+      {
+        "actual": 619.0,
+        "predicted": 541.1562523346541,
+        "residual": 77.84374766534586
+      },
+      {
+        "actual": 677.35,
+        "predicted": 730.2437650234674,
+        "residual": -52.89376502346738
+      },
+      {
+        "actual": 384.0,
+        "predicted": 481.29875779569056,
+        "residual": -97.29875779569056
+      },
+      {
+        "actual": 713.07,
+        "predicted": 803.9528665560213,
+        "residual": -90.88286655602121
+      },
+      {
+        "actual": 369.0,
+        "predicted": 373.3934161326463,
+        "residual": -4.39341613264628
+      },
+      {
+        "actual": 439.0,
+        "predicted": 609.9652218511069,
+        "residual": -170.9652218511069
+      },
+      {
+        "actual": 1669.0,
+        "predicted": 1515.88032557767,
+        "residual": 153.11967442233004
+      },
+      {
+        "actual": 1480.0,
+        "predicted": 1359.4870268708694,
+        "residual": 120.51297312913061
+      },
+      {
+        "actual": 1875.0,
+        "predicted": 1534.9890815164877,
+        "residual": 340.01091848351234
+      },
+      {
+        "actual": 1049.6,
+        "predicted": 1403.6350912879034,
+        "residual": -354.03509128790347
+      },
+      {
+        "actual": 403.5,
+        "predicted": 456.883557541031,
+        "residual": -53.383557541030996
+      },
+      {
+        "actual": 713.99,
+        "predicted": 766.7013503077966,
+        "residual": -52.71135030779658
+      },
+      {
+        "actual": 499.0,
+        "predicted": 523.6706352982143,
+        "residual": -24.67063529821428
+      },
+      {
+        "actual": 1200.0,
+        "predicted": 1151.1325555287945,
+        "residual": 48.867444471205545
+      },
+      {
+        "actual": 979.0,
+        "predicted": 795.4777639398352,
+        "residual": 183.5222360601648
+      },
+      {
+        "actual": 1090.0,
+        "predicted": 1079.0874321053316,
+        "residual": 10.912567894668427
+      },
+      {
+        "actual": 2799.0,
+        "predicted": 2913.202002157678,
+        "residual": -114.20200215767818
+      },
+      {
+        "actual": 1425.0,
+        "predicted": 1714.808404196454,
+        "residual": -289.8084041964539
+      },
+      {
+        "actual": 2089.0,
+        "predicted": 1842.9927257041804,
+        "residual": 246.00727429581957
+      },
+      {
+        "actual": 2041.0,
+        "predicted": 2251.690607607259,
+        "residual": -210.69060760725915
+      },
+      {
+        "actual": 839.0,
+        "predicted": 1322.3586552741895,
+        "residual": -483.35865527418946
+      },
+      {
+        "actual": 1064.0,
+        "predicted": 1206.0969952714554,
+        "residual": -142.0969952714554
+      },
+      {
+        "actual": 1899.0,
+        "predicted": 1853.0047941704513,
+        "residual": 45.995205829548695
+      },
+      {
+        "actual": 585.0,
+        "predicted": 512.0574856625401,
+        "residual": 72.9425143374599
+      },
+      {
+        "actual": 684.0,
+        "predicted": 644.0239824296686,
+        "residual": 39.97601757033135
+      },
+      {
+        "actual": 1099.0,
+        "predicted": 1097.8294364645888,
+        "residual": 1.1705635354112474
+      },
+      {
+        "actual": 2299.0,
+        "predicted": 2092.7976817734293,
+        "residual": 206.2023182265707
+      },
+      {
+        "actual": 379.0,
+        "predicted": 408.54850624621565,
+        "residual": -29.548506246215652
+      },
+      {
+        "actual": 1142.75,
+        "predicted": 794.645024770174,
+        "residual": 348.104975229826
+      },
+      {
+        "actual": 859.0,
+        "predicted": 1397.3028427638312,
+        "residual": -538.3028427638312
+      },
+      {
+        "actual": 1775.0,
+        "predicted": 1357.46431911746,
+        "residual": 417.53568088253996
+      },
+      {
+        "actual": 1349.0,
+        "predicted": 1229.0274467835402,
+        "residual": 119.9725532164598
+      },
+      {
+        "actual": 979.0,
+        "predicted": 797.6027719477836,
+        "residual": 181.3972280522164
+      },
+      {
+        "actual": 1929.0,
+        "predicted": 2080.9489831724904,
+        "residual": -151.94898317249044
+      },
+      {
+        "actual": 444.0,
+        "predicted": 570.7775769192635,
+        "residual": -126.77757691926354
+      },
+      {
+        "actual": 709.0,
+        "predicted": 970.8830066179593,
+        "residual": -261.88300661795927
+      },
+      {
+        "actual": 779.0,
+        "predicted": 644.3850828158213,
+        "residual": 134.6149171841787
+      },
+      {
+        "actual": 589.0,
+        "predicted": 692.8237141882754,
+        "residual": -103.8237141882754
+      },
+      {
+        "actual": 1475.0,
+        "predicted": 1244.0219726819257,
+        "residual": 230.97802731807428
+      },
+      {
+        "actual": 210.8,
+        "predicted": 110.99750310225227,
+        "residual": 99.80249689774774
+      },
+      {
+        "actual": 1165.0,
+        "predicted": 1080.7659676038045,
+        "residual": 84.23403239619552
+      },
+      {
+        "actual": 1049.9,
+        "predicted": 1101.4120650275024,
+        "residual": -51.51206502750233
+      },
+      {
+        "actual": 1749.0,
+        "predicted": 1962.6510471876245,
+        "residual": -213.6510471876245
+      },
+      {
+        "actual": 1020.0,
+        "predicted": 936.6502860403963,
+        "residual": 83.34971395960372
+      },
+      {
+        "actual": 1045.0,
+        "predicted": 1122.6698311354176,
+        "residual": -77.66983113541755
+      },
+      {
+        "actual": 2884.86,
+        "predicted": 2448.884891883231,
+        "residual": 435.9751081167692
+      },
+      {
+        "actual": 459.0,
+        "predicted": 690.2776401834149,
+        "residual": -231.27764018341486
+      },
+      {
+        "actual": 597.0,
+        "predicted": 705.9729298106611,
+        "residual": -108.97292981066107
+      },
+      {
+        "actual": 1079.0,
+        "predicted": 1109.1769832372133,
+        "residual": -30.176983237213335
+      },
+      {
+        "actual": 393.9,
+        "predicted": 320.2397866359853,
+        "residual": 73.66021336401468
+      },
+      {
+        "actual": 344.0,
+        "predicted": 380.4880478301616,
+        "residual": -36.48804783016158
+      },
+      {
+        "actual": 549.0,
+        "predicted": 591.7956045959369,
+        "residual": -42.79560459593688
+      },
+      {
+        "actual": 1195.0,
+        "predicted": 1196.2392612224755,
+        "residual": -1.239261222475534
+      },
+      {
+        "actual": 245.0,
+        "predicted": 291.4653887030296,
+        "residual": -46.46538870302959
+      },
+      {
+        "actual": 716.0,
+        "predicted": 987.8415581526956,
+        "residual": -271.8415581526956
+      },
+      {
+        "actual": 2267.86,
+        "predicted": 1879.9239713123538,
+        "residual": 387.9360286876463
+      },
+      {
+        "actual": 1079.0,
+        "predicted": 1411.42007652322,
+        "residual": -332.4200765232199
+      },
+      {
+        "actual": 369.0,
+        "predicted": 373.3934161326463,
+        "residual": -4.39341613264628
+      },
+      {
+        "actual": 287.9,
+        "predicted": 308.0909301507511,
+        "residual": -20.190930150751115
+      },
+      {
+        "actual": 2774.63,
+        "predicted": 2291.6260906319512,
+        "residual": 483.0039093680489
+      },
+      {
+        "actual": 2099.0,
+        "predicted": 1921.042224579619,
+        "residual": 177.95777542038104
+      },
+      {
+        "actual": 419.0,
+        "predicted": 325.78408960078707,
+        "residual": 93.21591039921293
+      },
+      {
+        "actual": 1465.0,
+        "predicted": 1421.791457395004,
+        "residual": 43.208542604995955
+      },
+      {
+        "actual": 989.99,
+        "predicted": 1041.5220588174273,
+        "residual": -51.53205881742724
+      },
+      {
+        "actual": 1159.0,
+        "predicted": 1221.6296745877426,
+        "residual": -62.62967458774256
+      },
+      {
+        "actual": 330.0,
+        "predicted": 426.56409197413655,
+        "residual": -96.56409197413655
+      },
+      {
+        "actual": 1142.4,
+        "predicted": 792.0601087138018,
+        "residual": 350.3398912861983
+      },
+      {
+        "actual": 988.0,
+        "predicted": 961.2762799574882,
+        "residual": 26.723720042511786
+      },
+      {
+        "actual": 1865.0,
+        "predicted": 1931.3719876882465,
+        "residual": -66.37198768824646
+      },
+      {
+        "actual": 540.0,
+        "predicted": 539.8972973149433,
+        "residual": 0.1027026850566699
+      },
+      {
+        "actual": 788.49,
+        "predicted": 817.5005888703955,
+        "residual": -29.01058887039551
+      },
+      {
+        "actual": 544.15,
+        "predicted": 754.8539599984283,
+        "residual": -210.70395999842833
+      },
+      {
+        "actual": 559.0,
+        "predicted": 644.7219397998535,
+        "residual": -85.72193979985354
+      },
+      {
+        "actual": 1099.0,
+        "predicted": 1540.9685948810297,
+        "residual": -441.96859488102973
+      },
+      {
+        "actual": 1579.0,
+        "predicted": 1642.170255152868,
+        "residual": -63.170255152868094
+      },
+      {
+        "actual": 1700.0,
+        "predicted": 1552.1243943875177,
+        "residual": 147.87560561248233
+      },
+      {
+        "actual": 1049.0,
+        "predicted": 1063.2433632991724,
+        "residual": -14.243363299172415
+      },
+      {
+        "actual": 655.0,
+        "predicted": 681.9600271784842,
+        "residual": -26.96002717848421
+      },
+      {
+        "actual": 961.0,
+        "predicted": 783.1308327895362,
+        "residual": 177.86916721046384
+      },
+      {
+        "actual": 979.0,
+        "predicted": 825.5819201661071,
+        "residual": 153.41807983389288
+      },
+      {
+        "actual": 1870.0,
+        "predicted": 2024.4078184952534,
+        "residual": -154.40781849525342
+      },
+      {
+        "actual": 399.0,
+        "predicted": 565.7814386032201,
+        "residual": -166.78143860322007
+      },
+      {
+        "actual": 2226.0,
+        "predicted": 2018.9700377957238,
+        "residual": 207.02996220427622
+      },
+      {
+        "actual": 286.0,
+        "predicted": 294.466912029579,
+        "residual": -8.46691202957902
+      },
+      {
+        "actual": 499.0,
+        "predicted": 332.3176107059214,
+        "residual": 166.68238929407858
+      },
+      {
+        "actual": 1983.0,
+        "predicted": 1668.9898039216832,
+        "residual": 314.01019607831677
+      },
+      {
+        "actual": 469.0,
+        "predicted": 592.8605923165151,
+        "residual": -123.86059231651507
+      },
+      {
+        "actual": 2899.0,
+        "predicted": 2708.200388541318,
+        "residual": 190.7996114586822
+      },
+      {
+        "actual": 439.0,
+        "predicted": 521.2336725191784,
+        "residual": -82.23367251917841
+      },
+      {
+        "actual": 899.0,
+        "predicted": 733.4088448098871,
+        "residual": 165.5911551901129
+      },
+      {
+        "actual": 949.0,
+        "predicted": 1268.7991704268104,
+        "residual": -319.7991704268104
+      },
+      {
+        "actual": 739.0,
+        "predicted": 887.5984160455478,
+        "residual": -148.59841604554776
+      }
+    ],
+    "learning_curve": [
+      {
+        "samples": 244,
+        "train_rmse": 147.18718178337014,
+        "validation_rmse": 329.226000567932
+      },
+      {
+        "samples": 489,
+        "train_rmse": 189.58693046665363,
+        "validation_rmse": 310.15876829289465
+      },
+      {
+        "samples": 815,
+        "train_rmse": 224.40763284798732,
+        "validation_rmse": 292.3111851748137
+      }
+    ],
+    "importance": [
+      {
+        "feature": "categorical__Cpu_Intel Xeon",
+        "value": 896.2813725917528
+      },
+      {
+        "feature": "categorical__Product_EliteBook",
+        "value": 565.7207518519275
+      },
+      {
+        "feature": "categorical__ScreenResolution_4K Ultra HD / Touchscreen 3840x2160",
+        "value": 563.7795229427295
+      },
+      {
+        "feature": "categorical__Gpu_Nvidia Quadro",
+        "value": 559.3059269686166
+      },
+      {
+        "feature": "categorical__Product_Elitebook",
+        "value": 511.21983115297553
+      },
+      {
+        "feature": "categorical__ScreenResolution_Touchscreen / 4K Ultra HD 3840x2160",
+        "value": -503.92985489548835
+      },
+      {
+        "feature": "categorical__Product_Thinkpad",
+        "value": 463.69656917543466
+      },
+      {
+        "feature": "categorical__ScreenResolution_IPS Panel 2560x1440",
+        "value": 439.6678314003077
+      },
+      {
+        "feature": "categorical__ScreenResolution_Touchscreen 2560x1440",
+        "value": 436.48427633007384
+      },
+      {
+        "feature": "categorical__Product_Blade",
+        "value": 429.7882151357126
+      },
+      {
+        "feature": "categorical__Company_Razer",
+        "value": 429.74331048975046
+      },
+      {
+        "feature": "categorical__Memory_240GB SSD",
+        "value": 422.83559297088686
+      },
+      {
+        "feature": "categorical__Product_G701VO-IH74K",
+        "value": -415.197627102356
+      },
+      {
+        "feature": "categorical__Product_Alienware",
+        "value": 414.292511789754
+      },
+      {
+        "feature": "categorical__Product_ThinkPad",
+        "value": 401.4053314666788
+      },
+      {
+        "feature": "categorical__Product_Spectre",
+        "value": 396.85634825150186
+      },
+      {
+        "feature": "categorical__Memory_256GB SSD +  1.0TB Hybrid",
+        "value": 388.31390876784
+      },
+      {
+        "feature": "categorical__ScreenResolution_IPS Panel Retina Display 2880x1800",
+        "value": 386.62015802227506
+      },
+      {
+        "feature": "categorical__Product_GS63VR",
+        "value": 338.7122062574077
+      },
+      {
+        "feature": "categorical__Memory_1TB SSD +  1TB HDD",
+        "value": 320.12153292292993
+      }
+    ],
+    "importance_type": "Standardized coefficients / category coefficients",
+    "explanations": [
+      "最終學習曲線：Training RMSE 224.4，Validation RMSE 292.3，差距 67.9。差距超過驗證誤差的 20%，有過度擬合跡象。",
+      "殘差與預測值的 Pearson r = 0.104。此線性相關檢查無法排除異方差或非線性規律，需配合殘差圖。",
+      "CV 選出 9 個特徵；一個特徵 CV RMSE 483.7，最佳組合 301.5，全部特徵 308.4。",
+      "最顯著的編碼後特徵為 categorical__Cpu_Intel Xeon；係數表示控制其他輸入後的關聯，不等於因果。",
+      "欠擬合評估：訓練集目標標準差 705.5，最大樣本 Training RMSE 224.4。目前無此高偏差門檻的證據，不能單憑 RMSE 排除欠擬合。"
+    ],
+    "residual_correlation": 0.10403427615961397
+  },
+  "prediction_configuration": {
+    "supported": true,
+    "model_path": "data/laptop/model.json",
+    "model_name": "ElasticNet Regression",
+    "input_stage": "已清理／衍生的候選欄位，與 Python prepare() 的輸出一致"
+  },
+  "source_version": 1,
+  "source_license": "Other (specified in description)",
+  "source_last_updated": "2020-11-05T10:56:42.253Z"
+}

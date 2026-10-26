@@ -1,0 +1,401 @@
+[
+  {
+    "input": {
+      "BHK": 2,
+      "Size": 1100,
+      "Area Type": "Super Area",
+      "Area Locality": "Jaya Nagar Block 7, Jayanagar",
+      "City": "Bangalore",
+      "Furnishing Status": "Unfurnished",
+      "Tenant Preferred": "Bachelors/Family",
+      "Bathroom": 2,
+      "posted_year": 2022,
+      "posted_month": 6,
+      "posted_day": 23,
+      "posted_weekday": 3,
+      "floor_number": 2,
+      "total_floors": 4.0
+    },
+    "expected": 15970.06937392856
+  },
+  {
+    "input": {
+      "BHK": 2,
+      "Size": 800,
+      "Area Type": "Super Area",
+      "Area Locality": "Manikandan Nagar",
+      "City": "Chennai",
+      "Furnishing Status": "Furnished",
+      "Tenant Preferred": "Bachelors/Family",
+      "Bathroom": 2,
+      "posted_year": 2022,
+      "posted_month": 5,
+      "posted_day": 12,
+      "posted_weekday": 3,
+      "floor_number": 2,
+      "total_floors": 3.0
+    },
+    "expected": 12490.42661303237
+  },
+  {
+    "input": {
+      "BHK": 2,
+      "Size": 518,
+      "Area Type": "Carpet Area",
+      "Area Locality": "Bhandup West",
+      "City": "Mumbai",
+      "Furnishing Status": "Semi-Furnished",
+      "Tenant Preferred": "Bachelors/Family",
+      "Bathroom": 2,
+      "posted_year": 2022,
+      "posted_month": 5,
+      "posted_day": 10,
+      "posted_weekday": 1,
+      "floor_number": 5,
+      "total_floors": 12.0
+    },
+    "expected": 35021.50555162045
+  },
+  {
+    "input": {
+      "BHK": 3,
+      "Size": 1500,
+      "Area Type": "Carpet Area",
+      "Area Locality": "Cherlopalli TIRUPATI",
+      "City": "Delhi",
+      "Furnishing Status": "Unfurnished",
+      "Tenant Preferred": "Bachelors/Family",
+      "Bathroom": 3,
+      "posted_year": 2022,
+      "posted_month": 6,
+      "posted_day": 8,
+      "posted_weekday": 2,
+      "floor_number": 1,
+      "total_floors": 1.0
+    },
+    "expected": 48604.70906518998
+  },
+  {
+    "input": {
+      "BHK": 3,
+      "Size": 2235,
+      "Area Type": "Carpet Area",
+      "Area Locality": "Gachibowli",
+      "City": "Hyderabad",
+      "Furnishing Status": "Unfurnished",
+      "Tenant Preferred": "Family",
+      "Bathroom": 5,
+      "posted_year": 2022,
+      "posted_month": 7,
+      "posted_day": 6,
+      "posted_weekday": 2,
+      "floor_number": 0,
+      "total_floors": 10.0
+    },
+    "expected": 62600.722717613
+  },
+  {
+    "input": {
+      "BHK": 2,
+      "Size": 1050,
+      "Area Type": "Carpet Area",
+      "Area Locality": "Old Nallakunta",
+      "City": "Hyderabad",
+      "Furnishing Status": "Semi-Furnished",
+      "Tenant Preferred": "Bachelors/Family",
+      "Bathroom": 2,
+      "posted_year": 2022,
+      "posted_month": 6,
+      "posted_day": 13,
+      "posted_weekday": 0,
+      "floor_number": 3,
+      "total_floors": 3.0
+    },
+    "expected": 15193.928068462934
+  },
+  {
+    "input": {
+      "BHK": 2,
+      "Size": 625,
+      "Area Type": "Carpet Area",
+      "Area Locality": "Panch Complex, Powai",
+      "City": "Mumbai",
+      "Furnishing Status": "Furnished",
+      "Tenant Preferred": "Bachelors",
+      "Bathroom": 2,
+      "posted_year": 2022,
+      "posted_month": 6,
+      "posted_day": 4,
+      "posted_weekday": 5,
+      "floor_number": 9,
+      "total_floors": 18.0
+    },
+    "expected": 49380.33187608734
+  },
+  {
+    "input": {
+      "BHK": 2,
+      "Size": 700,
+      "Area Type": "Super Area",
+      "Area Locality": "Varthur",
+      "City": "Bangalore",
+      "Furnishing Status": "Semi-Furnished",
+      "Tenant Preferred": "Bachelors/Family",
+      "Bathroom": 2,
+      "posted_year": 2022,
+      "posted_month": 5,
+      "posted_day": 23,
+      "posted_weekday": 0,
+      "floor_number": 2,
+      "total_floors": 6.0
+    },
+    "expected": 12678.310766006478
+  },
+  {
+    "input": {
+      "BHK": 4,
+      "Size": 2500,
+      "Area Type": "Carpet Area",
+      "Area Locality": "Bandra West",
+      "City": "Mumbai",
+      "Furnishing Status": "Furnished",
+      "Tenant Preferred": "Bachelors/Family",
+      "Bathroom": 4,
+      "posted_year": 2022,
+      "posted_month": 6,
+      "posted_day": 22,
+      "posted_weekday": 2,
+      "floor_number": 5,
+      "total_floors": 12.0
+    },
+    "expected": 413286.30955951725
+  },
+  {
+    "input": {
+      "BHK": 2,
+      "Size": 650,
+      "Area Type": "Super Area",
+      "Area Locality": "Ponniammanmedu",
+      "City": "Chennai",
+      "Furnishing Status": "Semi-Furnished",
+      "Tenant Preferred": "Bachelors/Family",
+      "Bathroom": 2,
+      "posted_year": 2022,
+      "posted_month": 5,
+      "posted_day": 12,
+      "posted_weekday": 3,
+      "floor_number": 2,
+      "total_floors": 3.0
+    },
+    "expected": 12174.272245555727
+  },
+  {
+    "input": {
+      "BHK": 2,
+      "Size": 650,
+      "Area Type": "Super Area",
+      "Area Locality": "Arcot Road Virugambakkam",
+      "City": "Chennai",
+      "Furnishing Status": "Semi-Furnished",
+      "Tenant Preferred": "Bachelors/Family",
+      "Bathroom": 1,
+      "posted_year": 2022,
+      "posted_month": 6,
+      "posted_day": 29,
+      "posted_weekday": 2,
+      "floor_number": 2,
+      "total_floors": 3.0
+    },
+    "expected": 10331.803156447764
+  },
+  {
+    "input": {
+      "BHK": 2,
+      "Size": 500,
+      "Area Type": "Super Area",
+      "Area Locality": "Saidabad Colony, Sayeedabad",
+      "City": "Hyderabad",
+      "Furnishing Status": "Furnished",
+      "Tenant Preferred": "Bachelors/Family",
+      "Bathroom": 2,
+      "posted_year": 2022,
+      "posted_month": 6,
+      "posted_day": 18,
+      "posted_weekday": 5,
+      "floor_number": 1,
+      "total_floors": 2.0
+    },
+    "expected": 12377.585251043853
+  },
+  {
+    "input": {
+      "BHK": 2,
+      "Size": 1000,
+      "Area Type": "Carpet Area",
+      "Area Locality": "Hbr Layout Block 4, HBR Layout",
+      "City": "Bangalore",
+      "Furnishing Status": "Semi-Furnished",
+      "Tenant Preferred": "Bachelors",
+      "Bathroom": 2,
+      "posted_year": 2022,
+      "posted_month": 7,
+      "posted_day": 4,
+      "posted_weekday": 0,
+      "floor_number": 4,
+      "total_floors": 4.0
+    },
+    "expected": 20378.095952158677
+  },
+  {
+    "input": {
+      "BHK": 1,
+      "Size": 550,
+      "Area Type": "Carpet Area",
+      "Area Locality": "Chinnapanna Halli",
+      "City": "Bangalore",
+      "Furnishing Status": "Semi-Furnished",
+      "Tenant Preferred": "Bachelors/Family",
+      "Bathroom": 1,
+      "posted_year": 2022,
+      "posted_month": 6,
+      "posted_day": 20,
+      "posted_weekday": 0,
+      "floor_number": 2,
+      "total_floors": 5.0
+    },
+    "expected": 10402.783065065993
+  },
+  {
+    "input": {
+      "BHK": 3,
+      "Size": 1100,
+      "Area Type": "Carpet Area",
+      "Area Locality": "Survey Park",
+      "City": "Kolkata",
+      "Furnishing Status": "Unfurnished",
+      "Tenant Preferred": "Bachelors/Family",
+      "Bathroom": 2,
+      "posted_year": 2022,
+      "posted_month": 7,
+      "posted_day": 3,
+      "posted_weekday": 6,
+      "floor_number": 0,
+      "total_floors": 2.0
+    },
+    "expected": 19481.120913998147
+  },
+  {
+    "input": {
+      "BHK": 1,
+      "Size": 550,
+      "Area Type": "Super Area",
+      "Area Locality": "Thane-Kalyan-Dombivli",
+      "City": "Mumbai",
+      "Furnishing Status": "Semi-Furnished",
+      "Tenant Preferred": "Bachelors/Family",
+      "Bathroom": 1,
+      "posted_year": 2022,
+      "posted_month": 5,
+      "posted_day": 23,
+      "posted_weekday": 0,
+      "floor_number": 3,
+      "total_floors": 5.0
+    },
+    "expected": 23069.11731664285
+  },
+  {
+    "input": {
+      "BHK": 4,
+      "Size": 2600,
+      "Area Type": "Carpet Area",
+      "Area Locality": "Ranjith Road",
+      "City": "Chennai",
+      "Furnishing Status": "Semi-Furnished",
+      "Tenant Preferred": "Bachelors/Family",
+      "Bathroom": 4,
+      "posted_year": 2022,
+      "posted_month": 7,
+      "posted_day": 6,
+      "posted_weekday": 2,
+      "floor_number": 2,
+      "total_floors": 2.0
+    },
+    "expected": 71604.78471181596
+  },
+  {
+    "input": {
+      "BHK": 2,
+      "Size": 800,
+      "Area Type": "Super Area",
+      "Area Locality": "Kachiguda, NH 2 2",
+      "City": "Hyderabad",
+      "Furnishing Status": "Unfurnished",
+      "Tenant Preferred": "Bachelors/Family",
+      "Bathroom": 1,
+      "posted_year": 2022,
+      "posted_month": 5,
+      "posted_day": 25,
+      "posted_weekday": 2,
+      "floor_number": 2,
+      "total_floors": 4.0
+    },
+    "expected": 9676.523470123138
+  },
+  {
+    "input": {
+      "BHK": 2,
+      "Size": 1250,
+      "Area Type": "Super Area",
+      "Area Locality": "Ambedkar Nagar-Boduppal, Secunderabad",
+      "City": "Hyderabad",
+      "Furnishing Status": "Unfurnished",
+      "Tenant Preferred": "Family",
+      "Bathroom": 2,
+      "posted_year": 2022,
+      "posted_month": 5,
+      "posted_day": 2,
+      "posted_weekday": 0,
+      "floor_number": 0,
+      "total_floors": 1.0
+    },
+    "expected": 13114.238566511354
+  },
+  {
+    "input": {
+      "BHK": 3,
+      "Size": 1850,
+      "Area Type": "Carpet Area",
+      "Area Locality": "Halasuru",
+      "City": "Bangalore",
+      "Furnishing Status": "Furnished",
+      "Tenant Preferred": "Bachelors/Family",
+      "Bathroom": 3,
+      "posted_year": 2022,
+      "posted_month": 7,
+      "posted_day": 5,
+      "posted_weekday": 1,
+      "floor_number": 3,
+      "total_floors": 3.0
+    },
+    "expected": 55165.6565358357
+  },
+  {
+    "input": {
+      "BHK": null,
+      "Size": null,
+      "Area Type": "__UNSEEN_CATEGORY__",
+      "Area Locality": "__UNSEEN_CATEGORY__",
+      "City": "__UNSEEN_CATEGORY__",
+      "Furnishing Status": "__UNSEEN_CATEGORY__",
+      "Tenant Preferred": "__UNSEEN_CATEGORY__",
+      "Bathroom": null,
+      "posted_year": null,
+      "posted_month": null,
+      "posted_day": null,
+      "posted_weekday": null,
+      "floor_number": null,
+      "total_floors": null
+    },
+    "expected": 13697.202910930617
+  }
+]

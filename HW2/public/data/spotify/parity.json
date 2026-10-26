@@ -1,0 +1,422 @@
+[
+  {
+    "input": {
+      "duration_ms": 281922,
+      "explicit": 0,
+      "danceability": 0.548,
+      "energy": 0.859,
+      "key": 5,
+      "loudness": -5.447,
+      "mode": 0,
+      "speechiness": 0.261,
+      "acousticness": 0.101,
+      "instrumentalness": 7.2e-06,
+      "liveness": 0.407,
+      "valence": 0.262,
+      "tempo": 154.925,
+      "time_signature": 4,
+      "track_genre": "hardstyle"
+    },
+    "expected": 27.09973940340534
+  },
+  {
+    "input": {
+      "duration_ms": 255680,
+      "explicit": 0,
+      "danceability": 0.741,
+      "energy": 0.787,
+      "key": 5,
+      "loudness": -6.228,
+      "mode": 1,
+      "speechiness": 0.0525,
+      "acousticness": 0.217,
+      "instrumentalness": 0.0179,
+      "liveness": 0.0835,
+      "valence": 0.771,
+      "tempo": 91.993,
+      "time_signature": 4,
+      "track_genre": "hip-hop"
+    },
+    "expected": 47.721812978015784
+  },
+  {
+    "input": {
+      "duration_ms": 181946,
+      "explicit": 0,
+      "danceability": 0.542,
+      "energy": 0.944,
+      "key": 5,
+      "loudness": -1.443,
+      "mode": 1,
+      "speechiness": 0.0821,
+      "acousticness": 0.00326,
+      "instrumentalness": 0.0,
+      "liveness": 0.159,
+      "valence": 0.642,
+      "tempo": 175.007,
+      "time_signature": 4,
+      "track_genre": "happy"
+    },
+    "expected": 22.0409048709042
+  },
+  {
+    "input": {
+      "duration_ms": 204676,
+      "explicit": 0,
+      "danceability": 0.449,
+      "energy": 0.831,
+      "key": 5,
+      "loudness": -4.668,
+      "mode": 0,
+      "speechiness": 0.0835,
+      "acousticness": 0.00257,
+      "instrumentalness": 0.00119,
+      "liveness": 0.0998,
+      "valence": 0.211,
+      "tempo": 140.091,
+      "time_signature": 4,
+      "track_genre": "metalcore"
+    },
+    "expected": 45.34870467901744
+  },
+  {
+    "input": {
+      "duration_ms": 234461,
+      "explicit": 0,
+      "danceability": 0.65,
+      "energy": 0.912,
+      "key": 10,
+      "loudness": -4.588,
+      "mode": 0,
+      "speechiness": 0.0406,
+      "acousticness": 0.0241,
+      "instrumentalness": 0.8,
+      "liveness": 0.293,
+      "valence": 0.191,
+      "tempo": 129.999,
+      "time_signature": 4,
+      "track_genre": "progressive-house"
+    },
+    "expected": 46.53455088722323
+  },
+  {
+    "input": {
+      "duration_ms": 195586,
+      "explicit": 0,
+      "danceability": 0.451,
+      "energy": 0.449,
+      "key": 11,
+      "loudness": -6.334,
+      "mode": 1,
+      "speechiness": 0.0271,
+      "acousticness": 0.204,
+      "instrumentalness": 0.0,
+      "liveness": 0.171,
+      "valence": 0.299,
+      "tempo": 87.933,
+      "time_signature": 4,
+      "track_genre": "kids"
+    },
+    "expected": 16.17326066030565
+  },
+  {
+    "input": {
+      "duration_ms": 195833,
+      "explicit": 1,
+      "danceability": 0.578,
+      "energy": 0.643,
+      "key": 7,
+      "loudness": -3.176,
+      "mode": 0,
+      "speechiness": 0.0776,
+      "acousticness": 0.148,
+      "instrumentalness": 0.0,
+      "liveness": 0.325,
+      "valence": 0.614,
+      "tempo": 179.359,
+      "time_signature": 4,
+      "track_genre": "dancehall"
+    },
+    "expected": 38.397925583690814
+  },
+  {
+    "input": {
+      "duration_ms": 302935,
+      "explicit": 0,
+      "danceability": 0.695,
+      "energy": 0.727,
+      "key": 6,
+      "loudness": -6.274,
+      "mode": 0,
+      "speechiness": 0.0323,
+      "acousticness": 0.0744,
+      "instrumentalness": 0.000175,
+      "liveness": 0.533,
+      "valence": 0.864,
+      "tempo": 118.034,
+      "time_signature": 4,
+      "track_genre": "pop-film"
+    },
+    "expected": 58.24527120883855
+  },
+  {
+    "input": {
+      "duration_ms": 163200,
+      "explicit": 0,
+      "danceability": 0.164,
+      "energy": 0.00555,
+      "key": 4,
+      "loudness": -33.112,
+      "mode": 0,
+      "speechiness": 0.0387,
+      "acousticness": 0.95,
+      "instrumentalness": 0.882,
+      "liveness": 0.09,
+      "valence": 0.0396,
+      "tempo": 71.751,
+      "time_signature": 4,
+      "track_genre": "sleep"
+    },
+    "expected": 36.58361120115592
+  },
+  {
+    "input": {
+      "duration_ms": 45200,
+      "explicit": 0,
+      "danceability": 0.597,
+      "energy": 0.66,
+      "key": 7,
+      "loudness": -8.02,
+      "mode": 1,
+      "speechiness": 0.0636,
+      "acousticness": 0.267,
+      "instrumentalness": 2.36e-06,
+      "liveness": 0.0928,
+      "valence": 0.331,
+      "tempo": 75.111,
+      "time_signature": 4,
+      "track_genre": "children"
+    },
+    "expected": 36.852160091576536
+  },
+  {
+    "input": {
+      "duration_ms": 195057,
+      "explicit": 0,
+      "danceability": 0.594,
+      "energy": 0.374,
+      "key": 9,
+      "loudness": -8.371,
+      "mode": 0,
+      "speechiness": 0.304,
+      "acousticness": 0.28,
+      "instrumentalness": 0.00588,
+      "liveness": 0.0918,
+      "valence": 0.147,
+      "tempo": 138.568,
+      "time_signature": 3,
+      "track_genre": "house"
+    },
+    "expected": 42.66440892517102
+  },
+  {
+    "input": {
+      "duration_ms": 86600,
+      "explicit": 0,
+      "danceability": 0.516,
+      "energy": 0.858,
+      "key": 7,
+      "loudness": -5.71,
+      "mode": 1,
+      "speechiness": 0.0527,
+      "acousticness": 5.32e-05,
+      "instrumentalness": 0.00105,
+      "liveness": 0.0677,
+      "valence": 0.618,
+      "tempo": 97.353,
+      "time_signature": 4,
+      "track_genre": "power-pop"
+    },
+    "expected": 28.02293402100557
+  },
+  {
+    "input": {
+      "duration_ms": 354982,
+      "explicit": 0,
+      "danceability": 0.742,
+      "energy": 0.976,
+      "key": 9,
+      "loudness": -10.14,
+      "mode": 0,
+      "speechiness": 0.0637,
+      "acousticness": 0.365,
+      "instrumentalness": 0.932,
+      "liveness": 0.111,
+      "valence": 0.0834,
+      "tempo": 129.995,
+      "time_signature": 4,
+      "track_genre": "detroit-techno"
+    },
+    "expected": 11.21412268037555
+  },
+  {
+    "input": {
+      "duration_ms": 211617,
+      "explicit": 0,
+      "danceability": 0.643,
+      "energy": 0.968,
+      "key": 6,
+      "loudness": -5.894,
+      "mode": 1,
+      "speechiness": 0.0644,
+      "acousticness": 0.00153,
+      "instrumentalness": 0.853,
+      "liveness": 0.105,
+      "valence": 0.473,
+      "tempo": 131.035,
+      "time_signature": 4,
+      "track_genre": "techno"
+    },
+    "expected": 39.16053712268958
+  },
+  {
+    "input": {
+      "duration_ms": 169371,
+      "explicit": 0,
+      "danceability": 0.524,
+      "energy": 0.0856,
+      "key": 9,
+      "loudness": -17.766,
+      "mode": 1,
+      "speechiness": 0.0999,
+      "acousticness": 0.739,
+      "instrumentalness": 0.0,
+      "liveness": 0.0919,
+      "valence": 0.316,
+      "tempo": 93.672,
+      "time_signature": 4,
+      "track_genre": "mpb"
+    },
+    "expected": 41.89857021859143
+  },
+  {
+    "input": {
+      "duration_ms": 136040,
+      "explicit": 0,
+      "danceability": 0.726,
+      "energy": 0.228,
+      "key": 5,
+      "loudness": -16.387,
+      "mode": 1,
+      "speechiness": 0.278,
+      "acousticness": 0.96,
+      "instrumentalness": 5.02e-06,
+      "liveness": 0.093,
+      "valence": 0.66,
+      "tempo": 68.058,
+      "time_signature": 3,
+      "track_genre": "tango"
+    },
+    "expected": 18.826351078336174
+  },
+  {
+    "input": {
+      "duration_ms": 367950,
+      "explicit": 0,
+      "danceability": 0.732,
+      "energy": 0.895,
+      "key": 8,
+      "loudness": -4.665,
+      "mode": 0,
+      "speechiness": 0.0526,
+      "acousticness": 0.459,
+      "instrumentalness": 0.00403,
+      "liveness": 0.0758,
+      "valence": 0.935,
+      "tempo": 100.019,
+      "time_signature": 4,
+      "track_genre": "malay"
+    },
+    "expected": 29.11240718164307
+  },
+  {
+    "input": {
+      "duration_ms": 361573,
+      "explicit": 0,
+      "danceability": 0.475,
+      "energy": 0.769,
+      "key": 1,
+      "loudness": -5.147,
+      "mode": 1,
+      "speechiness": 0.0929,
+      "acousticness": 0.384,
+      "instrumentalness": 2.16e-05,
+      "liveness": 0.0283,
+      "valence": 0.481,
+      "tempo": 142.102,
+      "time_signature": 4,
+      "track_genre": "show-tunes"
+    },
+    "expected": 31.74908608533351
+  },
+  {
+    "input": {
+      "duration_ms": 213640,
+      "explicit": 1,
+      "danceability": 0.233,
+      "energy": 0.943,
+      "key": 2,
+      "loudness": -3.443,
+      "mode": 0,
+      "speechiness": 0.171,
+      "acousticness": 0.00878,
+      "instrumentalness": 0.0,
+      "liveness": 0.359,
+      "valence": 0.0501,
+      "tempo": 149.992,
+      "time_signature": 4,
+      "track_genre": "metalcore"
+    },
+    "expected": 45.57961577297997
+  },
+  {
+    "input": {
+      "duration_ms": 231200,
+      "explicit": 0,
+      "danceability": 0.405,
+      "energy": 0.58,
+      "key": 1,
+      "loudness": -6.166,
+      "mode": 1,
+      "speechiness": 0.0334,
+      "acousticness": 0.247,
+      "instrumentalness": 8.07e-06,
+      "liveness": 0.083,
+      "valence": 0.174,
+      "tempo": 149.847,
+      "time_signature": 4,
+      "track_genre": "dubstep"
+    },
+    "expected": 39.414508331273254
+  },
+  {
+    "input": {
+      "duration_ms": null,
+      "explicit": null,
+      "danceability": null,
+      "energy": null,
+      "key": null,
+      "loudness": null,
+      "mode": null,
+      "speechiness": null,
+      "acousticness": null,
+      "instrumentalness": null,
+      "liveness": null,
+      "valence": null,
+      "tempo": null,
+      "time_signature": null,
+      "track_genre": "__UNSEEN_CATEGORY__"
+    },
+    "expected": 36.365722287452385
+  }
+]

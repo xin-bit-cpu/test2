@@ -1,0 +1,963 @@
+[
+  {
+    "id": "king-county",
+    "sha256": "1fdffaeec5e7656f6c09e29d9daa7e2157479c5f8e3a761758b4bfa43c773202",
+    "source_rows": 21613,
+    "clean_rows": 21434,
+    "source_columns": [
+      "id",
+      "date",
+      "price",
+      "bedrooms",
+      "bathrooms",
+      "sqft_living",
+      "sqft_lot",
+      "floors",
+      "waterfront",
+      "view",
+      "condition",
+      "grade",
+      "sqft_above",
+      "sqft_basement",
+      "yr_built",
+      "yr_renovated",
+      "zipcode",
+      "lat",
+      "long",
+      "sqft_living15",
+      "sqft_lot15"
+    ],
+    "source_input_count": 20,
+    "original_features": [
+      "bedrooms",
+      "bathrooms",
+      "sqft_living",
+      "sqft_lot",
+      "floors",
+      "waterfront",
+      "view",
+      "condition",
+      "grade",
+      "sqft_above",
+      "sqft_basement",
+      "yr_built",
+      "yr_renovated",
+      "zipcode",
+      "lat",
+      "long",
+      "sqft_living15",
+      "sqft_lot15"
+    ],
+    "original_feature_count": 18,
+    "candidate_features": [
+      "bedrooms",
+      "bathrooms",
+      "sqft_living",
+      "sqft_lot",
+      "floors",
+      "waterfront",
+      "view",
+      "condition",
+      "grade",
+      "sqft_above",
+      "sqft_basement",
+      "yr_built",
+      "yr_renovated",
+      "zipcode",
+      "lat",
+      "long",
+      "sqft_living15",
+      "sqft_lot15"
+    ],
+    "candidate_feature_count": 18,
+    "raw_requirement_met": true,
+    "note": "移除 id 與 date；同一房屋 id 僅保留第一筆，避免重複物件跨集合。",
+    "source_schema": [
+      {
+        "name": "id",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "date",
+        "dtype": "str",
+        "missing": 0
+      },
+      {
+        "name": "price",
+        "dtype": "float64",
+        "missing": 0
+      },
+      {
+        "name": "bedrooms",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "bathrooms",
+        "dtype": "float64",
+        "missing": 0
+      },
+      {
+        "name": "sqft_living",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "sqft_lot",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "floors",
+        "dtype": "float64",
+        "missing": 0
+      },
+      {
+        "name": "waterfront",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "view",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "condition",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "grade",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "sqft_above",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "sqft_basement",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "yr_built",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "yr_renovated",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "zipcode",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "lat",
+        "dtype": "float64",
+        "missing": 0
+      },
+      {
+        "name": "long",
+        "dtype": "float64",
+        "missing": 0
+      },
+      {
+        "name": "sqft_living15",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "sqft_lot15",
+        "dtype": "int64",
+        "missing": 0
+      }
+    ]
+  },
+  {
+    "id": "spotify",
+    "sha256": "be5216c0c811283c5db3e3af83cffa59873cc5fa375222f3280782776e289176",
+    "source_rows": 114000,
+    "clean_rows": 86067,
+    "source_columns": [
+      "Unnamed: 0",
+      "track_id",
+      "artists",
+      "album_name",
+      "track_name",
+      "popularity",
+      "duration_ms",
+      "explicit",
+      "danceability",
+      "energy",
+      "key",
+      "loudness",
+      "mode",
+      "speechiness",
+      "acousticness",
+      "instrumentalness",
+      "liveness",
+      "valence",
+      "tempo",
+      "time_signature",
+      "track_genre"
+    ],
+    "source_input_count": 19,
+    "original_features": [
+      "duration_ms",
+      "explicit",
+      "danceability",
+      "energy",
+      "key",
+      "loudness",
+      "mode",
+      "speechiness",
+      "acousticness",
+      "instrumentalness",
+      "liveness",
+      "valence",
+      "tempo",
+      "time_signature",
+      "track_genre"
+    ],
+    "original_feature_count": 15,
+    "candidate_features": [
+      "duration_ms",
+      "explicit",
+      "danceability",
+      "energy",
+      "key",
+      "loudness",
+      "mode",
+      "speechiness",
+      "acousticness",
+      "instrumentalness",
+      "liveness",
+      "valence",
+      "tempo",
+      "time_signature",
+      "track_genre"
+    ],
+    "candidate_feature_count": 15,
+    "raw_requirement_met": true,
+    "note": "依 track_id 去重；移除索引、曲名、專輯、藝人與 track_id，保留音訊特徵與曲風。",
+    "source_schema": [
+      {
+        "name": "Unnamed: 0",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "track_id",
+        "dtype": "str",
+        "missing": 0
+      },
+      {
+        "name": "artists",
+        "dtype": "str",
+        "missing": 1
+      },
+      {
+        "name": "album_name",
+        "dtype": "str",
+        "missing": 1
+      },
+      {
+        "name": "track_name",
+        "dtype": "str",
+        "missing": 1
+      },
+      {
+        "name": "popularity",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "duration_ms",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "explicit",
+        "dtype": "bool",
+        "missing": 0
+      },
+      {
+        "name": "danceability",
+        "dtype": "float64",
+        "missing": 0
+      },
+      {
+        "name": "energy",
+        "dtype": "float64",
+        "missing": 0
+      },
+      {
+        "name": "key",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "loudness",
+        "dtype": "float64",
+        "missing": 0
+      },
+      {
+        "name": "mode",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "speechiness",
+        "dtype": "float64",
+        "missing": 0
+      },
+      {
+        "name": "acousticness",
+        "dtype": "float64",
+        "missing": 0
+      },
+      {
+        "name": "instrumentalness",
+        "dtype": "float64",
+        "missing": 0
+      },
+      {
+        "name": "liveness",
+        "dtype": "float64",
+        "missing": 0
+      },
+      {
+        "name": "valence",
+        "dtype": "float64",
+        "missing": 0
+      },
+      {
+        "name": "tempo",
+        "dtype": "float64",
+        "missing": 0
+      },
+      {
+        "name": "time_signature",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "track_genre",
+        "dtype": "str",
+        "missing": 0
+      }
+    ]
+  },
+  {
+    "id": "laptop",
+    "sha256": "242f67dad13cce1609e0b7ffa41fae25ce24e764ab1e4823084d8b67c7e956fa",
+    "source_rows": 1303,
+    "clean_rows": 1274,
+    "source_columns": [
+      "laptop_ID",
+      "Company",
+      "Product",
+      "TypeName",
+      "Inches",
+      "ScreenResolution",
+      "Cpu",
+      "Ram",
+      "Memory",
+      "Gpu",
+      "OpSys",
+      "Weight",
+      "Price_euros"
+    ],
+    "source_input_count": 12,
+    "original_features": [
+      "Company",
+      "Product",
+      "TypeName",
+      "Inches",
+      "ScreenResolution",
+      "Cpu",
+      "Ram",
+      "Memory",
+      "Gpu",
+      "OpSys",
+      "Weight"
+    ],
+    "original_feature_count": 11,
+    "candidate_features": [
+      "Company",
+      "Product",
+      "TypeName",
+      "Inches",
+      "ScreenResolution",
+      "Cpu",
+      "Ram",
+      "Memory",
+      "Gpu",
+      "OpSys",
+      "Weight"
+    ],
+    "candidate_feature_count": 11,
+    "raw_requirement_met": true,
+    "note": "來源目標為 Price_euros，統一映射為 Price；移除 laptop_ID。Product 使用產品系列首字，CPU/GPU 使用廠牌與系列，降低稀疏類別。",
+    "source_schema": [
+      {
+        "name": "laptop_ID",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "Company",
+        "dtype": "str",
+        "missing": 0
+      },
+      {
+        "name": "Product",
+        "dtype": "str",
+        "missing": 0
+      },
+      {
+        "name": "TypeName",
+        "dtype": "str",
+        "missing": 0
+      },
+      {
+        "name": "Inches",
+        "dtype": "float64",
+        "missing": 0
+      },
+      {
+        "name": "ScreenResolution",
+        "dtype": "str",
+        "missing": 0
+      },
+      {
+        "name": "Cpu",
+        "dtype": "str",
+        "missing": 0
+      },
+      {
+        "name": "Ram",
+        "dtype": "str",
+        "missing": 0
+      },
+      {
+        "name": "Memory",
+        "dtype": "str",
+        "missing": 0
+      },
+      {
+        "name": "Gpu",
+        "dtype": "str",
+        "missing": 0
+      },
+      {
+        "name": "OpSys",
+        "dtype": "str",
+        "missing": 0
+      },
+      {
+        "name": "Weight",
+        "dtype": "str",
+        "missing": 0
+      },
+      {
+        "name": "Price_euros",
+        "dtype": "float64",
+        "missing": 0
+      }
+    ]
+  },
+  {
+    "id": "bike",
+    "sha256": "1fb548d6c9224121b64b7a480fe3030f8d73093a510f79bfce58ed33dc54b33d",
+    "source_rows": 17379,
+    "clean_rows": 17377,
+    "source_columns": [
+      "instant",
+      "dteday",
+      "season",
+      "yr",
+      "mnth",
+      "hr",
+      "holiday",
+      "weekday",
+      "workingday",
+      "weathersit",
+      "temp",
+      "atemp",
+      "hum",
+      "windspeed",
+      "casual",
+      "registered",
+      "cnt"
+    ],
+    "source_input_count": 16,
+    "original_features": [
+      "season",
+      "yr",
+      "mnth",
+      "hr",
+      "holiday",
+      "weekday",
+      "workingday",
+      "weathersit",
+      "temp",
+      "atemp",
+      "hum",
+      "windspeed"
+    ],
+    "original_feature_count": 12,
+    "candidate_features": [
+      "season",
+      "yr",
+      "mnth",
+      "hr",
+      "holiday",
+      "weekday",
+      "workingday",
+      "weathersit",
+      "temp",
+      "atemp",
+      "hum",
+      "windspeed"
+    ],
+    "candidate_feature_count": 12,
+    "raw_requirement_met": true,
+    "note": "使用相同 Capital Bikeshare/UCI 來源的 Kaggle hourly 版本；cnt 映射 count。casual + registered = cnt，兩欄必須排除；移除 instant、dteday。採時間順序 80/20 與 TimeSeriesSplit。",
+    "source_schema": [
+      {
+        "name": "instant",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "dteday",
+        "dtype": "str",
+        "missing": 0
+      },
+      {
+        "name": "season",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "yr",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "mnth",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "hr",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "holiday",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "weekday",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "workingday",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "weathersit",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "temp",
+        "dtype": "float64",
+        "missing": 0
+      },
+      {
+        "name": "atemp",
+        "dtype": "float64",
+        "missing": 0
+      },
+      {
+        "name": "hum",
+        "dtype": "float64",
+        "missing": 0
+      },
+      {
+        "name": "windspeed",
+        "dtype": "float64",
+        "missing": 0
+      },
+      {
+        "name": "casual",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "registered",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "cnt",
+        "dtype": "int64",
+        "missing": 0
+      }
+    ]
+  },
+  {
+    "id": "used-car",
+    "sha256": "31ae89671a23175f4b3bd9553d6dfbcd50f13908152d98d23ac9d4f5a9eab543",
+    "source_rows": 8128,
+    "clean_rows": 6907,
+    "source_columns": [
+      "name",
+      "year",
+      "selling_price",
+      "km_driven",
+      "fuel",
+      "seller_type",
+      "transmission",
+      "owner",
+      "mileage",
+      "engine",
+      "max_power",
+      "torque",
+      "seats"
+    ],
+    "source_input_count": 12,
+    "original_features": [
+      "name",
+      "year",
+      "km_driven",
+      "fuel",
+      "seller_type",
+      "transmission",
+      "owner",
+      "mileage",
+      "engine",
+      "max_power",
+      "torque",
+      "seats"
+    ],
+    "original_feature_count": 12,
+    "candidate_features": [
+      "name",
+      "year",
+      "km_driven",
+      "fuel",
+      "seller_type",
+      "transmission",
+      "owner",
+      "mileage",
+      "engine",
+      "max_power",
+      "torque",
+      "seats"
+    ],
+    "candidate_feature_count": 12,
+    "raw_requirement_met": true,
+    "note": "較小的 car data.csv 不符合欄位下限，因此選 v3 的 12 個原始輸入欄位。selling_price 映射 Selling_Price；車名轉品牌、規格字串取數值。",
+    "source_schema": [
+      {
+        "name": "name",
+        "dtype": "str",
+        "missing": 0
+      },
+      {
+        "name": "year",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "selling_price",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "km_driven",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "fuel",
+        "dtype": "str",
+        "missing": 0
+      },
+      {
+        "name": "seller_type",
+        "dtype": "str",
+        "missing": 0
+      },
+      {
+        "name": "transmission",
+        "dtype": "str",
+        "missing": 0
+      },
+      {
+        "name": "owner",
+        "dtype": "str",
+        "missing": 0
+      },
+      {
+        "name": "mileage",
+        "dtype": "str",
+        "missing": 221
+      },
+      {
+        "name": "engine",
+        "dtype": "str",
+        "missing": 221
+      },
+      {
+        "name": "max_power",
+        "dtype": "str",
+        "missing": 215
+      },
+      {
+        "name": "torque",
+        "dtype": "str",
+        "missing": 222
+      },
+      {
+        "name": "seats",
+        "dtype": "float64",
+        "missing": 221
+      }
+    ]
+  },
+  {
+    "id": "house-rent",
+    "sha256": "3f55079d82eadec1aac339b72fd55bb9e379cdbbbb88fe5f4d2b35f91f8ec711",
+    "source_rows": 4746,
+    "clean_rows": 4746,
+    "source_columns": [
+      "Posted On",
+      "BHK",
+      "Rent",
+      "Size",
+      "Floor",
+      "Area Type",
+      "Area Locality",
+      "City",
+      "Furnishing Status",
+      "Tenant Preferred",
+      "Bathroom",
+      "Point of Contact"
+    ],
+    "source_input_count": 11,
+    "original_features": [
+      "Posted On",
+      "BHK",
+      "Size",
+      "Floor",
+      "Area Type",
+      "Area Locality",
+      "City",
+      "Furnishing Status",
+      "Tenant Preferred",
+      "Bathroom"
+    ],
+    "original_feature_count": 10,
+    "candidate_features": [
+      "BHK",
+      "Size",
+      "Area Type",
+      "Area Locality",
+      "City",
+      "Furnishing Status",
+      "Tenant Preferred",
+      "Bathroom",
+      "posted_year",
+      "posted_month",
+      "posted_day",
+      "posted_weekday",
+      "floor_number",
+      "total_floors"
+    ],
+    "candidate_feature_count": 14,
+    "raw_requirement_met": false,
+    "note": "排除聯絡人 Point of Contact；原始有效欄位不足 11，不宣稱符合。Posted On 拆年月日／星期，Floor 拆所在樓層／總樓層，屬可解釋特徵工程方案。",
+    "source_schema": [
+      {
+        "name": "Posted On",
+        "dtype": "str",
+        "missing": 0
+      },
+      {
+        "name": "BHK",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "Rent",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "Size",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "Floor",
+        "dtype": "str",
+        "missing": 0
+      },
+      {
+        "name": "Area Type",
+        "dtype": "str",
+        "missing": 0
+      },
+      {
+        "name": "Area Locality",
+        "dtype": "str",
+        "missing": 0
+      },
+      {
+        "name": "City",
+        "dtype": "str",
+        "missing": 0
+      },
+      {
+        "name": "Furnishing Status",
+        "dtype": "str",
+        "missing": 0
+      },
+      {
+        "name": "Tenant Preferred",
+        "dtype": "str",
+        "missing": 0
+      },
+      {
+        "name": "Bathroom",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "Point of Contact",
+        "dtype": "str",
+        "missing": 0
+      }
+    ]
+  },
+  {
+    "id": "flight",
+    "sha256": "c0a87e088177a0858e28cb0dec5d1c1c1b7ecb13904623dd5bcc72f4a381a68a",
+    "source_rows": 10683,
+    "clean_rows": 10461,
+    "source_columns": [
+      "Airline",
+      "Date_of_Journey",
+      "Source",
+      "Destination",
+      "Route",
+      "Dep_Time",
+      "Arrival_Time",
+      "Duration",
+      "Total_Stops",
+      "Additional_Info",
+      "Price"
+    ],
+    "source_input_count": 10,
+    "original_features": [
+      "Airline",
+      "Date_of_Journey",
+      "Source",
+      "Destination",
+      "Dep_Time",
+      "Arrival_Time",
+      "Duration",
+      "Total_Stops"
+    ],
+    "original_feature_count": 8,
+    "candidate_features": [
+      "Airline",
+      "Source",
+      "Destination",
+      "Total_Stops",
+      "journey_month",
+      "journey_day",
+      "journey_weekday",
+      "Dep_Time_hour",
+      "Dep_Time_minute",
+      "Arrival_Time_hour",
+      "Arrival_Time_minute",
+      "duration_minutes"
+    ],
+    "candidate_feature_count": 12,
+    "raw_requirement_met": false,
+    "note": "此版本為 XLSX 而非 CSV，讀取後核對全部原始欄位。原始 10 個輸入不足 11；日期／時間拆解提供合理方案。排除可能反映價格的 Additional_Info，Route 與 Source/Destination/停站重複而排除。",
+    "source_schema": [
+      {
+        "name": "Airline",
+        "dtype": "str",
+        "missing": 0
+      },
+      {
+        "name": "Date_of_Journey",
+        "dtype": "str",
+        "missing": 0
+      },
+      {
+        "name": "Source",
+        "dtype": "str",
+        "missing": 0
+      },
+      {
+        "name": "Destination",
+        "dtype": "str",
+        "missing": 0
+      },
+      {
+        "name": "Route",
+        "dtype": "str",
+        "missing": 1
+      },
+      {
+        "name": "Dep_Time",
+        "dtype": "str",
+        "missing": 0
+      },
+      {
+        "name": "Arrival_Time",
+        "dtype": "str",
+        "missing": 0
+      },
+      {
+        "name": "Duration",
+        "dtype": "str",
+        "missing": 0
+      },
+      {
+        "name": "Total_Stops",
+        "dtype": "str",
+        "missing": 1
+      },
+      {
+        "name": "Additional_Info",
+        "dtype": "str",
+        "missing": 0
+      },
+      {
+        "name": "Price",
+        "dtype": "int64",
+        "missing": 0
+      }
+    ]
+  }
+]

@@ -1,0 +1,15 @@
+﻿count,selected_features,cv_rmse,test_rmse,test_r2,test_mae
+1,"[""Bathroom""]",66369.84167575264,52344.67985492668,0.31249602207243476,26637.480206794644
+2,"[""Bathroom"", ""City""]",62371.50356479133,48453.696015627705,0.4109068942893247,23225.052651287428
+3,"[""Bathroom"", ""City"", ""Size""]",60287.824410149755,43677.264836258044,0.5213247336318254,22273.556122876107
+4,"[""Bathroom"", ""City"", ""Size"", ""floor_number""]",59853.38818879098,43664.59557577389,0.5216023875606883,21795.9041117674
+5,"[""Bathroom"", ""City"", ""Size"", ""floor_number"", ""Furnishing Status""]",59768.17211888996,43645.295283512285,0.5220252094381463,21695.766520392346
+6,"[""Bathroom"", ""City"", ""Size"", ""floor_number"", ""Furnishing Status"", ""BHK""]",59754.09598982488,43695.874489428796,0.5209167466188174,21757.47259253098
+7,"[""Bathroom"", ""City"", ""Size"", ""floor_number"", ""Furnishing Status"", ""BHK"", ""posted_year""]",59754.09598982488,43695.874489428796,0.5209167466188174,21757.47259253098
+8,"[""Bathroom"", ""City"", ""Size"", ""floor_number"", ""Furnishing Status"", ""BHK"", ""posted_year"", ""Area Type""]",59757.697753703964,43648.93167618153,0.5219455593214523,21791.514453059914
+9,"[""Bathroom"", ""City"", ""Size"", ""floor_number"", ""Furnishing Status"", ""BHK"", ""posted_year"", ""Area Type"", ""Tenant Preferred""]",59739.381659055696,43777.014885769735,0.5191358417697866,21973.343186967533
+10,"[""Bathroom"", ""City"", ""Size"", ""floor_number"", ""Furnishing Status"", ""BHK"", ""posted_year"", ""Area Type"", ""Tenant Preferred"", ""posted_weekday""]",59747.14421377007,43781.79621189591,0.5190307960545186,21973.339654499803
+11,"[""Bathroom"", ""City"", ""Size"", ""floor_number"", ""Furnishing Status"", ""BHK"", ""posted_year"", ""Area Type"", ""Tenant Preferred"", ""posted_weekday"", ""posted_day""]",59761.69726170008,43764.728110137825,0.5194057295594398,21978.04631438279
+12,"[""Bathroom"", ""City"", ""Size"", ""floor_number"", ""Furnishing Status"", ""BHK"", ""posted_year"", ""Area Type"", ""Tenant Preferred"", ""posted_weekday"", ""posted_day"", ""posted_month""]",59789.860503745695,43740.838815927804,0.5199302580968481,21966.7080090066
+13,"[""Bathroom"", ""City"", ""Size"", ""floor_number"", ""Furnishing Status"", ""BHK"", ""posted_year"", ""Area Type"", ""Tenant Preferred"", ""posted_weekday"", ""posted_day"", ""posted_month"", ""total_floors""]",59890.28224890134,43696.14719961755,0.5209107665900989,21899.853311948038
+14,"[""Bathroom"", ""City"", ""Size"", ""floor_number"", ""Furnishing Status"", ""BHK"", ""posted_year"", ""Area Type"", ""Tenant Preferred"", ""posted_weekday"", ""posted_day"", ""posted_month"", ""total_floors"", ""Area Locality""]",72614.67018954996,65036.69088853999,-0.06132157128985982,21745.49594572128

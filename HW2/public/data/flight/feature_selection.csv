@@ -1,0 +1,13 @@
+﻿count,selected_features,cv_rmse,test_rmse,test_r2,test_mae
+1,"[""Airline""]",3552.1199416794757,3618.3265659873523,0.35558465305909615,2595.488544136788
+2,"[""Airline"", ""Total_Stops""]",3072.558899363606,3101.0203999958003,0.5266748299602075,2083.6540085336596
+3,"[""Airline"", ""Total_Stops"", ""Destination""]",2937.550461532495,2958.1111222312,0.5692955867636347,2003.9828325140566
+4,"[""Airline"", ""Total_Stops"", ""Destination"", ""journey_day""]",2874.960577205165,2904.502055978459,0.5847652135373214,2024.8514783936848
+5,"[""Airline"", ""Total_Stops"", ""Destination"", ""journey_day"", ""journey_month""]",2846.853725127848,2867.7031611060524,0.5952202822743846,1985.5421904970503
+6,"[""Airline"", ""Total_Stops"", ""Destination"", ""journey_day"", ""journey_month"", ""journey_weekday""]",2836.621665575235,2859.5184314781777,0.5975275536463491,1985.6713072206132
+7,"[""Airline"", ""Total_Stops"", ""Destination"", ""journey_day"", ""journey_month"", ""journey_weekday"", ""Dep_Time_hour""]",2833.991019065664,2858.239849113298,0.5978873898487098,1985.8266393650274
+8,"[""Airline"", ""Total_Stops"", ""Destination"", ""journey_day"", ""journey_month"", ""journey_weekday"", ""Dep_Time_hour"", ""Arrival_Time_hour""]",2833.2994432373866,2856.904785645568,0.5982629499875527,1982.6923801499947
+9,"[""Airline"", ""Total_Stops"", ""Destination"", ""journey_day"", ""journey_month"", ""journey_weekday"", ""Dep_Time_hour"", ""Arrival_Time_hour"", ""Source""]",2833.2994427610665,2856.9046948731147,0.5982629755163398,1982.6927334884913
+10,"[""Airline"", ""Total_Stops"", ""Destination"", ""journey_day"", ""journey_month"", ""journey_weekday"", ""Dep_Time_hour"", ""Arrival_Time_hour"", ""Source"", ""duration_minutes""]",2833.5683875285113,2856.931530489973,0.5982554282491735,1982.3358410002536
+11,"[""Airline"", ""Total_Stops"", ""Destination"", ""journey_day"", ""journey_month"", ""journey_weekday"", ""Dep_Time_hour"", ""Arrival_Time_hour"", ""Source"", ""duration_minutes"", ""Arrival_Time_minute""]",2833.9889193018116,2856.885542537416,0.5982683618889262,1981.5311775472255
+12,"[""Airline"", ""Total_Stops"", ""Destination"", ""journey_day"", ""journey_month"", ""journey_weekday"", ""Dep_Time_hour"", ""Arrival_Time_hour"", ""Source"", ""duration_minutes"", ""Arrival_Time_minute"", ""Dep_Time_minute""]",2834.4492081728376,2856.5347144921957,0.5983670218243725,1981.3088723985106

@@ -1,0 +1,11 @@
+{
+  "id": "spotify",
+  "kaggle_ref": "maharshipandya/-spotify-tracks-dataset",
+  "version": 1,
+  "last_updated": "2022-10-22T14:40:15.3Z",
+  "license": "Database: Open Database, Contents: © Original Authors",
+  "metadata_checked_at": "2026-10-26T14:42:06.401015+00:00",
+  "archive_filename": "spotify.zip",
+  "archive_sha256": "be5216c0c811283c5db3e3af83cffa59873cc5fa375222f3280782776e289176",
+  "note": "版本 metadata 與下載於本次工作期間核對；實際分析內容由 audit SHA256 唯一識別。"
+}

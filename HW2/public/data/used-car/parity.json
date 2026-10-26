@@ -1,0 +1,359 @@
+[
+  {
+    "input": {
+      "name": "Mercedes-Benz",
+      "year": 2013,
+      "km_driven": 50000,
+      "fuel": "Diesel",
+      "seller_type": "Individual",
+      "transmission": "Automatic",
+      "owner": "First Owner",
+      "mileage": 11.74,
+      "engine": 2987.0,
+      "max_power": 254.8,
+      "torque": 619.0,
+      "seats": 5.0
+    },
+    "expected": 3090957.3102678573
+  },
+  {
+    "input": {
+      "name": "Maruti",
+      "year": 2013,
+      "km_driven": 25000,
+      "fuel": "Petrol",
+      "seller_type": "Individual",
+      "transmission": "Manual",
+      "owner": "First Owner",
+      "mileage": 20.92,
+      "engine": 998.0,
+      "max_power": 67.1,
+      "torque": 90.0,
+      "seats": 5.0
+    },
+    "expected": 225125.6460932375
+  },
+  {
+    "input": {
+      "name": "Maruti",
+      "year": 2003,
+      "km_driven": 20000,
+      "fuel": "Diesel",
+      "seller_type": "Individual",
+      "transmission": "Manual",
+      "owner": "First Owner",
+      "mileage": 15.9,
+      "engine": 1527.0,
+      "max_power": 57.0,
+      "torque": 96.0,
+      "seats": 5.0
+    },
+    "expected": 97336.64809809165
+  },
+  {
+    "input": {
+      "name": "Maruti",
+      "year": 2018,
+      "km_driven": 30000,
+      "fuel": "Petrol",
+      "seller_type": "Individual",
+      "transmission": "Automatic",
+      "owner": "Second Owner",
+      "mileage": 23.1,
+      "engine": 998.0,
+      "max_power": 67.04,
+      "torque": 90.0,
+      "seats": 5.0
+    },
+    "expected": 388380.3272158955
+  },
+  {
+    "input": {
+      "name": "Ford",
+      "year": 2008,
+      "km_driven": 180000,
+      "fuel": "Diesel",
+      "seller_type": "Individual",
+      "transmission": "Manual",
+      "owner": "Second Owner",
+      "mileage": 17.8,
+      "engine": 1399.0,
+      "max_power": 67.0,
+      "torque": 160.0,
+      "seats": 5.0
+    },
+    "expected": 132285.90357725625
+  },
+  {
+    "input": {
+      "name": "Maruti",
+      "year": 2004,
+      "km_driven": 60000,
+      "fuel": "Petrol",
+      "seller_type": "Individual",
+      "transmission": "Manual",
+      "owner": "Second Owner",
+      "mileage": 19.7,
+      "engine": 796.0,
+      "max_power": 46.3,
+      "torque": 62.0,
+      "seats": 5.0
+    },
+    "expected": 97336.64809809165
+  },
+  {
+    "input": {
+      "name": "Mahindra",
+      "year": 2011,
+      "km_driven": 150000,
+      "fuel": "Diesel",
+      "seller_type": "Individual",
+      "transmission": "Automatic",
+      "owner": "Second Owner",
+      "mileage": 11.79,
+      "engine": 2179.0,
+      "max_power": 120.0,
+      "torque": 290.0,
+      "seats": 8.0
+    },
+    "expected": 504310.86629731854
+  },
+  {
+    "input": {
+      "name": "Hyundai",
+      "year": 2016,
+      "km_driven": 100000,
+      "fuel": "Petrol",
+      "seller_type": "Individual",
+      "transmission": "Manual",
+      "owner": "First Owner",
+      "mileage": 20.3,
+      "engine": 998.0,
+      "max_power": 68.05,
+      "torque": 94.14,
+      "seats": 5.0
+    },
+    "expected": 331351.47757857456
+  },
+  {
+    "input": {
+      "name": "Toyota",
+      "year": 2014,
+      "km_driven": 112000,
+      "fuel": "Diesel",
+      "seller_type": "Individual",
+      "transmission": "Manual",
+      "owner": "Second Owner",
+      "mileage": 12.99,
+      "engine": 2494.0,
+      "max_power": 100.6,
+      "torque": 200.0,
+      "seats": 8.0
+    },
+    "expected": 957970.0115008565
+  },
+  {
+    "input": {
+      "name": "Maruti",
+      "year": 2004,
+      "km_driven": 46000,
+      "fuel": "Petrol",
+      "seller_type": "Individual",
+      "transmission": "Manual",
+      "owner": "Fourth & Above Owner",
+      "mileage": 16.1,
+      "engine": 796.0,
+      "max_power": 37.0,
+      "torque": 59.0,
+      "seats": 4.0
+    },
+    "expected": 97336.64809809165
+  },
+  {
+    "input": {
+      "name": "Ford",
+      "year": 2018,
+      "km_driven": 15000,
+      "fuel": "Petrol",
+      "seller_type": "Individual",
+      "transmission": "Manual",
+      "owner": "First Owner",
+      "mileage": 17.0,
+      "engine": 1497.0,
+      "max_power": 121.36,
+      "torque": 150.0,
+      "seats": 5.0
+    },
+    "expected": 899598.9872885211
+  },
+  {
+    "input": {
+      "name": "Maruti",
+      "year": 2011,
+      "km_driven": 60000,
+      "fuel": "Diesel",
+      "seller_type": "Individual",
+      "transmission": "Manual",
+      "owner": "Second Owner",
+      "mileage": 19.3,
+      "engine": 1248.0,
+      "max_power": 73.9,
+      "torque": 190.0,
+      "seats": 5.0
+    },
+    "expected": 323352.9472801563
+  },
+  {
+    "input": {
+      "name": "Tata",
+      "year": 2008,
+      "km_driven": 120000,
+      "fuel": "Diesel",
+      "seller_type": "Individual",
+      "transmission": "Manual",
+      "owner": "Third Owner",
+      "mileage": 16.8,
+      "engine": 1405.0,
+      "max_power": 68.0,
+      "torque": 127.48644999999999,
+      "seats": 5.0
+    },
+    "expected": 144219.02695423772
+  },
+  {
+    "input": {
+      "name": "Tata",
+      "year": 2009,
+      "km_driven": 120000,
+      "fuel": "Diesel",
+      "seller_type": "Individual",
+      "transmission": "Manual",
+      "owner": "First Owner",
+      "mileage": 17.0,
+      "engine": 1405.0,
+      "max_power": 71.0,
+      "torque": 135.0,
+      "seats": 5.0
+    },
+    "expected": 158020.40092382132
+  },
+  {
+    "input": {
+      "name": "Maruti",
+      "year": 2015,
+      "km_driven": 40000,
+      "fuel": "Petrol",
+      "seller_type": "Individual",
+      "transmission": "Manual",
+      "owner": "Second Owner",
+      "mileage": 20.51,
+      "engine": 998.0,
+      "max_power": 67.04,
+      "torque": 90.0,
+      "seats": 5.0
+    },
+    "expected": 322650.20015227265
+  },
+  {
+    "input": {
+      "name": "Renault",
+      "year": 2018,
+      "km_driven": 30000,
+      "fuel": "Petrol",
+      "seller_type": "Individual",
+      "transmission": "Manual",
+      "owner": "First Owner",
+      "mileage": 25.17,
+      "engine": 799.0,
+      "max_power": 53.3,
+      "torque": 72.0,
+      "seats": 5.0
+    },
+    "expected": 313398.9313267664
+  },
+  {
+    "input": {
+      "name": "Chevrolet",
+      "year": 2016,
+      "km_driven": 120000,
+      "fuel": "Diesel",
+      "seller_type": "Individual",
+      "transmission": "Manual",
+      "owner": "First Owner",
+      "mileage": 13.58,
+      "engine": 2499.0,
+      "max_power": 72.4,
+      "torque": 171.0,
+      "seats": 10.0
+    },
+    "expected": 563840.8496959723
+  },
+  {
+    "input": {
+      "name": "Mahindra",
+      "year": 2014,
+      "km_driven": 48300,
+      "fuel": "Diesel",
+      "seller_type": "Individual",
+      "transmission": "Manual",
+      "owner": "Second Owner",
+      "mileage": 15.96,
+      "engine": 2523.0,
+      "max_power": 62.1,
+      "torque": 195.0,
+      "seats": 7.0
+    },
+    "expected": 543845.1335827725
+  },
+  {
+    "input": {
+      "name": "Mahindra",
+      "year": 2013,
+      "km_driven": 160000,
+      "fuel": "Diesel",
+      "seller_type": "Individual",
+      "transmission": "Manual",
+      "owner": "First Owner",
+      "mileage": 15.96,
+      "engine": 2523.0,
+      "max_power": 62.1,
+      "torque": 195.0,
+      "seats": 7.0
+    },
+    "expected": 438377.3384602271
+  },
+  {
+    "input": {
+      "name": "Maruti",
+      "year": 1995,
+      "km_driven": 70000,
+      "fuel": "Petrol",
+      "seller_type": "Individual",
+      "transmission": "Manual",
+      "owner": "First Owner",
+      "mileage": 16.1,
+      "engine": 796.0,
+      "max_power": 37.0,
+      "torque": 59.0,
+      "seats": 4.0
+    },
+    "expected": 97336.64809809165
+  },
+  {
+    "input": {
+      "name": "__UNSEEN_CATEGORY__",
+      "year": null,
+      "km_driven": null,
+      "fuel": "__UNSEEN_CATEGORY__",
+      "seller_type": "__UNSEEN_CATEGORY__",
+      "transmission": "__UNSEEN_CATEGORY__",
+      "owner": "__UNSEEN_CATEGORY__",
+      "mileage": null,
+      "engine": null,
+      "max_power": null,
+      "torque": null,
+      "seats": null
+    },
+    "expected": 454762.1611004683
+  }
+]

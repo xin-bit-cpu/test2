@@ -1,0 +1,359 @@
+[
+  {
+    "input": {
+      "Airline": "Jet Airways",
+      "Source": "Banglore",
+      "Destination": "New Delhi",
+      "Total_Stops": 1.0,
+      "journey_month": 3,
+      "journey_day": 6,
+      "journey_weekday": 2,
+      "Dep_Time_hour": 8,
+      "Dep_Time_minute": 0,
+      "Arrival_Time_hour": 8,
+      "Arrival_Time_minute": 15,
+      "duration_minutes": 1455.0
+    },
+    "expected": 16283.691894668931
+  },
+  {
+    "input": {
+      "Airline": "SpiceJet",
+      "Source": "Kolkata",
+      "Destination": "Banglore",
+      "Total_Stops": 0.0,
+      "journey_month": 6,
+      "journey_day": 6,
+      "journey_weekday": 3,
+      "Dep_Time_hour": 22,
+      "Dep_Time_minute": 20,
+      "Arrival_Time_hour": 0,
+      "Arrival_Time_minute": 40,
+      "duration_minutes": 140.0
+    },
+    "expected": 4090.8566926084386
+  },
+  {
+    "input": {
+      "Airline": "IndiGo",
+      "Source": "Kolkata",
+      "Destination": "Banglore",
+      "Total_Stops": 0.0,
+      "journey_month": 3,
+      "journey_day": 18,
+      "journey_weekday": 0,
+      "Dep_Time_hour": 5,
+      "Dep_Time_minute": 30,
+      "Arrival_Time_hour": 8,
+      "Arrival_Time_minute": 20,
+      "duration_minutes": 170.0
+    },
+    "expected": 4838.99672576496
+  },
+  {
+    "input": {
+      "Airline": "Jet Airways",
+      "Source": "Mumbai",
+      "Destination": "Hyderabad",
+      "Total_Stops": 0.0,
+      "journey_month": 3,
+      "journey_day": 24,
+      "journey_weekday": 6,
+      "Dep_Time_hour": 15,
+      "Dep_Time_minute": 50,
+      "Arrival_Time_hour": 17,
+      "Arrival_Time_minute": 20,
+      "duration_minutes": 90.0
+    },
+    "expected": 4786.958951011246
+  },
+  {
+    "input": {
+      "Airline": "SpiceJet",
+      "Source": "Banglore",
+      "Destination": "Delhi",
+      "Total_Stops": 0.0,
+      "journey_month": 4,
+      "journey_day": 27,
+      "journey_weekday": 5,
+      "Dep_Time_hour": 9,
+      "Dep_Time_minute": 30,
+      "Arrival_Time_hour": 12,
+      "Arrival_Time_minute": 20,
+      "duration_minutes": 170.0
+    },
+    "expected": 4094.5372982399576
+  },
+  {
+    "input": {
+      "Airline": "Multiple carriers",
+      "Source": "Delhi",
+      "Destination": "Cochin",
+      "Total_Stops": 1.0,
+      "journey_month": 5,
+      "journey_day": 9,
+      "journey_weekday": 3,
+      "Dep_Time_hour": 6,
+      "Dep_Time_minute": 0,
+      "Arrival_Time_hour": 21,
+      "Arrival_Time_minute": 0,
+      "duration_minutes": 900.0
+    },
+    "expected": 9129.121165176095
+  },
+  {
+    "input": {
+      "Airline": "Multiple carriers",
+      "Source": "Delhi",
+      "Destination": "Cochin",
+      "Total_Stops": 1.0,
+      "journey_month": 3,
+      "journey_day": 9,
+      "journey_weekday": 5,
+      "Dep_Time_hour": 15,
+      "Dep_Time_minute": 5,
+      "Arrival_Time_hour": 1,
+      "Arrival_Time_minute": 35,
+      "duration_minutes": 630.0
+    },
+    "expected": 14769.171663515048
+  },
+  {
+    "input": {
+      "Airline": "IndiGo",
+      "Source": "Delhi",
+      "Destination": "Cochin",
+      "Total_Stops": 1.0,
+      "journey_month": 6,
+      "journey_day": 12,
+      "journey_weekday": 2,
+      "Dep_Time_hour": 2,
+      "Dep_Time_minute": 0,
+      "Arrival_Time_hour": 7,
+      "Arrival_Time_minute": 45,
+      "duration_minutes": 345.0
+    },
+    "expected": 6550.825740555216
+  },
+  {
+    "input": {
+      "Airline": "IndiGo",
+      "Source": "Delhi",
+      "Destination": "Cochin",
+      "Total_Stops": 1.0,
+      "journey_month": 6,
+      "journey_day": 3,
+      "journey_weekday": 0,
+      "Dep_Time_hour": 16,
+      "Dep_Time_minute": 0,
+      "Arrival_Time_hour": 1,
+      "Arrival_Time_minute": 30,
+      "duration_minutes": 570.0
+    },
+    "expected": 6550.825740555216
+  },
+  {
+    "input": {
+      "Airline": "Air India",
+      "Source": "Delhi",
+      "Destination": "Cochin",
+      "Total_Stops": 0.0,
+      "journey_month": 5,
+      "journey_day": 18,
+      "journey_weekday": 5,
+      "Dep_Time_hour": 14,
+      "Dep_Time_minute": 10,
+      "Arrival_Time_hour": 17,
+      "Arrival_Time_minute": 10,
+      "duration_minutes": 180.0
+    },
+    "expected": 6045.037686223091
+  },
+  {
+    "input": {
+      "Airline": "Jet Airways",
+      "Source": "Delhi",
+      "Destination": "Cochin",
+      "Total_Stops": 1.0,
+      "journey_month": 6,
+      "journey_day": 1,
+      "journey_weekday": 5,
+      "Dep_Time_hour": 15,
+      "Dep_Time_minute": 0,
+      "Arrival_Time_hour": 19,
+      "Arrival_Time_minute": 0,
+      "duration_minutes": 1680.0
+    },
+    "expected": 11705.108889970641
+  },
+  {
+    "input": {
+      "Airline": "Jet Airways",
+      "Source": "Kolkata",
+      "Destination": "Banglore",
+      "Total_Stops": 1.0,
+      "journey_month": 5,
+      "journey_day": 18,
+      "journey_weekday": 5,
+      "Dep_Time_hour": 5,
+      "Dep_Time_minute": 45,
+      "Arrival_Time_hour": 8,
+      "Arrival_Time_minute": 15,
+      "duration_minutes": 1590.0
+    },
+    "expected": 11766.471164538205
+  },
+  {
+    "input": {
+      "Airline": "Jet Airways",
+      "Source": "Delhi",
+      "Destination": "Cochin",
+      "Total_Stops": 1.0,
+      "journey_month": 5,
+      "journey_day": 21,
+      "journey_weekday": 1,
+      "Dep_Time_hour": 17,
+      "Dep_Time_minute": 30,
+      "Arrival_Time_hour": 19,
+      "Arrival_Time_minute": 0,
+      "duration_minutes": 1530.0
+    },
+    "expected": 13505.995812768753
+  },
+  {
+    "input": {
+      "Airline": "Air India",
+      "Source": "Delhi",
+      "Destination": "Cochin",
+      "Total_Stops": 0.0,
+      "journey_month": 4,
+      "journey_day": 3,
+      "journey_weekday": 2,
+      "Dep_Time_hour": 14,
+      "Dep_Time_minute": 10,
+      "Arrival_Time_hour": 17,
+      "Arrival_Time_minute": 10,
+      "duration_minutes": 180.0
+    },
+    "expected": 6045.037686223091
+  },
+  {
+    "input": {
+      "Airline": "Air India",
+      "Source": "Mumbai",
+      "Destination": "Hyderabad",
+      "Total_Stops": 0.0,
+      "journey_month": 5,
+      "journey_day": 27,
+      "journey_weekday": 0,
+      "Dep_Time_hour": 13,
+      "Dep_Time_minute": 55,
+      "Arrival_Time_hour": 15,
+      "Arrival_Time_minute": 25,
+      "duration_minutes": 90.0
+    },
+    "expected": 3783.8612389878353
+  },
+  {
+    "input": {
+      "Airline": "Jet Airways",
+      "Source": "Kolkata",
+      "Destination": "Banglore",
+      "Total_Stops": 1.0,
+      "journey_month": 6,
+      "journey_day": 6,
+      "journey_weekday": 3,
+      "Dep_Time_hour": 17,
+      "Dep_Time_minute": 0,
+      "Arrival_Time_hour": 9,
+      "Arrival_Time_minute": 45,
+      "duration_minutes": 1005.0
+    },
+    "expected": 11742.889068390457
+  },
+  {
+    "input": {
+      "Airline": "Jet Airways",
+      "Source": "Delhi",
+      "Destination": "Cochin",
+      "Total_Stops": 1.0,
+      "journey_month": 6,
+      "journey_day": 1,
+      "journey_weekday": 5,
+      "Dep_Time_hour": 21,
+      "Dep_Time_minute": 50,
+      "Arrival_Time_hour": 4,
+      "Arrival_Time_minute": 25,
+      "duration_minutes": 395.0
+    },
+    "expected": 12541.536506073498
+  },
+  {
+    "input": {
+      "Airline": "SpiceJet",
+      "Source": "Kolkata",
+      "Destination": "Banglore",
+      "Total_Stops": 0.0,
+      "journey_month": 5,
+      "journey_day": 27,
+      "journey_weekday": 0,
+      "Dep_Time_hour": 17,
+      "Dep_Time_minute": 10,
+      "Arrival_Time_hour": 19,
+      "Arrival_Time_minute": 40,
+      "duration_minutes": 150.0
+    },
+    "expected": 4090.8566926084386
+  },
+  {
+    "input": {
+      "Airline": "Air India",
+      "Source": "Delhi",
+      "Destination": "Cochin",
+      "Total_Stops": 0.0,
+      "journey_month": 6,
+      "journey_day": 27,
+      "journey_weekday": 3,
+      "Dep_Time_hour": 14,
+      "Dep_Time_minute": 10,
+      "Arrival_Time_hour": 17,
+      "Arrival_Time_minute": 10,
+      "duration_minutes": 180.0
+    },
+    "expected": 6045.037686223091
+  },
+  {
+    "input": {
+      "Airline": "IndiGo",
+      "Source": "Kolkata",
+      "Destination": "Banglore",
+      "Total_Stops": 1.0,
+      "journey_month": 5,
+      "journey_day": 12,
+      "journey_weekday": 6,
+      "Dep_Time_hour": 15,
+      "Dep_Time_minute": 15,
+      "Arrival_Time_hour": 20,
+      "Arrival_Time_minute": 5,
+      "duration_minutes": 290.0
+    },
+    "expected": 5888.057809874144
+  },
+  {
+    "input": {
+      "Airline": "__UNSEEN_CATEGORY__",
+      "Source": "__UNSEEN_CATEGORY__",
+      "Destination": "__UNSEEN_CATEGORY__",
+      "Total_Stops": null,
+      "journey_month": null,
+      "journey_day": null,
+      "journey_weekday": null,
+      "Dep_Time_hour": null,
+      "Dep_Time_minute": null,
+      "Arrival_Time_hour": null,
+      "Arrival_Time_minute": null,
+      "duration_minutes": null
+    },
+    "expected": 8311.748765813069
+  }
+]

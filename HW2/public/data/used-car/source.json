@@ -1,0 +1,11 @@
+{
+  "id": "used-car",
+  "kaggle_ref": "nehalbirla/vehicle-dataset-from-cardekho",
+  "version": 4,
+  "last_updated": "2023-01-14T19:35:33.217Z",
+  "license": "Database: Open Database, Contents: Database Contents",
+  "metadata_checked_at": "2026-10-26T14:42:07.436242+00:00",
+  "archive_filename": "used-car.zip",
+  "archive_sha256": "31ae89671a23175f4b3bd9553d6dfbcd50f13908152d98d23ac9d4f5a9eab543",
+  "note": "版本 metadata 與下載於本次工作期間核對；實際分析內容由 audit SHA256 唯一識別。"
+}

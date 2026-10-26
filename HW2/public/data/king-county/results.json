@@ -1,0 +1,5131 @@
+{
+  "id": "king-county",
+  "display_name": "King County House Sales",
+  "slug": "harlfoxem/housesalesprediction",
+  "file": "kc_house_data.csv",
+  "target_column": "price",
+  "prediction_unit": "USD",
+  "description": "西雅圖與 King County 房屋成交資料，依建物條件與位置預測售價。",
+  "note": "移除 id 與 date；同一房屋 id 僅保留第一筆，避免重複物件跨集合。",
+  "kaggle_url": "https://www.kaggle.com/datasets/harlfoxem/housesalesprediction",
+  "data_source": "kc_house_data.csv",
+  "source_version": 1,
+  "source_license": "CC0: Public Domain",
+  "source_last_updated": "2016-08-25T15:52:49.797Z",
+  "status": "ready",
+  "generated_at": "2026-10-26T14:49:43.166170+00:00",
+  "environment": {
+    "python": "3.14.4",
+    "sklearn": "1.9.1",
+    "pandas": "3.0.6",
+    "numpy": "2.5.1"
+  },
+  "audit": {
+    "id": "king-county",
+    "sha256": "1fdffaeec5e7656f6c09e29d9daa7e2157479c5f8e3a761758b4bfa43c773202",
+    "source_rows": 21613,
+    "clean_rows": 21434,
+    "source_columns": [
+      "id",
+      "date",
+      "price",
+      "bedrooms",
+      "bathrooms",
+      "sqft_living",
+      "sqft_lot",
+      "floors",
+      "waterfront",
+      "view",
+      "condition",
+      "grade",
+      "sqft_above",
+      "sqft_basement",
+      "yr_built",
+      "yr_renovated",
+      "zipcode",
+      "lat",
+      "long",
+      "sqft_living15",
+      "sqft_lot15"
+    ],
+    "source_input_count": 20,
+    "original_features": [
+      "bedrooms",
+      "bathrooms",
+      "sqft_living",
+      "sqft_lot",
+      "floors",
+      "waterfront",
+      "view",
+      "condition",
+      "grade",
+      "sqft_above",
+      "sqft_basement",
+      "yr_built",
+      "yr_renovated",
+      "zipcode",
+      "lat",
+      "long",
+      "sqft_living15",
+      "sqft_lot15"
+    ],
+    "original_feature_count": 18,
+    "candidate_features": [
+      "bedrooms",
+      "bathrooms",
+      "sqft_living",
+      "sqft_lot",
+      "floors",
+      "waterfront",
+      "view",
+      "condition",
+      "grade",
+      "sqft_above",
+      "sqft_basement",
+      "yr_built",
+      "yr_renovated",
+      "zipcode",
+      "lat",
+      "long",
+      "sqft_living15",
+      "sqft_lot15"
+    ],
+    "candidate_feature_count": 18,
+    "raw_requirement_met": true,
+    "note": "移除 id 與 date；同一房屋 id 僅保留第一筆，避免重複物件跨集合。",
+    "source_schema": [
+      {
+        "name": "id",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "date",
+        "dtype": "str",
+        "missing": 0
+      },
+      {
+        "name": "price",
+        "dtype": "float64",
+        "missing": 0
+      },
+      {
+        "name": "bedrooms",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "bathrooms",
+        "dtype": "float64",
+        "missing": 0
+      },
+      {
+        "name": "sqft_living",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "sqft_lot",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "floors",
+        "dtype": "float64",
+        "missing": 0
+      },
+      {
+        "name": "waterfront",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "view",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "condition",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "grade",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "sqft_above",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "sqft_basement",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "yr_built",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "yr_renovated",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "zipcode",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "lat",
+        "dtype": "float64",
+        "missing": 0
+      },
+      {
+        "name": "long",
+        "dtype": "float64",
+        "missing": 0
+      },
+      {
+        "name": "sqft_living15",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "sqft_lot15",
+        "dtype": "int64",
+        "missing": 0
+      }
+    ]
+  },
+  "original_features": [
+    "bedrooms",
+    "bathrooms",
+    "sqft_living",
+    "sqft_lot",
+    "floors",
+    "waterfront",
+    "view",
+    "condition",
+    "grade",
+    "sqft_above",
+    "sqft_basement",
+    "yr_built",
+    "yr_renovated",
+    "zipcode",
+    "lat",
+    "long",
+    "sqft_living15",
+    "sqft_lot15"
+  ],
+  "encoded_features": [
+    "numeric__bedrooms",
+    "numeric__bathrooms",
+    "numeric__sqft_living",
+    "numeric__sqft_lot",
+    "numeric__floors",
+    "numeric__waterfront",
+    "numeric__view",
+    "numeric__condition",
+    "numeric__grade",
+    "numeric__sqft_above",
+    "numeric__sqft_basement",
+    "numeric__yr_built",
+    "numeric__yr_renovated",
+    "numeric__lat",
+    "numeric__long",
+    "numeric__sqft_living15",
+    "numeric__sqft_lot15",
+    "categorical__zipcode_98001",
+    "categorical__zipcode_98002",
+    "categorical__zipcode_98003",
+    "categorical__zipcode_98004",
+    "categorical__zipcode_98005",
+    "categorical__zipcode_98006",
+    "categorical__zipcode_98007",
+    "categorical__zipcode_98008",
+    "categorical__zipcode_98010",
+    "categorical__zipcode_98011",
+    "categorical__zipcode_98014",
+    "categorical__zipcode_98019",
+    "categorical__zipcode_98022",
+    "categorical__zipcode_98023",
+    "categorical__zipcode_98024",
+    "categorical__zipcode_98027",
+    "categorical__zipcode_98028",
+    "categorical__zipcode_98029",
+    "categorical__zipcode_98030",
+    "categorical__zipcode_98031",
+    "categorical__zipcode_98032",
+    "categorical__zipcode_98033",
+    "categorical__zipcode_98034",
+    "categorical__zipcode_98038",
+    "categorical__zipcode_98039",
+    "categorical__zipcode_98040",
+    "categorical__zipcode_98042",
+    "categorical__zipcode_98045",
+    "categorical__zipcode_98052",
+    "categorical__zipcode_98053",
+    "categorical__zipcode_98055",
+    "categorical__zipcode_98056",
+    "categorical__zipcode_98058",
+    "categorical__zipcode_98059",
+    "categorical__zipcode_98065",
+    "categorical__zipcode_98070",
+    "categorical__zipcode_98072",
+    "categorical__zipcode_98074",
+    "categorical__zipcode_98075",
+    "categorical__zipcode_98077",
+    "categorical__zipcode_98092",
+    "categorical__zipcode_98102",
+    "categorical__zipcode_98103",
+    "categorical__zipcode_98105",
+    "categorical__zipcode_98106",
+    "categorical__zipcode_98107",
+    "categorical__zipcode_98108",
+    "categorical__zipcode_98109",
+    "categorical__zipcode_98112",
+    "categorical__zipcode_98115",
+    "categorical__zipcode_98116",
+    "categorical__zipcode_98117",
+    "categorical__zipcode_98118",
+    "categorical__zipcode_98119",
+    "categorical__zipcode_98122",
+    "categorical__zipcode_98125",
+    "categorical__zipcode_98126",
+    "categorical__zipcode_98133",
+    "categorical__zipcode_98136",
+    "categorical__zipcode_98144",
+    "categorical__zipcode_98146",
+    "categorical__zipcode_98148",
+    "categorical__zipcode_98155",
+    "categorical__zipcode_98166",
+    "categorical__zipcode_98168",
+    "categorical__zipcode_98177",
+    "categorical__zipcode_98178",
+    "categorical__zipcode_98188",
+    "categorical__zipcode_98198",
+    "categorical__zipcode_98199"
+  ],
+  "feature_schema": [
+    {
+      "name": "bedrooms",
+      "type": "number",
+      "description": "臥室數",
+      "missing": 0,
+      "unit": "數值",
+      "default": 3.0,
+      "min": 0.0,
+      "max": 10.0,
+      "step": "any"
+    },
+    {
+      "name": "bathrooms",
+      "type": "number",
+      "description": "浴室數（可含半套衛浴）",
+      "missing": 0,
+      "unit": "數值",
+      "default": 2.25,
+      "min": 0.0,
+      "max": 8.0,
+      "step": "any"
+    },
+    {
+      "name": "sqft_living",
+      "type": "number",
+      "description": "室內居住面積",
+      "missing": 0,
+      "unit": "ft²",
+      "default": 1914.0,
+      "min": 290.0,
+      "max": 13540.0,
+      "step": "any"
+    },
+    {
+      "name": "sqft_lot",
+      "type": "number",
+      "description": "土地面積",
+      "missing": 0,
+      "unit": "ft²",
+      "default": 7615.0,
+      "min": 572.0,
+      "max": 1164794.0,
+      "step": "any"
+    },
+    {
+      "name": "floors",
+      "type": "number",
+      "description": "樓層數",
+      "missing": 0,
+      "unit": "數值",
+      "default": 1.5,
+      "min": 1.0,
+      "max": 3.5,
+      "step": "any"
+    },
+    {
+      "name": "waterfront",
+      "type": "number",
+      "description": "臨水與否：0 否／1 是",
+      "missing": 0,
+      "unit": "數值",
+      "default": 0.0,
+      "min": 0.0,
+      "max": 1.0,
+      "step": "any"
+    },
+    {
+      "name": "view",
+      "type": "number",
+      "description": "景觀評分",
+      "missing": 0,
+      "unit": "數值",
+      "default": 0.0,
+      "min": 0.0,
+      "max": 4.0,
+      "step": "any"
+    },
+    {
+      "name": "condition",
+      "type": "number",
+      "description": "屋況評分",
+      "missing": 0,
+      "unit": "數值",
+      "default": 3.0,
+      "min": 1.0,
+      "max": 5.0,
+      "step": "any"
+    },
+    {
+      "name": "grade",
+      "type": "number",
+      "description": "建築品質等級",
+      "missing": 0,
+      "unit": "數值",
+      "default": 7.0,
+      "min": 1.0,
+      "max": 13.0,
+      "step": "any"
+    },
+    {
+      "name": "sqft_above",
+      "type": "number",
+      "description": "地面以上樓地板面積",
+      "missing": 0,
+      "unit": "ft²",
+      "default": 1560.0,
+      "min": 290.0,
+      "max": 9410.0,
+      "step": "any"
+    },
+    {
+      "name": "sqft_basement",
+      "type": "number",
+      "description": "地下室面積",
+      "missing": 0,
+      "unit": "ft²",
+      "default": 0.0,
+      "min": 0.0,
+      "max": 4130.0,
+      "step": "any"
+    },
+    {
+      "name": "yr_built",
+      "type": "number",
+      "description": "建造年份",
+      "missing": 0,
+      "unit": "數值",
+      "default": 1975.0,
+      "min": 1900.0,
+      "max": 2015.0,
+      "step": "any"
+    },
+    {
+      "name": "yr_renovated",
+      "type": "number",
+      "description": "整修年份，0 代表未記錄整修",
+      "missing": 0,
+      "unit": "數值",
+      "default": 0.0,
+      "min": 0.0,
+      "max": 2015.0,
+      "step": "any"
+    },
+    {
+      "name": "zipcode",
+      "type": "category",
+      "description": "郵遞區號",
+      "missing": 0,
+      "unit": "類別",
+      "values": [
+        "98001",
+        "98002",
+        "98003",
+        "98004",
+        "98005",
+        "98006",
+        "98007",
+        "98008",
+        "98010",
+        "98011",
+        "98014",
+        "98019",
+        "98022",
+        "98023",
+        "98024",
+        "98027",
+        "98028",
+        "98029",
+        "98030",
+        "98031",
+        "98032",
+        "98033",
+        "98034",
+        "98038",
+        "98039",
+        "98040",
+        "98042",
+        "98045",
+        "98052",
+        "98053",
+        "98055",
+        "98056",
+        "98058",
+        "98059",
+        "98065",
+        "98070",
+        "98072",
+        "98074",
+        "98075",
+        "98077",
+        "98092",
+        "98102",
+        "98103",
+        "98105",
+        "98106",
+        "98107",
+        "98108",
+        "98109",
+        "98112",
+        "98115",
+        "98116",
+        "98117",
+        "98118",
+        "98119",
+        "98122",
+        "98125",
+        "98126",
+        "98133",
+        "98136",
+        "98144",
+        "98146",
+        "98148",
+        "98155",
+        "98166",
+        "98168",
+        "98177",
+        "98178",
+        "98188",
+        "98198",
+        "98199"
+      ],
+      "default": "98103"
+    },
+    {
+      "name": "lat",
+      "type": "number",
+      "description": "緯度",
+      "missing": 0,
+      "unit": "數值",
+      "default": 47.5716,
+      "min": 47.1559,
+      "max": 47.7776,
+      "step": "any"
+    },
+    {
+      "name": "long",
+      "type": "number",
+      "description": "經度",
+      "missing": 0,
+      "unit": "數值",
+      "default": -122.229,
+      "min": -122.519,
+      "max": -121.315,
+      "step": "any"
+    },
+    {
+      "name": "sqft_living15",
+      "type": "number",
+      "description": "鄰近房屋平均居住面積",
+      "missing": 0,
+      "unit": "ft²",
+      "default": 1840.0,
+      "min": 399.0,
+      "max": 6110.0,
+      "step": "any"
+    },
+    {
+      "name": "sqft_lot15",
+      "type": "number",
+      "description": "鄰近房屋平均土地面積",
+      "missing": 0,
+      "unit": "ft²",
+      "default": 7620.0,
+      "min": 660.0,
+      "max": 871200.0,
+      "step": "any"
+    }
+  ],
+  "dataset_summary": {
+    "total_samples": 21613,
+    "clean_samples": 21434,
+    "analyzed_samples": 21434,
+    "sampled": false,
+    "training_samples": 17147,
+    "testing_samples": 4287,
+    "original_feature_count": 18,
+    "candidate_feature_count": 18,
+    "encoded_feature_count": 87,
+    "missing_values": 0,
+    "split": "random 80/20 + KFold(5, shuffle=True, seed=42)",
+    "seed": 42
+  },
+  "model_results": [
+    {
+      "name": "Linear Regression",
+      "short": "Linear",
+      "cv_rmse": 163453.2789864565,
+      "test_rmse": 156389.2768706463,
+      "test_r2": 0.8052956453248825,
+      "test_mae": 96476.51628558901,
+      "best_parameters": {}
+    },
+    {
+      "name": "Ridge Regression",
+      "short": "Ridge",
+      "cv_rmse": 163442.74240594727,
+      "test_rmse": 156405.456092667,
+      "test_r2": 0.8052553570391947,
+      "test_mae": 96518.43091117073,
+      "best_parameters": {
+        "model__regressor__alpha": 0.1
+      }
+    },
+    {
+      "name": "Lasso Regression",
+      "short": "Lasso",
+      "cv_rmse": 166348.05093081557,
+      "test_rmse": 157684.459723985,
+      "test_r2": 0.8020572905217471,
+      "test_mae": 97202.54454474484,
+      "best_parameters": {
+        "model__regressor__alpha": 0.001
+      }
+    },
+    {
+      "name": "ElasticNet Regression",
+      "short": "ElasticNet",
+      "cv_rmse": 165029.6121786029,
+      "test_rmse": 156176.00650063358,
+      "test_r2": 0.8058263256463447,
+      "test_mae": 96386.28610312972,
+      "best_parameters": {
+        "model__regressor__alpha": 0.001,
+        "model__regressor__l1_ratio": 0.3
+      }
+    },
+    {
+      "name": "Random Forest Regressor",
+      "short": "Forest",
+      "cv_rmse": 144036.23852890782,
+      "test_rmse": 130611.90709554317,
+      "test_r2": 0.864191402794396,
+      "test_mae": 80537.82995178287,
+      "best_parameters": {
+        "model__regressor__max_depth": 14,
+        "model__regressor__min_samples_leaf": 2
+      }
+    }
+  ],
+  "recommended_model": "Random Forest Regressor",
+  "feature_selection_results": [
+    {
+      "count": 1,
+      "selected_features": [
+        "sqft_living"
+      ],
+      "cv_rmse": 264406.0879824256,
+      "test_rmse": 250808.795100165,
+      "test_r2": 0.49921968908259695,
+      "test_mae": 169633.42475579228
+    },
+    {
+      "count": 2,
+      "selected_features": [
+        "sqft_living",
+        "zipcode"
+      ],
+      "cv_rmse": 194446.1447360757,
+      "test_rmse": 182246.90791137947,
+      "test_r2": 0.7355874533336981,
+      "test_mae": 110827.7984591131
+    },
+    {
+      "count": 3,
+      "selected_features": [
+        "sqft_living",
+        "zipcode",
+        "waterfront"
+      ],
+      "cv_rmse": 178355.59361784524,
+      "test_rmse": 172918.4527660468,
+      "test_r2": 0.7619630353551771,
+      "test_mae": 106918.00547346091
+    },
+    {
+      "count": 4,
+      "selected_features": [
+        "sqft_living",
+        "zipcode",
+        "waterfront",
+        "grade"
+      ],
+      "cv_rmse": 173246.4441307105,
+      "test_rmse": 166657.96426782437,
+      "test_r2": 0.7788872087226724,
+      "test_mae": 103963.48669294808
+    },
+    {
+      "count": 5,
+      "selected_features": [
+        "sqft_living",
+        "zipcode",
+        "waterfront",
+        "grade",
+        "view"
+      ],
+      "cv_rmse": 169409.50577205792,
+      "test_rmse": 160458.85684552544,
+      "test_r2": 0.7950305623821508,
+      "test_mae": 99397.96012721222
+    },
+    {
+      "count": 6,
+      "selected_features": [
+        "sqft_living",
+        "zipcode",
+        "waterfront",
+        "grade",
+        "view",
+        "yr_built"
+      ],
+      "cv_rmse": 167531.90912726056,
+      "test_rmse": 158897.29151958227,
+      "test_r2": 0.7990006232078402,
+      "test_mae": 97739.61987414389
+    },
+    {
+      "count": 7,
+      "selected_features": [
+        "sqft_living",
+        "zipcode",
+        "waterfront",
+        "grade",
+        "view",
+        "yr_built",
+        "bedrooms"
+      ],
+      "cv_rmse": 166250.20193440607,
+      "test_rmse": 158837.06015510726,
+      "test_r2": 0.799152975360324,
+      "test_mae": 98091.17143060807
+    },
+    {
+      "count": 8,
+      "selected_features": [
+        "sqft_living",
+        "zipcode",
+        "waterfront",
+        "grade",
+        "view",
+        "yr_built",
+        "bedrooms",
+        "sqft_basement"
+      ],
+      "cv_rmse": 165266.63602344372,
+      "test_rmse": 158408.74071568,
+      "test_r2": 0.8002347215887832,
+      "test_mae": 98026.87579880665
+    },
+    {
+      "count": 9,
+      "selected_features": [
+        "sqft_living",
+        "zipcode",
+        "waterfront",
+        "grade",
+        "view",
+        "yr_built",
+        "bedrooms",
+        "sqft_basement",
+        "floors"
+      ],
+      "cv_rmse": 164612.87780674305,
+      "test_rmse": 157777.9561680063,
+      "test_r2": 0.8018224870898374,
+      "test_mae": 97903.30566880324
+    },
+    {
+      "count": 10,
+      "selected_features": [
+        "sqft_living",
+        "zipcode",
+        "waterfront",
+        "grade",
+        "view",
+        "yr_built",
+        "bedrooms",
+        "sqft_basement",
+        "floors",
+        "condition"
+      ],
+      "cv_rmse": 164026.1495727171,
+      "test_rmse": 157035.12252594347,
+      "test_r2": 0.8036841714597638,
+      "test_mae": 97198.33295852992
+    },
+    {
+      "count": 11,
+      "selected_features": [
+        "sqft_living",
+        "zipcode",
+        "waterfront",
+        "grade",
+        "view",
+        "yr_built",
+        "bedrooms",
+        "sqft_basement",
+        "floors",
+        "condition",
+        "bathrooms"
+      ],
+      "cv_rmse": 163596.60988037736,
+      "test_rmse": 157037.9541862892,
+      "test_r2": 0.8036770914543488,
+      "test_mae": 97072.26748266318
+    },
+    {
+      "count": 12,
+      "selected_features": [
+        "sqft_living",
+        "zipcode",
+        "waterfront",
+        "grade",
+        "view",
+        "yr_built",
+        "bedrooms",
+        "sqft_basement",
+        "floors",
+        "condition",
+        "bathrooms",
+        "sqft_lot"
+      ],
+      "cv_rmse": 163524.24333692814,
+      "test_rmse": 156716.69623722395,
+      "test_r2": 0.8044795189024591,
+      "test_mae": 96731.94255940554
+    },
+    {
+      "count": 13,
+      "selected_features": [
+        "sqft_living",
+        "zipcode",
+        "waterfront",
+        "grade",
+        "view",
+        "yr_built",
+        "bedrooms",
+        "sqft_basement",
+        "floors",
+        "condition",
+        "bathrooms",
+        "sqft_lot",
+        "yr_renovated"
+      ],
+      "cv_rmse": 163465.86040422803,
+      "test_rmse": 156592.67459445528,
+      "test_r2": 0.8047888564128772,
+      "test_mae": 96583.89869342558
+    },
+    {
+      "count": 14,
+      "selected_features": [
+        "sqft_living",
+        "zipcode",
+        "waterfront",
+        "grade",
+        "view",
+        "yr_built",
+        "bedrooms",
+        "sqft_basement",
+        "floors",
+        "condition",
+        "bathrooms",
+        "sqft_lot",
+        "yr_renovated",
+        "lat"
+      ],
+      "cv_rmse": 163428.0109750387,
+      "test_rmse": 156534.2209081892,
+      "test_r2": 0.8049345679696984,
+      "test_mae": 96588.10422060848
+    },
+    {
+      "count": 15,
+      "selected_features": [
+        "sqft_living",
+        "zipcode",
+        "waterfront",
+        "grade",
+        "view",
+        "yr_built",
+        "bedrooms",
+        "sqft_basement",
+        "floors",
+        "condition",
+        "bathrooms",
+        "sqft_lot",
+        "yr_renovated",
+        "lat",
+        "long"
+      ],
+      "cv_rmse": 163410.83357640475,
+      "test_rmse": 156497.47384292562,
+      "test_r2": 0.8050261420772797,
+      "test_mae": 96560.79453724029
+    },
+    {
+      "count": 16,
+      "selected_features": [
+        "sqft_living",
+        "zipcode",
+        "waterfront",
+        "grade",
+        "view",
+        "yr_built",
+        "bedrooms",
+        "sqft_basement",
+        "floors",
+        "condition",
+        "bathrooms",
+        "sqft_lot",
+        "yr_renovated",
+        "lat",
+        "long",
+        "sqft_above"
+      ],
+      "cv_rmse": 163410.89249076782,
+      "test_rmse": 156497.4550358241,
+      "test_r2": 0.8050261889392875,
+      "test_mae": 96560.74280623981
+    },
+    {
+      "count": 17,
+      "selected_features": [
+        "sqft_living",
+        "zipcode",
+        "waterfront",
+        "grade",
+        "view",
+        "yr_built",
+        "bedrooms",
+        "sqft_basement",
+        "floors",
+        "condition",
+        "bathrooms",
+        "sqft_lot",
+        "yr_renovated",
+        "lat",
+        "long",
+        "sqft_above",
+        "sqft_lot15"
+      ],
+      "cv_rmse": 163432.02296306964,
+      "test_rmse": 156461.83438603103,
+      "test_r2": 0.8051149354744789,
+      "test_mae": 96538.22490777567
+    },
+    {
+      "count": 18,
+      "selected_features": [
+        "sqft_living",
+        "zipcode",
+        "waterfront",
+        "grade",
+        "view",
+        "yr_built",
+        "bedrooms",
+        "sqft_basement",
+        "floors",
+        "condition",
+        "bathrooms",
+        "sqft_lot",
+        "yr_renovated",
+        "lat",
+        "long",
+        "sqft_above",
+        "sqft_lot15",
+        "sqft_living15"
+      ],
+      "cv_rmse": 163453.2341620223,
+      "test_rmse": 156389.29377095675,
+      "test_r2": 0.8052956032431711,
+      "test_mae": 96476.53093554666
+    }
+  ],
+  "best_features": {
+    "count": 15,
+    "selected_features": [
+      "sqft_living",
+      "zipcode",
+      "waterfront",
+      "grade",
+      "view",
+      "yr_built",
+      "bedrooms",
+      "sqft_basement",
+      "floors",
+      "condition",
+      "bathrooms",
+      "sqft_lot",
+      "yr_renovated",
+      "lat",
+      "long"
+    ],
+    "cv_rmse": 163410.83357640475,
+    "test_rmse": 156497.47384292562,
+    "test_r2": 0.8050261420772797,
+    "test_mae": 96560.79453724029
+  },
+  "diagnostic_results": {
+    "points": [
+      {
+        "actual": 372000.0,
+        "predicted": 599045.9461018394,
+        "residual": -227045.94610183942
+      },
+      {
+        "actual": 740000.0,
+        "predicted": 770819.8047946712,
+        "residual": -30819.804794671247
+      },
+      {
+        "actual": 249950.0,
+        "predicted": 232914.46530912118,
+        "residual": 17035.53469087882
+      },
+      {
+        "actual": 1010000.0,
+        "predicted": 914441.3655325236,
+        "residual": 95558.6344674764
+      },
+      {
+        "actual": 969500.0,
+        "predicted": 769645.2988710557,
+        "residual": 199854.7011289443
+      },
+      {
+        "actual": 293000.0,
+        "predicted": 340554.6930309043,
+        "residual": -47554.69303090428
+      },
+      {
+        "actual": 735000.0,
+        "predicted": 754535.6506242136,
+        "residual": -19535.650624213624
+      },
+      {
+        "actual": 503500.0,
+        "predicted": 575119.2730788392,
+        "residual": -71619.27307883918
+      },
+      {
+        "actual": 180000.0,
+        "predicted": 248913.37687637703,
+        "residual": -68913.37687637703
+      },
+      {
+        "actual": 352000.0,
+        "predicted": 232190.79309763486,
+        "residual": 119809.20690236514
+      },
+      {
+        "actual": 784950.0,
+        "predicted": 753946.7532748996,
+        "residual": 31003.246725100442
+      },
+      {
+        "actual": 375000.0,
+        "predicted": 594785.0700149115,
+        "residual": -219785.07001491147
+      },
+      {
+        "actual": 629950.0,
+        "predicted": 622710.5732084503,
+        "residual": 7239.42679154966
+      },
+      {
+        "actual": 260000.0,
+        "predicted": 273841.24145637435,
+        "residual": -13841.241456374351
+      },
+      {
+        "actual": 381000.0,
+        "predicted": 360383.55841352366,
+        "residual": 20616.441586476343
+      },
+      {
+        "actual": 239000.0,
+        "predicted": 241176.48448638484,
+        "residual": -2176.484486384841
+      },
+      {
+        "actual": 499950.0,
+        "predicted": 547997.1721010982,
+        "residual": -48047.17210109823
+      },
+      {
+        "actual": 365000.0,
+        "predicted": 448342.62549997086,
+        "residual": -83342.62549997086
+      },
+      {
+        "actual": 437500.0,
+        "predicted": 472984.4427783791,
+        "residual": -35484.442778379074
+      },
+      {
+        "actual": 395000.0,
+        "predicted": 529912.5553747518,
+        "residual": -134912.5553747518
+      },
+      {
+        "actual": 600000.0,
+        "predicted": 615585.4423951319,
+        "residual": -15585.442395131919
+      },
+      {
+        "actual": 1555000.0,
+        "predicted": 1034093.1858650432,
+        "residual": 520906.8141349568
+      },
+      {
+        "actual": 515000.0,
+        "predicted": 438425.87622394686,
+        "residual": 76574.12377605314
+      },
+      {
+        "actual": 300000.0,
+        "predicted": 350374.2724827925,
+        "residual": -50374.2724827925
+      },
+      {
+        "actual": 205000.0,
+        "predicted": 243738.48462231806,
+        "residual": -38738.484622318065
+      },
+      {
+        "actual": 993500.0,
+        "predicted": 1588160.466698091,
+        "residual": -594660.466698091
+      },
+      {
+        "actual": 253500.0,
+        "predicted": 239797.563038275,
+        "residual": 13702.436961725005
+      },
+      {
+        "actual": 365650.0,
+        "predicted": 407037.80514530285,
+        "residual": -41387.805145302846
+      },
+      {
+        "actual": 350000.0,
+        "predicted": 625851.8019802283,
+        "residual": -275851.8019802283
+      },
+      {
+        "actual": 343000.0,
+        "predicted": 369861.0860278432,
+        "residual": -26861.08602784318
+      },
+      {
+        "actual": 250000.0,
+        "predicted": 327699.4988196065,
+        "residual": -77699.4988196065
+      },
+      {
+        "actual": 300000.0,
+        "predicted": 285737.60491131723,
+        "residual": 14262.395088682766
+      },
+      {
+        "actual": 450000.0,
+        "predicted": 396224.8435947384,
+        "residual": 53775.1564052616
+      },
+      {
+        "actual": 375000.0,
+        "predicted": 366153.7952813618,
+        "residual": 8846.204718638211
+      },
+      {
+        "actual": 363000.0,
+        "predicted": 366153.7952813618,
+        "residual": -3153.7952813617885
+      },
+      {
+        "actual": 527000.0,
+        "predicted": 657123.0378815308,
+        "residual": -130123.03788153082
+      },
+      {
+        "actual": 257500.0,
+        "predicted": 255380.27682636573,
+        "residual": 2119.7231736342655
+      },
+      {
+        "actual": 271500.0,
+        "predicted": 322662.2439339419,
+        "residual": -51162.24393394188
+      },
+      {
+        "actual": 454900.0,
+        "predicted": 454338.5413363041,
+        "residual": 561.4586636958993
+      },
+      {
+        "actual": 299000.0,
+        "predicted": 344275.70069254335,
+        "residual": -45275.70069254335
+      },
+      {
+        "actual": 815000.0,
+        "predicted": 819506.5720531165,
+        "residual": -4506.572053116513
+      },
+      {
+        "actual": 320000.0,
+        "predicted": 364832.30345675454,
+        "residual": -44832.30345675454
+      },
+      {
+        "actual": 300000.0,
+        "predicted": 318369.6464030341,
+        "residual": -18369.6464030341
+      },
+      {
+        "actual": 300000.0,
+        "predicted": 259756.56738449715,
+        "residual": 40243.432615502854
+      },
+      {
+        "actual": 330000.0,
+        "predicted": 422614.7154343282,
+        "residual": -92614.71543432819
+      },
+      {
+        "actual": 699950.0,
+        "predicted": 799153.696181336,
+        "residual": -99203.69618133595
+      },
+      {
+        "actual": 325000.0,
+        "predicted": 325678.8349143381,
+        "residual": -678.8349143380765
+      },
+      {
+        "actual": 769995.0,
+        "predicted": 825501.2528047115,
+        "residual": -55506.25280471146
+      },
+      {
+        "actual": 317000.0,
+        "predicted": 318669.61323826795,
+        "residual": -1669.6132382679498
+      },
+      {
+        "actual": 1098000.0,
+        "predicted": 1219835.0184367434,
+        "residual": -121835.01843674341
+      },
+      {
+        "actual": 274950.0,
+        "predicted": 276014.97659548675,
+        "residual": -1064.976595486747
+      },
+      {
+        "actual": 600000.0,
+        "predicted": 594196.696273671,
+        "residual": 5803.3037263290025
+      },
+      {
+        "actual": 539950.0,
+        "predicted": 536884.1943655002,
+        "residual": 3065.8056344997603
+      },
+      {
+        "actual": 292500.0,
+        "predicted": 366153.7952813618,
+        "residual": -73653.79528136179
+      },
+      {
+        "actual": 365000.0,
+        "predicted": 402364.3633179447,
+        "residual": -37364.36331794469
+      },
+      {
+        "actual": 280000.0,
+        "predicted": 427375.82788934035,
+        "residual": -147375.82788934035
+      },
+      {
+        "actual": 278000.0,
+        "predicted": 246556.51372834836,
+        "residual": 31443.486271651636
+      },
+      {
+        "actual": 501000.0,
+        "predicted": 512537.48546940024,
+        "residual": -11537.485469400242
+      },
+      {
+        "actual": 539000.0,
+        "predicted": 641478.7614586117,
+        "residual": -102478.7614586117
+      },
+      {
+        "actual": 462600.0,
+        "predicted": 386075.98039857193,
+        "residual": 76524.01960142807
+      },
+      {
+        "actual": 529950.0,
+        "predicted": 528555.3509170676,
+        "residual": 1394.6490829323884
+      },
+      {
+        "actual": 569000.0,
+        "predicted": 469497.2061199909,
+        "residual": 99502.79388000909
+      },
+      {
+        "actual": 425000.0,
+        "predicted": 460157.39621895173,
+        "residual": -35157.39621895173
+      },
+      {
+        "actual": 2300000.0,
+        "predicted": 2001003.5648992045,
+        "residual": 298996.43510079547
+      },
+      {
+        "actual": 161500.0,
+        "predicted": 237623.82789916254,
+        "residual": -76123.82789916254
+      },
+      {
+        "actual": 560000.0,
+        "predicted": 451267.3690343502,
+        "residual": 108732.63096564979
+      },
+      {
+        "actual": 502000.0,
+        "predicted": 446369.0264235243,
+        "residual": 55630.97357647569
+      },
+      {
+        "actual": 630000.0,
+        "predicted": 692040.2824660602,
+        "residual": -62040.28246606025
+      },
+      {
+        "actual": 425000.0,
+        "predicted": 457958.61937021016,
+        "residual": -32958.61937021016
+      },
+      {
+        "actual": 774950.0,
+        "predicted": 666611.4969552774,
+        "residual": 108338.5030447226
+      },
+      {
+        "actual": 515000.0,
+        "predicted": 664621.1654355323,
+        "residual": -149621.16543553234
+      },
+      {
+        "actual": 443500.0,
+        "predicted": 589159.1583363988,
+        "residual": -145659.15833639877
+      },
+      {
+        "actual": 299000.0,
+        "predicted": 425523.3003882832,
+        "residual": -126523.30038828321
+      },
+      {
+        "actual": 532000.0,
+        "predicted": 346729.5741209942,
+        "residual": 185270.4258790058
+      },
+      {
+        "actual": 738000.0,
+        "predicted": 521574.8066210768,
+        "residual": 216425.19337892323
+      },
+      {
+        "actual": 926500.0,
+        "predicted": 930646.0683747277,
+        "residual": -4146.068374727736
+      },
+      {
+        "actual": 882990.0,
+        "predicted": 813165.6931714299,
+        "residual": 69824.30682857009
+      },
+      {
+        "actual": 250000.0,
+        "predicted": 281375.0708866223,
+        "residual": -31375.0708866223
+      },
+      {
+        "actual": 533000.0,
+        "predicted": 565399.1137775237,
+        "residual": -32399.113777523744
+      },
+      {
+        "actual": 322500.0,
+        "predicted": 255096.18508833996,
+        "residual": 67403.81491166004
+      },
+      {
+        "actual": 338800.0,
+        "predicted": 347394.5801949875,
+        "residual": -8594.580194987473
+      },
+      {
+        "actual": 815000.0,
+        "predicted": 653044.1060963218,
+        "residual": 161955.89390367817
+      },
+      {
+        "actual": 459900.0,
+        "predicted": 529615.0824992425,
+        "residual": -69715.0824992425
+      },
+      {
+        "actual": 389950.0,
+        "predicted": 443353.070767654,
+        "residual": -53403.07076765399
+      },
+      {
+        "actual": 685000.0,
+        "predicted": 691710.035406953,
+        "residual": -6710.035406952957
+      },
+      {
+        "actual": 313000.0,
+        "predicted": 328445.0384889833,
+        "residual": -15445.038488983293
+      },
+      {
+        "actual": 250000.0,
+        "predicted": 239749.05908703723,
+        "residual": 10250.940912962775
+      },
+      {
+        "actual": 859990.0,
+        "predicted": 833093.1805960132,
+        "residual": 26896.819403986796
+      },
+      {
+        "actual": 678000.0,
+        "predicted": 524349.0054910489,
+        "residual": 153650.9945089511
+      },
+      {
+        "actual": 649000.0,
+        "predicted": 474599.4613005907,
+        "residual": 174400.53869940928
+      },
+      {
+        "actual": 198500.0,
+        "predicted": 262238.7108907976,
+        "residual": -63738.71089079761
+      },
+      {
+        "actual": 337500.0,
+        "predicted": 294991.7683224549,
+        "residual": 42508.23167754512
+      },
+      {
+        "actual": 398500.0,
+        "predicted": 344749.68378837546,
+        "residual": 53750.31621162454
+      },
+      {
+        "actual": 349900.0,
+        "predicted": 358829.0081003938,
+        "residual": -8929.00810039381
+      },
+      {
+        "actual": 765000.0,
+        "predicted": 808252.9813047802,
+        "residual": -43252.98130478023
+      },
+      {
+        "actual": 799950.0,
+        "predicted": 812840.0465337038,
+        "residual": -12890.046533703804
+      },
+      {
+        "actual": 316750.0,
+        "predicted": 344749.68378837546,
+        "residual": -27999.683788375463
+      },
+      {
+        "actual": 612000.0,
+        "predicted": 555464.0148690373,
+        "residual": 56535.98513096268
+      },
+      {
+        "actual": 405000.0,
+        "predicted": 445385.91602057056,
+        "residual": -40385.916020570556
+      },
+      {
+        "actual": 438000.0,
+        "predicted": 369917.18298664235,
+        "residual": 68082.81701335765
+      },
+      {
+        "actual": 226740.0,
+        "predicted": 255042.63865164825,
+        "residual": -28302.638651648245
+      },
+      {
+        "actual": 360000.0,
+        "predicted": 408197.83672258165,
+        "residual": -48197.83672258165
+      },
+      {
+        "actual": 391265.0,
+        "predicted": 381107.5797101863,
+        "residual": 10157.420289813715
+      },
+      {
+        "actual": 490000.0,
+        "predicted": 586107.8571200131,
+        "residual": -96107.8571200131
+      },
+      {
+        "actual": 575000.0,
+        "predicted": 501550.6794710371,
+        "residual": 73449.32052896288
+      },
+      {
+        "actual": 551000.0,
+        "predicted": 538122.5352664941,
+        "residual": 12877.464733505854
+      },
+      {
+        "actual": 327500.0,
+        "predicted": 335414.35126935184,
+        "residual": -7914.351269351842
+      },
+      {
+        "actual": 280000.0,
+        "predicted": 314348.49286795035,
+        "residual": -34348.49286795035
+      },
+      {
+        "actual": 392500.0,
+        "predicted": 407938.19760912564,
+        "residual": -15438.197609125637
+      },
+      {
+        "actual": 349000.0,
+        "predicted": 331617.02494971093,
+        "residual": 17382.975050289067
+      },
+      {
+        "actual": 2195000.0,
+        "predicted": 2213448.36737156,
+        "residual": -18448.367371560074
+      },
+      {
+        "actual": 340000.0,
+        "predicted": 433994.1520658888,
+        "residual": -93994.1520658888
+      },
+      {
+        "actual": 313300.0,
+        "predicted": 419154.0264055042,
+        "residual": -105854.0264055042
+      },
+      {
+        "actual": 600000.0,
+        "predicted": 462187.20475458354,
+        "residual": 137812.79524541646
+      },
+      {
+        "actual": 306000.0,
+        "predicted": 338533.8509769806,
+        "residual": -32533.850976980582
+      },
+      {
+        "actual": 260000.0,
+        "predicted": 252043.63522402162,
+        "residual": 7956.364775978378
+      },
+      {
+        "actual": 165000.0,
+        "predicted": 232190.79309763486,
+        "residual": -67190.79309763486
+      },
+      {
+        "actual": 588000.0,
+        "predicted": 553719.4800246796,
+        "residual": 34280.519975320436
+      },
+      {
+        "actual": 225000.0,
+        "predicted": 309333.62719021254,
+        "residual": -84333.62719021254
+      },
+      {
+        "actual": 389000.0,
+        "predicted": 355057.7615483933,
+        "residual": 33942.23845160671
+      },
+      {
+        "actual": 289275.0,
+        "predicted": 673496.0969189277,
+        "residual": -384221.09691892774
+      },
+      {
+        "actual": 345000.0,
+        "predicted": 325776.809746797,
+        "residual": 19223.190253202978
+      },
+      {
+        "actual": 374500.0,
+        "predicted": 352845.4304636272,
+        "residual": 21654.569536372786
+      },
+      {
+        "actual": 655000.0,
+        "predicted": 614239.1088254573,
+        "residual": 40760.89117454272
+      },
+      {
+        "actual": 450000.0,
+        "predicted": 431801.93080810696,
+        "residual": 18198.06919189304
+      },
+      {
+        "actual": 325000.0,
+        "predicted": 331881.3167700678,
+        "residual": -6881.316770067788
+      },
+      {
+        "actual": 760369.0,
+        "predicted": 781339.6317802747,
+        "residual": -20970.631780274678
+      },
+      {
+        "actual": 449500.0,
+        "predicted": 479883.2819575226,
+        "residual": -30383.281957522617
+      },
+      {
+        "actual": 500000.0,
+        "predicted": 458659.8328436402,
+        "residual": 41340.16715635982
+      },
+      {
+        "actual": 372500.0,
+        "predicted": 343679.60424247774,
+        "residual": 28820.39575752226
+      },
+      {
+        "actual": 425000.0,
+        "predicted": 425523.3003882832,
+        "residual": -523.3003882832127
+      },
+      {
+        "actual": 205000.0,
+        "predicted": 243775.1514461157,
+        "residual": -38775.15144611569
+      },
+      {
+        "actual": 322000.0,
+        "predicted": 350374.2724827925,
+        "residual": -28374.272482792498
+      },
+      {
+        "actual": 579000.0,
+        "predicted": 571565.5173282985,
+        "residual": 7434.482671701466
+      },
+      {
+        "actual": 350000.0,
+        "predicted": 362273.26115458866,
+        "residual": -12273.261154588661
+      },
+      {
+        "actual": 705000.0,
+        "predicted": 676908.9840358444,
+        "residual": 28091.01596415555
+      },
+      {
+        "actual": 302000.0,
+        "predicted": 315177.7931800933,
+        "residual": -13177.793180093286
+      },
+      {
+        "actual": 170000.0,
+        "predicted": 241176.48448638484,
+        "residual": -71176.48448638484
+      },
+      {
+        "actual": 349950.0,
+        "predicted": 326475.72511957365,
+        "residual": 23474.274880426354
+      },
+      {
+        "actual": 385000.0,
+        "predicted": 487574.2295385896,
+        "residual": -102574.2295385896
+      },
+      {
+        "actual": 326000.0,
+        "predicted": 326258.95384363947,
+        "residual": -258.95384363946505
+      },
+      {
+        "actual": 465000.0,
+        "predicted": 367295.0733448905,
+        "residual": 97704.9266551095
+      },
+      {
+        "actual": 196000.0,
+        "predicted": 232190.79309763486,
+        "residual": -36190.79309763486
+      },
+      {
+        "actual": 340000.0,
+        "predicted": 331881.3167700678,
+        "residual": 8118.683229932212
+      },
+      {
+        "actual": 313950.0,
+        "predicted": 468878.7804260734,
+        "residual": -154928.7804260734
+      },
+      {
+        "actual": 319000.0,
+        "predicted": 301288.51380230155,
+        "residual": 17711.486197698454
+      },
+      {
+        "actual": 495000.0,
+        "predicted": 470899.17069095647,
+        "residual": 24100.829309043533
+      },
+      {
+        "actual": 382000.0,
+        "predicted": 466295.3411075685,
+        "residual": -84295.34110756853
+      },
+      {
+        "actual": 300000.0,
+        "predicted": 338533.8509769806,
+        "residual": -38533.85097698058
+      },
+      {
+        "actual": 317500.0,
+        "predicted": 344749.68378837546,
+        "residual": -27249.683788375463
+      },
+      {
+        "actual": 2225000.0,
+        "predicted": 1876140.6772924121,
+        "residual": 348859.32270758785
+      },
+      {
+        "actual": 627000.0,
+        "predicted": 615031.751867402,
+        "residual": 11968.248132598004
+      },
+      {
+        "actual": 386591.0,
+        "predicted": 450452.72953070526,
+        "residual": -63861.729530705255
+      },
+      {
+        "actual": 400000.0,
+        "predicted": 421555.7147538968,
+        "residual": -21555.714753896813
+      },
+      {
+        "actual": 455000.0,
+        "predicted": 481676.0087785201,
+        "residual": -26676.008778520103
+      },
+      {
+        "actual": 705000.0,
+        "predicted": 543532.3520334169,
+        "residual": 161467.64796658314
+      },
+      {
+        "actual": 475000.0,
+        "predicted": 485807.6880813771,
+        "residual": -10807.688081377128
+      },
+      {
+        "actual": 325000.0,
+        "predicted": 440345.145646648,
+        "residual": -115345.14564664802
+      },
+      {
+        "actual": 920000.0,
+        "predicted": 736226.9086410986,
+        "residual": 183773.09135890135
+      },
+      {
+        "actual": 400000.0,
+        "predicted": 344749.68378837546,
+        "residual": 55250.31621162454
+      },
+      {
+        "actual": 850000.0,
+        "predicted": 760352.5549907536,
+        "residual": 89647.44500924635
+      },
+      {
+        "actual": 410000.0,
+        "predicted": 483146.607577358,
+        "residual": -73146.60757735802
+      },
+      {
+        "actual": 679000.0,
+        "predicted": 681132.3741604898,
+        "residual": -2132.374160489766
+      },
+      {
+        "actual": 631000.0,
+        "predicted": 635816.455181849,
+        "residual": -4816.455181848956
+      },
+      {
+        "actual": 1200000.0,
+        "predicted": 1226256.9556673486,
+        "residual": -26256.95566734858
+      },
+      {
+        "actual": 459995.0,
+        "predicted": 474843.6774032802,
+        "residual": -14848.67740328022
+      },
+      {
+        "actual": 712000.0,
+        "predicted": 769780.2764774885,
+        "residual": -57780.276477488456
+      },
+      {
+        "actual": 274950.0,
+        "predicted": 248913.37687637703,
+        "residual": 26036.623123622965
+      },
+      {
+        "actual": 437000.0,
+        "predicted": 435337.57893099036,
+        "residual": 1662.421069009637
+      },
+      {
+        "actual": 590000.0,
+        "predicted": 506015.99586386315,
+        "residual": 83984.00413613685
+      },
+      {
+        "actual": 500000.0,
+        "predicted": 476279.7882255623,
+        "residual": 23720.21177443769
+      },
+      {
+        "actual": 1145000.0,
+        "predicted": 886117.150795615,
+        "residual": 258882.84920438495
+      },
+      {
+        "actual": 515000.0,
+        "predicted": 460657.134659793,
+        "residual": 54342.865340207005
+      },
+      {
+        "actual": 330000.0,
+        "predicted": 344749.68378837546,
+        "residual": -14749.683788375463
+      },
+      {
+        "actual": 1045000.0,
+        "predicted": 1021990.829091213,
+        "residual": 23009.170908787055
+      },
+      {
+        "actual": 470000.0,
+        "predicted": 501550.6794710371,
+        "residual": -31550.679471037118
+      },
+      {
+        "actual": 230000.0,
+        "predicted": 364832.30345675454,
+        "residual": -134832.30345675454
+      },
+      {
+        "actual": 257000.0,
+        "predicted": 253912.46366041107,
+        "residual": 3087.536339588929
+      },
+      {
+        "actual": 331000.0,
+        "predicted": 470829.20488620433,
+        "residual": -139829.20488620433
+      },
+      {
+        "actual": 541500.0,
+        "predicted": 443886.7965694373,
+        "residual": 97613.20343056269
+      },
+      {
+        "actual": 630000.0,
+        "predicted": 609860.6148411931,
+        "residual": 20139.385158806923
+      },
+      {
+        "actual": 369950.0,
+        "predicted": 437997.7770622894,
+        "residual": -68047.77706228942
+      },
+      {
+        "actual": 309000.0,
+        "predicted": 250065.98287621216,
+        "residual": 58934.01712378784
+      },
+      {
+        "actual": 514950.0,
+        "predicted": 370126.57745346526,
+        "residual": 144823.42254653474
+      },
+      {
+        "actual": 322500.0,
+        "predicted": 343976.2785605417,
+        "residual": -21476.278560541687
+      },
+      {
+        "actual": 287000.0,
+        "predicted": 243957.8467686175,
+        "residual": 43042.15323138249
+      },
+      {
+        "actual": 239000.0,
+        "predicted": 245534.63030980597,
+        "residual": -6534.6303098059725
+      },
+      {
+        "actual": 780000.0,
+        "predicted": 753103.2467607216,
+        "residual": 26896.75323927845
+      },
+      {
+        "actual": 650000.0,
+        "predicted": 628216.7533080331,
+        "residual": 21783.246691966895
+      },
+      {
+        "actual": 685000.0,
+        "predicted": 818531.1343846273,
+        "residual": -133531.13438462734
+      },
+      {
+        "actual": 229000.0,
+        "predicted": 343679.60424247774,
+        "residual": -114679.60424247774
+      },
+      {
+        "actual": 580000.0,
+        "predicted": 584024.8043355739,
+        "residual": -4024.804335573921
+      },
+      {
+        "actual": 775000.0,
+        "predicted": 870991.2243561221,
+        "residual": -95991.22435612208
+      },
+      {
+        "actual": 279000.0,
+        "predicted": 283953.60846248706,
+        "residual": -4953.608462487056
+      },
+      {
+        "actual": 667500.0,
+        "predicted": 528167.9652031737,
+        "residual": 139332.0347968263
+      },
+      {
+        "actual": 390500.0,
+        "predicted": 260458.8037554493,
+        "residual": 130041.1962445507
+      },
+      {
+        "actual": 487000.0,
+        "predicted": 530696.2016883056,
+        "residual": -43696.20168830559
+      },
+      {
+        "actual": 405000.0,
+        "predicted": 424409.77767740726,
+        "residual": -19409.777677407255
+      },
+      {
+        "actual": 475000.0,
+        "predicted": 473222.7241087904,
+        "residual": 1777.2758912096033
+      },
+      {
+        "actual": 610000.0,
+        "predicted": 646953.3085920729,
+        "residual": -36953.30859207292
+      },
+      {
+        "actual": 1160000.0,
+        "predicted": 1307230.9683148738,
+        "residual": -147230.96831487375
+      },
+      {
+        "actual": 829995.0,
+        "predicted": 820025.2765474364,
+        "residual": 9969.72345256363
+      },
+      {
+        "actual": 600000.0,
+        "predicted": 425523.3003882832,
+        "residual": 174476.6996117168
+      },
+      {
+        "actual": 272500.0,
+        "predicted": 282179.8518970254,
+        "residual": -9679.851897025423
+      },
+      {
+        "actual": 650000.0,
+        "predicted": 607850.7869832264,
+        "residual": 42149.213016773574
+      },
+      {
+        "actual": 580000.0,
+        "predicted": 652782.2570423848,
+        "residual": -72782.25704238482
+      },
+      {
+        "actual": 275000.0,
+        "predicted": 367255.902332551,
+        "residual": -92255.90233255102
+      },
+      {
+        "actual": 506000.0,
+        "predicted": 496770.00144908024,
+        "residual": 9229.998550919758
+      },
+      {
+        "actual": 304000.0,
+        "predicted": 282925.3915664023,
+        "residual": 21074.60843359772
+      },
+      {
+        "actual": 700000.0,
+        "predicted": 666200.6852282346,
+        "residual": 33799.31477176538
+      },
+      {
+        "actual": 400000.0,
+        "predicted": 492550.63182126335,
+        "residual": -92550.63182126335
+      },
+      {
+        "actual": 450000.0,
+        "predicted": 513643.0868364975,
+        "residual": -63643.086836497474
+      },
+      {
+        "actual": 560000.0,
+        "predicted": 588323.3535195809,
+        "residual": -28323.35351958091
+      },
+      {
+        "actual": 895000.0,
+        "predicted": 826184.2711269686,
+        "residual": 68815.72887303145
+      },
+      {
+        "actual": 426000.0,
+        "predicted": 498783.6799647656,
+        "residual": -72783.67996476562
+      },
+      {
+        "actual": 850000.0,
+        "predicted": 725094.8255903204,
+        "residual": 124905.1744096796
+      },
+      {
+        "actual": 1062000.0,
+        "predicted": 809999.9358637936,
+        "residual": 252000.0641362064
+      },
+      {
+        "actual": 540000.0,
+        "predicted": 703518.5119231407,
+        "residual": -163518.51192314073
+      },
+      {
+        "actual": 523000.0,
+        "predicted": 436477.78660908097,
+        "residual": 86522.21339091903
+      },
+      {
+        "actual": 437500.0,
+        "predicted": 471123.3458246585,
+        "residual": -33623.34582465852
+      },
+      {
+        "actual": 275000.0,
+        "predicted": 244122.47775674885,
+        "residual": 30877.52224325115
+      },
+      {
+        "actual": 860000.0,
+        "predicted": 891052.0237381512,
+        "residual": -31052.023738151183
+      },
+      {
+        "actual": 540000.0,
+        "predicted": 528631.9836890247,
+        "residual": 11368.016310975305
+      },
+      {
+        "actual": 558000.0,
+        "predicted": 895618.0388702156,
+        "residual": -337618.03887021565
+      },
+      {
+        "actual": 1100000.0,
+        "predicted": 1101173.2102409974,
+        "residual": -1173.210240997374
+      },
+      {
+        "actual": 615000.0,
+        "predicted": 456110.62288666726,
+        "residual": 158889.37711333274
+      },
+      {
+        "actual": 232000.0,
+        "predicted": 241167.31515639037,
+        "residual": -9167.315156390367
+      },
+      {
+        "actual": 569950.0,
+        "predicted": 508670.9689536374,
+        "residual": 61279.031046362594
+      },
+      {
+        "actual": 400000.0,
+        "predicted": 505434.3249372425,
+        "residual": -105434.32493724249
+      },
+      {
+        "actual": 316000.0,
+        "predicted": 334806.454280837,
+        "residual": -18806.454280836973
+      },
+      {
+        "actual": 963990.0,
+        "predicted": 869499.0375779304,
+        "residual": 94490.96242206963
+      },
+      {
+        "actual": 600000.0,
+        "predicted": 511707.20135427016,
+        "residual": 88292.79864572984
+      },
+      {
+        "actual": 619100.0,
+        "predicted": 492929.59464874596,
+        "residual": 126170.40535125404
+      },
+      {
+        "actual": 421000.0,
+        "predicted": 352845.4304636272,
+        "residual": 68154.56953637279
+      },
+      {
+        "actual": 510000.0,
+        "predicted": 665177.1595947278,
+        "residual": -155177.1595947278
+      },
+      {
+        "actual": 515000.0,
+        "predicted": 659689.7741970019,
+        "residual": -144689.77419700194
+      },
+      {
+        "actual": 412250.0,
+        "predicted": 344749.68378837546,
+        "residual": 67500.31621162454
+      },
+      {
+        "actual": 575000.0,
+        "predicted": 662630.8623280085,
+        "residual": -87630.86232800852
+      },
+      {
+        "actual": 387000.0,
+        "predicted": 351086.2711293539,
+        "residual": 35913.7288706461
+      },
+      {
+        "actual": 520000.0,
+        "predicted": 629182.9568742932,
+        "residual": -109182.95687429316
+      },
+      {
+        "actual": 315500.0,
+        "predicted": 344749.68378837546,
+        "residual": -29249.683788375463
+      },
+      {
+        "actual": 495000.0,
+        "predicted": 576326.7444715598,
+        "residual": -81326.74447155977
+      },
+      {
+        "actual": 1749000.0,
+        "predicted": 1387004.8442810262,
+        "residual": 361995.15571897384
+      },
+      {
+        "actual": 1364000.0,
+        "predicted": 1183306.53876122,
+        "residual": 180693.46123878006
+      },
+      {
+        "actual": 226000.0,
+        "predicted": 237623.82789916254,
+        "residual": -11623.827899162541
+      },
+      {
+        "actual": 825000.0,
+        "predicted": 1132565.5935669532,
+        "residual": -307565.5935669532
+      },
+      {
+        "actual": 482000.0,
+        "predicted": 487035.5129447576,
+        "residual": -5035.512944757589
+      },
+      {
+        "actual": 295000.0,
+        "predicted": 341918.9646243551,
+        "residual": -46918.96462435508
+      },
+      {
+        "actual": 1482500.0,
+        "predicted": 1221227.1063355715,
+        "residual": 261272.8936644285
+      },
+      {
+        "actual": 525000.0,
+        "predicted": 470939.5837546524,
+        "residual": 54060.41624534759
+      },
+      {
+        "actual": 225000.0,
+        "predicted": 232914.46530912118,
+        "residual": -7914.46530912118
+      },
+      {
+        "actual": 435000.0,
+        "predicted": 395016.72407100094,
+        "residual": 39983.275928999064
+      },
+      {
+        "actual": 339999.0,
+        "predicted": 424409.77767740726,
+        "residual": -84410.77767740726
+      },
+      {
+        "actual": 348000.0,
+        "predicted": 315177.7931800933,
+        "residual": 32822.206819906714
+      },
+      {
+        "actual": 240000.0,
+        "predicted": 245534.63030980597,
+        "residual": -5534.6303098059725
+      },
+      {
+        "actual": 285000.0,
+        "predicted": 343679.60424247774,
+        "residual": -58679.60424247774
+      },
+      {
+        "actual": 314950.0,
+        "predicted": 276014.97659548675,
+        "residual": 38935.02340451325
+      },
+      {
+        "actual": 309900.0,
+        "predicted": 335737.23946493724,
+        "residual": -25837.239464937244
+      },
+      {
+        "actual": 305000.0,
+        "predicted": 254982.47439421306,
+        "residual": 50017.52560578694
+      },
+      {
+        "actual": 315000.0,
+        "predicted": 294991.7683224549,
+        "residual": 20008.231677545118
+      },
+      {
+        "actual": 450000.0,
+        "predicted": 535082.9759873851,
+        "residual": -85082.97598738514
+      },
+      {
+        "actual": 110000.0,
+        "predicted": 242976.06840355945,
+        "residual": -132976.06840355945
+      },
+      {
+        "actual": 324500.0,
+        "predicted": 284992.06524194044,
+        "residual": 39507.934758059564
+      },
+      {
+        "actual": 315000.0,
+        "predicted": 297551.28499186854,
+        "residual": 17448.71500813146
+      },
+      {
+        "actual": 439888.0,
+        "predicted": 344749.68378837546,
+        "residual": 95138.31621162454
+      },
+      {
+        "actual": 270000.0,
+        "predicted": 307935.4443689995,
+        "residual": -37935.44436899951
+      },
+      {
+        "actual": 312000.0,
+        "predicted": 279724.79461858975,
+        "residual": 32275.205381410255
+      },
+      {
+        "actual": 554990.0,
+        "predicted": 516760.4840731931,
+        "residual": 38229.5159268069
+      },
+      {
+        "actual": 195000.0,
+        "predicted": 242976.06840355945,
+        "residual": -47976.068403559446
+      },
+      {
+        "actual": 275000.0,
+        "predicted": 273841.24145637435,
+        "residual": 1158.7585436256486
+      },
+      {
+        "actual": 440000.0,
+        "predicted": 364832.30345675454,
+        "residual": 75167.69654324546
+      },
+      {
+        "actual": 1445000.0,
+        "predicted": 1161989.0271755327,
+        "residual": 283010.97282446735
+      },
+      {
+        "actual": 1325000.0,
+        "predicted": 1156309.248008262,
+        "residual": 168690.7519917381
+      },
+      {
+        "actual": 650000.0,
+        "predicted": 646261.2463272427,
+        "residual": 3738.7536727573024
+      },
+      {
+        "actual": 245000.0,
+        "predicted": 401328.5932694051,
+        "residual": -156328.59326940507
+      },
+      {
+        "actual": 610000.0,
+        "predicted": 476669.5437822694,
+        "residual": 133330.4562177306
+      },
+      {
+        "actual": 852600.0,
+        "predicted": 858509.0721118925,
+        "residual": -5909.072111892514
+      },
+      {
+        "actual": 220000.0,
+        "predicted": 239108.68262018962,
+        "residual": -19108.68262018962
+      },
+      {
+        "actual": 375000.0,
+        "predicted": 386221.42550532275,
+        "residual": -11221.425505322753
+      },
+      {
+        "actual": 650000.0,
+        "predicted": 667959.1127512013,
+        "residual": -17959.11275120126
+      },
+      {
+        "actual": 247500.0,
+        "predicted": 274867.0186897086,
+        "residual": -27367.01868970861
+      },
+      {
+        "actual": 250000.0,
+        "predicted": 244862.39766550192,
+        "residual": 5137.602334498079
+      },
+      {
+        "actual": 676000.0,
+        "predicted": 624190.9175286298,
+        "residual": 51809.08247137023
+      },
+      {
+        "actual": 725000.0,
+        "predicted": 717864.4164976606,
+        "residual": 7135.583502339432
+      },
+      {
+        "actual": 1135000.0,
+        "predicted": 1303229.4206131701,
+        "residual": -168229.42061317014
+      },
+      {
+        "actual": 449950.0,
+        "predicted": 597391.1964695451,
+        "residual": -147441.19646954513
+      },
+      {
+        "actual": 448000.0,
+        "predicted": 448197.43893038586,
+        "residual": -197.43893038586248
+      },
+      {
+        "actual": 229950.0,
+        "predicted": 273142.32608359767,
+        "residual": -43192.32608359767
+      },
+      {
+        "actual": 359800.0,
+        "predicted": 463571.82878854644,
+        "residual": -103771.82878854644
+      },
+      {
+        "actual": 810000.0,
+        "predicted": 786635.3290518495,
+        "residual": 23364.67094815045
+      },
+      {
+        "actual": 432000.0,
+        "predicted": 409024.4292700018,
+        "residual": 22975.570729998173
+      },
+      {
+        "actual": 632750.0,
+        "predicted": 670983.5341066939,
+        "residual": -38233.53410669393
+      },
+      {
+        "actual": 380000.0,
+        "predicted": 350374.2724827925,
+        "residual": 29625.727517207502
+      },
+      {
+        "actual": 336950.0,
+        "predicted": 333327.892876346,
+        "residual": 3622.1071236539865
+      },
+      {
+        "actual": 257000.0,
+        "predicted": 244049.13499827386,
+        "residual": 12950.865001726139
+      },
+      {
+        "actual": 381000.0,
+        "predicted": 505543.8675289387,
+        "residual": -124543.86752893869
+      },
+      {
+        "actual": 287000.0,
+        "predicted": 307985.36596553307,
+        "residual": -20985.36596553307
+      },
+      {
+        "actual": 240000.0,
+        "predicted": 343679.60424247774,
+        "residual": -103679.60424247774
+      },
+      {
+        "actual": 462000.0,
+        "predicted": 446106.4278879453,
+        "residual": 15893.57211205468
+      },
+      {
+        "actual": 1125000.0,
+        "predicted": 1290318.6655288953,
+        "residual": -165318.66552889533
+      },
+      {
+        "actual": 570000.0,
+        "predicted": 682480.0827319198,
+        "residual": -112480.08273191983
+      },
+      {
+        "actual": 655000.0,
+        "predicted": 551512.648890588,
+        "residual": 103487.35110941203
+      },
+      {
+        "actual": 525000.0,
+        "predicted": 481676.0087785201,
+        "residual": 43323.9912214799
+      },
+      {
+        "actual": 1712500.0,
+        "predicted": 1385201.7558929008,
+        "residual": 327298.24410709925
+      },
+      {
+        "actual": 400000.0,
+        "predicted": 343679.60424247774,
+        "residual": 56320.39575752226
+      },
+      {
+        "actual": 250000.0,
+        "predicted": 253217.65576812584,
+        "residual": -3217.655768125842
+      },
+      {
+        "actual": 590000.0,
+        "predicted": 463198.8601840437,
+        "residual": 126801.1398159563
+      },
+      {
+        "actual": 465000.0,
+        "predicted": 515750.10116715124,
+        "residual": -50750.10116715124
+      },
+      {
+        "actual": 314950.0,
+        "predicted": 284525.7848346967,
+        "residual": 30424.21516530332
+      },
+      {
+        "actual": 749950.0,
+        "predicted": 745442.7210279513,
+        "residual": 4507.278972048662
+      },
+      {
+        "actual": 605000.0,
+        "predicted": 520702.8237610332,
+        "residual": 84297.17623896681
+      },
+      {
+        "actual": 430000.0,
+        "predicted": 501591.8467754425,
+        "residual": -71591.84677544248
+      },
+      {
+        "actual": 751305.0,
+        "predicted": 797410.5480877256,
+        "residual": -46105.54808772565
+      },
+      {
+        "actual": 618000.0,
+        "predicted": 665105.1156486936,
+        "residual": -47105.11564869364
+      },
+      {
+        "actual": 999999.0,
+        "predicted": 858732.0813152902,
+        "residual": 141266.91868470982
+      },
+      {
+        "actual": 443000.0,
+        "predicted": 623936.960298858,
+        "residual": -180936.960298858
+      },
+      {
+        "actual": 548500.0,
+        "predicted": 611991.8875490584,
+        "residual": -63491.88754905842
+      },
+      {
+        "actual": 820000.0,
+        "predicted": 815712.0774329415,
+        "residual": 4287.922567058471
+      },
+      {
+        "actual": 400000.0,
+        "predicted": 472394.14292097226,
+        "residual": -72394.14292097226
+      },
+      {
+        "actual": 330000.0,
+        "predicted": 343679.60424247774,
+        "residual": -13679.60424247774
+      },
+      {
+        "actual": 980000.0,
+        "predicted": 1432550.0118603448,
+        "residual": -452550.0118603448
+      },
+      {
+        "actual": 386500.0,
+        "predicted": 541402.2134915031,
+        "residual": -154902.21349150315
+      },
+      {
+        "actual": 581000.0,
+        "predicted": 464872.69751383713,
+        "residual": 116127.30248616287
+      },
+      {
+        "actual": 199000.0,
+        "predicted": 241875.39985916152,
+        "residual": -42875.39985916152
+      },
+      {
+        "actual": 312000.0,
+        "predicted": 333327.892876346,
+        "residual": -21327.892876346014
+      },
+      {
+        "actual": 250000.0,
+        "predicted": 248550.4890727143,
+        "residual": 1449.510927285708
+      },
+      {
+        "actual": 707000.0,
+        "predicted": 750788.6412383274,
+        "residual": -43788.64123832737
+      },
+      {
+        "actual": 896000.0,
+        "predicted": 750581.820947865,
+        "residual": 145418.17905213498
+      },
+      {
+        "actual": 598000.0,
+        "predicted": 657517.1857614948,
+        "residual": -59517.185761494795
+      },
+      {
+        "actual": 470000.0,
+        "predicted": 522614.3388381407,
+        "residual": -52614.33883814071
+      },
+      {
+        "actual": 367500.0,
+        "predicted": 428443.60874054383,
+        "residual": -60943.60874054383
+      },
+      {
+        "actual": 282000.0,
+        "predicted": 344749.68378837546,
+        "residual": -62749.68378837546
+      },
+      {
+        "actual": 439950.0,
+        "predicted": 501550.6794710371,
+        "residual": -61600.67947103712
+      },
+      {
+        "actual": 425000.0,
+        "predicted": 428953.3113238952,
+        "residual": -3953.3113238951773
+      },
+      {
+        "actual": 518000.0,
+        "predicted": 488610.4029913598,
+        "residual": 29389.59700864018
+      },
+      {
+        "actual": 498000.0,
+        "predicted": 623630.9969881569,
+        "residual": -125630.99698815693
+      },
+      {
+        "actual": 2000000.0,
+        "predicted": 2543740.7210149835,
+        "residual": -543740.7210149835
+      },
+      {
+        "actual": 229000.0,
+        "predicted": 427096.6510243894,
+        "residual": -198096.65102438937
+      },
+      {
+        "actual": 488250.0,
+        "predicted": 514177.29431929847,
+        "residual": -25927.294319298468
+      },
+      {
+        "actual": 751000.0,
+        "predicted": 687007.2847511286,
+        "residual": 63992.71524887136
+      },
+      {
+        "actual": 345000.0,
+        "predicted": 449124.70362415584,
+        "residual": -104124.70362415584
+      },
+      {
+        "actual": 1895000.0,
+        "predicted": 1494957.0938415187,
+        "residual": 400042.90615848126
+      },
+      {
+        "actual": 628000.0,
+        "predicted": 583618.8673994155,
+        "residual": 44381.13260058453
+      },
+      {
+        "actual": 495000.0,
+        "predicted": 477096.7546390312,
+        "residual": 17903.24536096881
+      },
+      {
+        "actual": 275000.0,
+        "predicted": 392176.21317365405,
+        "residual": -117176.21317365405
+      },
+      {
+        "actual": 297000.0,
+        "predicted": 360603.3596398892,
+        "residual": -63603.35963988921
+      },
+      {
+        "actual": 749950.0,
+        "predicted": 584756.8420974221,
+        "residual": 165193.1579025779
+      },
+      {
+        "actual": 910000.0,
+        "predicted": 989717.9693979337,
+        "residual": -79717.96939793369
+      },
+      {
+        "actual": 262500.0,
+        "predicted": 344749.68378837546,
+        "residual": -82249.68378837546
+      },
+      {
+        "actual": 751000.0,
+        "predicted": 752159.9405411162,
+        "residual": -1159.9405411161715
+      },
+      {
+        "actual": 285000.0,
+        "predicted": 252329.07265067683,
+        "residual": 32670.927349323174
+      },
+      {
+        "actual": 707000.0,
+        "predicted": 773083.4271012,
+        "residual": -66083.42710119998
+      },
+      {
+        "actual": 552000.0,
+        "predicted": 460264.3914391846,
+        "residual": 91735.6085608154
+      },
+      {
+        "actual": 469000.0,
+        "predicted": 319647.87267510634,
+        "residual": 149352.12732489366
+      },
+      {
+        "actual": 104950.0,
+        "predicted": 250649.3348802785,
+        "residual": -145699.3348802785
+      },
+      {
+        "actual": 415000.0,
+        "predicted": 431861.89627785014,
+        "residual": -16861.896277850145
+      },
+      {
+        "actual": 762400.0,
+        "predicted": 851344.7993405383,
+        "residual": -88944.79934053833
+      },
+      {
+        "actual": 792000.0,
+        "predicted": 638141.3595232778,
+        "residual": 153858.64047672215
+      },
+      {
+        "actual": 355000.0,
+        "predicted": 350374.2724827925,
+        "residual": 4625.727517207502
+      },
+      {
+        "actual": 725000.0,
+        "predicted": 619115.5099472873,
+        "residual": 105884.49005271273
+      },
+      {
+        "actual": 330000.0,
+        "predicted": 344749.68378837546,
+        "residual": -14749.683788375463
+      },
+      {
+        "actual": 276000.0,
+        "predicted": 338533.8509769806,
+        "residual": -62533.85097698058
+      },
+      {
+        "actual": 515000.0,
+        "predicted": 685969.816080802,
+        "residual": -170969.816080802
+      },
+      {
+        "actual": 584999.0,
+        "predicted": 615309.6460479549,
+        "residual": -30310.646047954913
+      },
+      {
+        "actual": 500000.0,
+        "predicted": 389065.4739921702,
+        "residual": 110934.52600782982
+      },
+      {
+        "actual": 550000.0,
+        "predicted": 519963.634351383,
+        "residual": 30036.36564861698
+      },
+      {
+        "actual": 987000.0,
+        "predicted": 896364.4852012761,
+        "residual": 90635.51479872386
+      },
+      {
+        "actual": 540000.0,
+        "predicted": 580769.1101982176,
+        "residual": -40769.11019821756
+      },
+      {
+        "actual": 1290000.0,
+        "predicted": 1129990.875924742,
+        "residual": 160009.12407525792
+      },
+      {
+        "actual": 600000.0,
+        "predicted": 550592.7638627428,
+        "residual": 49407.23613725719
+      },
+      {
+        "actual": 450000.0,
+        "predicted": 607410.3904811757,
+        "residual": -157410.39048117574
+      },
+      {
+        "actual": 357000.0,
+        "predicted": 255380.27682636573,
+        "residual": 101619.72317363427
+      },
+      {
+        "actual": 405000.0,
+        "predicted": 473222.7241087904,
+        "residual": -68222.7241087904
+      },
+      {
+        "actual": 369950.0,
+        "predicted": 366761.378954249,
+        "residual": 3188.6210457509733
+      },
+      {
+        "actual": 285000.0,
+        "predicted": 349395.26743784535,
+        "residual": -64395.26743784535
+      },
+      {
+        "actual": 630000.0,
+        "predicted": 679959.3326179084,
+        "residual": -49959.33261790837
+      },
+      {
+        "actual": 315000.0,
+        "predicted": 261488.74484954902,
+        "residual": 53511.255150450976
+      },
+      {
+        "actual": 526000.0,
+        "predicted": 368577.39415715827,
+        "residual": 157422.60584284173
+      },
+      {
+        "actual": 487500.0,
+        "predicted": 591973.1170254226,
+        "residual": -104473.11702542263
+      },
+      {
+        "actual": 505000.0,
+        "predicted": 364832.30345675454,
+        "residual": 140167.69654324546
+      },
+      {
+        "actual": 480000.0,
+        "predicted": 640127.4523639992,
+        "residual": -160127.4523639992
+      },
+      {
+        "actual": 214000.0,
+        "predicted": 237623.82789916254,
+        "residual": -23623.82789916254
+      },
+      {
+        "actual": 299800.0,
+        "predicted": 500438.6489755639,
+        "residual": -200638.64897556388
+      },
+      {
+        "actual": 260000.0,
+        "predicted": 283231.0549906362,
+        "residual": -23231.054990636185
+      },
+      {
+        "actual": 680000.0,
+        "predicted": 683653.3347229005,
+        "residual": -3653.3347229005303
+      },
+      {
+        "actual": 965000.0,
+        "predicted": 968097.1796097894,
+        "residual": -3097.1796097893966
+      },
+      {
+        "actual": 130000.0,
+        "predicted": 245162.94516602525,
+        "residual": -115162.94516602525
+      },
+      {
+        "actual": 480000.0,
+        "predicted": 419669.88253942376,
+        "residual": 60330.117460576235
+      },
+      {
+        "actual": 950000.0,
+        "predicted": 1332214.6177038332,
+        "residual": -382214.61770383315
+      },
+      {
+        "actual": 518500.0,
+        "predicted": 572642.7889198982,
+        "residual": -54142.788919898216
+      },
+      {
+        "actual": 510000.0,
+        "predicted": 633652.3342755027,
+        "residual": -123652.33427550271
+      },
+      {
+        "actual": 1300000.0,
+        "predicted": 1087651.2195860166,
+        "residual": 212348.7804139834
+      },
+      {
+        "actual": 240000.0,
+        "predicted": 313867.7858760569,
+        "residual": -73867.78587605688
+      },
+      {
+        "actual": 390000.0,
+        "predicted": 324368.82761030167,
+        "residual": 65631.17238969833
+      },
+      {
+        "actual": 685000.0,
+        "predicted": 719394.6552369054,
+        "residual": -34394.65523690544
+      },
+      {
+        "actual": 978000.0,
+        "predicted": 927566.2961112797,
+        "residual": 50433.70388872025
+      },
+      {
+        "actual": 585000.0,
+        "predicted": 541402.2134915031,
+        "residual": 43597.78650849685
+      },
+      {
+        "actual": 550000.0,
+        "predicted": 641601.1627773176,
+        "residual": -91601.16277731757
+      },
+      {
+        "actual": 706000.0,
+        "predicted": 706071.6661241486,
+        "residual": -71.66612414864358
+      },
+      {
+        "actual": 550000.0,
+        "predicted": 544543.2008603285,
+        "residual": 5456.799139671493
+      },
+      {
+        "actual": 610000.0,
+        "predicted": 645468.2141669383,
+        "residual": -35468.21416693833
+      },
+      {
+        "actual": 186000.0,
+        "predicted": 241875.39985916152,
+        "residual": -55875.39985916152
+      },
+      {
+        "actual": 550700.0,
+        "predicted": 563175.1367992797,
+        "residual": -12475.136799279717
+      },
+      {
+        "actual": 345000.0,
+        "predicted": 426968.2148800078,
+        "residual": -81968.21488000778
+      },
+      {
+        "actual": 170000.0,
+        "predicted": 232190.79309763486,
+        "residual": -62190.79309763486
+      },
+      {
+        "actual": 405000.0,
+        "predicted": 414116.1384098777,
+        "residual": -9116.13840987772
+      },
+      {
+        "actual": 605000.0,
+        "predicted": 603572.2999127636,
+        "residual": 1427.700087236357
+      },
+      {
+        "actual": 435000.0,
+        "predicted": 396086.53260533,
+        "residual": 38913.467394670006
+      },
+      {
+        "actual": 631000.0,
+        "predicted": 398598.15058716777,
+        "residual": 232401.84941283223
+      },
+      {
+        "actual": 480000.0,
+        "predicted": 607577.3546841991,
+        "residual": -127577.35468419909
+      },
+      {
+        "actual": 463000.0,
+        "predicted": 497839.6729440235,
+        "residual": -34839.67294402351
+      },
+      {
+        "actual": 795000.0,
+        "predicted": 830059.5694272396,
+        "residual": -35059.56942723959
+      },
+      {
+        "actual": 910000.0,
+        "predicted": 692418.0017447639,
+        "residual": 217581.99825523607
+      },
+      {
+        "actual": 354000.0,
+        "predicted": 414657.42132382165,
+        "residual": -60657.42132382165
+      },
+      {
+        "actual": 650000.0,
+        "predicted": 688812.3043364226,
+        "residual": -38812.30433642259
+      },
+      {
+        "actual": 313000.0,
+        "predicted": 302514.31893730443,
+        "residual": 10485.68106269557
+      },
+      {
+        "actual": 384950.0,
+        "predicted": 425523.3003882832,
+        "residual": -40573.30038828321
+      },
+      {
+        "actual": 857000.0,
+        "predicted": 893787.3581102003,
+        "residual": -36787.358110200264
+      },
+      {
+        "actual": 825000.0,
+        "predicted": 1127220.1289666675,
+        "residual": -302220.12896666746
+      },
+      {
+        "actual": 589950.0,
+        "predicted": 434640.92862180923,
+        "residual": 155309.07137819077
+      },
+      {
+        "actual": 315001.0,
+        "predicted": 259842.9868437103,
+        "residual": 55158.0131562897
+      },
+      {
+        "actual": 334500.0,
+        "predicted": 298461.88798717916,
+        "residual": 36038.11201282084
+      },
+      {
+        "actual": 470000.0,
+        "predicted": 470890.656515483,
+        "residual": -890.6565154829877
+      },
+      {
+        "actual": 525000.0,
+        "predicted": 395098.0752258764,
+        "residual": 129901.92477412359
+      },
+      {
+        "actual": 475000.0,
+        "predicted": 375126.27009238873,
+        "residual": 99873.72990761127
+      },
+      {
+        "actual": 994000.0,
+        "predicted": 1022238.4123646221,
+        "residual": -28238.412364622112
+      },
+      {
+        "actual": 650000.0,
+        "predicted": 455508.2869857357,
+        "residual": 194491.7130142643
+      },
+      {
+        "actual": 950000.0,
+        "predicted": 948557.5345092404,
+        "residual": 1442.4654907595832
+      },
+      {
+        "actual": 505000.0,
+        "predicted": 437197.80361858,
+        "residual": 67802.19638142001
+      },
+      {
+        "actual": 278000.0,
+        "predicted": 319898.6168357163,
+        "residual": -41898.6168357163
+      },
+      {
+        "actual": 355000.0,
+        "predicted": 343679.60424247774,
+        "residual": 11320.39575752226
+      },
+      {
+        "actual": 725000.0,
+        "predicted": 866837.4468276729,
+        "residual": -141837.4468276729
+      },
+      {
+        "actual": 778000.0,
+        "predicted": 757589.913580265,
+        "residual": 20410.086419734987
+      },
+      {
+        "actual": 1740000.0,
+        "predicted": 1526861.087057997,
+        "residual": 213138.912942003
+      },
+      {
+        "actual": 351999.0,
+        "predicted": 334806.454280837,
+        "residual": 17192.545719163027
+      },
+      {
+        "actual": 285000.0,
+        "predicted": 378303.3359624328,
+        "residual": -93303.33596243279
+      },
+      {
+        "actual": 299950.0,
+        "predicted": 366825.83360704465,
+        "residual": -66875.83360704465
+      },
+      {
+        "actual": 599000.0,
+        "predicted": 637115.1375602308,
+        "residual": -38115.137560230796
+      },
+      {
+        "actual": 300000.0,
+        "predicted": 344749.68378837546,
+        "residual": -44749.68378837546
+      },
+      {
+        "actual": 264000.0,
+        "predicted": 275954.5394285126,
+        "residual": -11954.539428512624
+      },
+      {
+        "actual": 575000.0,
+        "predicted": 655397.3352005236,
+        "residual": -80397.33520052361
+      },
+      {
+        "actual": 490000.0,
+        "predicted": 476213.3784742919,
+        "residual": 13786.62152570812
+      },
+      {
+        "actual": 1210000.0,
+        "predicted": 884292.1080870526,
+        "residual": 325707.8919129474
+      },
+      {
+        "actual": 868700.0,
+        "predicted": 905087.8894970284,
+        "residual": -36387.88949702843
+      },
+      {
+        "actual": 273000.0,
+        "predicted": 351808.61624827515,
+        "residual": -78808.61624827515
+      },
+      {
+        "actual": 645000.0,
+        "predicted": 414981.2719536165,
+        "residual": 230018.72804638348
+      },
+      {
+        "actual": 1030000.0,
+        "predicted": 891666.4665585677,
+        "residual": 138333.5334414323
+      },
+      {
+        "actual": 410000.0,
+        "predicted": 524926.1630386651,
+        "residual": -114926.16303866508
+      },
+      {
+        "actual": 675000.0,
+        "predicted": 622352.0981153888,
+        "residual": 52647.90188461123
+      },
+      {
+        "actual": 725000.0,
+        "predicted": 661620.2047379129,
+        "residual": 63379.79526208714
+      },
+      {
+        "actual": 736000.0,
+        "predicted": 660832.0179581391,
+        "residual": 75167.98204186093
+      },
+      {
+        "actual": 262000.0,
+        "predicted": 276852.1441067007,
+        "residual": -14852.144106700725
+      },
+      {
+        "actual": 525000.0,
+        "predicted": 509089.1055149887,
+        "residual": 15910.89448501129
+      },
+      {
+        "actual": 633000.0,
+        "predicted": 736680.6199211691,
+        "residual": -103680.61992116913
+      },
+      {
+        "actual": 396000.0,
+        "predicted": 446356.55697653367,
+        "residual": -50356.55697653367
+      },
+      {
+        "actual": 420000.0,
+        "predicted": 333327.892876346,
+        "residual": 86672.10712365399
+      },
+      {
+        "actual": 770000.0,
+        "predicted": 611403.2857429244,
+        "residual": 158596.71425707557
+      },
+      {
+        "actual": 1110000.0,
+        "predicted": 748307.8070740445,
+        "residual": 361692.1929259555
+      },
+      {
+        "actual": 835000.0,
+        "predicted": 1661364.4963026694,
+        "residual": -826364.4963026694
+      },
+      {
+        "actual": 357500.0,
+        "predicted": 364887.10757437476,
+        "residual": -7387.107574374764
+      },
+      {
+        "actual": 790000.0,
+        "predicted": 675039.0892139778,
+        "residual": 114960.9107860222
+      },
+      {
+        "actual": 505000.0,
+        "predicted": 463938.6583993799,
+        "residual": 41061.34160062007
+      },
+      {
+        "actual": 570000.0,
+        "predicted": 521389.5460156607,
+        "residual": 48610.453984339314
+      },
+      {
+        "actual": 347500.0,
+        "predicted": 303213.2343100811,
+        "residual": 44286.76568991889
+      },
+      {
+        "actual": 815000.0,
+        "predicted": 820444.6006940462,
+        "residual": -5444.600694046239
+      },
+      {
+        "actual": 210000.0,
+        "predicted": 280943.96638686303,
+        "residual": -70943.96638686303
+      },
+      {
+        "actual": 255000.0,
+        "predicted": 232190.79309763486,
+        "residual": 22809.206902365142
+      },
+      {
+        "actual": 502000.0,
+        "predicted": 440681.2796296655,
+        "residual": 61318.720370334515
+      },
+      {
+        "actual": 480000.0,
+        "predicted": 464357.4141705442,
+        "residual": 15642.585829455813
+      },
+      {
+        "actual": 382500.0,
+        "predicted": 344749.68378837546,
+        "residual": 37750.31621162454
+      },
+      {
+        "actual": 1206690.0,
+        "predicted": 1010127.419596558,
+        "residual": 196562.58040344203
+      },
+      {
+        "actual": 215000.0,
+        "predicted": 237623.82789916254,
+        "residual": -22623.82789916254
+      },
+      {
+        "actual": 335900.0,
+        "predicted": 344749.68378837546,
+        "residual": -8849.683788375463
+      },
+      {
+        "actual": 335000.0,
+        "predicted": 366857.3852621551,
+        "residual": -31857.38526215509
+      },
+      {
+        "actual": 132500.0,
+        "predicted": 232914.46530912118,
+        "residual": -100414.46530912118
+      },
+      {
+        "actual": 611000.0,
+        "predicted": 637941.5333287283,
+        "residual": -26941.533328728285
+      },
+      {
+        "actual": 750000.0,
+        "predicted": 1016637.6073358678,
+        "residual": -266637.6073358678
+      },
+      {
+        "actual": 356000.0,
+        "predicted": 338533.8509769806,
+        "residual": 17466.149023019418
+      },
+      {
+        "actual": 515000.0,
+        "predicted": 573154.8963318181,
+        "residual": -58154.896331818076
+      },
+      {
+        "actual": 379000.0,
+        "predicted": 439968.5316655004,
+        "residual": -60968.53166550043
+      },
+      {
+        "actual": 1200000.0,
+        "predicted": 993915.6238737907,
+        "residual": 206084.37612620927
+      },
+      {
+        "actual": 521900.0,
+        "predicted": 601637.1498370069,
+        "residual": -79737.14983700693
+      },
+      {
+        "actual": 351000.0,
+        "predicted": 334806.454280837,
+        "residual": 16193.545719163027
+      },
+      {
+        "actual": 353000.0,
+        "predicted": 367295.0733448905,
+        "residual": -14295.073344890494
+      },
+      {
+        "actual": 375000.0,
+        "predicted": 421658.191259256,
+        "residual": -46658.19125925598
+      },
+      {
+        "actual": 425000.0,
+        "predicted": 441194.023581562,
+        "residual": -16194.023581561982
+      },
+      {
+        "actual": 379500.0,
+        "predicted": 428167.420661687,
+        "residual": -48667.42066168698
+      },
+      {
+        "actual": 342000.0,
+        "predicted": 430687.8141868872,
+        "residual": -88687.81418688718
+      },
+      {
+        "actual": 476000.0,
+        "predicted": 440681.2796296655,
+        "residual": 35318.720370334515
+      },
+      {
+        "actual": 975000.0,
+        "predicted": 594875.5115541467,
+        "residual": 380124.48844585335
+      },
+      {
+        "actual": 395000.0,
+        "predicted": 423815.6665245882,
+        "residual": -28815.66652458819
+      },
+      {
+        "actual": 346000.0,
+        "predicted": 399495.9977953044,
+        "residual": -53495.9977953044
+      },
+      {
+        "actual": 355000.0,
+        "predicted": 315396.89256091125,
+        "residual": 39603.10743908875
+      },
+      {
+        "actual": 640000.0,
+        "predicted": 661080.9717796614,
+        "residual": -21080.97177966137
+      },
+      {
+        "actual": 680000.0,
+        "predicted": 768192.5765558438,
+        "residual": -88192.57655584381
+      },
+      {
+        "actual": 351000.0,
+        "predicted": 338533.8509769806,
+        "residual": 12466.149023019418
+      },
+      {
+        "actual": 452000.0,
+        "predicted": 385077.15849130385,
+        "residual": 66922.84150869615
+      },
+      {
+        "actual": 1350000.0,
+        "predicted": 1188457.4663514323,
+        "residual": 161542.53364856774
+      },
+      {
+        "actual": 460000.0,
+        "predicted": 507243.84810398973,
+        "residual": -47243.84810398973
+      },
+      {
+        "actual": 1200000.0,
+        "predicted": 1053646.7637322927,
+        "residual": 146353.2362677073
+      },
+      {
+        "actual": 395000.0,
+        "predicted": 368332.2039237785,
+        "residual": 26667.796076221508
+      },
+      {
+        "actual": 175000.0,
+        "predicted": 232190.79309763486,
+        "residual": -57190.79309763486
+      },
+      {
+        "actual": 273000.0,
+        "predicted": 407389.869378531,
+        "residual": -134389.869378531
+      },
+      {
+        "actual": 157500.0,
+        "predicted": 232190.79309763486,
+        "residual": -74690.79309763486
+      },
+      {
+        "actual": 680000.0,
+        "predicted": 777965.3792689648,
+        "residual": -97965.37926896475
+      },
+      {
+        "actual": 280000.0,
+        "predicted": 564760.2039472532,
+        "residual": -284760.2039472532
+      },
+      {
+        "actual": 590000.0,
+        "predicted": 538319.1064201541,
+        "residual": 51680.8935798459
+      },
+      {
+        "actual": 850000.0,
+        "predicted": 798256.6100804922,
+        "residual": 51743.38991950778
+      },
+      {
+        "actual": 222000.0,
+        "predicted": 242608.3096310809,
+        "residual": -20608.30963108089
+      },
+      {
+        "actual": 367000.0,
+        "predicted": 330935.74288558005,
+        "residual": 36064.25711441995
+      },
+      {
+        "actual": 476500.0,
+        "predicted": 442963.1523873183,
+        "residual": 33536.84761268168
+      },
+      {
+        "actual": 1010000.0,
+        "predicted": 1195127.9542310748,
+        "residual": -185127.95423107478
+      },
+      {
+        "actual": 435000.0,
+        "predicted": 431207.8196552879,
+        "residual": 3792.1803447121056
+      },
+      {
+        "actual": 700000.0,
+        "predicted": 661793.2792052217,
+        "residual": 38206.72079477832
+      },
+      {
+        "actual": 454000.0,
+        "predicted": 637530.6955037562,
+        "residual": -183530.69550375617
+      },
+      {
+        "actual": 443000.0,
+        "predicted": 468169.14459912287,
+        "residual": -25169.14459912287
+      },
+      {
+        "actual": 500000.0,
+        "predicted": 486020.16775102844,
+        "residual": 13979.832248971565
+      },
+      {
+        "actual": 1216000.0,
+        "predicted": 997978.2574427099,
+        "residual": 218021.74255729013
+      },
+      {
+        "actual": 739000.0,
+        "predicted": 830091.1453610352,
+        "residual": -91091.14536103525
+      },
+      {
+        "actual": 496000.0,
+        "predicted": 457811.1198171612,
+        "residual": 38188.880182838824
+      },
+      {
+        "actual": 209900.0,
+        "predicted": 236291.4356344854,
+        "residual": -26391.435634485388
+      },
+      {
+        "actual": 840000.0,
+        "predicted": 833075.2357944632,
+        "residual": 6924.764205536805
+      },
+      {
+        "actual": 246000.0,
+        "predicted": 305186.46952302684,
+        "residual": -59186.46952302684
+      },
+      {
+        "actual": 1518630.0,
+        "predicted": 1146168.750178549,
+        "residual": 372461.249821451
+      },
+      {
+        "actual": 433000.0,
+        "predicted": 331634.65825835674,
+        "residual": 101365.34174164326
+      },
+      {
+        "actual": 515000.0,
+        "predicted": 517721.61757698964,
+        "residual": -2721.6175769896363
+      },
+      {
+        "actual": 440000.0,
+        "predicted": 419669.88253942376,
+        "residual": 20330.117460576235
+      },
+      {
+        "actual": 333000.0,
+        "predicted": 384754.4885739647,
+        "residual": -51754.488573964685
+      },
+      {
+        "actual": 358000.0,
+        "predicted": 284992.06524194044,
+        "residual": 73007.93475805956
+      },
+      {
+        "actual": 460000.0,
+        "predicted": 396380.3960381441,
+        "residual": 63619.60396185587
+      },
+      {
+        "actual": 725000.0,
+        "predicted": 647671.8035613744,
+        "residual": 77328.19643862557
+      },
+      {
+        "actual": 215000.0,
+        "predicted": 232190.79309763486,
+        "residual": -17190.793097634858
+      },
+      {
+        "actual": 470000.0,
+        "predicted": 471999.1815811825,
+        "residual": -1999.1815811825218
+      },
+      {
+        "actual": 255000.0,
+        "predicted": 248913.37687637703,
+        "residual": 6086.623123622965
+      },
+      {
+        "actual": 585000.0,
+        "predicted": 660222.0010979323,
+        "residual": -75222.00109793234
+      },
+      {
+        "actual": 530000.0,
+        "predicted": 700628.5557343219,
+        "residual": -170628.55573432194
+      },
+      {
+        "actual": 657000.0,
+        "predicted": 759949.8336889747,
+        "residual": -102949.83368897473
+      },
+      {
+        "actual": 772500.0,
+        "predicted": 669719.0172434387,
+        "residual": 102780.98275656125
+      },
+      {
+        "actual": 525000.0,
+        "predicted": 390412.83512673643,
+        "residual": 134587.16487326357
+      },
+      {
+        "actual": 925000.0,
+        "predicted": 880648.7400808601,
+        "residual": 44351.259919139906
+      },
+      {
+        "actual": 271900.0,
+        "predicted": 245534.63030980597,
+        "residual": 26365.369690194027
+      },
+      {
+        "actual": 206325.0,
+        "predicted": 307020.2758767732,
+        "residual": -100695.27587677317
+      },
+      {
+        "actual": 690000.0,
+        "predicted": 652884.9259060996,
+        "residual": 37115.07409390039
+      },
+      {
+        "actual": 420000.0,
+        "predicted": 432896.65855742624,
+        "residual": -12896.658557426243
+      },
+      {
+        "actual": 900000.0,
+        "predicted": 836336.624619501,
+        "residual": 63663.375380499056
+      },
+      {
+        "actual": 540000.0,
+        "predicted": 656062.719310735,
+        "residual": -116062.719310735
+      },
+      {
+        "actual": 275000.0,
+        "predicted": 343679.60424247774,
+        "residual": -68679.60424247774
+      },
+      {
+        "actual": 1100000.0,
+        "predicted": 851103.3233345817,
+        "residual": 248896.67666541832
+      },
+      {
+        "actual": 605000.0,
+        "predicted": 620021.1952872932,
+        "residual": -15021.195287293172
+      },
+      {
+        "actual": 349500.0,
+        "predicted": 344749.68378837546,
+        "residual": 4750.316211624537
+      },
+      {
+        "actual": 285000.0,
+        "predicted": 284992.06524194044,
+        "residual": 7.934758059564047
+      },
+      {
+        "actual": 299950.0,
+        "predicted": 343679.60424247774,
+        "residual": -43729.60424247774
+      },
+      {
+        "actual": 435000.0,
+        "predicted": 425523.3003882832,
+        "residual": 9476.699611716787
+      },
+      {
+        "actual": 443000.0,
+        "predicted": 649763.7305808569,
+        "residual": -206763.7305808569
+      },
+      {
+        "actual": 390000.0,
+        "predicted": 303204.3386394507,
+        "residual": 86795.66136054927
+      },
+      {
+        "actual": 269500.0,
+        "predicted": 284992.06524194044,
+        "residual": -15492.065241940436
+      },
+      {
+        "actual": 567000.0,
+        "predicted": 508796.6377414104,
+        "residual": 58203.362258589594
+      },
+      {
+        "actual": 599950.0,
+        "predicted": 642215.6182894212,
+        "residual": -42265.618289421196
+      },
+      {
+        "actual": 219950.0,
+        "predicted": 232190.79309763486,
+        "residual": -12240.793097634858
+      },
+      {
+        "actual": 250000.0,
+        "predicted": 286301.8523782628,
+        "residual": -36301.85237826279
+      },
+      {
+        "actual": 150000.0,
+        "predicted": 257154.49063911533,
+        "residual": -107154.49063911533
+      },
+      {
+        "actual": 689000.0,
+        "predicted": 890296.2522531413,
+        "residual": -201296.25225314125
+      },
+      {
+        "actual": 700000.0,
+        "predicted": 298248.2634634307,
+        "residual": 401751.7365365693
+      },
+      {
+        "actual": 372000.0,
+        "predicted": 366808.83592443867,
+        "residual": 5191.164075561333
+      },
+      {
+        "actual": 735000.0,
+        "predicted": 815882.2076955172,
+        "residual": -80882.20769551722
+      },
+      {
+        "actual": 485000.0,
+        "predicted": 521887.3683265753,
+        "residual": -36887.36832657532
+      },
+      {
+        "actual": 265000.0,
+        "predicted": 299075.8385579381,
+        "residual": -34075.838557938114
+      },
+      {
+        "actual": 472000.0,
+        "predicted": 507380.7667066113,
+        "residual": -35380.76670661132
+      },
+      {
+        "actual": 253000.0,
+        "predicted": 351608.37568553607,
+        "residual": -98608.37568553607
+      },
+      {
+        "actual": 471001.0,
+        "predicted": 621111.07759322,
+        "residual": -150110.07759322005
+      },
+      {
+        "actual": 312000.0,
+        "predicted": 337330.24264215224,
+        "residual": -25330.24264215224
+      },
+      {
+        "actual": 360000.0,
+        "predicted": 353649.72300237283,
+        "residual": 6350.276997627167
+      },
+      {
+        "actual": 397000.0,
+        "predicted": 372008.2500971751,
+        "residual": 24991.74990282487
+      },
+      {
+        "actual": 250000.0,
+        "predicted": 232190.79309763486,
+        "residual": 17809.206902365142
+      },
+      {
+        "actual": 325000.0,
+        "predicted": 343679.60424247774,
+        "residual": -18679.60424247774
+      },
+      {
+        "actual": 520000.0,
+        "predicted": 501550.6794710371,
+        "residual": 18449.320528962882
+      },
+      {
+        "actual": 306000.0,
+        "predicted": 318369.6464030341,
+        "residual": -12369.646403034101
+      },
+      {
+        "actual": 525000.0,
+        "predicted": 537107.1962663895,
+        "residual": -12107.196266389452
+      },
+      {
+        "actual": 549000.0,
+        "predicted": 513349.7023962436,
+        "residual": 35650.29760375642
+      },
+      {
+        "actual": 678500.0,
+        "predicted": 471387.6077597155,
+        "residual": 207112.39224028448
+      },
+      {
+        "actual": 300000.0,
+        "predicted": 282179.8518970254,
+        "residual": 17820.148102974577
+      },
+      {
+        "actual": 534000.0,
+        "predicted": 574299.5554391462,
+        "residual": -40299.555439146236
+      },
+      {
+        "actual": 1150000.0,
+        "predicted": 1181245.097630388,
+        "residual": -31245.097630388103
+      },
+      {
+        "actual": 880000.0,
+        "predicted": 1580928.4297410427,
+        "residual": -700928.4297410427
+      },
+      {
+        "actual": 490000.0,
+        "predicted": 583618.8673994155,
+        "residual": -93618.86739941547
+      },
+      {
+        "actual": 183500.0,
+        "predicted": 232190.79309763486,
+        "residual": -48690.79309763486
+      },
+      {
+        "actual": 513000.0,
+        "predicted": 593530.2218586999,
+        "residual": -80530.22185869992
+      },
+      {
+        "actual": 317500.0,
+        "predicted": 331135.777100691,
+        "residual": -13635.77710069099
+      },
+      {
+        "actual": 991700.0,
+        "predicted": 840675.7163084445,
+        "residual": 151024.2836915555
+      },
+      {
+        "actual": 255000.0,
+        "predicted": 239798.37350206112,
+        "residual": 15201.62649793888
+      },
+      {
+        "actual": 449950.0,
+        "predicted": 642183.0041214847,
+        "residual": -192233.0041214847
+      },
+      {
+        "actual": 905000.0,
+        "predicted": 888105.6681450165,
+        "residual": 16894.331854983466
+      },
+      {
+        "actual": 289500.0,
+        "predicted": 319898.6168357163,
+        "residual": -30398.616835716297
+      },
+      {
+        "actual": 415000.0,
+        "predicted": 452071.9383317938,
+        "residual": -37071.93833179382
+      },
+      {
+        "actual": 198000.0,
+        "predicted": 232190.79309763486,
+        "residual": -34190.79309763486
+      },
+      {
+        "actual": 740000.0,
+        "predicted": 722633.9602833757,
+        "residual": 17366.039716624306
+      },
+      {
+        "actual": 459000.0,
+        "predicted": 465509.420601659,
+        "residual": -6509.420601658989
+      },
+      {
+        "actual": 495000.0,
+        "predicted": 509130.76507427526,
+        "residual": -14130.76507427526
+      },
+      {
+        "actual": 228000.0,
+        "predicted": 232190.79309763486,
+        "residual": -4190.793097634858
+      },
+      {
+        "actual": 875000.0,
+        "predicted": 787026.4037304735,
+        "residual": 87973.59626952652
+      },
+      {
+        "actual": 474950.0,
+        "predicted": 478146.3922846796,
+        "residual": -3196.392284679576
+      },
+      {
+        "actual": 995500.0,
+        "predicted": 1078907.962301786,
+        "residual": -83407.96230178606
+      },
+      {
+        "actual": 514000.0,
+        "predicted": 458880.79131210444,
+        "residual": 55119.20868789556
+      },
+      {
+        "actual": 325000.0,
+        "predicted": 380771.27207608725,
+        "residual": -55771.27207608725
+      },
+      {
+        "actual": 430000.0,
+        "predicted": 381689.3035282986,
+        "residual": 48310.696471701376
+      },
+      {
+        "actual": 279500.0,
+        "predicted": 239050.14371426054,
+        "residual": 40449.85628573946
+      },
+      {
+        "actual": 255000.0,
+        "predicted": 232190.79309763486,
+        "residual": 22809.206902365142
+      },
+      {
+        "actual": 324950.0,
+        "predicted": 380484.7704457399,
+        "residual": -55534.77044573991
+      },
+      {
+        "actual": 277284.0,
+        "predicted": 367068.7632621955,
+        "residual": -89784.76326219551
+      },
+      {
+        "actual": 325000.0,
+        "predicted": 364832.30345675454,
+        "residual": -39832.30345675454
+      },
+      {
+        "actual": 1302000.0,
+        "predicted": 1189754.1109166967,
+        "residual": 112245.88908330328
+      },
+      {
+        "actual": 269950.0,
+        "predicted": 255452.73349929298,
+        "residual": 14497.266500707017
+      },
+      {
+        "actual": 600000.0,
+        "predicted": 579903.1235713406,
+        "residual": 20096.876428659423
+      },
+      {
+        "actual": 165000.0,
+        "predicted": 242976.06840355945,
+        "residual": -77976.06840355945
+      },
+      {
+        "actual": 290000.0,
+        "predicted": 359741.6129725429,
+        "residual": -69741.61297254288
+      },
+      {
+        "actual": 1450000.0,
+        "predicted": 1264177.3173594421,
+        "residual": 185822.68264055788
+      },
+      {
+        "actual": 435000.0,
+        "predicted": 478834.63953556947,
+        "residual": -43834.63953556947
+      },
+      {
+        "actual": 590000.0,
+        "predicted": 528241.758222995,
+        "residual": 61758.24177700502
+      },
+      {
+        "actual": 739000.0,
+        "predicted": 801854.1718823176,
+        "residual": -62854.171882317634
+      },
+      {
+        "actual": 589000.0,
+        "predicted": 597340.1582901013,
+        "residual": -8340.158290101332
+      },
+      {
+        "actual": 229000.0,
+        "predicted": 306510.54619919736,
+        "residual": -77510.54619919736
+      },
+      {
+        "actual": 693000.0,
+        "predicted": 686288.9979441434,
+        "residual": 6711.002055856632
+      },
+      {
+        "actual": 325000.0,
+        "predicted": 330095.77742400486,
+        "residual": -5095.77742400486
+      },
+      {
+        "actual": 250000.0,
+        "predicted": 378503.51255303517,
+        "residual": -128503.51255303517
+      },
+      {
+        "actual": 450000.0,
+        "predicted": 664091.5942074578,
+        "residual": -214091.59420745785
+      },
+      {
+        "actual": 570000.0,
+        "predicted": 540752.3666594932,
+        "residual": 29247.633340506814
+      },
+      {
+        "actual": 607000.0,
+        "predicted": 644604.9485501548,
+        "residual": -37604.948550154804
+      },
+      {
+        "actual": 329950.0,
+        "predicted": 320644.1565050931,
+        "residual": 9305.843494906905
+      },
+      {
+        "actual": 420000.0,
+        "predicted": 448495.01283387083,
+        "residual": -28495.01283387083
+      },
+      {
+        "actual": 765000.0,
+        "predicted": 768192.5765558438,
+        "residual": -3192.5765558438143
+      },
+      {
+        "actual": 620000.0,
+        "predicted": 674021.8979075673,
+        "residual": -54021.89790756733
+      },
+      {
+        "actual": 520000.0,
+        "predicted": 622922.1334670563,
+        "residual": -102922.13346705632
+      },
+      {
+        "actual": 632000.0,
+        "predicted": 662069.0904353608,
+        "residual": -30069.09043536079
+      },
+      {
+        "actual": 420000.0,
+        "predicted": 505793.8303280416,
+        "residual": -85793.83032804157
+      },
+      {
+        "actual": 267500.0,
+        "predicted": 232914.46530912118,
+        "residual": 34585.53469087882
+      },
+      {
+        "actual": 1242000.0,
+        "predicted": 1887632.566560049,
+        "residual": -645632.5665600491
+      },
+      {
+        "actual": 328500.0,
+        "predicted": 378461.6208577737,
+        "residual": -49961.6208577737
+      },
+      {
+        "actual": 838000.0,
+        "predicted": 762911.6954516888,
+        "residual": 75088.30454831116
+      },
+      {
+        "actual": 349900.0,
+        "predicted": 412354.1406044079,
+        "residual": -62454.140604407876
+      },
+      {
+        "actual": 817000.0,
+        "predicted": 673866.848357087,
+        "residual": 143133.151642913
+      },
+      {
+        "actual": 299000.0,
+        "predicted": 239749.05908703723,
+        "residual": 59250.940912962775
+      },
+      {
+        "actual": 220000.0,
+        "predicted": 283201.0986792656,
+        "residual": -63201.09867926559
+      },
+      {
+        "actual": 640000.0,
+        "predicted": 705811.4762928421,
+        "residual": -65811.47629284207
+      },
+      {
+        "actual": 305000.0,
+        "predicted": 343679.60424247774,
+        "residual": -38679.60424247774
+      },
+      {
+        "actual": 745000.0,
+        "predicted": 641828.225346769,
+        "residual": 103171.77465323103
+      },
+      {
+        "actual": 732000.0,
+        "predicted": 699672.9355961753,
+        "residual": 32327.06440382474
+      },
+      {
+        "actual": 625000.0,
+        "predicted": 520806.773938711,
+        "residual": 104193.22606128902
+      },
+      {
+        "actual": 419900.0,
+        "predicted": 417132.3878357768,
+        "residual": 2767.6121642232174
+      },
+      {
+        "actual": 235000.0,
+        "predicted": 276653.4548012893,
+        "residual": -41653.45480128931
+      },
+      {
+        "actual": 240000.0,
+        "predicted": 248189.17863909196,
+        "residual": -8189.178639091959
+      },
+      {
+        "actual": 330000.0,
+        "predicted": 237623.82789916254,
+        "residual": 92376.17210083746
+      },
+      {
+        "actual": 430000.0,
+        "predicted": 371768.55768002535,
+        "residual": 58231.44231997465
+      },
+      {
+        "actual": 530000.0,
+        "predicted": 575808.9056298536,
+        "residual": -45808.9056298536
+      },
+      {
+        "actual": 785000.0,
+        "predicted": 765630.0350363902,
+        "residual": 19369.96496360982
+      },
+      {
+        "actual": 175000.0,
+        "predicted": 232914.46530912118,
+        "residual": -57914.46530912118
+      },
+      {
+        "actual": 1260500.0,
+        "predicted": 1320961.0422217094,
+        "residual": -60461.04222170939
+      },
+      {
+        "actual": 310000.0,
+        "predicted": 258734.12919604068,
+        "residual": 51265.87080395932
+      },
+      {
+        "actual": 430000.0,
+        "predicted": 567344.8118166176,
+        "residual": -137344.8118166176
+      },
+      {
+        "actual": 410000.0,
+        "predicted": 350374.2724827925,
+        "residual": 59625.7275172075
+      },
+      {
+        "actual": 268000.0,
+        "predicted": 273046.6610285288,
+        "residual": -5046.661028528819
+      },
+      {
+        "actual": 700000.0,
+        "predicted": 360380.9701724892,
+        "residual": 339619.0298275108
+      },
+      {
+        "actual": 600000.0,
+        "predicted": 945017.7854093655,
+        "residual": -345017.78540936555
+      },
+      {
+        "actual": 380000.0,
+        "predicted": 501550.6794710371,
+        "residual": -121550.67947103712
+      },
+      {
+        "actual": 233000.0,
+        "predicted": 343679.60424247774,
+        "residual": -110679.60424247774
+      },
+      {
+        "actual": 1550000.0,
+        "predicted": 1630644.5349900718,
+        "residual": -80644.53499007178
+      },
+      {
+        "actual": 610000.0,
+        "predicted": 645348.7023723323,
+        "residual": -35348.70237233234
+      },
+      {
+        "actual": 545000.0,
+        "predicted": 568864.9937251507,
+        "residual": -23864.993725150707
+      },
+      {
+        "actual": 950000.0,
+        "predicted": 1354810.9815790632,
+        "residual": -404810.9815790632
+      },
+      {
+        "actual": 190000.0,
+        "predicted": 273841.24145637435,
+        "residual": -83841.24145637435
+      },
+      {
+        "actual": 315000.0,
+        "predicted": 358929.3030173911,
+        "residual": -43929.303017391125
+      },
+      {
+        "actual": 298900.0,
+        "predicted": 284992.06524194044,
+        "residual": 13907.934758059564
+      },
+      {
+        "actual": 406500.0,
+        "predicted": 332760.91911022336,
+        "residual": 73739.08088977664
+      },
+      {
+        "actual": 746000.0,
+        "predicted": 692251.0216614471,
+        "residual": 53748.97833855287
+      },
+      {
+        "actual": 419000.0,
+        "predicted": 474800.4137244475,
+        "residual": -55800.413724447484
+      },
+      {
+        "actual": 850000.0,
+        "predicted": 784181.5173525447,
+        "residual": 65818.4826474553
+      },
+      {
+        "actual": 967000.0,
+        "predicted": 845660.6702236889,
+        "residual": 121339.32977631106
+      },
+      {
+        "actual": 249000.0,
+        "predicted": 245534.63030980597,
+        "residual": 3465.3696901940275
+      },
+      {
+        "actual": 660000.0,
+        "predicted": 589349.8970559768,
+        "residual": 70650.10294402321
+      },
+      {
+        "actual": 415000.0,
+        "predicted": 444315.9611000194,
+        "residual": -29315.961100019398
+      },
+      {
+        "actual": 329500.0,
+        "predicted": 370833.9359413064,
+        "residual": -41333.93594130641
+      },
+      {
+        "actual": 450000.0,
+        "predicted": 514979.20924322424,
+        "residual": -64979.209243224235
+      },
+      {
+        "actual": 199000.0,
+        "predicted": 232889.70847041148,
+        "residual": -33889.70847041148
+      },
+      {
+        "actual": 358000.0,
+        "predicted": 344749.68378837546,
+        "residual": 13250.316211624537
+      },
+      {
+        "actual": 440150.0,
+        "predicted": 344749.68378837546,
+        "residual": 95400.31621162454
+      },
+      {
+        "actual": 225000.0,
+        "predicted": 241766.69342863053,
+        "residual": -16766.693428630533
+      },
+      {
+        "actual": 298500.0,
+        "predicted": 284992.06524194044,
+        "residual": 13507.934758059564
+      },
+      {
+        "actual": 457000.0,
+        "predicted": 516760.4840731931,
+        "residual": -59760.4840731931
+      },
+      {
+        "actual": 455000.0,
+        "predicted": 446092.5478089994,
+        "residual": 8907.452191000571
+      },
+      {
+        "actual": 255000.0,
+        "predicted": 350374.2724827925,
+        "residual": -95374.2724827925
+      },
+      {
+        "actual": 287000.0,
+        "predicted": 241223.87885337294,
+        "residual": 45776.12114662706
+      },
+      {
+        "actual": 550000.0,
+        "predicted": 580982.3564872105,
+        "residual": -30982.35648721049
+      },
+      {
+        "actual": 198900.0,
+        "predicted": 250424.6529709912,
+        "residual": -51524.652970991214
+      },
+      {
+        "actual": 615000.0,
+        "predicted": 553341.6446277945,
+        "residual": 61658.35537220549
+      },
+      {
+        "actual": 490000.0,
+        "predicted": 265351.8713141048,
+        "residual": 224648.12868589518
+      },
+      {
+        "actual": 257500.0,
+        "predicted": 282772.2863891953,
+        "residual": -25272.286389195302
+      },
+      {
+        "actual": 397000.0,
+        "predicted": 439345.0709729939,
+        "residual": -42345.07097299391
+      },
+      {
+        "actual": 465000.0,
+        "predicted": 425576.82665589347,
+        "residual": 39423.17334410653
+      },
+      {
+        "actual": 312500.0,
+        "predicted": 430339.5775797756,
+        "residual": -117839.57757977559
+      },
+      {
+        "actual": 165000.0,
+        "predicted": 364832.30345675454,
+        "residual": -199832.30345675454
+      },
+      {
+        "actual": 885000.0,
+        "predicted": 795171.1038931741,
+        "residual": 89828.89610682591
+      },
+      {
+        "actual": 155000.0,
+        "predicted": 245162.94516602525,
+        "residual": -90162.94516602525
+      },
+      {
+        "actual": 585000.0,
+        "predicted": 555644.4887767493,
+        "residual": 29355.51122325065
+      },
+      {
+        "actual": 490600.0,
+        "predicted": 508690.6266456383,
+        "residual": -18090.626645638316
+      },
+      {
+        "actual": 377691.0,
+        "predicted": 444315.9611000194,
+        "residual": -66624.9611000194
+      },
+      {
+        "actual": 320000.0,
+        "predicted": 240534.99843528762,
+        "residual": 79465.00156471238
+      },
+      {
+        "actual": 500000.0,
+        "predicted": 522557.7753963666,
+        "residual": -22557.775396366604
+      },
+      {
+        "actual": 425000.0,
+        "predicted": 424409.77767740726,
+        "residual": 590.2223225927446
+      },
+      {
+        "actual": 720000.0,
+        "predicted": 720646.1197423775,
+        "residual": -646.1197423775448
+      },
+      {
+        "actual": 442200.0,
+        "predicted": 517167.72053757915,
+        "residual": -74967.72053757915
+      },
+      {
+        "actual": 265000.0,
+        "predicted": 237623.82789916254,
+        "residual": 27376.17210083746
+      },
+      {
+        "actual": 213000.0,
+        "predicted": 253882.38992487197,
+        "residual": -40882.38992487197
+      },
+      {
+        "actual": 830000.0,
+        "predicted": 760208.1394110181,
+        "residual": 69791.86058898189
+      },
+      {
+        "actual": 381000.0,
+        "predicted": 405258.6574022985,
+        "residual": -24258.65740229847
+      },
+      {
+        "actual": 950000.0,
+        "predicted": 629789.5302813428,
+        "residual": 320210.4697186572
+      },
+      {
+        "actual": 371000.0,
+        "predicted": 338533.8509769806,
+        "residual": 32466.149023019418
+      },
+      {
+        "actual": 544950.0,
+        "predicted": 511665.00887573016,
+        "residual": 33284.99112426984
+      },
+      {
+        "actual": 415000.0,
+        "predicted": 531821.534643664,
+        "residual": -116821.53464366402
+      },
+      {
+        "actual": 235000.0,
+        "predicted": 366028.38563790347,
+        "residual": -131028.38563790347
+      },
+      {
+        "actual": 187000.0,
+        "predicted": 232190.79309763486,
+        "residual": -45190.79309763486
+      },
+      {
+        "actual": 427000.0,
+        "predicted": 466322.193525788,
+        "residual": -39322.193525788025
+      },
+      {
+        "actual": 392500.0,
+        "predicted": 424409.77767740726,
+        "residual": -31909.777677407255
+      },
+      {
+        "actual": 649800.0,
+        "predicted": 626321.3851537136,
+        "residual": 23478.614846286364
+      },
+      {
+        "actual": 640000.0,
+        "predicted": 657934.0255760417,
+        "residual": -17934.025576041662
+      },
+      {
+        "actual": 225000.0,
+        "predicted": 344749.68378837546,
+        "residual": -119749.68378837546
+      },
+      {
+        "actual": 468000.0,
+        "predicted": 454694.07967229636,
+        "residual": 13305.920327703643
+      },
+      {
+        "actual": 720000.0,
+        "predicted": 735050.6322613428,
+        "residual": -15050.632261342835
+      },
+      {
+        "actual": 199000.0,
+        "predicted": 232190.79309763486,
+        "residual": -33190.79309763486
+      },
+      {
+        "actual": 729999.0,
+        "predicted": 996121.2908616929,
+        "residual": -266122.29086169286
+      },
+      {
+        "actual": 1670000.0,
+        "predicted": 1451272.0247486974,
+        "residual": 218727.9752513026
+      },
+      {
+        "actual": 308000.0,
+        "predicted": 385458.2772108846,
+        "residual": -77458.27721088461
+      },
+      {
+        "actual": 220000.0,
+        "predicted": 343679.60424247774,
+        "residual": -123679.60424247774
+      },
+      {
+        "actual": 614306.0,
+        "predicted": 638823.2738030875,
+        "residual": -24517.273803087533
+      },
+      {
+        "actual": 325000.0,
+        "predicted": 260458.8037554493,
+        "residual": 64541.196244550694
+      },
+      {
+        "actual": 192500.0,
+        "predicted": 245932.8294606501,
+        "residual": -53432.8294606501
+      },
+      {
+        "actual": 860000.0,
+        "predicted": 761625.6582402701,
+        "residual": 98374.3417597299
+      },
+      {
+        "actual": 315500.0,
+        "predicted": 310892.1659726766,
+        "residual": 4607.834027323406
+      },
+      {
+        "actual": 775000.0,
+        "predicted": 666046.0049705852,
+        "residual": 108953.99502941477
+      },
+      {
+        "actual": 780000.0,
+        "predicted": 610998.6634180422,
+        "residual": 169001.33658195776
+      },
+      {
+        "actual": 350000.0,
+        "predicted": 343679.60424247774,
+        "residual": 6320.395757522259
+      },
+      {
+        "actual": 1100000.0,
+        "predicted": 997446.383214315,
+        "residual": 102553.61678568495
+      },
+      {
+        "actual": 1195000.0,
+        "predicted": 854486.5934735715,
+        "residual": 340513.40652642853
+      },
+      {
+        "actual": 403000.0,
+        "predicted": 452763.060003352,
+        "residual": -49763.060003352
+      },
+      {
+        "actual": 334999.0,
+        "predicted": 503795.75463071093,
+        "residual": -168796.75463071093
+      },
+      {
+        "actual": 509500.0,
+        "predicted": 623368.6551966434,
+        "residual": -113868.65519664343
+      },
+      {
+        "actual": 464950.0,
+        "predicted": 451162.227184585,
+        "residual": 13787.772815414995
+      },
+      {
+        "actual": 365000.0,
+        "predicted": 359427.4835707869,
+        "residual": 5572.5164292131085
+      },
+      {
+        "actual": 395000.0,
+        "predicted": 420760.35630375985,
+        "residual": -25760.35630375985
+      },
+      {
+        "actual": 385000.0,
+        "predicted": 430006.86856502795,
+        "residual": -45006.86856502795
+      },
+      {
+        "actual": 292500.0,
+        "predicted": 232190.79309763486,
+        "residual": 60309.20690236514
+      },
+      {
+        "actual": 456000.0,
+        "predicted": 429504.24130773253,
+        "residual": 26495.758692267467
+      },
+      {
+        "actual": 696500.0,
+        "predicted": 558722.2467576538,
+        "residual": 137777.75324234623
+      },
+      {
+        "actual": 310000.0,
+        "predicted": 424409.77767740726,
+        "residual": -114409.77767740726
+      },
+      {
+        "actual": 315000.0,
+        "predicted": 331881.3167700678,
+        "residual": -16881.316770067788
+      },
+      {
+        "actual": 90000.0,
+        "predicted": 364832.30345675454,
+        "residual": -274832.30345675454
+      },
+      {
+        "actual": 550000.0,
+        "predicted": 470448.5295154178,
+        "residual": 79551.47048458218
+      },
+      {
+        "actual": 710000.0,
+        "predicted": 623238.7130266017,
+        "residual": 86761.2869733983
+      },
+      {
+        "actual": 340000.0,
+        "predicted": 367736.5035090962,
+        "residual": -27736.50350909622
+      },
+      {
+        "actual": 335000.0,
+        "predicted": 334806.454280837,
+        "residual": 193.54571916302666
+      },
+      {
+        "actual": 294000.0,
+        "predicted": 344749.68378837546,
+        "residual": -50749.68378837546
+      },
+      {
+        "actual": 1000000.0,
+        "predicted": 1081493.2104985288,
+        "residual": -81493.21049852879
+      },
+      {
+        "actual": 1010000.0,
+        "predicted": 1013524.7072912427,
+        "residual": -3524.7072912426665
+      },
+      {
+        "actual": 468000.0,
+        "predicted": 524488.533652206,
+        "residual": -56488.53365220595
+      },
+      {
+        "actual": 397500.0,
+        "predicted": 383565.6800539166,
+        "residual": 13934.319946083415
+      },
+      {
+        "actual": 953007.0,
+        "predicted": 1108792.0140399542,
+        "residual": -155785.01403995417
+      },
+      {
+        "actual": 245000.0,
+        "predicted": 279323.7946369042,
+        "residual": -34323.794636904204
+      },
+      {
+        "actual": 580000.0,
+        "predicted": 497950.7823725518,
+        "residual": 82049.2176274482
+      },
+      {
+        "actual": 400000.0,
+        "predicted": 344749.68378837546,
+        "residual": 55250.31621162454
+      },
+      {
+        "actual": 425000.0,
+        "predicted": 387225.47504655377,
+        "residual": 37774.524953446235
+      },
+      {
+        "actual": 619000.0,
+        "predicted": 589723.5136662379,
+        "residual": 29276.486333762063
+      },
+      {
+        "actual": 1517000.0,
+        "predicted": 1581636.4104615164,
+        "residual": -64636.41046151635
+      },
+      {
+        "actual": 439950.0,
+        "predicted": 426564.5325140004,
+        "residual": 13385.467485999572
+      },
+      {
+        "actual": 245000.0,
+        "predicted": 364691.63061885396,
+        "residual": -119691.63061885396
+      },
+      {
+        "actual": 194000.0,
+        "predicted": 239050.14371426054,
+        "residual": -45050.14371426054
+      },
+      {
+        "actual": 700000.0,
+        "predicted": 554791.2611022817,
+        "residual": 145208.73889771826
+      },
+      {
+        "actual": 649950.0,
+        "predicted": 648364.9546910321,
+        "residual": 1585.0453089679359
+      },
+      {
+        "actual": 563500.0,
+        "predicted": 590697.1193198002,
+        "residual": -27197.11931980017
+      },
+      {
+        "actual": 700000.0,
+        "predicted": 793583.3183200263,
+        "residual": -93583.31832002627
+      },
+      {
+        "actual": 174950.0,
+        "predicted": 237681.5443207908,
+        "residual": -62731.544320790796
+      },
+      {
+        "actual": 240000.0,
+        "predicted": 248839.67020748544,
+        "residual": -8839.67020748544
+      },
+      {
+        "actual": 150000.0,
+        "predicted": 343679.60424247774,
+        "residual": -193679.60424247774
+      },
+      {
+        "actual": 455000.0,
+        "predicted": 496770.00144908024,
+        "residual": -41770.00144908024
+      },
+      {
+        "actual": 515000.0,
+        "predicted": 448924.0297004578,
+        "residual": 66075.97029954218
+      },
+      {
+        "actual": 375000.0,
+        "predicted": 476756.7922414169,
+        "residual": -101756.79224141687
+      },
+      {
+        "actual": 320000.0,
+        "predicted": 442890.26144217816,
+        "residual": -122890.26144217816
+      },
+      {
+        "actual": 898000.0,
+        "predicted": 772019.584435636,
+        "residual": 125980.41556436406
+      },
+      {
+        "actual": 287000.0,
+        "predicted": 245162.94516602525,
+        "residual": 41837.05483397475
+      },
+      {
+        "actual": 639000.0,
+        "predicted": 648610.3875578629,
+        "residual": -9610.387557862909
+      },
+      {
+        "actual": 595000.0,
+        "predicted": 591507.0126374186,
+        "residual": 3492.9873625814216
+      },
+      {
+        "actual": 334000.0,
+        "predicted": 529361.2967498886,
+        "residual": -195361.29674988857
+      },
+      {
+        "actual": 425000.0,
+        "predicted": 523118.1301773368,
+        "residual": -98118.1301773368
+      },
+      {
+        "actual": 448500.0,
+        "predicted": 368577.39415715827,
+        "residual": 79922.60584284173
+      },
+      {
+        "actual": 418000.0,
+        "predicted": 475175.60295798705,
+        "residual": -57175.60295798705
+      },
+      {
+        "actual": 925500.0,
+        "predicted": 537366.9720271585,
+        "residual": 388133.0279728415
+      },
+      {
+        "actual": 280000.0,
+        "predicted": 298461.88798717916,
+        "residual": -18461.887987179158
+      },
+      {
+        "actual": 294000.0,
+        "predicted": 367668.2763747634,
+        "residual": -73668.2763747634
+      },
+      {
+        "actual": 569950.0,
+        "predicted": 450639.8560454867,
+        "residual": 119310.1439545133
+      },
+      {
+        "actual": 430000.0,
+        "predicted": 505621.49600287544,
+        "residual": -75621.49600287544
+      },
+      {
+        "actual": 415000.0,
+        "predicted": 460657.134659793,
+        "residual": -45657.134659792995
+      },
+      {
+        "actual": 501000.0,
+        "predicted": 410116.7731481525,
+        "residual": 90883.22685184749
+      },
+      {
+        "actual": 768000.0,
+        "predicted": 837746.1916134759,
+        "residual": -69746.19161347591
+      }
+    ],
+    "learning_curve": [
+      {
+        "samples": 4115,
+        "train_rmse": 97084.45491019529,
+        "validation_rmse": 155180.48238555025
+      },
+      {
+        "samples": 8230,
+        "train_rmse": 103758.96194741168,
+        "validation_rmse": 147549.18319185748
+      },
+      {
+        "samples": 13717,
+        "train_rmse": 108223.08509413809,
+        "validation_rmse": 143916.05938355607
+      }
+    ],
+    "importance": [
+      {
+        "feature": "numeric__grade",
+        "value": 0.33330115730395865
+      },
+      {
+        "feature": "numeric__sqft_living",
+        "value": 0.30964551727301004
+      },
+      {
+        "feature": "numeric__lat",
+        "value": 0.15908226712954399
+      },
+      {
+        "feature": "numeric__long",
+        "value": 0.06285670029800058
+      },
+      {
+        "feature": "numeric__waterfront",
+        "value": 0.03785958540978084
+      },
+      {
+        "feature": "numeric__sqft_living15",
+        "value": 0.02334402740958275
+      },
+      {
+        "feature": "numeric__yr_built",
+        "value": 0.0181978305484107
+      },
+      {
+        "feature": "numeric__sqft_above",
+        "value": 0.011666528252363485
+      },
+      {
+        "feature": "numeric__sqft_lot",
+        "value": 0.008130461259774896
+      },
+      {
+        "feature": "numeric__view",
+        "value": 0.007879648343159937
+      },
+      {
+        "feature": "numeric__sqft_lot15",
+        "value": 0.007868129329675183
+      },
+      {
+        "feature": "categorical__zipcode_98004",
+        "value": 0.005514654949701792
+      },
+      {
+        "feature": "numeric__bathrooms",
+        "value": 0.0037065728457316752
+      },
+      {
+        "feature": "numeric__sqft_basement",
+        "value": 0.0024258466683119745
+      },
+      {
+        "feature": "categorical__zipcode_98039",
+        "value": 0.0018658179783814033
+      },
+      {
+        "feature": "categorical__zipcode_98040",
+        "value": 0.0013337732661428132
+      },
+      {
+        "feature": "numeric__bedrooms",
+        "value": 0.0009393065671425203
+      },
+      {
+        "feature": "categorical__zipcode_98112",
+        "value": 0.0009184593853747707
+      },
+      {
+        "feature": "numeric__yr_renovated",
+        "value": 0.0006731951906921726
+      },
+      {
+        "feature": "numeric__floors",
+        "value": 0.000651827725085635
+      }
+    ],
+    "importance_type": "Feature importance",
+    "explanations": [
+      "最終學習曲線：Training RMSE 1.082e+05，Validation RMSE 1.439e+05，差距 3.569e+04。差距超過驗證誤差的 20%，有過度擬合跡象。",
+      "殘差與預測值的 Pearson r = 0.093。此線性相關檢查無法排除異方差或非線性規律，需配合殘差圖。",
+      "CV 選出 15 個特徵；一個特徵 CV RMSE 2.644e+05，最佳組合 1.634e+05，全部特徵 1.635e+05。",
+      "最顯著的編碼後特徵為 numeric__grade；係數表示控制其他輸入後的關聯，不等於因果。",
+      "欠擬合評估：訓練集目標標準差 3.709e+05，最大樣本 Training RMSE 1.082e+05。目前無此高偏差門檻的證據，不能單憑 RMSE 排除欠擬合。"
+    ],
+    "residual_correlation": 0.09272750206918808
+  },
+  "prediction_configuration": {
+    "supported": true,
+    "model_path": "data/king-county/model.json",
+    "model_name": "Random Forest Regressor",
+    "input_stage": "已清理／衍生的候選欄位，與 Python prepare() 的輸出一致"
+  }
+}

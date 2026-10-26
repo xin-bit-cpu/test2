@@ -1,0 +1,359 @@
+[
+  {
+    "input": {
+      "season": "3",
+      "yr": "1",
+      "mnth": "8",
+      "hr": "12",
+      "holiday": "0",
+      "weekday": "2",
+      "workingday": "1",
+      "weathersit": "2",
+      "temp": 0.8,
+      "atemp": 0.7576,
+      "hum": 0.55,
+      "windspeed": 0.1343
+    },
+    "expected": 265.85894291971965
+  },
+  {
+    "input": {
+      "season": "3",
+      "yr": "1",
+      "mnth": "8",
+      "hr": "13",
+      "holiday": "0",
+      "weekday": "2",
+      "workingday": "1",
+      "weathersit": "2",
+      "temp": 0.8,
+      "atemp": 0.7424,
+      "hum": 0.52,
+      "windspeed": 0.194
+    },
+    "expected": 263.4880941807006
+  },
+  {
+    "input": {
+      "season": "3",
+      "yr": "1",
+      "mnth": "8",
+      "hr": "14",
+      "holiday": "0",
+      "weekday": "2",
+      "workingday": "1",
+      "weathersit": "2",
+      "temp": 0.82,
+      "atemp": 0.7576,
+      "hum": 0.46,
+      "windspeed": 0.0
+    },
+    "expected": 258.7729903482242
+  },
+  {
+    "input": {
+      "season": "3",
+      "yr": "1",
+      "mnth": "8",
+      "hr": "15",
+      "holiday": "0",
+      "weekday": "2",
+      "workingday": "1",
+      "weathersit": "1",
+      "temp": 0.8,
+      "atemp": 0.7424,
+      "hum": 0.52,
+      "windspeed": 0.0
+    },
+    "expected": 263.4880941807006
+  },
+  {
+    "input": {
+      "season": "3",
+      "yr": "1",
+      "mnth": "8",
+      "hr": "16",
+      "holiday": "0",
+      "weekday": "2",
+      "workingday": "1",
+      "weathersit": "3",
+      "temp": 0.76,
+      "atemp": 0.7273,
+      "hum": 0.66,
+      "windspeed": 0.2836
+    },
+    "expected": 299.97111392527233
+  },
+  {
+    "input": {
+      "season": "3",
+      "yr": "1",
+      "mnth": "8",
+      "hr": "17",
+      "holiday": "0",
+      "weekday": "2",
+      "workingday": "1",
+      "weathersit": "2",
+      "temp": 0.78,
+      "atemp": 0.7424,
+      "hum": 0.62,
+      "windspeed": 0.1343
+    },
+    "expected": 758.4089340269089
+  },
+  {
+    "input": {
+      "season": "3",
+      "yr": "1",
+      "mnth": "8",
+      "hr": "18",
+      "holiday": "0",
+      "weekday": "2",
+      "workingday": "1",
+      "weathersit": "2",
+      "temp": 0.76,
+      "atemp": 0.7121,
+      "hum": 0.62,
+      "windspeed": 0.1642
+    },
+    "expected": 734.2198410322031
+  },
+  {
+    "input": {
+      "season": "3",
+      "yr": "1",
+      "mnth": "8",
+      "hr": "19",
+      "holiday": "0",
+      "weekday": "2",
+      "workingday": "1",
+      "weathersit": "2",
+      "temp": 0.76,
+      "atemp": 0.7273,
+      "hum": 0.66,
+      "windspeed": 0.1045
+    },
+    "expected": 481.6346303200886
+  },
+  {
+    "input": {
+      "season": "3",
+      "yr": "1",
+      "mnth": "8",
+      "hr": "20",
+      "holiday": "0",
+      "weekday": "2",
+      "workingday": "1",
+      "weathersit": "2",
+      "temp": 0.74,
+      "atemp": 0.697,
+      "hum": 0.7,
+      "windspeed": 0.1343
+    },
+    "expected": 289.9982306518203
+  },
+  {
+    "input": {
+      "season": "3",
+      "yr": "1",
+      "mnth": "8",
+      "hr": "21",
+      "holiday": "0",
+      "weekday": "2",
+      "workingday": "1",
+      "weathersit": "2",
+      "temp": 0.72,
+      "atemp": 0.697,
+      "hum": 0.74,
+      "windspeed": 0.0
+    },
+    "expected": 275.3377859396205
+  },
+  {
+    "input": {
+      "season": "3",
+      "yr": "1",
+      "mnth": "8",
+      "hr": "22",
+      "holiday": "0",
+      "weekday": "2",
+      "workingday": "1",
+      "weathersit": "1",
+      "temp": 0.72,
+      "atemp": 0.697,
+      "hum": 0.74,
+      "windspeed": 0.1045
+    },
+    "expected": 249.330060439205
+  },
+  {
+    "input": {
+      "season": "3",
+      "yr": "1",
+      "mnth": "8",
+      "hr": "23",
+      "holiday": "0",
+      "weekday": "2",
+      "workingday": "1",
+      "weathersit": "1",
+      "temp": 0.72,
+      "atemp": 0.697,
+      "hum": 0.79,
+      "windspeed": 0.0
+    },
+    "expected": 182.19630566759
+  },
+  {
+    "input": {
+      "season": "3",
+      "yr": "1",
+      "mnth": "8",
+      "hr": "0",
+      "holiday": "0",
+      "weekday": "3",
+      "workingday": "1",
+      "weathersit": "1",
+      "temp": 0.7,
+      "atemp": 0.6667,
+      "hum": 0.84,
+      "windspeed": 0.0
+    },
+    "expected": 78.61256890455196
+  },
+  {
+    "input": {
+      "season": "3",
+      "yr": "1",
+      "mnth": "8",
+      "hr": "1",
+      "holiday": "0",
+      "weekday": "3",
+      "workingday": "1",
+      "weathersit": "1",
+      "temp": 0.72,
+      "atemp": 0.697,
+      "hum": 0.79,
+      "windspeed": 0.0
+    },
+    "expected": 51.48063942964673
+  },
+  {
+    "input": {
+      "season": "3",
+      "yr": "1",
+      "mnth": "8",
+      "hr": "2",
+      "holiday": "0",
+      "weekday": "3",
+      "workingday": "1",
+      "weathersit": "1",
+      "temp": 0.7,
+      "atemp": 0.6667,
+      "hum": 0.84,
+      "windspeed": 0.0
+    },
+    "expected": 41.95641394872473
+  },
+  {
+    "input": {
+      "season": "3",
+      "yr": "1",
+      "mnth": "8",
+      "hr": "3",
+      "holiday": "0",
+      "weekday": "3",
+      "workingday": "1",
+      "weathersit": "1",
+      "temp": 0.7,
+      "atemp": 0.6667,
+      "hum": 0.84,
+      "windspeed": 0.0
+    },
+    "expected": 31.416929888870442
+  },
+  {
+    "input": {
+      "season": "3",
+      "yr": "1",
+      "mnth": "8",
+      "hr": "4",
+      "holiday": "0",
+      "weekday": "3",
+      "workingday": "1",
+      "weathersit": "1",
+      "temp": 0.7,
+      "atemp": 0.6667,
+      "hum": 0.84,
+      "windspeed": 0.0
+    },
+    "expected": 25.27609005187088
+  },
+  {
+    "input": {
+      "season": "3",
+      "yr": "1",
+      "mnth": "8",
+      "hr": "5",
+      "holiday": "0",
+      "weekday": "3",
+      "workingday": "1",
+      "weathersit": "2",
+      "temp": 0.68,
+      "atemp": 0.6364,
+      "hum": 0.89,
+      "windspeed": 0.1642
+    },
+    "expected": 47.181062111954645
+  },
+  {
+    "input": {
+      "season": "3",
+      "yr": "1",
+      "mnth": "8",
+      "hr": "6",
+      "holiday": "0",
+      "weekday": "3",
+      "workingday": "1",
+      "weathersit": "2",
+      "temp": 0.7,
+      "atemp": 0.6667,
+      "hum": 0.84,
+      "windspeed": 0.1642
+    },
+    "expected": 184.80473213503913
+  },
+  {
+    "input": {
+      "season": "3",
+      "yr": "1",
+      "mnth": "8",
+      "hr": "7",
+      "holiday": "0",
+      "weekday": "3",
+      "workingday": "1",
+      "weathersit": "2",
+      "temp": 0.7,
+      "atemp": 0.6667,
+      "hum": 0.84,
+      "windspeed": 0.1642
+    },
+    "expected": 318.2307361141202
+  },
+  {
+    "input": {
+      "season": "__UNSEEN_CATEGORY__",
+      "yr": "__UNSEEN_CATEGORY__",
+      "mnth": "__UNSEEN_CATEGORY__",
+      "hr": "__UNSEEN_CATEGORY__",
+      "holiday": "__UNSEEN_CATEGORY__",
+      "weekday": "__UNSEEN_CATEGORY__",
+      "workingday": "__UNSEEN_CATEGORY__",
+      "weathersit": "__UNSEEN_CATEGORY__",
+      "temp": null,
+      "atemp": null,
+      "hum": null,
+      "windspeed": null
+    },
+    "expected": 155.2033334861475
+  }
+]

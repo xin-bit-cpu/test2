@@ -1,0 +1,10 @@
+"""欄位字典；工程後欄位必須描述實際模型輸入。"""
+DESCRIPTIONS={
+ 'bedrooms':'臥室數','bathrooms':'浴室數（可含半套衛浴）','sqft_living':'室內居住面積','sqft_lot':'土地面積','floors':'樓層數','waterfront':'臨水與否：0 否／1 是','view':'景觀評分','condition':'屋況評分','grade':'建築品質等級','sqft_above':'地面以上樓地板面積','sqft_basement':'地下室面積','yr_built':'建造年份','yr_renovated':'整修年份，0 代表未記錄整修','zipcode':'郵遞區號','lat':'緯度','long':'經度','sqft_living15':'鄰近房屋平均居住面積','sqft_lot15':'鄰近房屋平均土地面積',
+ 'duration_ms':'歌曲長度','explicit':'露骨內容標記：0 否／1 是','danceability':'可舞性','energy':'能量','key':'音高類別：0–11','loudness':'平均響度','mode':'調式：0 小調／1 大調','speechiness':'口語內容比率','acousticness':'原聲程度','instrumentalness':'純器樂程度','liveness':'現場演出程度','valence':'音樂正向情緒程度','tempo':'估計速度','time_signature':'拍號','track_genre':'曲風',
+ 'Company':'筆電製造商','Product':'產品系列（來源 Product 的首個詞）','TypeName':'筆電類型','Inches':'螢幕對角線尺寸','ScreenResolution':'螢幕規格與解析度','Cpu':'CPU 廠牌與系列（前兩個詞）','Ram':'記憶體容量','Memory':'儲存裝置規格','Gpu':'GPU 廠牌與系列（前兩個詞）','OpSys':'作業系統','Weight':'重量',
+ 'season':'季節：1 春／2 夏／3 秋／4 冬','yr':'年份：0 為 2011，1 為 2012','mnth':'月份：1–12','hr':'小時：0–23','holiday':'國定假日標記','weekday':'星期：0 週日，1–6 週一至週六','workingday':'工作日標記','weathersit':'天氣類別：1 晴朗至 4 惡劣天氣','temp':'標準化溫度','atemp':'標準化體感溫度','hum':'標準化相對濕度','windspeed':'標準化風速',
+ 'name':'汽車品牌（車名首個詞）','year':'車輛登記年份','km_driven':'累計行駛里程','fuel':'燃料種類','seller_type':'賣家類型','transmission':'變速箱種類','owner':'歷任車主類別','mileage':'燃油經濟性（依燃料別解讀）','engine':'引擎排氣量','max_power':'最大馬力','torque':'最大扭力，kgm 已換算 Nm','seats':'座位數',
+ 'BHK':'臥室／客廳／廚房格局數','Size':'租屋面積','Area Type':'面積計算類型','Area Locality':'所在地區','City':'城市','Furnishing Status':'家具配置程度','Tenant Preferred':'偏好房客類別','Bathroom':'浴室數','posted_year':'刊登年份','posted_month':'刊登月份','posted_day':'刊登日期（日）','posted_weekday':'刊登星期：0 週一至 6 週日','floor_number':'所在樓層：地面層 0，上／下地下層 -1／-2','total_floors':'建築總樓層',
+ 'Airline':'航空公司','Source':'起飛城市','Destination':'目的城市','Total_Stops':'中途停站數，0 為直飛','journey_month':'出發月份','journey_day':'出發日期（日）','journey_weekday':'出發星期：0 週一至 6 週日','Dep_Time_hour':'起飛時刻（小時）','Dep_Time_minute':'起飛時刻（分鐘）','Arrival_Time_hour':'抵達時刻（小時）','Arrival_Time_minute':'抵達時刻（分鐘）','duration_minutes':'總飛行時間'
+}

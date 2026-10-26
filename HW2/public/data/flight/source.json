@@ -1,0 +1,11 @@
+{
+  "id": "flight",
+  "kaggle_ref": "nikhilmittal/flight-fare-prediction-mh",
+  "version": 1,
+  "last_updated": "2019-03-15T19:43:45.257Z",
+  "license": "Unknown",
+  "metadata_checked_at": "2026-10-26T14:42:08.170667+00:00",
+  "archive_filename": "flight.zip",
+  "archive_sha256": "c0a87e088177a0858e28cb0dec5d1c1c1b7ecb13904623dd5bcc72f4a381a68a",
+  "note": "版本 metadata 與下載於本次工作期間核對；實際分析內容由 audit SHA256 唯一識別。"
+}

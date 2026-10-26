@@ -1,0 +1,4824 @@
+{
+  "id": "bike",
+  "display_name": "Bike Sharing Demand",
+  "slug": "marklvl/bike-sharing-dataset",
+  "file": "hour.csv",
+  "target_column": "count",
+  "prediction_unit": "每小時租借次數",
+  "description": "Washington D.C. 每小時自行車租借量；使用日曆與天氣因素。",
+  "note": "使用相同 Capital Bikeshare/UCI 來源的 Kaggle hourly 版本；cnt 映射 count。casual + registered = cnt，兩欄必須排除；移除 instant、dteday。採時間順序 80/20 與 TimeSeriesSplit。",
+  "kaggle_url": "https://www.kaggle.com/datasets/marklvl/bike-sharing-dataset",
+  "data_source": "hour.csv",
+  "source_version": 1,
+  "source_license": "CC0: Public Domain",
+  "source_last_updated": "2018-05-28T11:31:09.217Z",
+  "status": "ready",
+  "generated_at": "2026-10-26T14:58:22.245596+00:00",
+  "environment": {
+    "python": "3.14.4",
+    "sklearn": "1.9.1",
+    "pandas": "3.0.6",
+    "numpy": "2.5.1"
+  },
+  "audit": {
+    "id": "bike",
+    "sha256": "1fb548d6c9224121b64b7a480fe3030f8d73093a510f79bfce58ed33dc54b33d",
+    "source_rows": 17379,
+    "clean_rows": 17377,
+    "source_columns": [
+      "instant",
+      "dteday",
+      "season",
+      "yr",
+      "mnth",
+      "hr",
+      "holiday",
+      "weekday",
+      "workingday",
+      "weathersit",
+      "temp",
+      "atemp",
+      "hum",
+      "windspeed",
+      "casual",
+      "registered",
+      "cnt"
+    ],
+    "source_input_count": 16,
+    "original_features": [
+      "season",
+      "yr",
+      "mnth",
+      "hr",
+      "holiday",
+      "weekday",
+      "workingday",
+      "weathersit",
+      "temp",
+      "atemp",
+      "hum",
+      "windspeed"
+    ],
+    "original_feature_count": 12,
+    "candidate_features": [
+      "season",
+      "yr",
+      "mnth",
+      "hr",
+      "holiday",
+      "weekday",
+      "workingday",
+      "weathersit",
+      "temp",
+      "atemp",
+      "hum",
+      "windspeed"
+    ],
+    "candidate_feature_count": 12,
+    "raw_requirement_met": true,
+    "note": "使用相同 Capital Bikeshare/UCI 來源的 Kaggle hourly 版本；cnt 映射 count。casual + registered = cnt，兩欄必須排除；移除 instant、dteday。採時間順序 80/20 與 TimeSeriesSplit。",
+    "source_schema": [
+      {
+        "name": "instant",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "dteday",
+        "dtype": "str",
+        "missing": 0
+      },
+      {
+        "name": "season",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "yr",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "mnth",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "hr",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "holiday",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "weekday",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "workingday",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "weathersit",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "temp",
+        "dtype": "float64",
+        "missing": 0
+      },
+      {
+        "name": "atemp",
+        "dtype": "float64",
+        "missing": 0
+      },
+      {
+        "name": "hum",
+        "dtype": "float64",
+        "missing": 0
+      },
+      {
+        "name": "windspeed",
+        "dtype": "float64",
+        "missing": 0
+      },
+      {
+        "name": "casual",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "registered",
+        "dtype": "int64",
+        "missing": 0
+      },
+      {
+        "name": "cnt",
+        "dtype": "int64",
+        "missing": 0
+      }
+    ]
+  },
+  "original_features": [
+    "season",
+    "yr",
+    "mnth",
+    "hr",
+    "holiday",
+    "weekday",
+    "workingday",
+    "weathersit",
+    "temp",
+    "atemp",
+    "hum",
+    "windspeed"
+  ],
+  "encoded_features": [
+    "numeric__temp",
+    "numeric__atemp",
+    "numeric__hum",
+    "numeric__windspeed",
+    "categorical__season_1",
+    "categorical__season_2",
+    "categorical__season_3",
+    "categorical__season_4",
+    "categorical__yr_0",
+    "categorical__yr_1",
+    "categorical__mnth_1",
+    "categorical__mnth_10",
+    "categorical__mnth_11",
+    "categorical__mnth_12",
+    "categorical__mnth_2",
+    "categorical__mnth_3",
+    "categorical__mnth_4",
+    "categorical__mnth_5",
+    "categorical__mnth_6",
+    "categorical__mnth_7",
+    "categorical__mnth_8",
+    "categorical__mnth_9",
+    "categorical__hr_0",
+    "categorical__hr_1",
+    "categorical__hr_10",
+    "categorical__hr_11",
+    "categorical__hr_12",
+    "categorical__hr_13",
+    "categorical__hr_14",
+    "categorical__hr_15",
+    "categorical__hr_16",
+    "categorical__hr_17",
+    "categorical__hr_18",
+    "categorical__hr_19",
+    "categorical__hr_2",
+    "categorical__hr_20",
+    "categorical__hr_21",
+    "categorical__hr_22",
+    "categorical__hr_23",
+    "categorical__hr_3",
+    "categorical__hr_4",
+    "categorical__hr_5",
+    "categorical__hr_6",
+    "categorical__hr_7",
+    "categorical__hr_8",
+    "categorical__hr_9",
+    "categorical__holiday_0",
+    "categorical__holiday_1",
+    "categorical__weekday_0",
+    "categorical__weekday_1",
+    "categorical__weekday_2",
+    "categorical__weekday_3",
+    "categorical__weekday_4",
+    "categorical__weekday_5",
+    "categorical__weekday_6",
+    "categorical__workingday_0",
+    "categorical__workingday_1",
+    "categorical__weathersit_1",
+    "categorical__weathersit_2",
+    "categorical__weathersit_3",
+    "categorical__weathersit_4"
+  ],
+  "feature_schema": [
+    {
+      "name": "season",
+      "type": "category",
+      "description": "季節：1 春／2 夏／3 秋／4 冬",
+      "missing": 0,
+      "unit": "類別",
+      "values": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "default": "2"
+    },
+    {
+      "name": "yr",
+      "type": "category",
+      "description": "年份：0 為 2011，1 為 2012",
+      "missing": 0,
+      "unit": "類別",
+      "values": [
+        "0",
+        "1"
+      ],
+      "default": "0"
+    },
+    {
+      "name": "mnth",
+      "type": "category",
+      "description": "月份：1–12",
+      "missing": 0,
+      "unit": "類別",
+      "values": [
+        "1",
+        "10",
+        "11",
+        "12",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+      ],
+      "default": "5"
+    },
+    {
+      "name": "hr",
+      "type": "category",
+      "description": "小時：0–23",
+      "missing": 0,
+      "unit": "類別",
+      "values": [
+        "0",
+        "1",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19",
+        "2",
+        "20",
+        "21",
+        "22",
+        "23",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+      ],
+      "default": "16"
+    },
+    {
+      "name": "holiday",
+      "type": "category",
+      "description": "國定假日標記",
+      "missing": 0,
+      "unit": "類別",
+      "values": [
+        "0",
+        "1"
+      ],
+      "default": "0"
+    },
+    {
+      "name": "weekday",
+      "type": "category",
+      "description": "星期：0 週日，1–6 週一至週六",
+      "missing": 0,
+      "unit": "類別",
+      "values": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "default": "6"
+    },
+    {
+      "name": "workingday",
+      "type": "category",
+      "description": "工作日標記",
+      "missing": 0,
+      "unit": "類別",
+      "values": [
+        "0",
+        "1"
+      ],
+      "default": "1"
+    },
+    {
+      "name": "weathersit",
+      "type": "category",
+      "description": "天氣類別：1 晴朗至 4 惡劣天氣",
+      "missing": 0,
+      "unit": "類別",
+      "values": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "default": "1"
+    },
+    {
+      "name": "temp",
+      "type": "number",
+      "description": "標準化溫度",
+      "missing": 0,
+      "unit": "標準化溫度 / 41°C",
+      "default": 0.5,
+      "min": 0.02,
+      "max": 1.0,
+      "step": "any"
+    },
+    {
+      "name": "atemp",
+      "type": "number",
+      "description": "標準化體感溫度",
+      "missing": 0,
+      "unit": "標準化體感 / 50°C",
+      "default": 0.4848,
+      "min": 0.0,
+      "max": 1.0,
+      "step": "any"
+    },
+    {
+      "name": "hum",
+      "type": "number",
+      "description": "標準化相對濕度",
+      "missing": 0,
+      "unit": "相對濕度 / 100",
+      "default": 0.62,
+      "min": 0.0,
+      "max": 1.0,
+      "step": "any"
+    },
+    {
+      "name": "windspeed",
+      "type": "number",
+      "description": "標準化風速",
+      "missing": 0,
+      "unit": "風速 / 67",
+      "default": 0.194,
+      "min": 0.0,
+      "max": 0.8507,
+      "step": "any"
+    }
+  ],
+  "dataset_summary": {
+    "total_samples": 17379,
+    "clean_samples": 17377,
+    "analyzed_samples": 17377,
+    "sampled": false,
+    "training_samples": 13901,
+    "testing_samples": 3476,
+    "original_feature_count": 12,
+    "candidate_feature_count": 12,
+    "encoded_feature_count": 61,
+    "missing_values": 0,
+    "split": "chronological 80/20 + TimeSeriesSplit(5)",
+    "seed": 42
+  },
+  "model_results": [
+    {
+      "name": "Linear Regression",
+      "short": "Linear",
+      "cv_rmse": 108.79783901757219,
+      "test_rmse": 133.8408761495156,
+      "test_r2": 0.6315147022703993,
+      "test_mae": 98.8098954606312,
+      "best_parameters": {}
+    },
+    {
+      "name": "Ridge Regression",
+      "short": "Ridge",
+      "cv_rmse": 108.80956361073717,
+      "test_rmse": 133.86977252616256,
+      "test_r2": 0.6313555724185427,
+      "test_mae": 98.83589078623531,
+      "best_parameters": {
+        "model__regressor__alpha": 0.1
+      }
+    },
+    {
+      "name": "Lasso Regression",
+      "short": "Lasso",
+      "cv_rmse": 109.11373609754214,
+      "test_rmse": 135.21510249026457,
+      "test_r2": 0.6239089261391764,
+      "test_mae": 99.43248855692107,
+      "best_parameters": {
+        "model__regressor__alpha": 0.001
+      }
+    },
+    {
+      "name": "ElasticNet Regression",
+      "short": "ElasticNet",
+      "cv_rmse": 109.21132142114534,
+      "test_rmse": 134.82944063337402,
+      "test_r2": 0.6260512479848213,
+      "test_mae": 99.43462100173934,
+      "best_parameters": {
+        "model__regressor__alpha": 0.001,
+        "model__regressor__l1_ratio": 0.3
+      }
+    },
+    {
+      "name": "Random Forest Regressor",
+      "short": "Forest",
+      "cv_rmse": 101.51012832975024,
+      "test_rmse": 113.14509834396631,
+      "test_r2": 0.7366616493449061,
+      "test_mae": 80.7215292426584,
+      "best_parameters": {
+        "model__regressor__max_depth": 14,
+        "model__regressor__min_samples_leaf": 2
+      }
+    }
+  ],
+  "recommended_model": "Random Forest Regressor",
+  "feature_selection_results": [
+    {
+      "count": 1,
+      "selected_features": [
+        "hr"
+      ],
+      "cv_rmse": 133.6687812910797,
+      "test_rmse": 167.32313709203598,
+      "test_r2": 0.4240900000946778,
+      "test_mae": 113.7306511898437
+    },
+    {
+      "count": 2,
+      "selected_features": [
+        "hr",
+        "temp"
+      ],
+      "cv_rmse": 118.82886278301473,
+      "test_rmse": 159.4666303083224,
+      "test_r2": 0.4769029665044563,
+      "test_mae": 112.44202167226105
+    },
+    {
+      "count": 3,
+      "selected_features": [
+        "hr",
+        "temp",
+        "yr"
+      ],
+      "cv_rmse": 112.54938593465565,
+      "test_rmse": 142.70111082866504,
+      "test_r2": 0.5811125680288709,
+      "test_mae": 99.70617512915454
+    },
+    {
+      "count": 4,
+      "selected_features": [
+        "hr",
+        "temp",
+        "yr",
+        "weathersit"
+      ],
+      "cv_rmse": 110.00794384042209,
+      "test_rmse": 140.2857119159933,
+      "test_r2": 0.5951729688788012,
+      "test_mae": 98.01898085154592
+    },
+    {
+      "count": 5,
+      "selected_features": [
+        "hr",
+        "temp",
+        "yr",
+        "weathersit",
+        "season"
+      ],
+      "cv_rmse": 108.02319979305767,
+      "test_rmse": 135.95265761126615,
+      "test_r2": 0.6197948231509649,
+      "test_mae": 98.2447826932479
+    },
+    {
+      "count": 6,
+      "selected_features": [
+        "hr",
+        "temp",
+        "yr",
+        "weathersit",
+        "season",
+        "windspeed"
+      ],
+      "cv_rmse": 107.7425810800834,
+      "test_rmse": 136.00722090657703,
+      "test_r2": 0.6194895785068255,
+      "test_mae": 98.28487680415735
+    },
+    {
+      "count": 7,
+      "selected_features": [
+        "hr",
+        "temp",
+        "yr",
+        "weathersit",
+        "season",
+        "windspeed",
+        "hum"
+      ],
+      "cv_rmse": 107.43061575196569,
+      "test_rmse": 135.4309213793674,
+      "test_r2": 0.6227073986077833,
+      "test_mae": 97.85530297533992
+    },
+    {
+      "count": 8,
+      "selected_features": [
+        "hr",
+        "temp",
+        "yr",
+        "weathersit",
+        "season",
+        "windspeed",
+        "hum",
+        "atemp"
+      ],
+      "cv_rmse": 107.15240138445552,
+      "test_rmse": 135.3520560425643,
+      "test_r2": 0.6231466874214682,
+      "test_mae": 97.8202167117337
+    },
+    {
+      "count": 9,
+      "selected_features": [
+        "hr",
+        "temp",
+        "yr",
+        "weathersit",
+        "season",
+        "windspeed",
+        "hum",
+        "atemp",
+        "weekday"
+      ],
+      "cv_rmse": 107.12197060417967,
+      "test_rmse": 135.08090142940972,
+      "test_r2": 0.6246550968480176,
+      "test_mae": 97.62734686321475
+    },
+    {
+      "count": 10,
+      "selected_features": [
+        "hr",
+        "temp",
+        "yr",
+        "weathersit",
+        "season",
+        "windspeed",
+        "hum",
+        "atemp",
+        "weekday",
+        "workingday"
+      ],
+      "cv_rmse": 107.1250857827813,
+      "test_rmse": 134.8738538401663,
+      "test_r2": 0.6258048478131695,
+      "test_mae": 97.52141111733356
+    },
+    {
+      "count": 11,
+      "selected_features": [
+        "hr",
+        "temp",
+        "yr",
+        "weathersit",
+        "season",
+        "windspeed",
+        "hum",
+        "atemp",
+        "weekday",
+        "workingday",
+        "holiday"
+      ],
+      "cv_rmse": 107.12508345160136,
+      "test_rmse": 134.87387754133727,
+      "test_r2": 0.6258047162997027,
+      "test_mae": 97.52133730090982
+    },
+    {
+      "count": 12,
+      "selected_features": [
+        "hr",
+        "temp",
+        "yr",
+        "weathersit",
+        "season",
+        "windspeed",
+        "hum",
+        "atemp",
+        "weekday",
+        "workingday",
+        "holiday",
+        "mnth"
+      ],
+      "cv_rmse": 108.79785551807049,
+      "test_rmse": 133.8408726036816,
+      "test_r2": 0.6315147217948931,
+      "test_mae": 98.80990811010379
+    }
+  ],
+  "best_features": {
+    "count": 9,
+    "selected_features": [
+      "hr",
+      "temp",
+      "yr",
+      "weathersit",
+      "season",
+      "windspeed",
+      "hum",
+      "atemp",
+      "weekday"
+    ],
+    "cv_rmse": 107.12197060417967,
+    "test_rmse": 135.08090142940972,
+    "test_r2": 0.6246550968480176,
+    "test_mae": 97.62734686321475
+  },
+  "diagnostic_results": {
+    "points": [
+      {
+        "actual": 283.0,
+        "predicted": 265.85894291971965,
+        "residual": 17.141057080280348
+      },
+      {
+        "actual": 445.0,
+        "predicted": 299.97111392527233,
+        "residual": 145.02888607472767
+      },
+      {
+        "actual": 448.0,
+        "predicted": 289.9982306518203,
+        "residual": 158.00176934817972
+      },
+      {
+        "actual": 23.0,
+        "predicted": 51.48063942964673,
+        "residual": -28.48063942964673
+      },
+      {
+        "actual": 43.0,
+        "predicted": 47.181062111954645,
+        "residual": -4.181062111954645
+      },
+      {
+        "actual": 341.0,
+        "predicted": 281.40432499188296,
+        "residual": 59.59567500811704
+      },
+      {
+        "actual": 236.0,
+        "predicted": 263.4880941807006,
+        "residual": -27.488094180700614
+      },
+      {
+        "actual": 862.0,
+        "predicted": 743.3553454328271,
+        "residual": 118.64465456717289
+      },
+      {
+        "actual": 233.0,
+        "predicted": 249.330060439205,
+        "residual": -16.330060439205
+      },
+      {
+        "actual": 6.0,
+        "predicted": 31.416929888870442,
+        "residual": -25.416929888870442
+      },
+      {
+        "actual": 475.0,
+        "predicted": 318.2307361141202,
+        "residual": 156.7692638858798
+      },
+      {
+        "actual": 260.0,
+        "predicted": 258.7729903482242,
+        "residual": 1.227009651775802
+      },
+      {
+        "actual": 417.0,
+        "predicted": 420.4701073308354,
+        "residual": -3.47010733083539
+      },
+      {
+        "actual": 478.0,
+        "predicted": 352.7146289642826,
+        "residual": 125.28537103571739
+      },
+      {
+        "actual": 85.0,
+        "predicted": 94.37829292657258,
+        "residual": -9.378292926572584
+      },
+      {
+        "actual": 33.0,
+        "predicted": 50.17010532183119,
+        "residual": -17.170105321831187
+      },
+      {
+        "actual": 220.0,
+        "predicted": 250.34414460086612,
+        "residual": -30.344144600866116
+      },
+      {
+        "actual": 290.0,
+        "predicted": 274.6234572467524,
+        "residual": 15.376542753247577
+      },
+      {
+        "actual": 640.0,
+        "predicted": 700.8172789257733,
+        "residual": -60.81727892577328
+      },
+      {
+        "actual": 218.0,
+        "predicted": 249.330060439205,
+        "residual": -31.330060439205
+      },
+      {
+        "actual": 85.0,
+        "predicted": 35.402638393186606,
+        "residual": 49.597361606813394
+      },
+      {
+        "actual": 62.0,
+        "predicted": 93.70081300140394,
+        "residual": -31.700813001403944
+      },
+      {
+        "actual": 499.0,
+        "predicted": 306.91379275778127,
+        "residual": 192.08620724221873
+      },
+      {
+        "actual": 531.0,
+        "predicted": 448.53961817383896,
+        "residual": 82.46038182616104
+      },
+      {
+        "actual": 160.0,
+        "predicted": 140.1543500992516,
+        "residual": 19.845649900748413
+      },
+      {
+        "actual": 120.0,
+        "predicted": 86.32291203059243,
+        "residual": 33.677087969407566
+      },
+      {
+        "actual": 10.0,
+        "predicted": 80.78749970604457,
+        "residual": -70.78749970604457
+      },
+      {
+        "actual": 217.0,
+        "predicted": 383.523287652088,
+        "residual": -166.52328765208802
+      },
+      {
+        "actual": 543.0,
+        "predicted": 451.23103537406035,
+        "residual": 91.76896462593965
+      },
+      {
+        "actual": 491.0,
+        "predicted": 432.84987164447494,
+        "residual": 58.150128355525055
+      },
+      {
+        "actual": 181.0,
+        "predicted": 264.3337535035698,
+        "residual": -83.33375350356982
+      },
+      {
+        "actual": 9.0,
+        "predicted": 31.804482814135923,
+        "residual": -22.804482814135923
+      },
+      {
+        "actual": 436.0,
+        "predicted": 311.5861514582779,
+        "residual": 124.41384854172207
+      },
+      {
+        "actual": 245.0,
+        "predicted": 258.7729903482242,
+        "residual": -13.772990348224198
+      },
+      {
+        "actual": 274.0,
+        "predicted": 258.7729903482242,
+        "residual": 15.227009651775802
+      },
+      {
+        "actual": 432.0,
+        "predicted": 316.9659812578616,
+        "residual": 115.03401874213841
+      },
+      {
+        "actual": 60.0,
+        "predicted": 81.38989803608374,
+        "residual": -21.389898036083736
+      },
+      {
+        "actual": 5.0,
+        "predicted": 32.90165182918781,
+        "residual": -27.901651829187813
+      },
+      {
+        "actual": 402.0,
+        "predicted": 279.8386768556722,
+        "residual": 122.16132314432781
+      },
+      {
+        "actual": 286.0,
+        "predicted": 258.7729903482242,
+        "residual": 27.227009651775802
+      },
+      {
+        "actual": 812.0,
+        "predicted": 705.3546205219792,
+        "residual": 106.6453794780208
+      },
+      {
+        "actual": 189.0,
+        "predicted": 263.64899280301194,
+        "residual": -74.64899280301194
+      },
+      {
+        "actual": 8.0,
+        "predicted": 39.0818510447225,
+        "residual": -31.081851044722498
+      },
+      {
+        "actual": 492.0,
+        "predicted": 314.9042491244586,
+        "residual": 177.0957508755414
+      },
+      {
+        "actual": 235.0,
+        "predicted": 269.52723320665194,
+        "residual": -34.52723320665194
+      },
+      {
+        "actual": 266.0,
+        "predicted": 263.4880941807006,
+        "residual": 2.511905819299386
+      },
+      {
+        "actual": 427.0,
+        "predicted": 310.2328766007653,
+        "residual": 116.76712339923472
+      },
+      {
+        "actual": 76.0,
+        "predicted": 80.51165590301832,
+        "residual": -4.5116559030183225
+      },
+      {
+        "actual": 5.0,
+        "predicted": 16.013866303679208,
+        "residual": -11.013866303679208
+      },
+      {
+        "actual": 337.0,
+        "predicted": 268.2072560662084,
+        "residual": 68.7927439337916
+      },
+      {
+        "actual": 300.0,
+        "predicted": 258.7729903482242,
+        "residual": 41.2270096517758
+      },
+      {
+        "actual": 897.0,
+        "predicted": 771.059383166585,
+        "residual": 125.94061683341499
+      },
+      {
+        "actual": 254.0,
+        "predicted": 259.4290707615153,
+        "residual": -5.429070761515277
+      },
+      {
+        "actual": 19.0,
+        "predicted": 35.28568571982106,
+        "residual": -16.28568571982106
+      },
+      {
+        "actual": 157.0,
+        "predicted": 115.50200498311696,
+        "residual": 41.49799501688304
+      },
+      {
+        "actual": 303.0,
+        "predicted": 193.05518769947957,
+        "residual": 109.94481230052043
+      },
+      {
+        "actual": 383.0,
+        "predicted": 212.1979757952099,
+        "residual": 170.8020242047901
+      },
+      {
+        "actual": 491.0,
+        "predicted": 281.0093532250599,
+        "residual": 209.9906467749401
+      },
+      {
+        "actual": 105.0,
+        "predicted": 91.5678750825792,
+        "residual": 13.432124917420794
+      },
+      {
+        "actual": 13.0,
+        "predicted": 16.013866303679208,
+        "residual": -3.013866303679208
+      },
+      {
+        "actual": 189.0,
+        "predicted": 116.23736678099777,
+        "residual": 72.76263321900223
+      },
+      {
+        "actual": 644.0,
+        "predicted": 464.00307899716256,
+        "residual": 179.99692100283744
+      },
+      {
+        "actual": 635.0,
+        "predicted": 506.4953967414399,
+        "residual": 128.5046032585601
+      },
+      {
+        "actual": 338.0,
+        "predicted": 272.6513748669901,
+        "residual": 65.34862513300988
+      },
+      {
+        "actual": 119.0,
+        "predicted": 36.40393243639954,
+        "residual": 82.59606756360046
+      },
+      {
+        "actual": 20.0,
+        "predicted": 161.35194710403525,
+        "residual": -141.35194710403525
+      },
+      {
+        "actual": 272.0,
+        "predicted": 146.4021619635004,
+        "residual": 125.59783803649961
+      },
+      {
+        "actual": 276.0,
+        "predicted": 264.5258718516265,
+        "residual": 11.474128148373495
+      },
+      {
+        "actual": 341.0,
+        "predicted": 354.26006676386646,
+        "residual": -13.260066763866462
+      },
+      {
+        "actual": 26.0,
+        "predicted": 90.54131761965203,
+        "residual": -64.54131761965203
+      },
+      {
+        "actual": 7.0,
+        "predicted": 13.173558884448852,
+        "residual": -6.173558884448852
+      },
+      {
+        "actual": 655.0,
+        "predicted": 618.5217233162493,
+        "residual": 36.478276683750664
+      },
+      {
+        "actual": 291.0,
+        "predicted": 266.2421036709024,
+        "residual": 24.757896329097605
+      },
+      {
+        "actual": 893.0,
+        "predicted": 763.3552059567335,
+        "residual": 129.64479404326653
+      },
+      {
+        "actual": 245.0,
+        "predicted": 143.0523750331269,
+        "residual": 101.9476249668731
+      },
+      {
+        "actual": 8.0,
+        "predicted": 31.119247472082634,
+        "residual": -23.119247472082634
+      },
+      {
+        "actual": 169.0,
+        "predicted": 113.68002969610257,
+        "residual": 55.319970303897435
+      },
+      {
+        "actual": 178.0,
+        "predicted": 261.6534775183507,
+        "residual": -83.65347751835071
+      },
+      {
+        "actual": 302.0,
+        "predicted": 258.7729903482242,
+        "residual": 43.2270096517758
+      },
+      {
+        "actual": 476.0,
+        "predicted": 273.21136960841477,
+        "residual": 202.78863039158523
+      },
+      {
+        "actual": 136.0,
+        "predicted": 135.66756029489034,
+        "residual": 0.3324397051096639
+      },
+      {
+        "actual": 8.0,
+        "predicted": 13.173558884448852,
+        "residual": -5.173558884448852
+      },
+      {
+        "actual": 740.0,
+        "predicted": 645.9597214830588,
+        "residual": 94.04027851694116
+      },
+      {
+        "actual": 312.0,
+        "predicted": 263.4880941807006,
+        "residual": 48.511905819299386
+      },
+      {
+        "actual": 783.0,
+        "predicted": 739.3997680308149,
+        "residual": 43.600231969185074
+      },
+      {
+        "actual": 351.0,
+        "predicted": 235.96577035930142,
+        "residual": 115.03422964069858
+      },
+      {
+        "actual": 20.0,
+        "predicted": 30.948762858941336,
+        "residual": -10.948762858941336
+      },
+      {
+        "actual": 192.0,
+        "predicted": 111.37042316349067,
+        "residual": 80.62957683650933
+      },
+      {
+        "actual": 233.0,
+        "predicted": 267.62102507428324,
+        "residual": -34.62102507428324
+      },
+      {
+        "actual": 305.0,
+        "predicted": 258.7729903482242,
+        "residual": 46.2270096517758
+      },
+      {
+        "actual": 633.0,
+        "predicted": 517.6555668886722,
+        "residual": 115.34443311132782
+      },
+      {
+        "actual": 157.0,
+        "predicted": 197.44311906435064,
+        "residual": -40.44311906435064
+      },
+      {
+        "actual": 8.0,
+        "predicted": 17.542150908298908,
+        "residual": -9.542150908298908
+      },
+      {
+        "actual": 744.0,
+        "predicted": 666.91140532699,
+        "residual": 77.08859467301
+      },
+      {
+        "actual": 371.0,
+        "predicted": 285.11220631969366,
+        "residual": 85.88779368030634
+      },
+      {
+        "actual": 812.0,
+        "predicted": 768.9522290785346,
+        "residual": 43.04777092146537
+      },
+      {
+        "actual": 306.0,
+        "predicted": 274.1225428201778,
+        "residual": 31.877457179822215
+      },
+      {
+        "actual": 115.0,
+        "predicted": 62.32707843583189,
+        "residual": 52.67292156416811
+      },
+      {
+        "actual": 30.0,
+        "predicted": 115.08077760030443,
+        "residual": -85.08077760030443
+      },
+      {
+        "actual": 442.0,
+        "predicted": 281.0723084749474,
+        "residual": 160.92769152505258
+      },
+      {
+        "actual": 482.0,
+        "predicted": 312.0717577149944,
+        "residual": 169.92824228500558
+      },
+      {
+        "actual": 354.0,
+        "predicted": 295.6703108913399,
+        "residual": 58.32968910866009
+      },
+      {
+        "actual": 158.0,
+        "predicted": 135.66756029489034,
+        "residual": 22.332439705109664
+      },
+      {
+        "actual": 53.0,
+        "predicted": 15.517563635654682,
+        "residual": 37.48243636434532
+      },
+      {
+        "actual": 133.0,
+        "predicted": 135.33330383475962,
+        "residual": -2.3333038347596187
+      },
+      {
+        "actual": 626.0,
+        "predicted": 273.4860925891008,
+        "residual": 352.5139074108992
+      },
+      {
+        "actual": 233.0,
+        "predicted": 487.1979673835709,
+        "residual": -254.19796738357093
+      },
+      {
+        "actual": 166.0,
+        "predicted": 143.0523750331269,
+        "residual": 22.947624966873093
+      },
+      {
+        "actual": 7.0,
+        "predicted": 51.88271126779584,
+        "residual": -44.88271126779584
+      },
+      {
+        "actual": 145.0,
+        "predicted": 111.37042316349067,
+        "residual": 33.62957683650933
+      },
+      {
+        "actual": 206.0,
+        "predicted": 251.4346551031179,
+        "residual": -45.434655103117905
+      },
+      {
+        "actual": 246.0,
+        "predicted": 258.1476898022677,
+        "residual": -12.147689802267678
+      },
+      {
+        "actual": 573.0,
+        "predicted": 468.303719891875,
+        "residual": 104.696280108125
+      },
+      {
+        "actual": 114.0,
+        "predicted": 182.19630566759,
+        "residual": -68.19630566759
+      },
+      {
+        "actual": 4.0,
+        "predicted": 15.517563635654682,
+        "residual": -11.517563635654682
+      },
+      {
+        "actual": 693.0,
+        "predicted": 666.91140532699,
+        "residual": 26.088594673009993
+      },
+      {
+        "actual": 297.0,
+        "predicted": 258.1476898022677,
+        "residual": 38.85231019773232
+      },
+      {
+        "actual": 480.0,
+        "predicted": 420.4701073308354,
+        "residual": 59.52989266916461
+      },
+      {
+        "actual": 314.0,
+        "predicted": 258.8444205716031,
+        "residual": 55.15557942839689
+      },
+      {
+        "actual": 14.0,
+        "predicted": 44.08646735400481,
+        "residual": -30.08646735400481
+      },
+      {
+        "actual": 40.0,
+        "predicted": 35.071136991932605,
+        "residual": 4.928863008067395
+      },
+      {
+        "actual": 178.0,
+        "predicted": 258.8444205716031,
+        "residual": -80.84442057160311
+      },
+      {
+        "actual": 301.0,
+        "predicted": 258.7729903482242,
+        "residual": 42.2270096517758
+      },
+      {
+        "actual": 812.0,
+        "predicted": 743.3553454328271,
+        "residual": 68.64465456717289
+      },
+      {
+        "actual": 157.0,
+        "predicted": 214.4430715364311,
+        "residual": -57.44307153643109
+      },
+      {
+        "actual": 5.0,
+        "predicted": 22.21827283566205,
+        "residual": -17.21827283566205
+      },
+      {
+        "actual": 532.0,
+        "predicted": 303.6915035455638,
+        "residual": 228.30849645443618
+      },
+      {
+        "actual": 294.0,
+        "predicted": 258.7729903482242,
+        "residual": 35.2270096517758
+      },
+      {
+        "actual": 482.0,
+        "predicted": 420.4701073308354,
+        "residual": 61.52989266916461
+      },
+      {
+        "actual": 307.0,
+        "predicted": 276.1273600870553,
+        "residual": 30.872639912944692
+      },
+      {
+        "actual": 32.0,
+        "predicted": 51.48063942964673,
+        "residual": -19.48063942964673
+      },
+      {
+        "actual": 29.0,
+        "predicted": 25.952545210844306,
+        "residual": 3.047454789155694
+      },
+      {
+        "actual": 256.0,
+        "predicted": 269.2692739930369,
+        "residual": -13.269273993036904
+      },
+      {
+        "actual": 436.0,
+        "predicted": 285.11220631969366,
+        "residual": 150.88779368030634
+      },
+      {
+        "actual": 546.0,
+        "predicted": 707.4059083263973,
+        "residual": -161.40590832639725
+      },
+      {
+        "actual": 174.0,
+        "predicted": 216.66258417385563,
+        "residual": -42.662584173855635
+      },
+      {
+        "actual": 35.0,
+        "predicted": 31.542621989267104,
+        "residual": 3.4573780107328957
+      },
+      {
+        "actual": 66.0,
+        "predicted": 267.64109486211333,
+        "residual": -201.64109486211333
+      },
+      {
+        "actual": 471.0,
+        "predicted": 367.9647985492674,
+        "residual": 103.03520145073259
+      },
+      {
+        "actual": 462.0,
+        "predicted": 416.39333810964405,
+        "residual": 45.60666189035595
+      },
+      {
+        "actual": 207.0,
+        "predicted": 293.6078479145664,
+        "residual": -86.60784791456638
+      },
+      {
+        "actual": 73.0,
+        "predicted": 52.95910492622073,
+        "residual": 20.040895073779268
+      },
+      {
+        "actual": 12.0,
+        "predicted": 25.952545210844306,
+        "residual": -13.952545210844306
+      },
+      {
+        "actual": 232.0,
+        "predicted": 280.16841890668167,
+        "residual": -48.168418906681666
+      },
+      {
+        "actual": 457.0,
+        "predicted": 257.0867343666948,
+        "residual": 199.91326563330517
+      },
+      {
+        "actual": 500.0,
+        "predicted": 430.7845003242252,
+        "residual": 69.21549967577482
+      },
+      {
+        "actual": 166.0,
+        "predicted": 247.82369832777573,
+        "residual": -81.82369832777573
+      },
+      {
+        "actual": 28.0,
+        "predicted": 15.517563635654682,
+        "residual": 12.482436364345318
+      },
+      {
+        "actual": 43.0,
+        "predicted": 231.60510233261442,
+        "residual": -188.60510233261442
+      },
+      {
+        "actual": 543.0,
+        "predicted": 338.1866682425863,
+        "residual": 204.81333175741372
+      },
+      {
+        "actual": 500.0,
+        "predicted": 282.84416771329296,
+        "residual": 217.15583228670704
+      },
+      {
+        "actual": 261.0,
+        "predicted": 285.0927783896291,
+        "residual": -24.092778389629075
+      },
+      {
+        "actual": 24.0,
+        "predicted": 51.48063942964673,
+        "residual": -27.48063942964673
+      },
+      {
+        "actual": 38.0,
+        "predicted": 25.952545210844306,
+        "residual": 12.047454789155694
+      },
+      {
+        "actual": 323.0,
+        "predicted": 280.16841890668167,
+        "residual": 42.831581093318334
+      },
+      {
+        "actual": 274.0,
+        "predicted": 265.39701900806386,
+        "residual": 8.602980991936136
+      },
+      {
+        "actual": 839.0,
+        "predicted": 734.2198410322031,
+        "residual": 104.78015896779686
+      },
+      {
+        "actual": 179.0,
+        "predicted": 254.66120384409072,
+        "residual": -75.66120384409072
+      },
+      {
+        "actual": 4.0,
+        "predicted": 31.416929888870442,
+        "residual": -27.416929888870442
+      },
+      {
+        "actual": 500.0,
+        "predicted": 318.2307361141202,
+        "residual": 181.7692638858798
+      },
+      {
+        "actual": 217.0,
+        "predicted": 269.52723320665194,
+        "residual": -52.52723320665194
+      },
+      {
+        "actual": 430.0,
+        "predicted": 273.9769449985872,
+        "residual": 156.02305500141279
+      },
+      {
+        "actual": 412.0,
+        "predicted": 285.0927783896291,
+        "residual": 126.90722161037093
+      },
+      {
+        "actual": 65.0,
+        "predicted": 86.23813068186891,
+        "residual": -21.23813068186891
+      },
+      {
+        "actual": 38.0,
+        "predicted": 50.17010532183119,
+        "residual": -12.170105321831187
+      },
+      {
+        "actual": 123.0,
+        "predicted": 226.19860188862452,
+        "residual": -103.19860188862452
+      },
+      {
+        "actual": 191.0,
+        "predicted": 252.35392667199596,
+        "residual": -61.353926671995964
+      },
+      {
+        "actual": 835.0,
+        "predicted": 734.2198410322031,
+        "residual": 100.78015896779686
+      },
+      {
+        "actual": 217.0,
+        "predicted": 133.3579537622784,
+        "residual": 83.64204623772159
+      },
+      {
+        "actual": 9.0,
+        "predicted": 17.821560371025498,
+        "residual": -8.821560371025498
+      },
+      {
+        "actual": 486.0,
+        "predicted": 323.31913970706995,
+        "residual": 162.68086029293005
+      },
+      {
+        "actual": 296.0,
+        "predicted": 269.52723320665194,
+        "residual": 26.472766793348057
+      },
+      {
+        "actual": 470.0,
+        "predicted": 371.29602615025806,
+        "residual": 98.70397384974194
+      },
+      {
+        "actual": 391.0,
+        "predicted": 303.4392352384751,
+        "residual": 87.56076476152492
+      },
+      {
+        "actual": 150.0,
+        "predicted": 89.25826854996726,
+        "residual": 60.741731450032745
+      },
+      {
+        "actual": 15.0,
+        "predicted": 25.952545210844306,
+        "residual": -10.952545210844306
+      },
+      {
+        "actual": 348.0,
+        "predicted": 274.2129987777519,
+        "residual": 73.78700122224808
+      },
+      {
+        "actual": 668.0,
+        "predicted": 398.40105443084144,
+        "residual": 269.59894556915856
+      },
+      {
+        "actual": 167.0,
+        "predicted": 312.7346468634728,
+        "residual": -145.7346468634728
+      },
+      {
+        "actual": 194.0,
+        "predicted": 145.94943587472838,
+        "residual": 48.05056412527162
+      },
+      {
+        "actual": 96.0,
+        "predicted": 35.402638393186606,
+        "residual": 60.597361606813394
+      },
+      {
+        "actual": 70.0,
+        "predicted": 121.44753537241135,
+        "residual": -51.44753537241135
+      },
+      {
+        "actual": 585.0,
+        "predicted": 435.34241572415254,
+        "residual": 149.65758427584746
+      },
+      {
+        "actual": 696.0,
+        "predicted": 500.28447851314115,
+        "residual": 195.71552148685885
+      },
+      {
+        "actual": 356.0,
+        "predicted": 408.6715972932801,
+        "residual": -52.671597293280115
+      },
+      {
+        "actual": 41.0,
+        "predicted": 105.32124775218277,
+        "residual": -64.32124775218277
+      },
+      {
+        "actual": 5.0,
+        "predicted": 16.013866303679208,
+        "residual": -11.013866303679208
+      },
+      {
+        "actual": 361.0,
+        "predicted": 266.91376251627986,
+        "residual": 94.08623748372014
+      },
+      {
+        "actual": 323.0,
+        "predicted": 258.7729903482242,
+        "residual": 64.2270096517758
+      },
+      {
+        "actual": 871.0,
+        "predicted": 771.059383166585,
+        "residual": 99.94061683341499
+      },
+      {
+        "actual": 159.0,
+        "predicted": 212.46169579729573,
+        "residual": -53.46169579729573
+      },
+      {
+        "actual": 6.0,
+        "predicted": 35.402638393186606,
+        "residual": -29.402638393186606
+      },
+      {
+        "actual": 596.0,
+        "predicted": 323.31678232599234,
+        "residual": 272.68321767400766
+      },
+      {
+        "actual": 247.0,
+        "predicted": 258.7729903482242,
+        "residual": -11.772990348224198
+      },
+      {
+        "actual": 326.0,
+        "predicted": 258.7729903482242,
+        "residual": 67.2270096517758
+      },
+      {
+        "actual": 461.0,
+        "predicted": 214.9674118679049,
+        "residual": 246.0325881320951
+      },
+      {
+        "actual": 49.0,
+        "predicted": 91.28617070411038,
+        "residual": -42.286170704110376
+      },
+      {
+        "actual": 5.0,
+        "predicted": 16.013866303679208,
+        "residual": -11.013866303679208
+      },
+      {
+        "actual": 328.0,
+        "predicted": 256.61792428800163,
+        "residual": 71.38207571199837
+      },
+      {
+        "actual": 323.0,
+        "predicted": 258.7729903482242,
+        "residual": 64.2270096517758
+      },
+      {
+        "actual": 925.0,
+        "predicted": 771.059383166585,
+        "residual": 153.940616833415
+      },
+      {
+        "actual": 212.0,
+        "predicted": 169.08825762066505,
+        "residual": 42.91174237933495
+      },
+      {
+        "actual": 9.0,
+        "predicted": 35.402638393186606,
+        "residual": -26.402638393186606
+      },
+      {
+        "actual": 195.0,
+        "predicted": 113.68002969610257,
+        "residual": 81.31997030389743
+      },
+      {
+        "actual": 254.0,
+        "predicted": 255.28138015916056,
+        "residual": -1.2813801591605625
+      },
+      {
+        "actual": 352.0,
+        "predicted": 258.7729903482242,
+        "residual": 93.2270096517758
+      },
+      {
+        "actual": 674.0,
+        "predicted": 397.28355433803097,
+        "residual": 276.71644566196903
+      },
+      {
+        "actual": 87.0,
+        "predicted": 91.28617070411038,
+        "residual": -4.286170704110376
+      },
+      {
+        "actual": 12.0,
+        "predicted": 15.944119280792876,
+        "residual": -3.9441192807928758
+      },
+      {
+        "actual": 766.0,
+        "predicted": 618.5217233162493,
+        "residual": 147.47827668375066
+      },
+      {
+        "actual": 408.0,
+        "predicted": 272.91788787024655,
+        "residual": 135.08211212975345
+      },
+      {
+        "actual": 894.0,
+        "predicted": 768.9522290785346,
+        "residual": 125.04777092146537
+      },
+      {
+        "actual": 229.0,
+        "predicted": 135.66756029489034,
+        "residual": 93.33243970510966
+      },
+      {
+        "actual": 93.0,
+        "predicted": 35.402638393186606,
+        "residual": 57.597361606813394
+      },
+      {
+        "actual": 33.0,
+        "predicted": 261.5906720796352,
+        "residual": -228.59067207963523
+      },
+      {
+        "actual": 627.0,
+        "predicted": 487.4600819877942,
+        "residual": 139.53991801220582
+      },
+      {
+        "actual": 654.0,
+        "predicted": 487.4600819877942,
+        "residual": 166.53991801220582
+      },
+      {
+        "actual": 478.0,
+        "predicted": 441.50658086619035,
+        "residual": 36.49341913380965
+      },
+      {
+        "actual": 151.0,
+        "predicted": 96.98105237032776,
+        "residual": 54.01894762967224
+      },
+      {
+        "actual": 8.0,
+        "predicted": 16.013866303679208,
+        "residual": -8.013866303679208
+      },
+      {
+        "actual": 128.0,
+        "predicted": 101.7235304337281,
+        "residual": 26.2764695662719
+      },
+      {
+        "actual": 694.0,
+        "predicted": 472.23991285623526,
+        "residual": 221.76008714376474
+      },
+      {
+        "actual": 570.0,
+        "predicted": 508.9040244588312,
+        "residual": 61.0959755411688
+      },
+      {
+        "actual": 191.0,
+        "predicted": 271.6621539766623,
+        "residual": -80.6621539766623
+      },
+      {
+        "actual": 13.0,
+        "predicted": 35.81970356341682,
+        "residual": -22.819703563416823
+      },
+      {
+        "actual": 164.0,
+        "predicted": 113.68002969610257,
+        "residual": 50.319970303897435
+      },
+      {
+        "actual": 202.0,
+        "predicted": 246.57966742467087,
+        "residual": -44.57966742467087
+      },
+      {
+        "actual": 338.0,
+        "predicted": 246.57966742467087,
+        "residual": 91.42033257532913
+      },
+      {
+        "actual": 486.0,
+        "predicted": 314.75415087095814,
+        "residual": 171.24584912904186
+      },
+      {
+        "actual": 70.0,
+        "predicted": 120.72370540328325,
+        "residual": -50.72370540328325
+      },
+      {
+        "actual": 7.0,
+        "predicted": 10.70427279111638,
+        "residual": -3.704272791116381
+      },
+      {
+        "actual": 672.0,
+        "predicted": 644.8286161589847,
+        "residual": 27.171383841015313
+      },
+      {
+        "actual": 114.0,
+        "predicted": 259.713361609724,
+        "residual": -145.71336160972402
+      },
+      {
+        "actual": 338.0,
+        "predicted": 339.2812436820816,
+        "residual": -1.2812436820815947
+      },
+      {
+        "actual": 207.0,
+        "predicted": 140.74276850051496,
+        "residual": 66.25723149948504
+      },
+      {
+        "actual": 3.0,
+        "predicted": 36.79071931804501,
+        "residual": -33.79071931804501
+      },
+      {
+        "actual": 172.0,
+        "predicted": 147.10072702187728,
+        "residual": 24.899272978122724
+      },
+      {
+        "actual": 192.0,
+        "predicted": 212.46169579729573,
+        "residual": -20.461695797295732
+      },
+      {
+        "actual": 311.0,
+        "predicted": 255.5034388585869,
+        "residual": 55.49656114141311
+      },
+      {
+        "actual": 611.0,
+        "predicted": 357.14635423329906,
+        "residual": 253.85364576670094
+      },
+      {
+        "actual": 123.0,
+        "predicted": 149.953867261046,
+        "residual": -26.953867261046014
+      },
+      {
+        "actual": 6.0,
+        "predicted": 15.944119280792876,
+        "residual": -9.944119280792876
+      },
+      {
+        "actual": 790.0,
+        "predicted": 618.5217233162493,
+        "residual": 171.47827668375066
+      },
+      {
+        "actual": 290.0,
+        "predicted": 255.5034388585869,
+        "residual": 34.49656114141311
+      },
+      {
+        "actual": 976.0,
+        "predicted": 771.059383166585,
+        "residual": 204.940616833415
+      },
+      {
+        "actual": 274.0,
+        "predicted": 173.2717663964245,
+        "residual": 100.72823360357549
+      },
+      {
+        "actual": 49.0,
+        "predicted": 53.46904311583883,
+        "residual": -4.469043115838829
+      },
+      {
+        "actual": 165.0,
+        "predicted": 123.96190527594061,
+        "residual": 41.03809472405939
+      },
+      {
+        "actual": 225.0,
+        "predicted": 249.28647430197333,
+        "residual": -24.28647430197333
+      },
+      {
+        "actual": 412.0,
+        "predicted": 271.3492043596082,
+        "residual": 140.65079564039178
+      },
+      {
+        "actual": 588.0,
+        "predicted": 397.28355433803097,
+        "residual": 190.71644566196903
+      },
+      {
+        "actual": 186.0,
+        "predicted": 149.953867261046,
+        "residual": 36.046132738953986
+      },
+      {
+        "actual": 45.0,
+        "predicted": 17.821560371025498,
+        "residual": 27.178439628974502
+      },
+      {
+        "actual": 218.0,
+        "predicted": 97.77253611554629,
+        "residual": 120.22746388445371
+      },
+      {
+        "actual": 688.0,
+        "predicted": 354.3395773882802,
+        "residual": 333.6604226117198
+      },
+      {
+        "actual": 646.0,
+        "predicted": 506.4953967414399,
+        "residual": 139.5046032585601
+      },
+      {
+        "actual": 261.0,
+        "predicted": 281.07671642107294,
+        "residual": -20.076716421072945
+      },
+      {
+        "actual": 142.0,
+        "predicted": 130.1806315858389,
+        "residual": 11.81936841416109
+      },
+      {
+        "actual": 16.0,
+        "predicted": 137.95402974251027,
+        "residual": -121.95402974251027
+      },
+      {
+        "actual": 489.0,
+        "predicted": 270.27914764682777,
+        "residual": 218.72085235317223
+      },
+      {
+        "actual": 666.0,
+        "predicted": 539.6028130163377,
+        "residual": 126.39718698366232
+      },
+      {
+        "actual": 413.0,
+        "predicted": 338.38378987763826,
+        "residual": 74.61621012236174
+      },
+      {
+        "actual": 100.0,
+        "predicted": 173.1896283161554,
+        "residual": -73.18962831615539
+      },
+      {
+        "actual": 5.0,
+        "predicted": 20.919828292330322,
+        "residual": -15.919828292330322
+      },
+      {
+        "actual": 750.0,
+        "predicted": 618.5217233162493,
+        "residual": 131.47827668375066
+      },
+      {
+        "actual": 342.0,
+        "predicted": 234.58793244113738,
+        "residual": 107.41206755886262
+      },
+      {
+        "actual": 516.0,
+        "predicted": 325.7393529615528,
+        "residual": 190.2606470384472
+      },
+      {
+        "actual": 256.0,
+        "predicted": 212.46169579729573,
+        "residual": 43.53830420270427
+      },
+      {
+        "actual": 13.0,
+        "predicted": 53.46904311583883,
+        "residual": -40.46904311583883
+      },
+      {
+        "actual": 47.0,
+        "predicted": 31.886216097258767,
+        "residual": 15.113783902741233
+      },
+      {
+        "actual": 170.0,
+        "predicted": 212.46169579729573,
+        "residual": -42.46169579729573
+      },
+      {
+        "actual": 293.0,
+        "predicted": 258.7729903482242,
+        "residual": 34.2270096517758
+      },
+      {
+        "actual": 822.0,
+        "predicted": 743.3553454328271,
+        "residual": 78.64465456717289
+      },
+      {
+        "actual": 98.0,
+        "predicted": 224.86795965565483,
+        "residual": -126.86795965565483
+      },
+      {
+        "actual": 10.0,
+        "predicted": 27.000068862929936,
+        "residual": -17.000068862929936
+      },
+      {
+        "actual": 838.0,
+        "predicted": 618.5217233162493,
+        "residual": 219.47827668375066
+      },
+      {
+        "actual": 316.0,
+        "predicted": 278.68971660455577,
+        "residual": 37.31028339544423
+      },
+      {
+        "actual": 468.0,
+        "predicted": 420.4701073308354,
+        "residual": 47.52989266916461
+      },
+      {
+        "actual": 360.0,
+        "predicted": 278.01302046923416,
+        "residual": 81.98697953076584
+      },
+      {
+        "actual": 21.0,
+        "predicted": 53.912037694166926,
+        "residual": -32.912037694166926
+      },
+      {
+        "actual": 66.0,
+        "predicted": 27.37582894434979,
+        "residual": 38.62417105565021
+      },
+      {
+        "actual": 208.0,
+        "predicted": 262.9528808341154,
+        "residual": -54.952880834115376
+      },
+      {
+        "actual": 258.0,
+        "predicted": 258.7729903482242,
+        "residual": -0.772990348224198
+      },
+      {
+        "actual": 899.0,
+        "predicted": 734.2198410322031,
+        "residual": 164.78015896779686
+      },
+      {
+        "actual": 45.0,
+        "predicted": 123.03331193589517,
+        "residual": -78.03331193589517
+      },
+      {
+        "actual": 7.0,
+        "predicted": 17.821560371025498,
+        "residual": -10.821560371025498
+      },
+      {
+        "actual": 394.0,
+        "predicted": 302.90117144255646,
+        "residual": 91.09882855744354
+      },
+      {
+        "actual": 380.0,
+        "predicted": 278.0090195817752,
+        "residual": 101.99098041822481
+      },
+      {
+        "actual": 502.0,
+        "predicted": 377.30989022263867,
+        "residual": 124.69010977736133
+      },
+      {
+        "actual": 336.0,
+        "predicted": 361.6124219433418,
+        "residual": -25.612421943341815
+      },
+      {
+        "actual": 101.0,
+        "predicted": 68.77202420279941,
+        "residual": 32.227975797200585
+      },
+      {
+        "actual": 15.0,
+        "predicted": 56.888417218954345,
+        "residual": -41.888417218954345
+      },
+      {
+        "actual": 332.0,
+        "predicted": 248.73803496880691,
+        "residual": 83.26196503119309
+      },
+      {
+        "actual": 750.0,
+        "predicted": 523.2692092128232,
+        "residual": 226.73079078717683
+      },
+      {
+        "actual": 594.0,
+        "predicted": 384.03206214749184,
+        "residual": 209.96793785250816
+      },
+      {
+        "actual": 196.0,
+        "predicted": 176.3023321729554,
+        "residual": 19.697667827044597
+      },
+      {
+        "actual": 58.0,
+        "predicted": 22.21827283566205,
+        "residual": 35.78172716433795
+      },
+      {
+        "actual": 57.0,
+        "predicted": 101.52646864583994,
+        "residual": -44.52646864583994
+      },
+      {
+        "actual": 680.0,
+        "predicted": 523.4315748653912,
+        "residual": 156.5684251346088
+      },
+      {
+        "actual": 648.0,
+        "predicted": 541.5428974440844,
+        "residual": 106.45710255591564
+      },
+      {
+        "actual": 194.0,
+        "predicted": 164.49224098782622,
+        "residual": 29.50775901217378
+      },
+      {
+        "actual": 18.0,
+        "predicted": 53.912037694166926,
+        "residual": -35.912037694166926
+      },
+      {
+        "actual": 36.0,
+        "predicted": 31.886216097258767,
+        "residual": 4.113783902741233
+      },
+      {
+        "actual": 340.0,
+        "predicted": 244.78314647580072,
+        "residual": 95.21685352419928
+      },
+      {
+        "actual": 244.0,
+        "predicted": 258.54088497927654,
+        "residual": -14.540884979276541
+      },
+      {
+        "actual": 613.0,
+        "predicted": 496.53181858656154,
+        "residual": 116.46818141343846
+      },
+      {
+        "actual": 207.0,
+        "predicted": 133.3151875157332,
+        "residual": 73.68481248426681
+      },
+      {
+        "actual": 5.0,
+        "predicted": 15.517563635654682,
+        "residual": -10.517563635654682
+      },
+      {
+        "actual": 260.0,
+        "predicted": 280.045932544087,
+        "residual": -20.04593254408701
+      },
+      {
+        "actual": 99.0,
+        "predicted": 122.70415965668707,
+        "residual": -23.704159656687068
+      },
+      {
+        "actual": 374.0,
+        "predicted": 131.3622104549025,
+        "residual": 242.6377895450975
+      },
+      {
+        "actual": 306.0,
+        "predicted": 140.1543500992516,
+        "residual": 165.8456499007484
+      },
+      {
+        "actual": 52.0,
+        "predicted": 88.64248529346982,
+        "residual": -36.64248529346982
+      },
+      {
+        "actual": 34.0,
+        "predicted": 25.952545210844306,
+        "residual": 8.047454789155694
+      },
+      {
+        "actual": 362.0,
+        "predicted": 250.34414460086612,
+        "residual": 111.65585539913388
+      },
+      {
+        "actual": 279.0,
+        "predicted": 265.7369464157756,
+        "residual": 13.263053584224394
+      },
+      {
+        "actual": 810.0,
+        "predicted": 724.7649870488211,
+        "residual": 85.23501295117887
+      },
+      {
+        "actual": 241.0,
+        "predicted": 255.57490744531623,
+        "residual": -14.574907445316228
+      },
+      {
+        "actual": 11.0,
+        "predicted": 15.517563635654682,
+        "residual": -4.517563635654682
+      },
+      {
+        "actual": 391.0,
+        "predicted": 319.3646857145045,
+        "residual": 71.6353142854955
+      },
+      {
+        "actual": 214.0,
+        "predicted": 272.752036576569,
+        "residual": -58.752036576569026
+      },
+      {
+        "actual": 497.0,
+        "predicted": 368.63820582169086,
+        "residual": 128.36179417830914
+      },
+      {
+        "actual": 441.0,
+        "predicted": 262.16367740867645,
+        "residual": 178.83632259132355
+      },
+      {
+        "actual": 102.0,
+        "predicted": 91.28617070411038,
+        "residual": 10.713829295889624
+      },
+      {
+        "actual": 41.0,
+        "predicted": 31.886216097258767,
+        "residual": 9.113783902741233
+      },
+      {
+        "actual": 384.0,
+        "predicted": 258.9087807055913,
+        "residual": 125.09121929440869
+      },
+      {
+        "actual": 424.0,
+        "predicted": 285.29475566775596,
+        "residual": 138.70524433224404
+      },
+      {
+        "actual": 761.0,
+        "predicted": 709.9527833263973,
+        "residual": 51.04721667360275
+      },
+      {
+        "actual": 264.0,
+        "predicted": 159.16181998964498,
+        "residual": 104.83818001035502
+      },
+      {
+        "actual": 75.0,
+        "predicted": 35.402638393186606,
+        "residual": 39.597361606813394
+      },
+      {
+        "actual": 84.0,
+        "predicted": 93.70081300140394,
+        "residual": -9.700813001403944
+      },
+      {
+        "actual": 647.0,
+        "predicted": 281.31385569007,
+        "residual": 365.68614430993
+      },
+      {
+        "actual": 620.0,
+        "predicted": 464.4770312793576,
+        "residual": 155.52296872064238
+      },
+      {
+        "actual": 247.0,
+        "predicted": 239.6330124155346,
+        "residual": 7.366987584465392
+      },
+      {
+        "actual": 127.0,
+        "predicted": 90.99396009743768,
+        "residual": 36.00603990256232
+      },
+      {
+        "actual": 11.0,
+        "predicted": 67.00860092424084,
+        "residual": -56.00860092424084
+      },
+      {
+        "actual": 86.0,
+        "predicted": 226.2764208451426,
+        "residual": -140.2764208451426
+      },
+      {
+        "actual": 320.0,
+        "predicted": 167.62495586487373,
+        "residual": 152.37504413512627
+      },
+      {
+        "actual": 106.0,
+        "predicted": 211.57534603423477,
+        "residual": -105.57534603423477
+      },
+      {
+        "actual": 79.0,
+        "predicted": 123.84498996146935,
+        "residual": -44.84498996146935
+      },
+      {
+        "actual": 15.0,
+        "predicted": 40.48225348648464,
+        "residual": -25.482253486484638
+      },
+      {
+        "actual": 154.0,
+        "predicted": 56.40096962021627,
+        "residual": 97.59903037978373
+      },
+      {
+        "actual": 308.0,
+        "predicted": 181.90966246470146,
+        "residual": 126.09033753529854
+      },
+      {
+        "actual": 370.0,
+        "predicted": 195.16756485885313,
+        "residual": 174.83243514114687
+      },
+      {
+        "actual": 227.0,
+        "predicted": 164.49224098782622,
+        "residual": 62.50775901217378
+      },
+      {
+        "actual": 31.0,
+        "predicted": 86.46891769464618,
+        "residual": -55.46891769464618
+      },
+      {
+        "actual": 7.0,
+        "predicted": 17.699152176878215,
+        "residual": -10.699152176878215
+      },
+      {
+        "actual": 382.0,
+        "predicted": 249.43453749566234,
+        "residual": 132.56546250433766
+      },
+      {
+        "actual": 238.0,
+        "predicted": 167.62495586487373,
+        "residual": 70.37504413512627
+      },
+      {
+        "actual": 806.0,
+        "predicted": 585.6628881323832,
+        "residual": 220.33711186761684
+      },
+      {
+        "actual": 162.0,
+        "predicted": 145.94943587472838,
+        "residual": 16.05056412527162
+      },
+      {
+        "actual": 8.0,
+        "predicted": 31.119247472082634,
+        "residual": -23.119247472082634
+      },
+      {
+        "actual": 175.0,
+        "predicted": 111.37042316349067,
+        "residual": 63.62957683650933
+      },
+      {
+        "actual": 291.0,
+        "predicted": 212.46169579729573,
+        "residual": 78.53830420270427
+      },
+      {
+        "actual": 319.0,
+        "predicted": 258.54088497927654,
+        "residual": 60.45911502072346
+      },
+      {
+        "actual": 566.0,
+        "predicted": 353.2769043657614,
+        "residual": 212.72309563423858
+      },
+      {
+        "actual": 42.0,
+        "predicted": 90.08191896618135,
+        "residual": -48.08191896618135
+      },
+      {
+        "actual": 10.0,
+        "predicted": 98.03088260671171,
+        "residual": -88.03088260671171
+      },
+      {
+        "actual": 355.0,
+        "predicted": 218.09232590715948,
+        "residual": 136.90767409284052
+      },
+      {
+        "actual": 291.0,
+        "predicted": 238.57182291816423,
+        "residual": 52.42817708183577
+      },
+      {
+        "actual": 827.0,
+        "predicted": 608.5293852850214,
+        "residual": 218.47061471497864
+      },
+      {
+        "actual": 177.0,
+        "predicted": 159.16181998964498,
+        "residual": 17.838180010355018
+      },
+      {
+        "actual": 16.0,
+        "predicted": 35.81970356341682,
+        "residual": -19.819703563416823
+      },
+      {
+        "actual": 143.0,
+        "predicted": 71.32944715311466,
+        "residual": 71.67055284688534
+      },
+      {
+        "actual": 313.0,
+        "predicted": 231.6029162808731,
+        "residual": 81.3970837191269
+      },
+      {
+        "actual": 455.0,
+        "predicted": 213.84299460027847,
+        "residual": 241.15700539972153
+      },
+      {
+        "actual": 493.0,
+        "predicted": 266.75628449051453,
+        "residual": 226.24371550948547
+      },
+      {
+        "actual": 249.0,
+        "predicted": 88.89006017175618,
+        "residual": 160.10993982824382
+      },
+      {
+        "actual": 11.0,
+        "predicted": 33.16542771025226,
+        "residual": -22.16542771025226
+      },
+      {
+        "actual": 174.0,
+        "predicted": 79.61219574528263,
+        "residual": 94.38780425471737
+      },
+      {
+        "actual": 670.0,
+        "predicted": 302.93453278397453,
+        "residual": 367.06546721602547
+      },
+      {
+        "actual": 528.0,
+        "predicted": 438.14704361760255,
+        "residual": 89.85295638239745
+      },
+      {
+        "actual": 204.0,
+        "predicted": 191.7958643749239,
+        "residual": 12.204135625076105
+      },
+      {
+        "actual": 66.0,
+        "predicted": 35.402638393186606,
+        "residual": 30.597361606813394
+      },
+      {
+        "actual": 24.0,
+        "predicted": 104.79890202046641,
+        "residual": -80.79890202046641
+      },
+      {
+        "actual": 428.0,
+        "predicted": 218.3168369585583,
+        "residual": 209.6831630414417
+      },
+      {
+        "actual": 568.0,
+        "predicted": 540.7306299589654,
+        "residual": 27.269370041034563
+      },
+      {
+        "actual": 336.0,
+        "predicted": 309.4460251819319,
+        "residual": 26.553974818068127
+      },
+      {
+        "actual": 105.0,
+        "predicted": 149.953867261046,
+        "residual": -44.953867261046014
+      },
+      {
+        "actual": 10.0,
+        "predicted": 16.013866303679208,
+        "residual": -6.013866303679208
+      },
+      {
+        "actual": 737.0,
+        "predicted": 643.015650976892,
+        "residual": 93.98434902310805
+      },
+      {
+        "actual": 146.0,
+        "predicted": 136.44435693534803,
+        "residual": 9.555643064651974
+      },
+      {
+        "actual": 766.0,
+        "predicted": 630.208649491673,
+        "residual": 135.791350508327
+      },
+      {
+        "actual": 206.0,
+        "predicted": 186.4560965709957,
+        "residual": 19.543903429004303
+      },
+      {
+        "actual": 3.0,
+        "predicted": 35.81970356341682,
+        "residual": -32.81970356341682
+      },
+      {
+        "actual": 172.0,
+        "predicted": 137.1742893908572,
+        "residual": 34.82571060914279
+      },
+      {
+        "actual": 222.0,
+        "predicted": 213.34934300149052,
+        "residual": 8.650656998509476
+      },
+      {
+        "actual": 346.0,
+        "predicted": 213.84299460027847,
+        "residual": 132.15700539972153
+      },
+      {
+        "actual": 531.0,
+        "predicted": 355.5550240355957,
+        "residual": 175.4449759644043
+      },
+      {
+        "actual": 199.0,
+        "predicted": 149.953867261046,
+        "residual": 49.046132738953986
+      },
+      {
+        "actual": 4.0,
+        "predicted": 18.997610998430474,
+        "residual": -14.997610998430474
+      },
+      {
+        "actual": 817.0,
+        "predicted": 618.5217233162493,
+        "residual": 198.47827668375066
+      },
+      {
+        "actual": 332.0,
+        "predicted": 212.10649382574945,
+        "residual": 119.89350617425055
+      },
+      {
+        "actual": 888.0,
+        "predicted": 625.2310397646959,
+        "residual": 262.7689602353041
+      },
+      {
+        "actual": 329.0,
+        "predicted": 143.0523750331269,
+        "residual": 185.9476249668731
+      },
+      {
+        "actual": 14.0,
+        "predicted": 54.19231780040778,
+        "residual": -40.19231780040778
+      },
+      {
+        "actual": 153.0,
+        "predicted": 111.37042316349067,
+        "residual": 41.62957683650933
+      },
+      {
+        "actual": 218.0,
+        "predicted": 160.6417218768895,
+        "residual": 57.358278123110495
+      },
+      {
+        "actual": 285.0,
+        "predicted": 262.57269725405416,
+        "residual": 22.427302745945838
+      },
+      {
+        "actual": 513.0,
+        "predicted": 314.75415087095814,
+        "residual": 198.24584912904186
+      },
+      {
+        "actual": 117.0,
+        "predicted": 135.66756029489034,
+        "residual": -18.667560294890336
+      },
+      {
+        "actual": 6.0,
+        "predicted": 13.173558884448852,
+        "residual": -7.173558884448852
+      },
+      {
+        "actual": 467.0,
+        "predicted": 617.3906179921752,
+        "residual": -150.39061799217518
+      },
+      {
+        "actual": 332.0,
+        "predicted": 235.10661890475973,
+        "residual": 96.89338109524027
+      },
+      {
+        "actual": 425.0,
+        "predicted": 384.30265697627084,
+        "residual": 40.69734302372916
+      },
+      {
+        "actual": 206.0,
+        "predicted": 153.33425061296492,
+        "residual": 52.66574938703508
+      },
+      {
+        "actual": 95.0,
+        "predicted": 54.54543677426375,
+        "residual": 40.45456322573625
+      },
+      {
+        "actual": 31.0,
+        "predicted": 128.293161715221,
+        "residual": -97.293161715221
+      },
+      {
+        "actual": 423.0,
+        "predicted": 250.8717431741308,
+        "residual": 172.1282568258692
+      },
+      {
+        "actual": 711.0,
+        "predicted": 313.08233204069364,
+        "residual": 397.91766795930636
+      },
+      {
+        "actual": 345.0,
+        "predicted": 330.20724039324034,
+        "residual": 14.79275960675966
+      },
+      {
+        "actual": 163.0,
+        "predicted": 155.70924502257878,
+        "residual": 7.290754977421216
+      },
+      {
+        "actual": 41.0,
+        "predicted": 22.676601588811366,
+        "residual": 18.323398411188634
+      },
+      {
+        "actual": 143.0,
+        "predicted": 89.34169007702863,
+        "residual": 53.65830992297137
+      },
+      {
+        "actual": 675.0,
+        "predicted": 302.8097732382827,
+        "residual": 372.1902267617173
+      },
+      {
+        "actual": 591.0,
+        "predicted": 335.41712028316203,
+        "residual": 255.58287971683797
+      },
+      {
+        "actual": 166.0,
+        "predicted": 204.963059619591,
+        "residual": -38.96305961959101
+      },
+      {
+        "actual": 11.0,
+        "predicted": 53.46904311583883,
+        "residual": -42.46904311583883
+      },
+      {
+        "actual": 46.0,
+        "predicted": 31.837478072911978,
+        "residual": 14.162521927088022
+      },
+      {
+        "actual": 212.0,
+        "predicted": 194.97037357972255,
+        "residual": 17.029626420277452
+      },
+      {
+        "actual": 282.0,
+        "predicted": 259.3965348195423,
+        "residual": 22.603465180457704
+      },
+      {
+        "actual": 514.0,
+        "predicted": 353.628822662598,
+        "residual": 160.371177337402
+      },
+      {
+        "actual": 163.0,
+        "predicted": 135.66756029489034,
+        "residual": 27.332439705109664
+      },
+      {
+        "actual": 1.0,
+        "predicted": 21.95049707621351,
+        "residual": -20.95049707621351
+      },
+      {
+        "actual": 761.0,
+        "predicted": 618.5217233162493,
+        "residual": 142.47827668375066
+      },
+      {
+        "actual": 378.0,
+        "predicted": 258.54088497927654,
+        "residual": 119.45911502072346
+      },
+      {
+        "actual": 541.0,
+        "predicted": 420.4701073308354,
+        "residual": 120.52989266916461
+      },
+      {
+        "actual": 295.0,
+        "predicted": 166.54663472788152,
+        "residual": 128.45336527211848
+      },
+      {
+        "actual": 27.0,
+        "predicted": 53.46904311583883,
+        "residual": -26.46904311583883
+      },
+      {
+        "actual": 53.0,
+        "predicted": 27.37582894434979,
+        "residual": 25.62417105565021
+      },
+      {
+        "actual": 171.0,
+        "predicted": 160.6417218768895,
+        "residual": 10.358278123110495
+      },
+      {
+        "actual": 301.0,
+        "predicted": 258.7729903482242,
+        "residual": 42.2270096517758
+      },
+      {
+        "actual": 858.0,
+        "predicted": 733.9004914494451,
+        "residual": 124.0995085505549
+      },
+      {
+        "actual": 123.0,
+        "predicted": 149.953867261046,
+        "residual": -26.953867261046014
+      },
+      {
+        "actual": 8.0,
+        "predicted": 15.517563635654682,
+        "residual": -7.517563635654682
+      },
+      {
+        "actual": 495.0,
+        "predicted": 317.1774510446932,
+        "residual": 177.8225489553068
+      },
+      {
+        "actual": 319.0,
+        "predicted": 161.78280561989092,
+        "residual": 157.21719438010908
+      },
+      {
+        "actual": 499.0,
+        "predicted": 215.0278104101431,
+        "residual": 283.9721895898569
+      },
+      {
+        "actual": 347.0,
+        "predicted": 159.36849955895883,
+        "residual": 187.63150044104117
+      },
+      {
+        "actual": 36.0,
+        "predicted": 51.88271126779584,
+        "residual": -15.882711267795841
+      },
+      {
+        "actual": 50.0,
+        "predicted": 25.952545210844306,
+        "residual": 24.047454789155694
+      },
+      {
+        "actual": 403.0,
+        "predicted": 250.34414460086612,
+        "residual": 152.65585539913388
+      },
+      {
+        "actual": 351.0,
+        "predicted": 246.7344569308222,
+        "residual": 104.2655430691778
+      },
+      {
+        "actual": 665.0,
+        "predicted": 537.6927430606145,
+        "residual": 127.30725693938552
+      },
+      {
+        "actual": 178.0,
+        "predicted": 135.66756029489034,
+        "residual": 42.332439705109664
+      },
+      {
+        "actual": 26.0,
+        "predicted": 15.517563635654682,
+        "residual": 10.482436364345318
+      },
+      {
+        "actual": 86.0,
+        "predicted": 93.70081300140394,
+        "residual": -7.700813001403944
+      },
+      {
+        "actual": 668.0,
+        "predicted": 386.0550124387788,
+        "residual": 281.9449875612212
+      },
+      {
+        "actual": 612.0,
+        "predicted": 233.6820356021562,
+        "residual": 378.3179643978438
+      },
+      {
+        "actual": 296.0,
+        "predicted": 187.9628522797847,
+        "residual": 108.0371477202153
+      },
+      {
+        "actual": 133.0,
+        "predicted": 54.54543677426375,
+        "residual": 78.45456322573625
+      },
+      {
+        "actual": 28.0,
+        "predicted": 54.34730047400498,
+        "residual": -26.34730047400498
+      },
+      {
+        "actual": 330.0,
+        "predicted": 250.87687322986054,
+        "residual": 79.12312677013946
+      },
+      {
+        "actual": 402.0,
+        "predicted": 216.30028814525494,
+        "residual": 185.69971185474506
+      },
+      {
+        "actual": 154.0,
+        "predicted": 187.37676205031804,
+        "residual": -33.376762050318035
+      },
+      {
+        "actual": 37.0,
+        "predicted": 120.72370540328325,
+        "residual": -83.72370540328325
+      },
+      {
+        "actual": 124.0,
+        "predicted": 68.57876271267018,
+        "residual": 55.42123728732982
+      },
+      {
+        "actual": 115.0,
+        "predicted": 277.31991279571093,
+        "residual": -162.31991279571093
+      },
+      {
+        "actual": 39.0,
+        "predicted": 60.95298336227977,
+        "residual": -21.952983362279767
+      },
+      {
+        "actual": 5.0,
+        "predicted": 34.14176133030222,
+        "residual": -29.141761330302216
+      },
+      {
+        "actual": 621.0,
+        "predicted": 589.7765877168799,
+        "residual": 31.22341228312007
+      },
+      {
+        "actual": 241.0,
+        "predicted": 194.1104549131151,
+        "residual": 46.88954508688491
+      },
+      {
+        "actual": 723.0,
+        "predicted": 426.39389615117886,
+        "residual": 296.60610384882114
+      },
+      {
+        "actual": 192.0,
+        "predicted": 204.98028820654366,
+        "residual": -12.980288206543662
+      },
+      {
+        "actual": 20.0,
+        "predicted": 40.91412433769247,
+        "residual": -20.91412433769247
+      },
+      {
+        "actual": 148.0,
+        "predicted": 79.07001790535772,
+        "residual": 68.92998209464228
+      },
+      {
+        "actual": 146.0,
+        "predicted": 126.84865362493022,
+        "residual": 19.151346375069778
+      },
+      {
+        "actual": 214.0,
+        "predicted": 196.50249972788055,
+        "residual": 17.497500272119453
+      },
+      {
+        "actual": 452.0,
+        "predicted": 265.61894601993475,
+        "residual": 186.38105398006525
+      },
+      {
+        "actual": 120.0,
+        "predicted": 92.15804401053877,
+        "residual": 27.841955989461226
+      },
+      {
+        "actual": 7.0,
+        "predicted": 34.14176133030222,
+        "residual": -27.141761330302216
+      },
+      {
+        "actual": 687.0,
+        "predicted": 589.7765877168799,
+        "residual": 97.22341228312007
+      },
+      {
+        "actual": 292.0,
+        "predicted": 207.20733509591733,
+        "residual": 84.79266490408267
+      },
+      {
+        "actual": 638.0,
+        "predicted": 370.96993203380885,
+        "residual": 267.03006796619115
+      },
+      {
+        "actual": 156.0,
+        "predicted": 184.9746224074662,
+        "residual": -28.9746224074662
+      },
+      {
+        "actual": 89.0,
+        "predicted": 69.11215702733459,
+        "residual": 19.88784297266541
+      },
+      {
+        "actual": 21.0,
+        "predicted": 117.6854231232123,
+        "residual": -96.6854231232123
+      },
+      {
+        "actual": 328.0,
+        "predicted": 198.22521001903385,
+        "residual": 129.77478998096615
+      },
+      {
+        "actual": 455.0,
+        "predicted": 211.24247294097387,
+        "residual": 243.75752705902613
+      },
+      {
+        "actual": 239.0,
+        "predicted": 226.84469568281986,
+        "residual": 12.15530431718014
+      },
+      {
+        "actual": 148.0,
+        "predicted": 86.6398095589191,
+        "residual": 61.3601904410809
+      },
+      {
+        "actual": 11.0,
+        "predicted": 38.49130257635042,
+        "residual": -27.49130257635042
+      },
+      {
+        "actual": 149.0,
+        "predicted": 79.61219574528263,
+        "residual": 69.38780425471737
+      },
+      {
+        "actual": 504.0,
+        "predicted": 220.4933327255637,
+        "residual": 283.50666727443627
+      },
+      {
+        "actual": 327.0,
+        "predicted": 279.25410527871793,
+        "residual": 47.74589472128207
+      },
+      {
+        "actual": 87.0,
+        "predicted": 106.37617803442674,
+        "residual": -19.376178034426744
+      },
+      {
+        "actual": 8.0,
+        "predicted": 54.75772229666623,
+        "residual": -46.75772229666623
+      },
+      {
+        "actual": 139.0,
+        "predicted": 109.74663604315383,
+        "residual": 29.253363956846172
+      },
+      {
+        "actual": 142.0,
+        "predicted": 128.00406032147555,
+        "residual": 13.99593967852445
+      },
+      {
+        "actual": 196.0,
+        "predicted": 198.11755114773587,
+        "residual": -2.117551147735867
+      },
+      {
+        "actual": 372.0,
+        "predicted": 142.60953247492472,
+        "residual": 229.39046752507528
+      },
+      {
+        "actual": 53.0,
+        "predicted": 59.750712385976584,
+        "residual": -6.750712385976584
+      },
+      {
+        "actual": 4.0,
+        "predicted": 40.10260652067919,
+        "residual": -36.10260652067919
+      },
+      {
+        "actual": 588.0,
+        "predicted": 540.210711801115,
+        "residual": 47.78928819888495
+      },
+      {
+        "actual": 248.0,
+        "predicted": 146.49073840948856,
+        "residual": 101.50926159051144
+      },
+      {
+        "actual": 402.0,
+        "predicted": 149.22487606668955,
+        "residual": 252.77512393331045
+      },
+      {
+        "actual": 151.0,
+        "predicted": 92.05396684304414,
+        "residual": 58.94603315695586
+      },
+      {
+        "actual": 92.0,
+        "predicted": 45.182278630987895,
+        "residual": 46.817721369012105
+      },
+      {
+        "actual": 27.0,
+        "predicted": 52.87017043842933,
+        "residual": -25.870170438429327
+      },
+      {
+        "actual": 178.0,
+        "predicted": 99.89162853892996,
+        "residual": 78.10837146107004
+      },
+      {
+        "actual": 161.0,
+        "predicted": 110.43405700932774,
+        "residual": 50.565942990672255
+      },
+      {
+        "actual": 465.0,
+        "predicted": 313.20807935604057,
+        "residual": 151.79192064395943
+      },
+      {
+        "actual": 40.0,
+        "predicted": 63.682411515420384,
+        "residual": -23.682411515420384
+      },
+      {
+        "actual": 10.0,
+        "predicted": 72.98726330296199,
+        "residual": -62.98726330296199
+      },
+      {
+        "actual": 668.0,
+        "predicted": 536.9582965869698,
+        "residual": 131.04170341303018
+      },
+      {
+        "actual": 228.0,
+        "predicted": 209.02871543140233,
+        "residual": 18.971284568597667
+      },
+      {
+        "actual": 592.0,
+        "predicted": 438.69318510885694,
+        "residual": 153.30681489114306
+      },
+      {
+        "actual": 161.0,
+        "predicted": 144.24692625614964,
+        "residual": 16.753073743850365
+      },
+      {
+        "actual": 12.0,
+        "predicted": 54.486803544484616,
+        "residual": -42.486803544484616
+      },
+      {
+        "actual": 131.0,
+        "predicted": 60.292099989058684,
+        "residual": 70.70790001094132
+      },
+      {
+        "actual": 251.0,
+        "predicted": 205.3319845487865,
+        "residual": 45.668015451213506
+      },
+      {
+        "actual": 356.0,
+        "predicted": 221.11782895137713,
+        "residual": 134.88217104862287
+      },
+      {
+        "actual": 361.0,
+        "predicted": 120.07663365703321,
+        "residual": 240.9233663429668
+      },
+      {
+        "actual": 122.0,
+        "predicted": 56.74995598719157,
+        "residual": 65.25004401280843
+      },
+      {
+        "actual": 6.0,
+        "predicted": 36.37151146834847,
+        "residual": -30.371511468348473
+      },
+      {
+        "actual": 146.0,
+        "predicted": 79.61219574528263,
+        "residual": 66.38780425471737
+      },
+      {
+        "actual": 651.0,
+        "predicted": 307.7563155167954,
+        "residual": 343.2436844832046
+      },
+      {
+        "actual": 501.0,
+        "predicted": 472.8261006580536,
+        "residual": 28.173899341946424
+      },
+      {
+        "actual": 220.0,
+        "predicted": 166.54663472788152,
+        "residual": 53.453365272118475
+      },
+      {
+        "actual": 70.0,
+        "predicted": 41.50456482722913,
+        "residual": 28.49543517277087
+      },
+      {
+        "actual": 19.0,
+        "predicted": 61.494370965361895,
+        "residual": -42.494370965361895
+      },
+      {
+        "actual": 405.0,
+        "predicted": 160.6417218768895,
+        "residual": 244.3582781231105
+      },
+      {
+        "actual": 724.0,
+        "predicted": 317.3031760611341,
+        "residual": 406.6968239388659
+      },
+      {
+        "actual": 277.0,
+        "predicted": 305.009850417422,
+        "residual": -28.009850417422
+      },
+      {
+        "actual": 109.0,
+        "predicted": 149.953867261046,
+        "residual": -40.953867261046014
+      },
+      {
+        "actual": 4.0,
+        "predicted": 15.944119280792876,
+        "residual": -11.944119280792876
+      },
+      {
+        "actual": 540.0,
+        "predicted": 108.5983248537492,
+        "residual": 431.4016751462508
+      },
+      {
+        "actual": 420.0,
+        "predicted": 310.39359000905154,
+        "residual": 109.60640999094846
+      },
+      {
+        "actual": 596.0,
+        "predicted": 530.1274995447275,
+        "residual": 65.87250045527253
+      },
+      {
+        "actual": 155.0,
+        "predicted": 153.91238636888633,
+        "residual": 1.087613631113669
+      },
+      {
+        "actual": 11.0,
+        "predicted": 34.68293799949279,
+        "residual": -23.682937999492793
+      },
+      {
+        "actual": 50.0,
+        "predicted": 64.72659076347618,
+        "residual": -14.726590763476182
+      },
+      {
+        "actual": 94.0,
+        "predicted": 76.77978105511094,
+        "residual": 17.220218944889055
+      },
+      {
+        "actual": 217.0,
+        "predicted": 205.72910827887472,
+        "residual": 11.270891721125281
+      },
+      {
+        "actual": 356.0,
+        "predicted": 141.67092081854733,
+        "residual": 214.32907918145267
+      },
+      {
+        "actual": 84.0,
+        "predicted": 65.32100027308024,
+        "residual": 18.678999726919756
+      },
+      {
+        "actual": 6.0,
+        "predicted": 36.481313568593976,
+        "residual": -30.481313568593976
+      },
+      {
+        "actual": 691.0,
+        "predicted": 540.210711801115,
+        "residual": 150.78928819888495
+      },
+      {
+        "actual": 240.0,
+        "predicted": 155.60956424703596,
+        "residual": 84.39043575296404
+      },
+      {
+        "actual": 583.0,
+        "predicted": 239.5251466500054,
+        "residual": 343.4748533499946
+      },
+      {
+        "actual": 213.0,
+        "predicted": 95.14519686717759,
+        "residual": 117.85480313282241
+      },
+      {
+        "actual": 16.0,
+        "predicted": 46.392700520022714,
+        "residual": -30.392700520022714
+      },
+      {
+        "actual": 147.0,
+        "predicted": 65.86008134577786,
+        "residual": 81.13991865422214
+      },
+      {
+        "actual": 153.0,
+        "predicted": 84.06125564672998,
+        "residual": 68.93874435327002
+      },
+      {
+        "actual": 201.0,
+        "predicted": 188.04195914329102,
+        "residual": 12.958040856708976
+      },
+      {
+        "actual": 386.0,
+        "predicted": 126.1356698988653,
+        "residual": 259.86433010113467
+      },
+      {
+        "actual": 125.0,
+        "predicted": 67.72871393131886,
+        "residual": 57.271286068681135
+      },
+      {
+        "actual": 5.0,
+        "predicted": 33.16542771025226,
+        "residual": -28.16542771025226
+      },
+      {
+        "actual": 711.0,
+        "predicted": 589.7765877168799,
+        "residual": 121.22341228312007
+      },
+      {
+        "actual": 290.0,
+        "predicted": 207.20733509591733,
+        "residual": 82.79266490408267
+      },
+      {
+        "actual": 580.0,
+        "predicted": 352.9215132318906,
+        "residual": 227.07848676810943
+      },
+      {
+        "actual": 178.0,
+        "predicted": 137.5774617329202,
+        "residual": 40.4225382670798
+      },
+      {
+        "actual": 87.0,
+        "predicted": 46.392700520022714,
+        "residual": 40.607299479977286
+      },
+      {
+        "actual": 21.0,
+        "predicted": 52.347483771359606,
+        "residual": -31.347483771359606
+      },
+      {
+        "actual": 320.0,
+        "predicted": 204.90140032889477,
+        "residual": 115.09859967110523
+      },
+      {
+        "actual": 555.0,
+        "predicted": 258.6880678574904,
+        "residual": 296.3119321425096
+      },
+      {
+        "actual": 253.0,
+        "predicted": 153.78015957167582,
+        "residual": 99.21984042832418
+      },
+      {
+        "actual": 133.0,
+        "predicted": 60.95298336227977,
+        "residual": 72.04701663772023
+      },
+      {
+        "actual": 46.0,
+        "predicted": 39.16089152401602,
+        "residual": 6.839108475983977
+      },
+      {
+        "actual": 119.0,
+        "predicted": 79.61219574528263,
+        "residual": 39.387804254717366
+      },
+      {
+        "actual": 442.0,
+        "predicted": 194.1611518286188,
+        "residual": 247.8388481713812
+      },
+      {
+        "actual": 372.0,
+        "predicted": 205.12725969644345,
+        "residual": 166.87274030355655
+      },
+      {
+        "actual": 110.0,
+        "predicted": 136.05314070227772,
+        "residual": -26.053140702277716
+      },
+      {
+        "actual": 19.0,
+        "predicted": 49.39181620046264,
+        "residual": -30.391816200462642
+      },
+      {
+        "actual": 39.0,
+        "predicted": 34.67043601059336,
+        "residual": 4.329563989406637
+      },
+      {
+        "actual": 139.0,
+        "predicted": 131.18752469837216,
+        "residual": 7.812475301627842
+      },
+      {
+        "actual": 217.0,
+        "predicted": 196.23188911932792,
+        "residual": 20.768110880672083
+      },
+      {
+        "actual": 580.0,
+        "predicted": 449.6772660857283,
+        "residual": 130.32273391427168
+      },
+      {
+        "actual": 74.0,
+        "predicted": 76.20248993918341,
+        "residual": -2.2024899391834083
+      },
+      {
+        "actual": 2.0,
+        "predicted": 34.80433009103177,
+        "residual": -32.80433009103177
+      },
+      {
+        "actual": 665.0,
+        "predicted": 608.3150609972153,
+        "residual": 56.684939002784745
+      },
+      {
+        "actual": 313.0,
+        "predicted": 174.9951897348075,
+        "residual": 138.0048102651925
+      },
+      {
+        "actual": 395.0,
+        "predicted": 204.05761940754462,
+        "residual": 190.94238059245538
+      },
+      {
+        "actual": 157.0,
+        "predicted": 137.9832019183868,
+        "residual": 19.01679808161319
+      },
+      {
+        "actual": 14.0,
+        "predicted": 44.189101433218724,
+        "residual": -30.189101433218724
+      },
+      {
+        "actual": 29.0,
+        "predicted": 40.799671394555276,
+        "residual": -11.799671394555276
+      },
+      {
+        "actual": 172.0,
+        "predicted": 139.34180926324143,
+        "residual": 32.65819073675857
+      },
+      {
+        "actual": 413.0,
+        "predicted": 221.7171319956485,
+        "residual": 191.2828680043515
+      },
+      {
+        "actual": 311.0,
+        "predicted": 481.37524701790096,
+        "residual": -170.37524701790096
+      },
+      {
+        "actual": 57.0,
+        "predicted": 67.96937365524074,
+        "residual": -10.969373655240744
+      },
+      {
+        "actual": 6.0,
+        "predicted": 40.10260652067919,
+        "residual": -34.10260652067919
+      },
+      {
+        "actual": 56.0,
+        "predicted": 34.82936447177974,
+        "residual": 21.17063552822026
+      },
+      {
+        "actual": 262.0,
+        "predicted": 227.46570038066687,
+        "residual": 34.534299619333126
+      },
+      {
+        "actual": 182.0,
+        "predicted": 292.2150978003449,
+        "residual": -110.21509780034489
+      },
+      {
+        "actual": 52.0,
+        "predicted": 92.1852522486217,
+        "residual": -40.185252248621694
+      },
+      {
+        "actual": 13.0,
+        "predicted": 45.449680472788316,
+        "residual": -32.449680472788316
+      },
+      {
+        "actual": 10.0,
+        "predicted": 40.91875775581215,
+        "residual": -30.918757755812152
+      },
+      {
+        "actual": 112.0,
+        "predicted": 183.73473542607832,
+        "residual": -71.73473542607832
+      },
+      {
+        "actual": 435.0,
+        "predicted": 231.6029162808731,
+        "residual": 203.3970837191269
+      },
+      {
+        "actual": 208.0,
+        "predicted": 481.1860748276591,
+        "residual": -273.1860748276591
+      },
+      {
+        "actual": 67.0,
+        "predicted": 155.25783045859453,
+        "residual": -88.25783045859453
+      },
+      {
+        "actual": 11.0,
+        "predicted": 81.83079979071624,
+        "residual": -70.83079979071624
+      },
+      {
+        "actual": 25.0,
+        "predicted": 80.23541388694622,
+        "residual": -55.23541388694622
+      },
+      {
+        "actual": 199.0,
+        "predicted": 140.5432874239822,
+        "residual": 58.45671257601779
+      },
+      {
+        "actual": 170.0,
+        "predicted": 135.64874626474722,
+        "residual": 34.35125373525278
+      },
+      {
+        "actual": 58.0,
+        "predicted": 67.11764730786138,
+        "residual": -9.117647307861375
+      },
+      {
+        "actual": 36.0,
+        "predicted": 52.86522526662834,
+        "residual": -16.865225266628343
+      },
+      {
+        "actual": 3.0,
+        "predicted": 43.20905258524445,
+        "residual": -40.20905258524445
+      },
+      {
+        "actual": 96.0,
+        "predicted": 103.79983533283541,
+        "residual": -7.799835332835414
+      },
+      {
+        "actual": 203.0,
+        "predicted": 133.10737496892824,
+        "residual": 69.89262503107176
+      },
+      {
+        "actual": 141.0,
+        "predicted": 137.32423019762624,
+        "residual": 3.6757698023737646
+      },
+      {
+        "actual": 62.0,
+        "predicted": 56.46198842785702,
+        "residual": 5.5380115721429775
+      },
+      {
+        "actual": 5.0,
+        "predicted": 40.10260652067919,
+        "residual": -35.10260652067919
+      },
+      {
+        "actual": 365.0,
+        "predicted": 208.5236331872796,
+        "residual": 156.4763668127204
+      },
+      {
+        "actual": 130.0,
+        "predicted": 204.89327003023587,
+        "residual": -74.89327003023587
+      },
+      {
+        "actual": 346.0,
+        "predicted": 241.1492382656278,
+        "residual": 104.85076173437221
+      },
+      {
+        "actual": 277.0,
+        "predicted": 142.4359136664207,
+        "residual": 134.5640863335793
+      },
+      {
+        "actual": 26.0,
+        "predicted": 56.52769731583673,
+        "residual": -30.527697315836733
+      },
+      {
+        "actual": 31.0,
+        "predicted": 40.81425241963501,
+        "residual": -9.814252419635011
+      },
+      {
+        "actual": 268.0,
+        "predicted": 192.06693902979947,
+        "residual": 75.93306097020053
+      },
+      {
+        "actual": 94.0,
+        "predicted": 65.43173290191933,
+        "residual": 28.568267098080668
+      },
+      {
+        "actual": 482.0,
+        "predicted": 298.5534165464499,
+        "residual": 183.4465834535501
+      },
+      {
+        "actual": 97.0,
+        "predicted": 56.46198842785702,
+        "residual": 40.53801157214298
+      },
+      {
+        "actual": 3.0,
+        "predicted": 41.59367685281305,
+        "residual": -38.59367685281305
+      },
+      {
+        "actual": 409.0,
+        "predicted": 215.70813606621934,
+        "residual": 193.29186393378066
+      },
+      {
+        "actual": 146.0,
+        "predicted": 140.6051800546955,
+        "residual": 5.394819945304505
+      },
+      {
+        "actual": 325.0,
+        "predicted": 207.08596108017554,
+        "residual": 117.91403891982446
+      },
+      {
+        "actual": 263.0,
+        "predicted": 147.22927913206593,
+        "residual": 115.77072086793407
+      },
+      {
+        "actual": 29.0,
+        "predicted": 45.29680821157194,
+        "residual": -16.296808211571943
+      },
+      {
+        "actual": 121.0,
+        "predicted": 52.347483771359606,
+        "residual": 68.6525162286404
+      },
+      {
+        "actual": 178.0,
+        "predicted": 79.50920920825155,
+        "residual": 98.49079079174845
+      },
+      {
+        "actual": 187.0,
+        "predicted": 186.0975441810902,
+        "residual": 0.9024558189098002
+      },
+      {
+        "actual": 344.0,
+        "predicted": 132.9712170254039,
+        "residual": 211.0287829745961
+      },
+      {
+        "actual": 130.0,
+        "predicted": 63.682411515420384,
+        "residual": 66.31758848457962
+      },
+      {
+        "actual": 4.0,
+        "predicted": 40.10260652067919,
+        "residual": -36.10260652067919
+      },
+      {
+        "actual": 729.0,
+        "predicted": 536.4432127979253,
+        "residual": 192.5567872020747
+      },
+      {
+        "actual": 268.0,
+        "predicted": 201.45985865205154,
+        "residual": 66.54014134794846
+      },
+      {
+        "actual": 405.0,
+        "predicted": 239.99448270545798,
+        "residual": 165.00551729454202
+      },
+      {
+        "actual": 183.0,
+        "predicted": 65.60887562185937,
+        "residual": 117.39112437814063
+      },
+      {
+        "actual": 69.0,
+        "predicted": 46.392700520022714,
+        "residual": 22.607299479977286
+      },
+      {
+        "actual": 13.0,
+        "predicted": 40.91875775581215,
+        "residual": -27.918757755812152
+      },
+      {
+        "actual": 256.0,
+        "predicted": 75.14349882783563,
+        "residual": 180.85650117216437
+      },
+      {
+        "actual": 479.0,
+        "predicted": 130.59838718015027,
+        "residual": 348.40161281984973
+      },
+      {
+        "actual": 249.0,
+        "predicted": 103.5365774097631,
+        "residual": 145.46342259023692
+      },
+      {
+        "actual": 126.0,
+        "predicted": 67.09805871665733,
+        "residual": 58.901941283342666
+      },
+      {
+        "actual": 25.0,
+        "predicted": 41.59367685281305,
+        "residual": -16.593676852813047
+      },
+      {
+        "actual": 93.0,
+        "predicted": 79.61219574528263,
+        "residual": 13.387804254717366
+      },
+      {
+        "actual": 520.0,
+        "predicted": 117.62430280827444,
+        "residual": 402.3756971917256
+      },
+      {
+        "actual": 443.0,
+        "predicted": 202.22607594733933,
+        "residual": 240.77392405266067
+      },
+      {
+        "actual": 99.0,
+        "predicted": 153.33425061296492,
+        "residual": -54.33425061296492
+      },
+      {
+        "actual": 13.0,
+        "predicted": 54.19231780040778,
+        "residual": -41.19231780040778
+      },
+      {
+        "actual": 38.0,
+        "predicted": 38.5825928222001,
+        "residual": -0.5825928222000982
+      },
+      {
+        "actual": 136.0,
+        "predicted": 147.4293377619729,
+        "residual": -11.429337761972903
+      },
+      {
+        "actual": 260.0,
+        "predicted": 264.66173789593256,
+        "residual": -4.661737895932561
+      },
+      {
+        "actual": 692.0,
+        "predicted": 551.0352325885513,
+        "residual": 140.96476741144875
+      },
+      {
+        "actual": 102.0,
+        "predicted": 135.66756029489034,
+        "residual": -33.667560294890336
+      },
+      {
+        "actual": 4.0,
+        "predicted": 15.517563635654682,
+        "residual": -11.517563635654682
+      },
+      {
+        "actual": 502.0,
+        "predicted": 323.31913970706995,
+        "residual": 178.68086029293005
+      },
+      {
+        "actual": 312.0,
+        "predicted": 174.9951897348075,
+        "residual": 137.0048102651925
+      },
+      {
+        "actual": 435.0,
+        "predicted": 281.808553164782,
+        "residual": 153.19144683521802
+      },
+      {
+        "actual": 306.0,
+        "predicted": 188.67463605743197,
+        "residual": 117.32536394256803
+      },
+      {
+        "actual": 11.0,
+        "predicted": 65.04993180132952,
+        "residual": -54.04993180132952
+      },
+      {
+        "actual": 49.0,
+        "predicted": 87.93412833224245,
+        "residual": -38.93412833224245
+      },
+      {
+        "actual": 141.0,
+        "predicted": 205.3319845487865,
+        "residual": -64.3319845487865
+      },
+      {
+        "actual": 218.0,
+        "predicted": 229.94035743408116,
+        "residual": -11.940357434081164
+      },
+      {
+        "actual": 609.0,
+        "predicted": 483.51821264111425,
+        "residual": 125.48178735888575
+      },
+      {
+        "actual": 74.0,
+        "predicted": 103.76790595940281,
+        "residual": -29.76790595940281
+      },
+      {
+        "actual": 2.0,
+        "predicted": 40.10260652067919,
+        "residual": -38.10260652067919
+      },
+      {
+        "actual": 389.0,
+        "predicted": 208.5236331872796,
+        "residual": 180.4763668127204
+      },
+      {
+        "actual": 235.0,
+        "predicted": 141.37923563831876,
+        "residual": 93.62076436168124
+      },
+      {
+        "actual": 331.0,
+        "predicted": 144.57424109777435,
+        "residual": 186.42575890222565
+      },
+      {
+        "actual": 227.0,
+        "predicted": 63.45380474144598,
+        "residual": 163.546195258554
+      },
+      {
+        "actual": 28.0,
+        "predicted": 43.09916031802874,
+        "residual": -15.099160318028737
+      },
+      {
+        "actual": 26.0,
+        "predicted": 42.87003459895112,
+        "residual": -16.870034598951122
+      },
+      {
+        "actual": 301.0,
+        "predicted": 186.0045443931529,
+        "residual": 114.99545560684709
+      },
+      {
+        "actual": 215.0,
+        "predicted": 126.69219311542753,
+        "residual": 88.30780688457247
+      },
+      {
+        "actual": 498.0,
+        "predicted": 422.5354347217216,
+        "residual": 75.46456527827843
+      },
+      {
+        "actual": 165.0,
+        "predicted": 114.5393859980914,
+        "residual": 50.460614001908596
+      },
+      {
+        "actual": 29.0,
+        "predicted": 22.290514851404964,
+        "residual": 6.709485148595036
+      },
+      {
+        "actual": 39.0,
+        "predicted": 76.47930551187427,
+        "residual": -37.47930551187427
+      },
+      {
+        "actual": 404.0,
+        "predicted": 139.78991654175636,
+        "residual": 264.2100834582436
+      },
+      {
+        "actual": 507.0,
+        "predicted": 158.46479459248215,
+        "residual": 348.5352054075179
+      },
+      {
+        "actual": 182.0,
+        "predicted": 132.13297951974488,
+        "residual": 49.86702048025512
+      },
+      {
+        "actual": 102.0,
+        "predicted": 52.95910492622073,
+        "residual": 49.04089507377927
+      },
+      {
+        "actual": 8.0,
+        "predicted": 25.952545210844306,
+        "residual": -17.952545210844306
+      },
+      {
+        "actual": 103.0,
+        "predicted": 250.34414460086612,
+        "residual": -147.34414460086612
+      },
+      {
+        "actual": 232.0,
+        "predicted": 123.84498996146935,
+        "residual": 108.15501003853065
+      },
+      {
+        "actual": 198.0,
+        "predicted": 160.5398035932093,
+        "residual": 37.460196406790686
+      },
+      {
+        "actual": 78.0,
+        "predicted": 104.9131275774165,
+        "residual": -26.913127577416503
+      },
+      {
+        "actual": 4.0,
+        "predicted": 18.808635133936093,
+        "residual": -14.808635133936093
+      },
+      {
+        "actual": 294.0,
+        "predicted": 288.5857715814574,
+        "residual": 5.414228418542621
+      },
+      {
+        "actual": 134.0,
+        "predicted": 122.70415965668707,
+        "residual": 11.295840343312932
+      },
+      {
+        "actual": 345.0,
+        "predicted": 152.8814595139992,
+        "residual": 192.1185404860008
+      },
+      {
+        "actual": 300.0,
+        "predicted": 154.00932492855478,
+        "residual": 145.99067507144522
+      },
+      {
+        "actual": 31.0,
+        "predicted": 91.9479498877224,
+        "residual": -60.9479498877224
+      },
+      {
+        "actual": 41.0,
+        "predicted": 39.19189098925412,
+        "residual": 1.8081090107458806
+      },
+      {
+        "actual": 334.0,
+        "predicted": 197.44196706825505,
+        "residual": 136.55803293174495
+      },
+      {
+        "actual": 254.0,
+        "predicted": 197.63934168395744,
+        "residual": 56.36065831604256
+      },
+      {
+        "actual": 546.0,
+        "predicted": 313.20807935604057,
+        "residual": 232.79192064395943
+      },
+      {
+        "actual": 106.0,
+        "predicted": 92.05396684304414,
+        "residual": 13.946033156955863
+      },
+      {
+        "actual": 9.0,
+        "predicted": 51.25839922275232,
+        "residual": -42.25839922275232
+      },
+      {
+        "actual": 369.0,
+        "predicted": 218.02748377255963,
+        "residual": 150.97251622744037
+      },
+      {
+        "actual": 172.0,
+        "predicted": 134.40023944887568,
+        "residual": 37.59976055112432
+      },
+      {
+        "actual": 228.0,
+        "predicted": 143.81043060745864,
+        "residual": 84.18956939254136
+      },
+      {
+        "actual": 268.0,
+        "predicted": 113.36799434801571,
+        "residual": 154.6320056519843
+      },
+      {
+        "actual": 32.0,
+        "predicted": 76.5702171699359,
+        "residual": -44.5702171699359
+      },
+      {
+        "actual": 33.0,
+        "predicted": 44.357886732799074,
+        "residual": -11.357886732799074
+      },
+      {
+        "actual": 325.0,
+        "predicted": 184.57574797098695,
+        "residual": 140.42425202901305
+      },
+      {
+        "actual": 271.0,
+        "predicted": 185.80082873489187,
+        "residual": 85.19917126510813
+      },
+      {
+        "actual": 466.0,
+        "predicted": 347.6965649752994,
+        "residual": 118.3034350247006
+      },
+      {
+        "actual": 148.0,
+        "predicted": 64.40660464555616,
+        "residual": 83.59339535444384
+      },
+      {
+        "actual": 9.0,
+        "predicted": 42.54242921842476,
+        "residual": -33.54242921842476
+      },
+      {
+        "actual": 308.0,
+        "predicted": 208.5236331872796,
+        "residual": 99.47636681272041
+      },
+      {
+        "actual": 211.0,
+        "predicted": 89.88933916098483,
+        "residual": 121.11066083901517
+      },
+      {
+        "actual": 309.0,
+        "predicted": 206.16782279742534,
+        "residual": 102.83217720257466
+      },
+      {
+        "actual": 221.0,
+        "predicted": 85.69506331487098,
+        "residual": 135.304936685129
+      },
+      {
+        "actual": 94.0,
+        "predicted": 53.51773618907727,
+        "residual": 40.48226381092273
+      },
+      {
+        "actual": 6.0,
+        "predicted": 36.481313568593976,
+        "residual": -30.481313568593976
+      },
+      {
+        "actual": 220.0,
+        "predicted": 110.09478194767688,
+        "residual": 109.90521805232312
+      },
+      {
+        "actual": 456.0,
+        "predicted": 213.99601206463475,
+        "residual": 242.00398793536525
+      },
+      {
+        "actual": 309.0,
+        "predicted": 335.20676503303946,
+        "residual": -26.20676503303946
+      },
+      {
+        "actual": 156.0,
+        "predicted": 139.09381508161732,
+        "residual": 16.906184918382678
+      },
+      {
+        "actual": 87.0,
+        "predicted": 40.48225348648464,
+        "residual": 46.51774651351536
+      },
+      {
+        "actual": 6.0,
+        "predicted": 70.18432030355604,
+        "residual": -64.18432030355604
+      },
+      {
+        "actual": 295.0,
+        "predicted": 122.29107224843027,
+        "residual": 172.70892775156972
+      },
+      {
+        "actual": 338.0,
+        "predicted": 126.15459649408126,
+        "residual": 211.84540350591874
+      },
+      {
+        "actual": 122.0,
+        "predicted": 145.46430487607168,
+        "residual": -23.46430487607168
+      },
+      {
+        "actual": 28.0,
+        "predicted": 84.15931116203426,
+        "residual": -56.15931116203426
+      },
+      {
+        "actual": 5.0,
+        "predicted": 16.601271102695534,
+        "residual": -11.601271102695534
+      },
+      {
+        "actual": 282.0,
+        "predicted": 250.34414460086612,
+        "residual": 31.655855399133884
+      },
+      {
+        "actual": 210.0,
+        "predicted": 136.44435693534803,
+        "residual": 73.55564306465197
+      },
+      {
+        "actual": 495.0,
+        "predicted": 369.7071070415808,
+        "residual": 125.2928929584192
+      },
+      {
+        "actual": 54.0,
+        "predicted": 133.3579537622784,
+        "residual": -79.35795376227841
+      },
+      {
+        "actual": 7.0,
+        "predicted": 31.119247472082634,
+        "residual": -24.119247472082634
+      },
+      {
+        "actual": 118.0,
+        "predicted": 101.65459155583744,
+        "residual": 16.34540844416256
+      },
+      {
+        "actual": 269.0,
+        "predicted": 172.99210682033723,
+        "residual": 96.00789317966277
+      },
+      {
+        "actual": 246.0,
+        "predicted": 210.863313861258,
+        "residual": 35.13668613874199
+      },
+      {
+        "actual": 353.0,
+        "predicted": 247.51215366757822,
+        "residual": 105.48784633242178
+      },
+      {
+        "actual": 41.0,
+        "predicted": 53.68938785694671,
+        "residual": -12.68938785694671
+      },
+      {
+        "actual": 7.0,
+        "predicted": 36.481313568593976,
+        "residual": -29.481313568593976
+      },
+      {
+        "actual": 678.0,
+        "predicted": 536.4432127979253,
+        "residual": 141.5567872020747
+      },
+      {
+        "actual": 213.0,
+        "predicted": 204.98028820654366,
+        "residual": 8.019711793456338
+      },
+      {
+        "actual": 562.0,
+        "predicted": 438.69318510885694,
+        "residual": 123.30681489114306
+      },
+      {
+        "actual": 168.0,
+        "predicted": 85.02676237491337,
+        "residual": 82.97323762508663
+      },
+      {
+        "actual": 8.0,
+        "predicted": 40.91412433769247,
+        "residual": -32.91412433769247
+      },
+      {
+        "actual": 118.0,
+        "predicted": 66.57666805076565,
+        "residual": 51.42333194923435
+      },
+      {
+        "actual": 190.0,
+        "predicted": 123.03447607496533,
+        "residual": 66.96552392503467
+      },
+      {
+        "actual": 249.0,
+        "predicted": 110.69574584856741,
+        "residual": 138.3042541514326
+      },
+      {
+        "actual": 118.0,
+        "predicted": 111.06364858764547,
+        "residual": 6.936351412354526
+      },
+      {
+        "actual": 17.0,
+        "predicted": 88.64248529346982,
+        "residual": -71.64248529346982
+      },
+      {
+        "actual": 6.0,
+        "predicted": 19.89132353216533,
+        "residual": -13.89132353216533
+      },
+      {
+        "actual": 472.0,
+        "predicted": 523.8795000209223,
+        "residual": -51.87950002092225
+      },
+      {
+        "actual": 240.0,
+        "predicted": 139.90031998146287,
+        "residual": 100.09968001853713
+      },
+      {
+        "actual": 321.0,
+        "predicted": 208.0233594760712,
+        "residual": 112.97664052392881
+      },
+      {
+        "actual": 70.0,
+        "predicted": 100.92436884730968,
+        "residual": -30.92436884730968
+      },
+      {
+        "actual": 23.0,
+        "predicted": 60.61648820559549,
+        "residual": -37.61648820559549
+      },
+      {
+        "actual": 13.0,
+        "predicted": 88.25131012943808,
+        "residual": -75.25131012943808
+      },
+      {
+        "actual": 118.0,
+        "predicted": 96.56493069838437,
+        "residual": 21.435069301615627
+      },
+      {
+        "actual": 153.0,
+        "predicted": 134.1836065141357,
+        "residual": 18.816393485864296
+      },
+      {
+        "actual": 60.0,
+        "predicted": 80.38195871009113,
+        "residual": -20.381958710091126
+      },
+      {
+        "actual": 40.0,
+        "predicted": 51.80609616827745,
+        "residual": -11.806096168277449
+      },
+      {
+        "actual": 4.0,
+        "predicted": 39.94403928281662,
+        "residual": -35.94403928281662
+      },
+      {
+        "actual": 48.0,
+        "predicted": 78.4716881880931,
+        "residual": -30.471688188093097
+      },
+      {
+        "actual": 196.0,
+        "predicted": 135.28035466037542,
+        "residual": 60.71964533962458
+      },
+      {
+        "actual": 114.0,
+        "predicted": 175.11035194692474,
+        "residual": -61.11035194692474
+      },
+      {
+        "actual": 42.0,
+        "predicted": 56.46198842785702,
+        "residual": -14.461988427857023
+      },
+      {
+        "actual": 11.0,
+        "predicted": 43.09916031802874,
+        "residual": -32.09916031802874
+      },
+      {
+        "actual": 30.0,
+        "predicted": 208.5236331872796,
+        "residual": -178.5236331872796
+      },
+      {
+        "actual": 124.0,
+        "predicted": 78.62695973274964,
+        "residual": 45.37304026725036
+      },
+      {
+        "actual": 33.0,
+        "predicted": 56.46198842785702,
+        "residual": -23.461988427857023
+      },
+      {
+        "actual": 23.0,
+        "predicted": 63.45380474144598,
+        "residual": -40.45380474144598
+      },
+      {
+        "actual": 13.0,
+        "predicted": 45.29680821157194,
+        "residual": -32.29680821157194
+      },
+      {
+        "actual": 7.0,
+        "predicted": 52.347483771359606,
+        "residual": -45.347483771359606
+      },
+      {
+        "actual": 32.0,
+        "predicted": 75.14349882783563,
+        "residual": -43.14349882783563
+      },
+      {
+        "actual": 126.0,
+        "predicted": 226.16426805255995,
+        "residual": -100.16426805255995
+      },
+      {
+        "actual": 36.0,
+        "predicted": 102.59985470211349,
+        "residual": -66.59985470211349
+      },
+      {
+        "actual": 30.0,
+        "predicted": 63.682411515420384,
+        "residual": -33.682411515420384
+      },
+      {
+        "actual": 2.0,
+        "predicted": 40.10260652067919,
+        "residual": -38.10260652067919
+      },
+      {
+        "actual": 31.0,
+        "predicted": 396.15238363419235,
+        "residual": -365.15238363419235
+      },
+      {
+        "actual": 10.0,
+        "predicted": 75.30745221074761,
+        "residual": -65.30745221074761
+      },
+      {
+        "actual": 13.0,
+        "predicted": 64.40660464555616,
+        "residual": -51.40660464555616
+      },
+      {
+        "actual": 20.0,
+        "predicted": 65.60887562185937,
+        "residual": -45.60887562185937
+      },
+      {
+        "actual": 5.0,
+        "predicted": 43.09916031802874,
+        "residual": -38.09916031802874
+      },
+      {
+        "actual": 11.0,
+        "predicted": 40.91875775581215,
+        "residual": -29.918757755812152
+      },
+      {
+        "actual": 75.0,
+        "predicted": 99.40779383895539,
+        "residual": -24.407793838955385
+      },
+      {
+        "actual": 119.0,
+        "predicted": 70.95219734002053,
+        "residual": 48.04780265997947
+      },
+      {
+        "actual": 197.0,
+        "predicted": 283.32893490028425,
+        "residual": -86.32893490028425
+      },
+      {
+        "actual": 26.0,
+        "predicted": 51.80609616827745,
+        "residual": -25.80609616827745
+      },
+      {
+        "actual": 2.0,
+        "predicted": 40.10260652067919,
+        "residual": -38.10260652067919
+      },
+      {
+        "actual": 239.0,
+        "predicted": 488.9007621011436,
+        "residual": -249.90076210114358
+      },
+      {
+        "actual": 222.0,
+        "predicted": 130.97968450062828,
+        "residual": 91.02031549937172
+      },
+      {
+        "actual": 250.0,
+        "predicted": 115.61396277242554,
+        "residual": 134.38603722757446
+      },
+      {
+        "actual": 92.0,
+        "predicted": 56.46198842785702,
+        "residual": 35.53801157214298
+      },
+      {
+        "actual": 37.0,
+        "predicted": 43.09916031802874,
+        "residual": -6.099160318028737
+      },
+      {
+        "actual": 3.0,
+        "predicted": 40.91875775581215,
+        "residual": -37.91875775581215
+      },
+      {
+        "actual": 41.0,
+        "predicted": 80.65122226107435,
+        "residual": -39.65122226107435
+      },
+      {
+        "actual": 98.0,
+        "predicted": 57.92112793519236,
+        "residual": 40.07887206480764
+      },
+      {
+        "actual": 110.0,
+        "predicted": 133.20205645190418,
+        "residual": -23.202056451904184
+      },
+      {
+        "actual": 32.0,
+        "predicted": 59.750712385976584,
+        "residual": -27.750712385976584
+      },
+      {
+        "actual": 15.0,
+        "predicted": 42.415468667725094,
+        "residual": -27.415468667725094
+      },
+      {
+        "actual": 13.0,
+        "predicted": 34.82936447177974,
+        "residual": -21.82936447177974
+      },
+      {
+        "actual": 144.0,
+        "predicted": 134.52499235343953,
+        "residual": 9.47500764656047
+      },
+      {
+        "actual": 133.0,
+        "predicted": 130.29580505839874,
+        "residual": 2.7041949416012585
+      },
+      {
+        "actual": 72.0,
+        "predicted": 64.78903679096787,
+        "residual": 7.21096320903213
+      },
+      {
+        "actual": 19.0,
+        "predicted": 43.09916031802874,
+        "residual": -24.099160318028737
+      },
+      {
+        "actual": 9.0,
+        "predicted": 40.91875775581215,
+        "residual": -31.918757755812152
+      },
+      {
+        "actual": 157.0,
+        "predicted": 179.43993932217364,
+        "residual": -22.439939322173643
+      },
+      {
+        "actual": 247.0,
+        "predicted": 122.41270941786387,
+        "residual": 124.58729058213613
+      },
+      {
+        "actual": 122.0,
+        "predicted": 290.78881540556927,
+        "residual": -168.78881540556927
+      },
+      {
+        "actual": 49.0,
+        "predicted": 59.750712385976584,
+        "residual": -10.750712385976584
+      }
+    ],
+    "learning_curve": [
+      {
+        "samples": 696,
+        "train_rmse": 14.13670422531809,
+        "validation_rmse": 181.58377946075174
+      },
+      {
+        "samples": 1392,
+        "train_rmse": 17.379415212669883,
+        "validation_rmse": 159.4680099630023
+      },
+      {
+        "samples": 2321,
+        "train_rmse": 22.7695831037475,
+        "validation_rmse": 144.4134362283153
+      }
+    ],
+    "importance": [
+      {
+        "feature": "numeric__atemp",
+        "value": 0.21879310199165472
+      },
+      {
+        "feature": "categorical__hr_17",
+        "value": 0.11464432413053062
+      },
+      {
+        "feature": "categorical__hr_18",
+        "value": 0.09969156040656474
+      },
+      {
+        "feature": "numeric__hum",
+        "value": 0.07308567522632095
+      },
+      {
+        "feature": "categorical__hr_8",
+        "value": 0.07085511768305948
+      },
+      {
+        "feature": "categorical__workingday_1",
+        "value": 0.05080937044205329
+      },
+      {
+        "feature": "categorical__workingday_0",
+        "value": 0.04826180476487107
+      },
+      {
+        "feature": "numeric__temp",
+        "value": 0.04185412572852956
+      },
+      {
+        "feature": "categorical__yr_0",
+        "value": 0.038902796486195386
+      },
+      {
+        "feature": "categorical__hr_19",
+        "value": 0.035181287732480485
+      },
+      {
+        "feature": "categorical__yr_1",
+        "value": 0.03350360116267281
+      },
+      {
+        "feature": "categorical__hr_2",
+        "value": 0.01720229933794973
+      },
+      {
+        "feature": "categorical__hr_1",
+        "value": 0.016553092566266657
+      },
+      {
+        "feature": "categorical__hr_3",
+        "value": 0.016142137161435116
+      },
+      {
+        "feature": "categorical__hr_4",
+        "value": 0.014755573478613155
+      },
+      {
+        "feature": "categorical__hr_5",
+        "value": 0.013759221223655149
+      },
+      {
+        "feature": "categorical__hr_0",
+        "value": 0.012216957068058282
+      },
+      {
+        "feature": "categorical__hr_16",
+        "value": 0.012075451669358892
+      },
+      {
+        "feature": "categorical__hr_7",
+        "value": 0.012058397812449443
+      },
+      {
+        "feature": "categorical__hr_9",
+        "value": 0.009628562498666135
+      }
+    ],
+    "importance_type": "Feature importance",
+    "explanations": [
+      "最終學習曲線：Training RMSE 22.77，Validation RMSE 144.4，差距 121.6。差距超過驗證誤差的 20%，有過度擬合跡象。",
+      "殘差與預測值的 Pearson r = 0.337。此線性相關檢查無法排除異方差或非線性規律，需配合殘差圖。",
+      "CV 選出 9 個特徵；一個特徵 CV RMSE 133.7，最佳組合 107.1，全部特徵 108.8。",
+      "最顯著的編碼後特徵為 numeric__atemp；係數表示控制其他輸入後的關聯，不等於因果。",
+      "欠擬合評估：訓練集目標標準差 167，最大樣本 Training RMSE 22.77。目前無此高偏差門檻的證據，不能單憑 RMSE 排除欠擬合。"
+    ],
+    "residual_correlation": 0.33699906463896784
+  },
+  "prediction_configuration": {
+    "supported": true,
+    "model_path": "data/bike/model.json",
+    "model_name": "Random Forest Regressor",
+    "input_stage": "已清理／衍生的候選欄位，與 Python prepare() 的輸出一致"
+  }
+}

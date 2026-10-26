@@ -1,0 +1,14 @@
+{
+  "total_samples": 17379,
+  "clean_samples": 17377,
+  "analyzed_samples": 17377,
+  "sampled": false,
+  "training_samples": 13901,
+  "testing_samples": 3476,
+  "original_feature_count": 12,
+  "candidate_feature_count": 12,
+  "encoded_feature_count": 61,
+  "missing_values": 0,
+  "split": "chronological 80/20 + TimeSeriesSplit(5)",
+  "seed": 42
+}

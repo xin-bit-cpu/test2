@@ -1,0 +1,19 @@
+﻿count,selected_features,cv_rmse,test_rmse,test_r2,test_mae
+1,"[""sqft_living""]",264406.0879824256,250808.795100165,0.49921968908259695,169633.42475579228
+2,"[""sqft_living"", ""zipcode""]",194446.1447360757,182246.90791137947,0.7355874533336981,110827.7984591131
+3,"[""sqft_living"", ""zipcode"", ""waterfront""]",178355.59361784524,172918.4527660468,0.7619630353551771,106918.00547346091
+4,"[""sqft_living"", ""zipcode"", ""waterfront"", ""grade""]",173246.4441307105,166657.96426782437,0.7788872087226724,103963.48669294808
+5,"[""sqft_living"", ""zipcode"", ""waterfront"", ""grade"", ""view""]",169409.50577205792,160458.85684552544,0.7950305623821508,99397.96012721222
+6,"[""sqft_living"", ""zipcode"", ""waterfront"", ""grade"", ""view"", ""yr_built""]",167531.90912726056,158897.29151958227,0.7990006232078402,97739.61987414389
+7,"[""sqft_living"", ""zipcode"", ""waterfront"", ""grade"", ""view"", ""yr_built"", ""bedrooms""]",166250.20193440607,158837.06015510726,0.799152975360324,98091.17143060807
+8,"[""sqft_living"", ""zipcode"", ""waterfront"", ""grade"", ""view"", ""yr_built"", ""bedrooms"", ""sqft_basement""]",165266.63602344372,158408.74071568,0.8002347215887832,98026.87579880665
+9,"[""sqft_living"", ""zipcode"", ""waterfront"", ""grade"", ""view"", ""yr_built"", ""bedrooms"", ""sqft_basement"", ""floors""]",164612.87780674305,157777.9561680063,0.8018224870898374,97903.30566880324
+10,"[""sqft_living"", ""zipcode"", ""waterfront"", ""grade"", ""view"", ""yr_built"", ""bedrooms"", ""sqft_basement"", ""floors"", ""condition""]",164026.1495727171,157035.12252594347,0.8036841714597638,97198.33295852992
+11,"[""sqft_living"", ""zipcode"", ""waterfront"", ""grade"", ""view"", ""yr_built"", ""bedrooms"", ""sqft_basement"", ""floors"", ""condition"", ""bathrooms""]",163596.60988037736,157037.9541862892,0.8036770914543488,97072.26748266318
+12,"[""sqft_living"", ""zipcode"", ""waterfront"", ""grade"", ""view"", ""yr_built"", ""bedrooms"", ""sqft_basement"", ""floors"", ""condition"", ""bathrooms"", ""sqft_lot""]",163524.24333692814,156716.69623722395,0.8044795189024591,96731.94255940554
+13,"[""sqft_living"", ""zipcode"", ""waterfront"", ""grade"", ""view"", ""yr_built"", ""bedrooms"", ""sqft_basement"", ""floors"", ""condition"", ""bathrooms"", ""sqft_lot"", ""yr_renovated""]",163465.86040422803,156592.67459445528,0.8047888564128772,96583.89869342558
+14,"[""sqft_living"", ""zipcode"", ""waterfront"", ""grade"", ""view"", ""yr_built"", ""bedrooms"", ""sqft_basement"", ""floors"", ""condition"", ""bathrooms"", ""sqft_lot"", ""yr_renovated"", ""lat""]",163428.0109750387,156534.2209081892,0.8049345679696984,96588.10422060848
+15,"[""sqft_living"", ""zipcode"", ""waterfront"", ""grade"", ""view"", ""yr_built"", ""bedrooms"", ""sqft_basement"", ""floors"", ""condition"", ""bathrooms"", ""sqft_lot"", ""yr_renovated"", ""lat"", ""long""]",163410.83357640475,156497.47384292562,0.8050261420772797,96560.79453724029
+16,"[""sqft_living"", ""zipcode"", ""waterfront"", ""grade"", ""view"", ""yr_built"", ""bedrooms"", ""sqft_basement"", ""floors"", ""condition"", ""bathrooms"", ""sqft_lot"", ""yr_renovated"", ""lat"", ""long"", ""sqft_above""]",163410.89249076782,156497.4550358241,0.8050261889392875,96560.74280623981
+17,"[""sqft_living"", ""zipcode"", ""waterfront"", ""grade"", ""view"", ""yr_built"", ""bedrooms"", ""sqft_basement"", ""floors"", ""condition"", ""bathrooms"", ""sqft_lot"", ""yr_renovated"", ""lat"", ""long"", ""sqft_above"", ""sqft_lot15""]",163432.02296306964,156461.83438603103,0.8051149354744789,96538.22490777567
+18,"[""sqft_living"", ""zipcode"", ""waterfront"", ""grade"", ""view"", ""yr_built"", ""bedrooms"", ""sqft_basement"", ""floors"", ""condition"", ""bathrooms"", ""sqft_lot"", ""yr_renovated"", ""lat"", ""long"", ""sqft_above"", ""sqft_lot15"", ""sqft_living15""]",163453.2341620223,156389.29377095675,0.8052956032431711,96476.53093554666

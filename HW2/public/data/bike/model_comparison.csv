@@ -1,0 +1,6 @@
+﻿name,short,cv_rmse,test_rmse,test_r2,test_mae,best_parameters
+Linear Regression,Linear,108.79783901757219,133.8408761495156,0.6315147022703993,98.8098954606312,{}
+Ridge Regression,Ridge,108.80956361073717,133.86977252616256,0.6313555724185427,98.83589078623531,"{""model__regressor__alpha"": 0.1}"
+Lasso Regression,Lasso,109.11373609754214,135.21510249026457,0.6239089261391764,99.43248855692107,"{""model__regressor__alpha"": 0.001}"
+ElasticNet Regression,ElasticNet,109.21132142114534,134.82944063337402,0.6260512479848213,99.43462100173934,"{""model__regressor__alpha"": 0.001, ""model__regressor__l1_ratio"": 0.3}"
+Random Forest Regressor,Forest,101.51012832975024,113.14509834396631,0.7366616493449061,80.7215292426584,"{""model__regressor__max_depth"": 14, ""model__regressor__min_samples_leaf"": 2}"
