@@ -1,6 +1,6 @@
 # Kaggle Multiple Linear Regression Lab
 
-人工智慧課程專案：在**同一個 React 單頁 Dashboard** 切換七組 Kaggle 資料，呈現五模型比較、前向特徵選擇、診斷與實際模型預測。所有圖表分數由 Python 訓練產生；網站不需要 Python 伺服器。
+人工智慧課程專案：在**同一個 React 單頁 Dashboard** 切換七組 Kaggle 資料，呈現五模型比較、前向特徵選擇、診斷與實際模型預測。所有圖表分數由 Python 訓練產生
 
 ## 啟動網站
 
